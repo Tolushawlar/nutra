@@ -18,7 +18,7 @@ const Menu = () => {
     <div className=" p-10">
       <div className="text-center">
         <h2 className="h2 font-bold text-2xl text-center">
-          Check out thie weeks menu
+          Check out this weeks menu
         </h2>
         <p>Our menu from 03 Mar - 09 Mar</p>
       </div>

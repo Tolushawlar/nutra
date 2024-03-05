@@ -12,6 +12,7 @@ const config: Config = {
         white: "#FFFFFF",
         black: "#000000",
         "bg-sec": "#934A5F",
+        main: "rgb(228, 222, 237)",
         "bg-pri": "#063925",
         "text-color": "#E5E5E5",
       },
