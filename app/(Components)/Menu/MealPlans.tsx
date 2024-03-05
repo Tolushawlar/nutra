@@ -1,7 +1,15 @@
 import { yam } from "@/app/Assets";
 import React from "react";
+import PropTypes from 'prop-types';
 
-const MealPlans = ({ imageSrc, mainText, subText, buttonText }) => {
+interface MealPlansProps {
+    imageSrc: string;
+    mainText: string;
+    subText: string;
+    buttonText: string;
+  }
+  
+  const MealPlans: React.FC<MealPlansProps>= ({ imageSrc, mainText, subText, buttonText }) => {
     return (
         <div className="flex w-3/4 h-64 bg-white shadow-md rounded-md overflow-hidden m-10">
             <div className="w-1/3 p-5 ">
@@ -14,8 +22,10 @@ const MealPlans = ({ imageSrc, mainText, subText, buttonText }) => {
                     {buttonText}
                 </button>
             </div>
-        </div>  
+        </div>
     );
 };
+
+
 
 export default MealPlans;
