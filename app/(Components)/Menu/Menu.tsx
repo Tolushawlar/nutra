@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import FoodCards from "./FoodCards";
+import OrderModal from "../OrderModal/OrderModal";
 
 const Menu = () => {
+  const [openModal, setOpenModal] = useState(false);
   const categories = [
     "All",
     "Rice/Grains",
@@ -16,6 +19,7 @@ const Menu = () => {
 
   return (
     <div className=" p-10">
+      {openModal && <OrderModal setOpenModal={setOpenModal} />}
       <div className="text-center">
         <h2 className="h2 font-bold text-2xl text-center">
           Check out this weeks menu
@@ -36,7 +40,7 @@ const Menu = () => {
             .fill("")
             .map((d, i) => (
               <div key={i}>
-                <FoodCards />
+                <FoodCards setOpenModal={setOpenModal} />
               </div>
             ))}
         </div>
