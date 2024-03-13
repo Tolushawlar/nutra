@@ -1,18 +1,17 @@
-"use client"
-import Header from '@/app/(Components)/Header'
-import MyModal from '@/app/(Components)/Modal'
-import Sidebar from '@/app/(Components)/SideBar'
-import React from 'react'
+"use client";
+import Header from "@/app/(Components)/Header";
+import MyModal from "@/app/(Components)/Modal";
+import Sidebar from "@/app/(Components)/SideBar";
+import React from "react";
 
 function OrdersPage() {
   return (
-    <div className=''>
-      <Header />
+    <div className="">
       <div className="dashboardLayoutContent flex flex-row h-full w-full">
         <Sidebar />
         <div className="w-full bg-gray-200 p-10">
-          <div className='text-black text-3xl'>Orders</div>
-          <div className='orderContent bg-white flex flex-col my-10'>
+          <div className="text-black text-3xl">Orders</div>
+          <div className="orderContent bg-white flex flex-col my-10">
             <div className="overflow-x-auto">
               <table className="table">
                 {/* head */}
@@ -29,23 +28,24 @@ function OrdersPage() {
                     <td>
                       <div className="flex items-center gap-3">
                         <div className="avatar">
-                          <div className="mask mask-squircle w-12 h-12 rounded-3xl bg-red-400">
-                          </div>
+                          <div className="mask mask-squircle w-12 h-12 rounded-3xl bg-red-400"></div>
                         </div>
                         <div>
                           <div className="font-bold">Full Yam Sauce</div>
-                          <div className="text-sm opacity-50">Hart Hagerty </div>
+                          <div className="text-sm opacity-50">
+                            Hart Hagerty{" "}
+                          </div>
                         </div>
                       </div>
                     </td>
+                    <td>12 Mar 2024, 07;22 PM</td>
                     <td>
-                      12 Mar 2024, 07;22 PM
-                    </td>
-                    <td>
-                      <div className="badge badge-secondary badge-outline">pending</div>
+                      <div className="badge badge-secondary badge-outline">
+                        pending
+                      </div>
                     </td>
                     <th>
-                      <MyModal/>
+                      <MyModal />
                     </th>
                   </tr>
 
@@ -53,35 +53,34 @@ function OrdersPage() {
                     <td>
                       <div className="flex items-center gap-3">
                         <div className="avatar">
-                          <div className="mask mask-squircle w-12 h-12 rounded-3xl bg-red-400">
-                          </div>
+                          <div className="mask mask-squircle w-12 h-12 rounded-3xl bg-red-400"></div>
                         </div>
                         <div>
                           <div className="font-bold">Full Yam Sauce</div>
-                          <div className="text-sm opacity-50">Hart Hagerty </div>
+                          <div className="text-sm opacity-50">
+                            Hart Hagerty{" "}
+                          </div>
                         </div>
                       </div>
                     </td>
+                    <td>12 Mar 2024, 07;22 PM</td>
                     <td>
-                      12 Mar 2024, 07;22 PM
-                    </td>
-                    <td>
-                      <div className="badge badge-success badge-outline">delieverd</div>
+                      <div className="badge badge-success badge-outline">
+                        delieverd
+                      </div>
                     </td>
                     <th>
-                      <MyModal/>
+                      <MyModal />
                     </th>
                   </tr>
-
                 </tbody>
-
               </table>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default OrdersPage
+export default OrdersPage;
