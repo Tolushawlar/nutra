@@ -1,33 +1,58 @@
-import React from "react";
+"use client";
+import React, { useContext, useState } from "react";
+import { useAppContext } from "../context/AppContext";
+import Link from "next/link";
+import Cart from "./Cart";
 
 const Header = () => {
+  const { cart }: any = useAppContext();
+
+  const [openCart, setOpenCart] = useState(false);
+
   return (
     <div>
-      <div className="navbar bg-bg-sec text-text-color">
-        <div className="flex-1">
-          <a className="btn btn-ghost  text-xl">Foodie</a>
+      <div className="navbar fixed h-[70px] z-[500] bg-bg-sec justify-between text-text-color">
+        <div className="flex">
+          <a href="/" className="btn btn-ghost  text-xl">
+            Nutra Spices
+          </a>
         </div>
 
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Item 1</a>
+              <Link href="/">Home</Link>
             </li>
-            <li>
+            <li className="w-auto">
               <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
+                <summary>Meal Plans</summary>
+                <ul className="p-2 z-[200] w-fit text-text-color">
+                  <li className=" m-2 w-fit bg-bg-sec">
+                    <a>Instant Order</a>
                   </li>
-                  <li>
-                    <a>Submenu 2</a>
+                  <li className=" m-2 bg-bg-sec">
+                    <Link href="/health">Healthy Meals</Link>
+                  </li>
+                  <li className=" m-2 bg-bg-sec">
+                    <a>Be Spoke</a>
+                  </li>
+                  <li className=" m-2 bg-bg-sec">
+                    <a>Subscription Plans</a>
                   </li>
                 </ul>
               </details>
             </li>
             <li>
-              <a>Item 3</a>
+              <a>Event Services</a>
+            </li>
+            <li>
+              <a>About</a>
+            </li>
+            <li>
+              <a>Contact Us</a>
+            </li>
+            <li>
+              <a>Blog</a>
             </li>
           </ul>
         </div>
@@ -35,14 +60,15 @@ const Header = () => {
         <div className="flex-none">
           <div className="dropdown dropdown-end">
             <div
+              onClick={() => setOpenCart(true)}
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle"
+              className="btn btn-ghost mr-3 btn-circle"
             >
-              <div className="indicator">
+              <div className="indicator ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-10 w-10"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -54,24 +80,13 @@ const Header = () => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge badge-sm indicator-item">8</span>
-              </div>
-            </div>
-            <div
-              tabIndex={0}
-              className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
-            >
-              <div className="card-body">
-                <span className="font-bold text-lg">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
-                <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
-                    View cart
-                  </button>
-                </div>
+                <span className="badge badge-md indicator-item">
+                  {cart.total}
+                </span>
               </div>
             </div>
           </div>
+          {openCart && <Cart openCart={openCart} setOpenCart={setOpenCart} />}
         </div>
       </div>
     </div>
