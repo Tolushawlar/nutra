@@ -2,7 +2,7 @@ import React from "react";
 
 export const Bespoke = () => {
   return (
-    <div className="">
+    <div id="bespoke" className="">
       <div className="w-[60%] bg-white shadow-md rounded-md p-10 mx-auto my-5">
         <div className="flex flex-col items-center justify-center">
           <h2 className="font-bold text-2xl">Be Spoke</h2>

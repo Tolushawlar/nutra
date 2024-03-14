@@ -1,8 +1,11 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import Link from "next/link";
 import Cart from "./Cart";
+
+import { Menu, Transition } from "@headlessui/react";
+import { Fragment } from "react";
 
 const Header = () => {
   const { cart }: any = useAppContext();
@@ -78,10 +81,6 @@ const Header = () => {
 
 export default Header;
 
-import { Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
-// import { ChevronDownIcon } from "@heroicons/react/20/solid";
-
 export function Dropdown() {
   return (
     <div className="   text-right">
@@ -107,7 +106,7 @@ export function Dropdown() {
           <Menu.Items className="absolute px-6 right-0 mt-2 min-w-fit  rounded-md bg-main text-black shadow-lg ring-1 ring-black/5 focus:outline-none">
             <div className="px-1 py-1 flex items-center flex-col">
               <Menu.Item>
-                <Link className="text-nowrap  " href="#menu">
+                <Link className="text-nowrap  " href="/#menu">
                   <button
                     className={` group text-nowrap hover:bg-bg-sec m-2 items-center rounded-md px-2 py-2 text-sm`}
                   >
@@ -134,7 +133,7 @@ export function Dropdown() {
                 </Link>
               </Menu.Item>
               <Menu.Item>
-                <Link href="/">
+                <Link href="/#bespoke">
                   <button
                     className={`  group flex w-full hover:bg-bg-sec m-2 items-center rounded-md px-2 py-2 text-sm`}
                   >
