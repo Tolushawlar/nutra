@@ -13,9 +13,7 @@ const Header = () => {
     <div>
       <div className="navbar fixed h-[70px] z-[500] bg-bg-sec justify-between text-text-color">
         <div className="flex">
-          <a href="/" className="btn btn-ghost  text-xl">
-            Nutra Spices
-          </a>
+          <Link href="/"> Nutra Spices</Link>
         </div>
 
         <div className="navbar-center hidden lg:flex">
@@ -27,16 +25,17 @@ const Header = () => {
               <Dropdown />
             </li>
             <li>
-              <a>Event Services</a>
+              <Link href="/">Event Services</Link>
+            </li>
+
+            <li>
+              <Link href="/">About</Link>
             </li>
             <li>
-              <a>About</a>
+              <Link href="/">Contact Us</Link>
             </li>
             <li>
-              <a>Contact Us</a>
-            </li>
-            <li>
-              <a>Blog</a>
+              <Link href="/">Blog</Link>
             </li>
           </ul>
         </div>
@@ -105,121 +104,43 @@ export function Dropdown() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+          <Menu.Items className="absolute right-0 mt-2 min-w-fit origin-top-right divide-y divide-gray-100 rounded-md bg-main text-black shadow-lg ring-1 ring-black/5 focus:outline-none">
             <div className="px-1 py-1 ">
               <Menu.Item>
-                {({ active }) => (
+                <Link className="text-nowrap  " href="#menu">
                   <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    className={` group text-nowrap flex  bg-bg-sec m-2 items-center rounded-md px-2 py-2 text-sm`}
                   >
-                    {active ? (
-                      <EditActiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <EditInactiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    )}
-                    Edit
+                    Instant Order
                   </button>
-                )}
+                </Link>
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
+                <Link href="/health">
                   <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    className={` group flex w-full bg-bg-sec m-2 items-center rounded-md px-2 py-2 text-sm`}
                   >
-                    {active ? (
-                      <DuplicateActiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <DuplicateInactiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    )}
-                    Duplicate
+                    Healthy Meals
                   </button>
-                )}
-              </Menu.Item>
-            </div>
-            <div className="px-1 py-1">
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    {active ? (
-                      <ArchiveActiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <ArchiveInactiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    )}
-                    Archive
-                  </button>
-                )}
+                </Link>
               </Menu.Item>
               <Menu.Item>
-                {({ active }) => (
+                <Link href="/">
                   <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    className={`  group flex w-full bg-bg-sec m-2 items-center rounded-md px-2 py-2 text-sm`}
                   >
-                    {active ? (
-                      <MoveActiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <MoveInactiveIcon
-                        className="mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    )}
-                    Move
+                    Schedule
                   </button>
-                )}
+                </Link>
               </Menu.Item>
-            </div>
-            <div className="px-1 py-1">
               <Menu.Item>
-                {({ active }) => (
+                <Link href="/">
                   <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    className={`  group flex w-full bg-bg-sec m-2 items-center rounded-md px-2 py-2 text-sm`}
                   >
-                    {active ? (
-                      <DeleteActiveIcon
-                        className="mr-2 h-5 w-5 text-violet-400"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <DeleteInactiveIcon
-                        className="mr-2 h-5 w-5 text-violet-400"
-                        aria-hidden="true"
-                      />
-                    )}
-                    Delete
+                    Be Spoke
                   </button>
-                )}
+                </Link>
               </Menu.Item>
             </div>
           </Menu.Items>

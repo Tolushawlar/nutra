@@ -5,6 +5,8 @@ import OrderModal from "../OrderModal/OrderModal";
 
 const Menu = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [scheduledata, setScheduleData] = useState();
+
   const categories = [
     "All",
     "Rice/Grains",
@@ -18,8 +20,10 @@ const Menu = () => {
   ];
 
   return (
-    <div className=" p-10">
-      {openModal && <OrderModal setOpenModal={setOpenModal} />}
+    <div id="menu" className=" p-10">
+      {openModal && (
+        <OrderModal scheduleOrder={scheduledata} setOpenModal={setOpenModal} />
+      )}
       <div className="text-center">
         <h2 className="h2 font-bold text-2xl text-center">
           Check out this weeks menu
@@ -40,7 +44,10 @@ const Menu = () => {
             .fill("")
             .map((d, i) => (
               <div key={i}>
-                <FoodCards setOpenModal={setOpenModal} />
+                <FoodCards
+                  setScheduleOrder={setScheduleData}
+                  setOpenModal={setOpenModal}
+                />
               </div>
             ))}
         </div>

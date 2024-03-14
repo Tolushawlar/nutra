@@ -1,5 +1,10 @@
 "use client";
-const OrderModal = ({ setOpenModal }: any) => {
+
+import { useAppContext } from "@/app/context/AppContext";
+
+const OrderModal = ({ setOpenModal, scheduleOrder }: any) => {
+  const { setCart }: any = useAppContext();
+
   const days = [
     "Mon",
     "Tue",
@@ -17,6 +22,7 @@ const OrderModal = ({ setOpenModal }: any) => {
 
   const dayOfWeek = new Date().getDay() - 1;
 
+  console.log(scheduleOrder);
   return (
     <div className="fixed w-full h-full flex z-[200] items-center justify-center  top-0 left-0 bg-[rgba(0,0,0,0.8)]">
       <div className="w-[60%] overflow-y-auto bg-white  rounded-md p-10 my-5">
@@ -130,6 +136,37 @@ const OrderModal = ({ setOpenModal }: any) => {
               </tbody>
             </table>
           </div>
+        </div>
+        <div className="justify-end flex mt-5 w-full">
+          <button
+            onClick={() => {
+              setCart((prev: any) => ({
+                ...prev,
+                total: prev.total + 1,
+                order:
+                  prev.order != undefined
+                    ? [
+                        ...prev.order,
+                        {
+                          name: scheduleOrder.name,
+                          price: scheduleOrder.price,
+                          img: scheduleOrder.img,
+                        },
+                      ]
+                    : [
+                        {
+                          name: scheduleOrder.name,
+                          price: scheduleOrder.price,
+                          img: scheduleOrder.img,
+                        },
+                      ],
+              }));
+              setOpenModal(false);
+            }}
+            className="btn bg-bg-sec flex-end text-text-color"
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

@@ -2,8 +2,8 @@ import { yam } from "@/app/Assets";
 import { useAppContext } from "@/app/context/AppContext";
 import React from "react";
 
-const FoodCards = ({ setOpenModal }: any) => {
-  const { cart, setCart }: any = useAppContext();
+const FoodCards = ({ setOpenModal, setScheduleOrder }: any) => {
+  const { setCart }: any = useAppContext();
 
   const data = {
     name: "Yam",
@@ -29,7 +29,14 @@ const FoodCards = ({ setOpenModal }: any) => {
           <h3>If a dog chews shoes whose shoes does he choose?</h3>
           <div className="card-actions justify-end">
             <button
-              onClick={() => setOpenModal(true)}
+              onClick={() => {
+                setScheduleOrder({
+                  name: data.name,
+                  price: data.price,
+                  img: yam.src,
+                });
+                setOpenModal(true);
+              }}
               className="btn bg-bg-sec text-text-color"
             >
               Schedule
@@ -39,10 +46,23 @@ const FoodCards = ({ setOpenModal }: any) => {
                 setCart((prev: any) => ({
                   ...prev,
                   total: prev.total + 1,
-                  order: {
-                    name: data.name,
-                    price: data.price,
-                  },
+                  order:
+                    prev.order != undefined
+                      ? [
+                          ...prev.order,
+                          {
+                            name: data.name,
+                            price: data.price,
+                            img: yam.src,
+                          },
+                        ]
+                      : [
+                          {
+                            name: data.name,
+                            price: data.price,
+                            img: yam.src,
+                          },
+                        ],
                 }))
               }
               className="btn bg-bg-sec text-text-color"
