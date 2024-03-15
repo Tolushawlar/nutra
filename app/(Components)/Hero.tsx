@@ -19,7 +19,7 @@ export const Hero = () => {
           <div className="flex md:grid grid-cols-2 text-black gap-2">
             <div className="card bg-main shadow-xl">
               <div className="card-body">
-                <h2 className="card-title">Instant Order!</h2>
+                <h2 className="card-title">Instant/Schedule Order!</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions justify-end">
                   <button className="btn bg-bg-sec text-text-color">
@@ -30,7 +30,7 @@ export const Hero = () => {
             </div>
             <div className="card bg-main shadow-xl">
               <div className="card-body">
-                <h2 className="card-title">Reschedule!</h2>
+                <h2 className="card-title">Healthy Meals!</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions justify-end">
                   <button className="btn bg-bg-sec text-text-color">

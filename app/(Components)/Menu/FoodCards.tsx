@@ -39,10 +39,21 @@ const FoodCards = ({ setOpenModal }: any) => {
                 setCart((prev: any) => ({
                   ...prev,
                   total: prev.total + 1,
-                  order: {
-                    name: data.name,
-                    price: data.price,
-                  },
+                  order:
+                    prev.order != undefined
+                      ? [
+                          ...prev.order,
+                          {
+                            name: data.name,
+                            price: data.price,
+                          },
+                        ]
+                      : [
+                          {
+                            name: data.name,
+                            price: data.price,
+                          },
+                        ],
                 }))
               }
               className="btn bg-bg-sec text-text-color"
