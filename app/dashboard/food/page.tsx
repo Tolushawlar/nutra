@@ -5,9 +5,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 function FoodPage() {
-
-  const [foodData, setFoodData] = useState([]);
-
+  const [foodData, setFoodData] = useState<any[]>([]);
+  
   useEffect(() => {
     // Fetch data from the API when the component mounts
     fetchData();
