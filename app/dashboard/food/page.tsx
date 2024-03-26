@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 function FoodPage() {
   const [foodData, setFoodData] = useState<any[]>([]);
-  
+
   useEffect(() => {
     // Fetch data from the API when the component mounts
     fetchData();
@@ -71,7 +71,7 @@ function FoodPage() {
                         </div>
                       </td>
                       <td>
-                        {food.categories.map((category) => (
+                        {food.categories.map((category: any) => (
                           <span key={category} className="badge badge-ghost badge-sm">
                             {category}
                           </span>
