@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export const Hero = () => {
@@ -17,18 +18,20 @@ export const Hero = () => {
             </button>
           </div>
           <div className="flex md:grid grid-cols-2 text-black gap-2">
-            <div className="card bg-main shadow-xl">
+            <div className="card bg-cream shadow-xl">
               <div className="card-body">
                 <h2 className="card-title">Instant/Schedule Order!</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions justify-end">
-                  <button className="btn bg-bg-sec text-text-color">
-                    View
-                  </button>
+                  <Link href="#menu">
+                    <button className="btn bg-bg-sec text-text-color">
+                      View
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
-            <div className="card bg-main shadow-xl">
+            <div className="card bg-cream shadow-xl">
               <div className="card-body">
                 <h2 className="card-title">Healthy Meals!</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
@@ -39,7 +42,7 @@ export const Hero = () => {
                 </div>
               </div>
             </div>
-            <div className="card bg-main shadow-xl">
+            <div className="card bg-cream shadow-xl">
               <div className="card-body">
                 <h2 className="card-title">Subscription Plans!</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
@@ -50,9 +53,9 @@ export const Hero = () => {
                 </div>
               </div>
             </div>
-            <div className="card bg-main shadow-xl">
+            <div className="card bg-cream shadow-xl">
               <div className="card-body">
-                <h2 className="card-title">Be Spoke!</h2>
+                <h2 className="card-title">Bespoke!</h2>
                 <p>Want a specific kind of food? Talk to us now.</p>
                 <div className="card-actions justify-end">
                   <button className="  bg-bg-sec text-text-color p-1 px-4 rounded-lg">

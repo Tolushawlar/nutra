@@ -2,10 +2,10 @@ import React from "react";
 
 export const Bespoke = () => {
   return (
-    <div className="">
+    <div id="bespoke" className="">
       <div className="w-[60%] bg-white shadow-md rounded-md p-10 mx-auto my-5">
         <div className="flex flex-col items-center justify-center">
-          <h2 className="font-bold text-2xl">Be Spoke</h2>
+          <h2 className="font-bold text-2xl">Bespoke</h2>
           <p>
             Want to send us a custom order? Kindly fill the form below,
             we&lsquo;ll reply in munites!!

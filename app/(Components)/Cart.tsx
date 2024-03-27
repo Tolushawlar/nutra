@@ -33,10 +33,15 @@ const products = [
 ];
 
 export default function Cart({ setOpenCart, openCart }: any) {
-  const { cart }: any = useAppContext();
+  const { cart, setCart }: any = useAppContext();
 
-  console.log(cart);
+  const addPrices = (data: any) => {
+    let total = 0;
+    data.map((d: any) => (total += Number(d.price)));
+    return total;
+  };
 
+  console.log(addPrices(cart.order));
   return (
     <div className="">
       <Transition.Root show={openCart} as={Fragment}>
@@ -113,33 +118,30 @@ export default function Cart({ setOpenCart, openCart }: any) {
                               {cart?.order?.map((product: any, i: any) => (
                                 <li key={i} className="flex py-6">
                                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                    {/* {   // eslint-disable-next-line @next/next/no-img-element} */}
-                                    {/* <img
-                                    src={product.imageSrc}
-                                    alt={product.imageAlt}
-                                    className="h-full w-full object-cover object-center"
-                                  /> */}
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img
+                                      src={product.img}
+                                      alt={product.img}
+                                      className="h-full w-full object-cover object-center"
+                                    />
                                   </div>
 
                                   <div className="ml-4 flex flex-1 flex-col">
                                     <div>
                                       <div className="flex justify-between text-base font-medium text-gray-900">
-                                        <h3>
-                                          {/* <a href={product.href}>
-                                          </a> */}
-                                          {product.name}
-                                        </h3>
+                                        <h3>{product.name}</h3>
                                         <p className="ml-4">{product.price}</p>
                                       </div>
-                                      <p className="mt-1 text-sm text-gray-500">
-                                        {/* {product.color} */}
-                                      </p>
+                                      <p className="mt-1 text-sm text-gray-500"></p>
                                     </div>
-                                    <div className="flex flex-1 items-end justify-between text-sm">
-                                      <p className="text-gray-500">Qty</p>
+                                    <div className="flex justify-between text-sm">
+                                      <p className="text-gray-500">
+                                        No of Plates: 2
+                                      </p>
 
                                       <div className="flex">
                                         <button
+                                          // onClick={}
                                           type="button"
                                           className="font-medium text-indigo-600 hover:text-indigo-500"
                                         >
@@ -158,7 +160,7 @@ export default function Cart({ setOpenCart, openCart }: any) {
                       <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                         <div className="flex justify-between text-base font-medium text-gray-900">
                           <p>Subtotal</p>
-                          <p>$262.00</p>
+                          <p>${addPrices(cart.order)}</p>
                         </div>
                         <p className="mt-0.5 text-sm text-gray-500">
                           Shipping and taxes calculated at checkout.

@@ -2,8 +2,8 @@ import { yam } from "@/app/Assets";
 import { useAppContext } from "@/app/context/AppContext";
 import React from "react";
 
-const FoodCards = ({ setOpenModal }: any) => {
-  const { cart, setCart }: any = useAppContext();
+const FoodCards = ({ setOpenModal, setScheduleOrder }: any) => {
+  const { setCart }: any = useAppContext();
 
   const data = {
     name: "Yam",
@@ -11,7 +11,7 @@ const FoodCards = ({ setOpenModal }: any) => {
   };
   return (
     <div>
-      <div className="card  card-compact  bg-base-100 shadow-xl">
+      <div className="card  card-compact h-[300px] bg-base-100 shadow-xl">
         <figure className=" ">
           {
             // eslint-disable-next-line @next/next/no-img-element
@@ -21,19 +21,13 @@ const FoodCards = ({ setOpenModal }: any) => {
                 // width: "300px",/
               }}
               src={yam.src}
-              alt=" w-[500px] border object-center object-fill"
+              alt=" w-[300px] border object-center object-fill"
             />
           }
         </figure>
-        <div className="card-body">
+        <div className="card-body h-">
           <h3>If a dog chews shoes whose shoes does he choose?</h3>
           <div className="card-actions justify-end">
-            <button
-              onClick={() => setOpenModal(true)}
-              className="btn bg-bg-sec text-text-color"
-            >
-              Schedule
-            </button>
             <button
               onClick={() =>
                 setCart((prev: any) => ({
@@ -46,19 +40,34 @@ const FoodCards = ({ setOpenModal }: any) => {
                           {
                             name: data.name,
                             price: data.price,
+                            img: yam.src,
                           },
                         ]
                       : [
                           {
                             name: data.name,
                             price: data.price,
+                            img: yam.src,
                           },
                         ],
                 }))
               }
-              className="btn bg-bg-sec text-text-color"
+              className="btn-sm rounded-md bg-success text-text-color"
             >
               Order Now
+            </button>
+            <button
+              onClick={() => {
+                setScheduleOrder({
+                  name: data.name,
+                  price: data.price,
+                  img: yam.src,
+                });
+                setOpenModal(true);
+              }}
+              className="btn-sm rounded-md bg-bg-sec text-text-color"
+            >
+              Schedule
             </button>
           </div>
         </div>
