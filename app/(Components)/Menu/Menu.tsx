@@ -80,8 +80,8 @@ const Menu = () => {
             {Array(15)
               .fill("")
               .map((d, i) => {
-                if (curPage - i > 3) return <div></div>;
-                if (i > curPage + 1) return <div></div>;
+                if (curPage - i > 3) return <div key={i}></div>;
+                if (i > curPage + 1) return <div key={i}></div>;
                 return (
                   <button
                     onClick={() => setCurPage(i + 1)}

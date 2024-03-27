@@ -86,7 +86,7 @@ const OrderModal = ({ setOpenModal, scheduleOrder }: any) => {
               <tbody className="">
                 {days.map((day, i) => {
                   const disable = i <= dayOfWeek;
-                  if (disable) return <div></div>;
+                  if (disable) return <div key={i}></div>;
                   return (
                     <tr key={i} className="p-1">
                       <td>
