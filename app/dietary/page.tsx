@@ -76,7 +76,7 @@ function HealthPage() {
               <p className="text-lg text-left my-2 flex">
                 Need a special consulation?
                 <span>
-                  <Link href={"/"}>
+                  <Link href={"/dietary/consultation"}>
                     <span className="text-bg-sec ml-2"> Book Now</span>
                   </Link>
                 </span>
@@ -107,6 +107,21 @@ function HealthPage() {
               </div>
             );
           })}
+        </div>
+      </div>
+
+      <div>
+        <div className="bg-green-800   p-10">
+          <div className="flex flex-col w-[60%] space-y-3 items-center mx-auto rounded-lg p-10 bg-white justify-center">
+            <h2 className="text-2xl">Consultation</h2>
+            <p className="text-center">
+              Not seeing what you're looking for? Do you want to have a session
+              with a dietician?
+            </p>
+            <Link href={"/dietary/consultation"}>
+              <span className="m-5 bg-bg-sec p-2 rounded-lg"> Book Now</span>
+            </Link>
+          </div>
         </div>
       </div>
     </>

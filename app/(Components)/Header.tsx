@@ -7,6 +7,7 @@ import Cart from "./Cart";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Services } from "./Services";
+import { FaLocationDot } from "react-icons/fa6";
 
 const Header = () => {
   const { cart }: any = useAppContext();
@@ -51,6 +52,10 @@ const Header = () => {
         </div>
 
         <div>
+          <div className="mr-4 flex flex-col items-center justify-center">
+            <FaLocationDot />
+            <p>Akure</p>
+          </div>
           <div className="flex-none">
             <div className="dropdown dropdown-end">
               <div

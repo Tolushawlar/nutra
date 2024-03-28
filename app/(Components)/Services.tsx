@@ -19,13 +19,12 @@ export const Services = ({ setShowMobile }: any) => {
                 <tr className="min-w-[300px] ">
                   <td
                     onClick={() => {
-                      console.log(setShowMobile);
                       setShowMobile && setShowMobile(false);
                       setShowDetails(!showDetails);
                     }}
                     className="min-w-[150px] border-r-[3px] border-bg-sec p-4"
                   >
-                    <Link href={"#OurMenu"}>Instant/Schedule Order</Link>
+                    <Link href={"/#OurMenu"}>Instant/Schedule Order</Link>
                   </td>
                   <td className="min-w-[400px] ">
                     <p className="bg-white rounded-t-md ml-5 p-4">
@@ -63,7 +62,7 @@ export const Services = ({ setShowMobile }: any) => {
                     }}
                     className="w-[120px] border-r-[3px] border-bg-sec p-4"
                   >
-                    Bespoke
+                    <Link href={"/#Bespoke"}>Bespoke</Link>
                   </td>
                   <td className="min-w-[160px] ">
                     <p className="bg-white mt-[-3px] ml-5 p-4">
@@ -81,10 +80,9 @@ export const Services = ({ setShowMobile }: any) => {
                     }}
                     className=" border-r-[3px] border-bg-sec p-4"
                   >
-                    Subscription Plans
+                    <Link href={"/subscription"}>Subscription Plans</Link>
                   </td>
-                  <td className=" ">
-                    {" "}
+                  <td className="">
                     <p className="bg-white rounded-b-md mt-[-3px] ml-5 p-4">
                       Healthy Meals Services Enjoy tasty diabetes-friendly meals
                       services.
