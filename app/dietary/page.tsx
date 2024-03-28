@@ -115,8 +115,8 @@ function HealthPage() {
           <div className="flex flex-col w-[60%] space-y-3 items-center mx-auto rounded-lg p-10 bg-white justify-center">
             <h2 className="text-2xl">Consultation</h2>
             <p className="text-center">
-              Not seeing what you're looking for? Do you want to have a session
-              with a dietician?
+              Not seeing what you&apos;re looking for? Do you want to have a
+              session with a dietician?
             </p>
             <Link href={"/dietary/consultation"}>
               <span className="m-5 bg-bg-sec p-2 rounded-lg"> Book Now</span>
