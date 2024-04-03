@@ -10,9 +10,17 @@ const Menu = () => {
 
   const categories = [
     "All",
+    "Breakfast",
+    "Brunch",
+    "Launch",
+    "Dinner",
     "Rice/Grains",
     "Weight Gain",
-    "Brunch",
+    "Weight Loss",
+    "Proteins",
+    "Drinks",
+    "Healthy Snacks",
+    "Dietary Snacks",
     "Yam",
     "Swallow",
     "Potato",
@@ -27,20 +35,26 @@ const Menu = () => {
       )}
       <div className="text-center">
         <h2 className="h2 font-bold text-2xl text-center">
-          Check out this weeks menu
+          Check Out Our Menu
         </h2>
-        <p>Our menu from 03 Mar - 09 Mar</p>
       </div>
       <div className="flex flex-col">
-        <div className="flex w-full justify-center my-6">
-          {categories.map((cat, i) => (
-            <p
-              className="bg-bg-sec p-2 m-2 rounded-lg text-text-color"
-              key={i + "categories_index"}
-            >
-              {cat}
-            </p>
-          ))}
+        <div
+          style={{
+            scrollbarWidth: "none",
+          }}
+          className="flex overflow-auto my-6"
+        >
+          <div className="w-fit space-x-4 flex ">
+            {categories.map((cat, i) => (
+              <p
+                className="bg-bg-sec p-2 text-nowrap rounded-lg text-text-color"
+                key={i + "categories_index"}
+              >
+                {cat}
+              </p>
+            ))}
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-10">

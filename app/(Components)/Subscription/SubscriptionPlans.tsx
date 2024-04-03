@@ -29,7 +29,7 @@ const SubscrptionPlans = () => {
         />
       )}
       <div className="text-center">
-        <h2 className="h2 font-bold text-2xl text-center">Subscrption Plans</h2>
+        <h2 className="h2 font-bold text-4xl text-center">Subscrption Plans</h2>
       </div>
       <div className="flex flex-col">
         {/* <div className="flex w-full justify-center my-6">

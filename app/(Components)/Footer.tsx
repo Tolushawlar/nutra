@@ -22,7 +22,7 @@ export const Footer = () => {
           <p>
             Nura Spices
             <br />
-            Your reliable tech since 1992
+            Your reliable Healthy Meal Chef
           </p>
         </aside>
         <nav>
@@ -41,17 +41,17 @@ export const Footer = () => {
         </nav>
         <nav>
           <h6 className="footer-title">Contact Us</h6>
-          <div className="flex">
+          <div className="flex items-center">
             <FaPhoneSquareAlt className="text-[20px]" />
-            <p>+23470123456789</p>
+            <p className="ml-2">+23470123456789</p>
           </div>
-          <div className="flex">
+          <div className="flex items-center">
             <MdEmail className="text-[20px]" />
-            <p>contact@nutraspices.com</p>
+            <p className="ml-2">contact@nutraspices.com</p>
           </div>
-          <div className=" flex ">
-            <FaLocationDot />
-            <p>FUTA Junc, Akure</p>
+          <div className=" flex items-center">
+            <FaLocationDot className="text-[20px]" />
+            <p className="ml-2">FUTA Junc, Akure</p>
           </div>
         </nav>
       </footer>

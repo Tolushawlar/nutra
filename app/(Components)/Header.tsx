@@ -36,9 +36,9 @@ const Header = () => {
               <a>Event Services</a>
             </li> */}
 
-            <li>
+            {/* <li>
               <Link href="/">MarketPlace</Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/">About</Link>
             </li>
