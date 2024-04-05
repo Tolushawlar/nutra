@@ -1,12 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FoodCards from "./FoodCards";
 import OrderModal from "../OrderModal/OrderModal";
+import axios from "axios";
 
 const Menu = () => {
   const [openModal, setOpenModal] = useState(false);
   const [scheduledata, setScheduleData] = useState();
   const [curPage, setCurPage] = useState(1);
+  const [foodData, setFoodData] = useState<any[]>([]);
 
   const categories = [
     "All",
@@ -27,6 +29,26 @@ const Menu = () => {
     "Noodles/Pasta",
     "Salad",
   ];
+
+  useEffect(() => {
+    // Fetch data from the API when the component mounts
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("/api/food");
+      console.log(response.data);
+      if (response.status === 200) {
+        // If the request is successful, set the foodData state
+        setFoodData(response.data);
+      } else {
+        console.error("Failed to fetch food data:", response.statusText);
+      }
+    } catch (error: any) {
+      console.error("Error fetching food data:", error.message);
+    }
+  };
 
   return (
     <div id="menu" className=" p-10">
@@ -58,11 +80,11 @@ const Menu = () => {
         </div>
 
         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-10">
-          {Array(6)
-            .fill("")
-            .map((d, i) => (
+          {foodData &&
+            foodData.map((data, i) => (
               <div key={"foods-index" + i}>
                 <FoodCards
+                  data={data}
                   setScheduleOrder={setScheduleData}
                   setOpenModal={setOpenModal}
                 />

@@ -2,13 +2,9 @@ import { yam } from "@/app/Assets";
 import { useAppContext } from "@/app/context/AppContext";
 import React from "react";
 
-const FoodCards = ({ setOpenModal, setScheduleOrder }: any) => {
+const FoodCards = ({ data, setOpenModal, setScheduleOrder }: any) => {
   const { setCart }: any = useAppContext();
 
-  const data = {
-    name: "Yam",
-    price: "2500",
-  };
   return (
     <div>
       <div className="card  card-compact h-[300px] bg-base-100 shadow-xl">
@@ -20,42 +16,30 @@ const FoodCards = ({ setOpenModal, setScheduleOrder }: any) => {
                 objectFit: "contain",
                 // width: "300px",/
               }}
-              src={yam.src}
+              src={data.image}
               alt=" w-[300px] border object-center object-fill"
             />
           }
         </figure>
         <div className="card-body h-">
-          <h3>If a dog chews shoes whose shoes does he choose?</h3>
+          <h3>{data.foodName}</h3>
           <div className="card-actions justify-end">
-            <button
-              onClick={() =>
-                setCart((prev: any) => ({
-                  ...prev,
-                  total: prev.total + 1,
-                  order:
-                    prev.order != undefined
-                      ? [
-                          ...prev.order,
-                          {
-                            name: data.name,
-                            price: data.price,
-                            img: yam.src,
-                          },
-                        ]
-                      : [
-                          {
-                            name: data.name,
-                            price: data.price,
-                            img: yam.src,
-                          },
-                        ],
-                }))
-              }
-              className="btn-sm rounded-md bg-success text-text-color"
-            >
-              Order Now
-            </button>
+            {data.isInstant && (
+              <button
+                onClick={() =>
+                  setCart((prev: any) => ({
+                    ...prev,
+                    total: prev.total + 1,
+                    order:
+                      prev.order != undefined ? [...prev.order, data] : [data],
+                  }))
+                }
+                className="btn-sm rounded-md bg-success text-text-color"
+              >
+                Order Now
+              </button>
+            )}
+
             <button
               onClick={() => {
                 setScheduleOrder({

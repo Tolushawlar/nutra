@@ -1,6 +1,5 @@
 "use client";
 
-import Header from "@/app/(Components)/Header";
 import Sidebar from "@/app/(Components)/SideBar";
 import axios from "axios";
 import React, { useState } from "react";
@@ -16,12 +15,15 @@ function AddFoodPage() {
   });
 
   const handleChange = (e: any) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, type, checked, files } = e.target;
+
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: type === "checkbox" ? checked : value,
     }));
   };
+
+  console.log(formData);
 
   // const handleSubmit = (e: any) => {
   //   e.preventDefault();
@@ -30,26 +32,24 @@ function AddFoodPage() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(formData)
     try {
-      const response = await axios.post('/api/food', formData, {
+      const response = await axios.post("/api/food", formData, {
         headers: {
-          'Content-Type': 'application/json'
-        }
+          "Content-Type": "application/json",
+        },
       });
 
       if (response.status === 200) {
         // Handle successful response
-        console.log('Food data submitted successfully');
+        alert("Food data submitted successfully");
       } else {
         // Handle error response
-        console.error('Failed to submit food data:', response.statusText);
+        console.error("Failed to submit food data:", response.statusText);
       }
     } catch (error: any) {
-      console.error('Error submitting food data:', error.message);
+      console.error("Error submitting food data:", error.message);
     }
   };
-
 
   return (
     <>
@@ -60,6 +60,7 @@ function AddFoodPage() {
           <div className="orderContent bg-white flex flex-col my-10">
             <div className="max-w-lg mx-auto p-8">
               <h2 className="text-2xl font-bold mb-4">Add Food</h2>
+
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block mb-1 font-semibold">
@@ -80,28 +81,16 @@ function AddFoodPage() {
                     Food Image:
                   </label>
                   <input
-                    type="file"
+                    type="text"
                     id="image"
                     name="image"
                     value={formData.image}
                     onChange={handleChange}
-                    className=" w-full border-gray-300 rounded-md bg-white px-3 py-2 file-input file-input-bordered file-input-error max-w-xs"
+                    className="w-full border-gray-700 border rounded-md px-3 py-2 bg-gray-200 text-black"
+                    placeholder="Enter food image url"
                   />
                 </div>
-                <div>
-                  <label className="block mb-1 font-semibold">
-                    Is Instant:
-                  </label>
-                  <input
-                    type="checkbox"
-                    id="isInstant"
-                    name="isInstant"
-                    checked={formData.isInstant}
-                    onChange={handleChange}
-                    className="mr-2 bg-white"
-                  />
-                  <label htmlFor="isInstant">Yes</label>
-                </div>
+
                 <div>
                   <label
                     htmlFor="categories"
@@ -149,6 +138,20 @@ function AddFoodPage() {
                     className="mr-2"
                   />
                   <label htmlFor="isAvailable">Yes</label>
+                </div>
+                <div>
+                  <label className="block mb-1 font-semibold">
+                    Is Instant:
+                  </label>
+                  <input
+                    type="checkbox"
+                    id="isInstant"
+                    name="isInstant"
+                    checked={formData.isInstant}
+                    onChange={handleChange}
+                    className="mr-2 bg-white"
+                  />
+                  <label htmlFor="isInstant">Yes</label>
                 </div>
                 <div>
                   <button

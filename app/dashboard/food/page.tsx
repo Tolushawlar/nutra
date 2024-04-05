@@ -1,8 +1,9 @@
-"use client"
+"use client";
 import Header from "@/app/(Components)/Header";
 import Sidebar from "@/app/(Components)/SideBar";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 function FoodPage() {
   const [foodData, setFoodData] = useState<any[]>([]);
@@ -12,28 +13,45 @@ function FoodPage() {
     fetchData();
   }, []);
 
+  const deleteData = async (id: any) => {
+    try {
+      const response = await axios.get("/api/food?type=delete&id=" + id);
+      console.log(response.data);
+      if (response.status === 200) {
+        alert("Deleted food data successfully");
+        fetchData();
+      } else {
+        alert("Failed to delete food data:" + response.statusText);
+      }
+    } catch (error: any) {
+      console.error("Error fetching food data:", error.message);
+    }
+  };
+
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/food');
+      const response = await axios.get("/api/food");
+      console.log(response.data);
       if (response.status === 200) {
         // If the request is successful, set the foodData state
         setFoodData(response.data);
       } else {
-        console.error('Failed to fetch food data:', response.statusText);
+        console.error("Failed to fetch food data:", response.statusText);
       }
     } catch (error: any) {
-      console.error('Error fetching food data:', error.message);
+      console.error("Error fetching food data:", error.message);
     }
   };
+
   return (
     <>
-      <div className="dashboardLayoutContent flex flex-row align-middle h-full w-full">
+      <div className=" flex flex-row align-middle h-full w-[100%]">
         <Sidebar />
         <div className="w-full bg-gray-200 p-10">
           <div className="text-black text-3xl">All Food</div>
-          <div className="orderContent bg-white flex flex-col my-10">
-            <div className="overflow-x-auto">
-              <table className="table">
+          <div className="  overflow-x-auto bg-white flex flex-col my-10">
+            <div className=" border">
+              <table className="table overflow">
                 {/* head */}
                 <thead>
                   <tr>
@@ -44,48 +62,88 @@ function FoodPage() {
                     <th>Categories</th>
                     <th>Created at</th>
                     <th>IsAvaiable</th>
+                    <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {foodData.map((food) => (
-                    <tr key={food._id}>
-                      <td>
-                        <div className="avatar">
-                          <div className="mask mask-squircle w-12 h-12 rounded-3xl bg-red-400"></div>
-                        </div>
+                  {foodData.length < 1 ? (
+                    <tr>
+                      <td colSpan={8} className="">
+                        <p className="text-center">No Food Items Yet!</p>
                       </td>
-                      <td>
-                        <div className="flex items-center gap-3">
-                          <div>
-                            <div className="font-bold">{food.foodName}</div>
-                            <div className="text-sm opacity-50">
-                              Hart Hagerty{" "}
+                    </tr>
+                  ) : (
+                    foodData.map((food) => (
+                      <tr key={food._id}>
+                        <td>
+                          <div className="avatar">
+                            <div className="  w-12 h-12 rounded-lg bg-red-400">
+                              <img
+                                src={food.image}
+                                className="w-full h-full"
+                                alt=""
+                              />
                             </div>
                           </div>
-                        </div>
-                      </td>
-                      <td>#{food.price}</td>
-                      <td>
-                        <div className="badge badge-success badge-outline">
-                          {food.isInstant.toString()}
-                        </div>
-                      </td>
-                      <td>
-                        {food.categories.map((category: any) => (
-                          <span key={category} className="badge badge-ghost badge-sm">
-                            {category}
-                          </span>
-                        ))}
-                      </td>
-                      <td>{food.createdAt}</td>
-                      {/* <td>12 Mar 2024, 07;22 PM</td> */}
-                      <th>
-                        <div className="badge badge-success badge-outline">
-                          {food.isAvailable.toString()}
-                        </div>
-                      </th>
-                    </tr>
-                  ))}
+                        </td>
+                        <td>
+                          <div className="flex items-center gap-3">
+                            <div>
+                              <div className="font-bold">{food.foodName}</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>#{food.price}</td>
+                        <td>
+                          <div
+                            style={{
+                              border: `1.8px solid ${
+                                food.isInstant ? "green" : "red"
+                              }`,
+                              color: ` ${food.isAvailable ? "green" : "red"}`,
+                            }}
+                            className=" rounded-md text-center"
+                          >
+                            {food.isInstant.toString()}
+                          </div>
+                        </td>
+                        <td>
+                          {food.categories.map((category: any) => (
+                            <span key={category} className="">
+                              {category}
+                            </span>
+                          ))}
+                        </td>
+                        <td>{new Date(food.createdAt).toLocaleDateString()}</td>
+                        <th>
+                          <div
+                            style={{
+                              border: `1.8px solid ${
+                                food.isAvailable ? "green" : "red"
+                              }`,
+                              color: ` ${food.isAvailable ? "green" : "red"}`,
+                            }}
+                            className=" rounded-md text-center "
+                          >
+                            {food.isAvailable.toString()}
+                          </div>
+                        </th>
+                        <th>
+                          <div
+                            onClick={() => {
+                              const res = confirm(
+                                "Are You Sure You want to delete this food item?"
+                              );
+                              if (res) deleteData(food._id);
+                            }}
+                            className="cursor-pointer border p-2 border-red-600 rounded-lg"
+                          >
+                            <RiDeleteBin5Line className="text-red-600 text-[18px]" />
+                          </div>
+                        </th>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </table>
             </div>
