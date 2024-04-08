@@ -1,11 +1,13 @@
 "use client";
+
 import Header from "@/app/(Components)/Header";
 import Sidebar from "@/app/(Components)/SideBar";
+import axios from "axios";
 import React, { useState } from "react";
 
 function AddFoodPage() {
   const [formData, setFormData] = useState({
-    name: "",
+    foodName: "",
     image: "",
     isInstant: false,
     categories: [],
@@ -21,10 +23,34 @@ function AddFoodPage() {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  // const handleSubmit = (e: any) => {
+  //   e.preventDefault();
+  //   console.log("Form submitted:", formData);
+  // };
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    console.log(formData)
+    try {
+      const response = await axios.post('/api/food', formData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.status === 200) {
+        // Handle successful response
+        console.log('Food data submitted successfully');
+      } else {
+        // Handle error response
+        console.error('Failed to submit food data:', response.statusText);
+      }
+    } catch (error: any) {
+      console.error('Error submitting food data:', error.message);
+    }
   };
+
+
   return (
     <>
       <div className="dashboardLayoutContent flex flex-row align-middle h-full w-full">
@@ -41,9 +67,9 @@ function AddFoodPage() {
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    id="foodName"
+                    name="foodName"
+                    value={formData.foodName}
                     onChange={handleChange}
                     className="w-full border-gray-700 border rounded-md px-3 py-2 bg-gray-200 text-black"
                     placeholder="Enter food name"
@@ -87,7 +113,7 @@ function AddFoodPage() {
                     type="text"
                     id="categories"
                     name="categories"
-                    value={formData.categories.join(", ")}
+                    value={formData.categories}
                     onChange={handleChange}
                     className="w-full  border-gray-700 border rounded-md px-3 py-2 bg-gray-200 text-black"
                     placeholder="Enter Food Categories"
