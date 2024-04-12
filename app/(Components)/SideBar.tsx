@@ -40,10 +40,16 @@ const Sidebar = () => {
               <h2>Orders</h2>
             </div>
           </Link>
-          <div className="flex align-middle items-center cursor-pointer ">
-            <FaRegMessage size={"1.5rem"} className="mx-2 my-2" />{" "}
-            <h2>Messages</h2>
-          </div>
+          <Link href="/dashboard/orders">
+            <div
+              className={`flex align-middle items-center cursor-pointer  ${
+                lastItem === "bespoke" ? "bg-red-300 rounded-2xl" : ""
+              }`}
+            >
+              <FaRegMessage size={"1.5rem"} className="mx-2 my-2" />{" "}
+              <h2>Messages</h2>
+            </div>
+          </Link>
         </div>
         <div className="food my-10">
           <div className="heading mx-2 my-2 font-bold">Food</div>
