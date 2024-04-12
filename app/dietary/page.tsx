@@ -64,7 +64,7 @@ function HealthPage() {
                       <div className="absolute bottom-0 bg-slate-500 w-full p-2 left-0">
                         <p>{cat[0]} Friendly Meals</p>
                         <div className="card-actions justify-end">
-                          <Link href={"/health/" + cat[0]}>
+                          <Link href={"/dietary/" + cat[0]}>
                             <button className="btn btn-sm">Order Now</button>
                           </Link>
                         </div>
@@ -102,7 +102,7 @@ function HealthPage() {
                   mainText={cat[0] + " Friendly Meals"}
                   subText="SLiving with diabetes requires careful attention to dietary choices to maintain blood sugar levels within a healthy range. A well-balanced diet can contribute significantly to managing diabetes effectively. Here's a simple guide to help individuals make informed food choices."
                   buttonText="View Meals"
-                  link={"/health/" + cat[0]}
+                  link={"/dietary/" + cat[0]}
                 />
               </div>
             );
