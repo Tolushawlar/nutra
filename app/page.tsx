@@ -5,9 +5,11 @@ import Menu from "./(Components)/Menu/Menu";
 import { Bespoke } from "./(Components)/Bespoke";
 export default function Home() {
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <Hero />
-      <Menu />
+      <div className="relative">
+        <Menu />
+      </div>
       <Bespoke />
     </div>
   );

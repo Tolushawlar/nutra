@@ -7,6 +7,7 @@ import axios from "axios";
 const Menu = () => {
   const [openModal, setOpenModal] = useState(false);
   const [scheduledata, setScheduleData] = useState();
+  const [addedToCart, setAddedToCart] = useState(false);
   const [curPage, setCurPage] = useState(1);
   const [foodData, setFoodData] = useState<any[]>([]);
 
@@ -35,6 +36,13 @@ const Menu = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (addedToCart)
+      setTimeout(() => {
+        setAddedToCart(false);
+      }, 5000);
+  }, [addedToCart]);
+
   const fetchData = async () => {
     try {
       const response = await axios.get("/api/food");
@@ -51,7 +59,7 @@ const Menu = () => {
   };
 
   return (
-    <div id="menu" className=" p-10">
+    <div id="menu" className="relative p-10">
       {openModal && (
         <OrderModal scheduleOrder={scheduledata} setOpenModal={setOpenModal} />
       )}
@@ -85,6 +93,7 @@ const Menu = () => {
               <div key={"foods-index" + i}>
                 <FoodCards
                   data={data}
+                  setAddedToCart={setAddedToCart}
                   setScheduleOrder={setScheduleData}
                   setOpenModal={setOpenModal}
                 />
@@ -153,6 +162,30 @@ const Menu = () => {
           )}
         </div>
       </div>
+      {addedToCart && (
+        <div className=" fixed bottom-[50px] z-[99999999999] translate-x-[-50%] left-[50%]">
+          <div
+            onClick={() => setAddedToCart(false)}
+            role="alert"
+            className="alert cursor-pointer w-fit alert-success"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-current shrink-0 h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>Item Added to Cart Successfully!</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

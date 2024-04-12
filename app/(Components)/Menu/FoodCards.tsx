@@ -2,7 +2,12 @@ import { yam } from "@/app/Assets";
 import { useAppContext } from "@/app/context/AppContext";
 import React from "react";
 
-const FoodCards = ({ data, setOpenModal, setScheduleOrder }: any) => {
+const FoodCards = ({
+  data,
+  setAddedToCart,
+  setOpenModal,
+  setScheduleOrder,
+}: any) => {
   const { setCart }: any = useAppContext();
 
   return (
@@ -14,7 +19,6 @@ const FoodCards = ({ data, setOpenModal, setScheduleOrder }: any) => {
             <img
               style={{
                 objectFit: "contain",
-                // width: "300px",/
               }}
               src={data.image}
               alt=" w-[300px] border object-center object-fill"
@@ -22,18 +26,19 @@ const FoodCards = ({ data, setOpenModal, setScheduleOrder }: any) => {
           }
         </figure>
         <div className="card-body h-">
-          <h3>{data.foodName}</h3>
           <div className="card-actions justify-end">
+            <h3>{data.foodName}</h3>
             {data.isInstant && (
               <button
-                onClick={() =>
+                onClick={() => {
                   setCart((prev: any) => ({
                     ...prev,
                     total: prev.total + 1,
                     order:
                       prev.order != undefined ? [...prev.order, data] : [data],
-                  }))
-                }
+                  }));
+                  setAddedToCart(true);
+                }}
                 className="btn-sm rounded-md bg-success text-text-color"
               >
                 Order Now

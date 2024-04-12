@@ -1,23 +1,20 @@
 import { connect } from "../../connect/connect";
-import { Food } from "../../models/foodSchema";
+import { Message } from "../../models/messageSchema";
 import { NextRequest, NextResponse } from "next/server";
 
 connect();
 
 export const POST = async (req: NextRequest) => {
-  const { foodName, image, isInstant, categories, price, isAvailable } =
-    await req.json();
+  const { name, phone, location, message } = await req.json();
 
   try {
-    const newFood = await Food.create({
-      foodName,
-      image,
-      isInstant,
-      categories,
-      price,
-      isAvailable,
+    const newMessage = await Message.create({
+      name,
+      phone,
+      location,
+      message,
     });
-    return NextResponse.json(newFood);
+    return NextResponse.json(newMessage);
   } catch (error: any) {
     throw new Error(error.message);
   }
@@ -30,17 +27,16 @@ export const GET = async (req: NextRequest) => {
 
   if (type == "delete") {
     try {
-      const d = await Food.deleteOne({});
+      const d = await Message.deleteOne({});
       console.log(d);
       return NextResponse.json(d);
     } catch (error: any) {
       throw new Error(error.message);
     }
   }
-
   try {
-    const getFood = await Food.find();
-    return NextResponse.json(getFood);
+    const getMessage = await Message.find();
+    return NextResponse.json(getMessage);
   } catch (error: any) {
     throw new Error(error.message);
   }

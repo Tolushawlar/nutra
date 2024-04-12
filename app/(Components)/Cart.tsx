@@ -12,6 +12,18 @@ export default function Cart({ setOpenCart, openCart }: any) {
     return total;
   };
 
+  const setPlates = (e: any, data: any, i: number) => {
+    const plates = e.target.value;
+    data.price = plates > 0 ? data.price * plates : data.price;
+    const newOrder = cart.order;
+    newOrder[i] = data;
+
+    setCart({
+      ...cart,
+      order: newOrder,
+    });
+  };
+
   console.log(cart);
 
   return (
@@ -52,7 +64,7 @@ export default function Cart({ setOpenCart, openCart }: any) {
                           <div className="ml-3 flex h-7 items-center">
                             <button
                               type="button"
-                              className="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
+                              className="relative -m-2 p-2 text-gray-400 hover:"
                               onClick={() => setOpenCart(false)}
                             >
                               <span className="absolute -inset-0.5" />
@@ -87,9 +99,9 @@ export default function Cart({ setOpenCart, openCart }: any) {
                               role="list"
                               className="-my-6 divide-y divide-gray-200"
                             >
-                              {cart?.order.total > 1 ? (
-                                <p className="text-black">
-                                  No Selected Items Yet!
+                              {cart?.total < 1 ? (
+                                <p className="text-black text-center">
+                                  No Selected Items Added to Cart Yet!
                                 </p>
                               ) : (
                                 cart?.order?.map((product: any, i: any) => (
@@ -110,16 +122,40 @@ export default function Cart({ setOpenCart, openCart }: any) {
                                             {product.price}
                                           </p>
                                         </div>
-                                        <p className="mt-1 text-sm text-gray-500"></p>
+                                        <p className="mt-1 text-sm "></p>
                                       </div>
                                       <div className="flex justify-between text-sm">
-                                        <p className="text-gray-500">
-                                          No of Plates: 2
+                                        <p className="">
+                                          No of Plates:{" "}
+                                          <span>
+                                            <input
+                                              type="number"
+                                              onChange={(e) =>
+                                                setPlates(e, product, i)
+                                              }
+                                              placeholder="1"
+                                              className="border border-black rounded-lg ml-2 p-2 py-1 w-[55px]"
+                                            />
+                                          </span>
                                         </p>
 
                                         <div className="flex">
                                           <button
-                                            // onClick={}
+                                            onClick={() => {
+                                              console.log(i);
+                                              const newOrder = cart.order;
+                                              const total = cart.total;
+                                              newOrder.splice(i, 1);
+
+                                              setCart({
+                                                order:
+                                                  newOrder.length > 0
+                                                    ? newOrder
+                                                    : undefined,
+                                                total:
+                                                  total > 0 ? total - 1 : 0,
+                                              });
+                                            }}
                                             type="button"
                                             className="font-medium text-indigo-600 hover:text-indigo-500"
                                           >
@@ -139,12 +175,10 @@ export default function Cart({ setOpenCart, openCart }: any) {
                       {cart?.total > 0 && (
                         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                           <div className="flex justify-between text-base font-medium text-gray-900">
-                            <p>Subtotal</p>
+                            <p>Total Price</p>
                             <p>${addPrices(cart.order)}</p>
                           </div>
-                          <p className="mt-0.5 text-sm text-gray-500">
-                            Shipping and taxes calculated at checkout.
-                          </p>
+
                           <div className="mt-6">
                             <a
                               href="#"
@@ -152,19 +186,6 @@ export default function Cart({ setOpenCart, openCart }: any) {
                             >
                               Checkout
                             </a>
-                          </div>
-                          <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                            <p>
-                              or{" "}
-                              <button
-                                type="button"
-                                className="font-medium text-indigo-600 hover:text-indigo-500"
-                                onClick={() => setOpenCart(false)}
-                              >
-                                Continue Shopping
-                                <span aria-hidden="true"> &rarr;</span>
-                              </button>
-                            </p>
                           </div>
                         </div>
                       )}

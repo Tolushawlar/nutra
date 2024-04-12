@@ -23,13 +23,6 @@ function AddFoodPage() {
     }));
   };
 
-  console.log(formData);
-
-  // const handleSubmit = (e: any) => {
-  //   e.preventDefault();
-  //   console.log("Form submitted:", formData);
-  // };
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
