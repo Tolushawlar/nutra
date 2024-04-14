@@ -102,7 +102,7 @@ function HealthPage() {
                   mainText={cat[0] + " Friendly Meals"}
                   subText="SLiving with diabetes requires careful attention to dietary choices to maintain blood sugar levels within a healthy range. A well-balanced diet can contribute significantly to managing diabetes effectively. Here's a simple guide to help individuals make informed food choices."
                   buttonText="View Meals"
-                  link={"/health/" + cat[0]}
+                  link={"/dietary/" + cat[0]}
                 />
               </div>
             );
