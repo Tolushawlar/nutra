@@ -1,12 +1,12 @@
 import React from "react";
-import Menu from "@/app/(Components)/Menu/Menu";
 import { Hero } from "@/app/(Components)/Hero";
+import ConditionMenu from "@/app/(Components)/Menu/ConditionMenu";
 
 function HealthCondition() {
   return (
     <>
       <Hero />
-      <Menu />
+      <ConditionMenu />
     </>
   );
 }
