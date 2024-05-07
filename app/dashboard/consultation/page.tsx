@@ -5,7 +5,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
-function BespokePage() {
+function ConsultationPage() {
   const [messages, setMessages] = useState<any[]>([]);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ function BespokePage() {
       <div className=" flex flex-row align-middle h-full w-[100%]">
         {/* <Sidebar /> */}
         <div className="w-full bg-gray-200 p-10">
-          <div className="text-black text-3xl">All Bespoke Messages</div>
+          <div className="text-black text-3xl">All Consultation Messages</div>
           <div className="  overflow-x-auto bg-white flex flex-col my-10">
             <div className=" border">
               <table className="table overflow">
@@ -113,4 +113,4 @@ function BespokePage() {
   );
 }
 
-export default BespokePage;
+export default ConsultationPage;

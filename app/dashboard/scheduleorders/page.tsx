@@ -5,7 +5,7 @@ import Sidebar from "@/app/(Components)/SideBar";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-function OrdersPage() {
+function ScheduleOrdersPage() {
   const [orderData, setSrderData] = useState<any[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,7 +33,7 @@ function OrdersPage() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("/api/instantorder");
+      const response = await axios.get("/api/scheduleorders");
       console.log(response.data);
       if (response.status === 200) {
         setSrderData(response.data);
@@ -50,7 +50,7 @@ function OrdersPage() {
       <div className="dashboardLayoutContent flex flex-row h-full w-full">
         {/* <Sidebar /> */}
         <div className="w-full bg-gray-200 p-10">
-          <div className="text-black text-3xl">Instant Orders</div>
+          <div className="text-black text-3xl">Schedule Orders</div>
           <div className="orderContent bg-white flex flex-col my-10">
             <div className="overflow-x-auto">
               <table className="table overflow-auto">
@@ -119,4 +119,4 @@ function OrdersPage() {
   );
 }
 
-export default OrdersPage;
+export default ScheduleOrdersPage;

@@ -14,8 +14,9 @@ import { LuUserCircle } from "react-icons/lu";
 import { NextRouter } from "next/router";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { pages } from "../dashboard/page";
 
-const Sidebar = () => {
+const Sidebar = ({ setCurPage, curPage }: any) => {
   const pathname = usePathname();
   const parts = pathname.split("/");
   const lastItem = parts[parts.length - 1];
@@ -23,56 +24,95 @@ const Sidebar = () => {
   return (
     <>
       <div className="container w-64 p-4 font-light text-black h-full bg-white">
-        <div className="flex align-middle items-center">
-          <MdOutlineDashboard size={"2rem"} className="mx-2 my-5" />
-          <h1 className="font-meduim">Foodie Dashboard</h1>
-        </div>
-        <div className="top"></div>
         <div className="topHeader my-5">
-          <div className="heading mx-2 my-2 font-bold">Users</div>
-          <Link href="/dashboard/orders">
-            <div
-              className={`flex align-middle items-center cursor-pointer  ${
-                lastItem === "orders" ? "bg-red-300 rounded-2xl" : ""
-              }`}
-            >
-              <AiOutlineCustomerService size={"1.5rem"} className="mx-2 my-2" />{" "}
-              <h2>Orders</h2>
-            </div>
-          </Link>
-          <Link href="/dashboard/orders">
-            <div
-              className={`flex align-middle items-center cursor-pointer  ${
-                lastItem === "bespoke" ? "bg-red-300 rounded-2xl" : ""
-              }`}
-            >
-              <FaRegMessage size={"1.5rem"} className="mx-2 my-2" />{" "}
-              <h2>Messages</h2>
-            </div>
-          </Link>
+          <div
+            onClick={() => setCurPage(pages.iOrders)}
+            className={`flex align-middle items-center cursor-pointer  ${
+              lastItem === "orders" ? "bg-red-300 rounded-2xl" : ""
+            }`}
+          >
+            <AiOutlineCustomerService size={"1.5rem"} className="mx-2 my-2" />{" "}
+            <h2>Instant Orders</h2>
+          </div>
+
+          <div
+            onClick={() => setCurPage(pages.sOrders)}
+            className={`flex align-middle items-center cursor-pointer  ${
+              lastItem === "scheduleorders" ? "bg-red-300 rounded-2xl" : ""
+            }`}
+          >
+            <AiOutlineCustomerService size={"1.5rem"} className="mx-2 my-2" />{" "}
+            <h2>Schedule Orders</h2>
+          </div>
+          <div
+            onClick={() => setCurPage(pages.sOrders)}
+            className={`flex align-middle items-center cursor-pointer  ${
+              lastItem === "scheduleorders" ? "bg-red-300 rounded-2xl" : ""
+            }`}
+          >
+            <AiOutlineCustomerService size={"1.5rem"} className="mx-2 my-2" />{" "}
+            <h2>Subscription Orders</h2>
+          </div>
+
+          <div
+            onClick={() => setCurPage(pages.bMessages)}
+            className={`flex align-middle items-center cursor-pointer  ${
+              lastItem === "bespoke" ? "bg-red-300 rounded-2xl" : ""
+            }`}
+          >
+            <FaRegMessage size={"1.5rem"} className="mx-2 my-2" />{" "}
+            <h2>Bespoke Messages</h2>
+          </div>
+          <div
+            onClick={() => setCurPage(pages.cMessages)}
+            className={`flex align-middle items-center cursor-pointer  ${
+              lastItem === "bespoke" ? "bg-red-300 rounded-2xl" : ""
+            }`}
+          >
+            <FaRegMessage size={"1.5rem"} className="mx-2 my-2" />{" "}
+            <h2>Consultation Messages</h2>
+          </div>
         </div>
         <div className="food my-10">
           <div className="heading mx-2 my-2 font-bold">Food</div>
-          <Link href="/dashboard/food">
-            <div
-              className={`flex align-middle items-center cursor-pointer  ${
-                lastItem === "food" ? "bg-red-300 rounded-[8px]" : ""
-              }`}
-            >
-              <IoFastFoodOutline size={"1.5rem"} className="mx-2 my-2" />
-              <h2>All Foods</h2>
-            </div>
-          </Link>
-          <Link href="/dashboard/addFood">
-            <div
-              className={`flex align-middle items-center cursor-pointer  ${
-                lastItem === "addFood" ? "bg-red-300 rounded-[8px]" : ""
-              }`}
-            >
-              <MdAddTask size={"1.5rem"} className="mx-2 my-2" />
-              <h2>Add Food</h2>
-            </div>
-          </Link>
+
+          <div
+            onClick={() => setCurPage(pages.allFood)}
+            className={`flex align-middle items-center cursor-pointer  ${
+              lastItem === "food" ? "bg-red-300 rounded-[8px]" : ""
+            }`}
+          >
+            <IoFastFoodOutline size={"1.5rem"} className="mx-2 my-2" />
+            <h2>All Foods</h2>
+          </div>
+          <div
+            onClick={() => setCurPage(pages.allSubs)}
+            className={`flex align-middle items-center cursor-pointer  ${
+              lastItem === "food" ? "bg-red-300 rounded-[8px]" : ""
+            }`}
+          >
+            <IoFastFoodOutline size={"1.5rem"} className="mx-2 my-2" />
+            <h2>All Subscriptions</h2>
+          </div>
+
+          <div
+            onClick={() => setCurPage(pages.addFood)}
+            className={`flex align-middle items-center cursor-pointer  ${
+              lastItem === "addFood" ? "bg-red-300 rounded-[8px]" : ""
+            }`}
+          >
+            <MdAddTask size={"1.5rem"} className="mx-2 my-2" />
+            <h2>Add Food</h2>
+          </div>
+          <div
+            onClick={() => setCurPage(pages.addSubs)}
+            className={`flex align-middle items-center cursor-pointer  ${
+              lastItem === "addFood" ? "bg-red-300 rounded-[8px]" : ""
+            }`}
+          >
+            <MdAddTask size={"1.5rem"} className="mx-2 my-2" />
+            <h2>Add Subscriptions</h2>
+          </div>
         </div>
         <div className="Users my-10">
           <div className="heading mx-2 my-2 font-bold">Admin</div>

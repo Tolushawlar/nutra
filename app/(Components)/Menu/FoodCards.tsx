@@ -8,7 +8,7 @@ const FoodCards = ({
   setOpenModal,
   setScheduleOrder,
 }: any) => {
-  const { setCart }: any = useAppContext();
+  const { setCart, cart }: any = useAppContext();
 
   return (
     <div>
@@ -31,12 +31,25 @@ const FoodCards = ({
             {data.isInstant && (
               <button
                 onClick={() => {
-                  setCart((prev: any) => ({
-                    ...prev,
-                    total: prev.total + 1,
-                    order:
-                      prev.order != undefined ? [...prev.order, data] : [data],
-                  }));
+                  const found = cart?.order?.filter((order: any) => {
+                    return order._id == data._id;
+                  });
+
+                  if (found?.length > 0) {
+                    alert("already added to cart");
+                    return;
+                  }
+
+                  setCart((prev: any) => {
+                    return {
+                      ...prev,
+                      total: prev.total + 1,
+                      order:
+                        prev.order != undefined
+                          ? [...prev.order, data]
+                          : [data],
+                    };
+                  });
                   setAddedToCart(true);
                 }}
                 className="btn-sm rounded-md bg-success text-text-color"
@@ -47,11 +60,7 @@ const FoodCards = ({
 
             <button
               onClick={() => {
-                setScheduleOrder({
-                  name: data.name,
-                  price: data.price,
-                  img: yam.src,
-                });
+                setScheduleOrder(data);
                 setOpenModal(true);
               }}
               className="btn-sm rounded-md bg-bg-sec text-text-color"

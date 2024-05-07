@@ -1,9 +1,24 @@
 "use client";
 
 import { useAppContext } from "@/app/context/AppContext";
+import { useState } from "react";
 
 const OrderModal = ({ setOpenModal, scheduleOrder }: any) => {
   const { setCart }: any = useAppContext();
+  const [data, setData]: any = useState({
+    Mon: {},
+    Tue: {},
+    Wed: {},
+    Thu: {},
+    Fri: {},
+    Sat: {},
+    "Mon-": {},
+    "Tue-": {},
+    "Wed-": {},
+    "Thu-": {},
+    "Fri-": {},
+    "Sat-": {},
+  });
 
   const days = [
     "Mon",
@@ -12,20 +27,53 @@ const OrderModal = ({ setOpenModal, scheduleOrder }: any) => {
     "Thu",
     "Fri",
     "Sat",
-    "Mon",
-    "Tue",
-    "Wed",
-    "Thu",
-    "Fri",
-    "Sat",
+    "Mon-",
+    "Tue-",
+    "Wed-",
+    "Thu-",
+    "Fri-",
+    "Sat-",
   ];
 
   const dayOfWeek = new Date().getDay() - 1;
+  const daysToMap = days.filter((_, i) => i > dayOfWeek);
 
-  console.log(scheduleOrder);
+  const handleInput = (e: any, day: string) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setData((items: any) => {
+      let info = {};
+      if (name != "plates") {
+        info = {
+          plates: items?.[day].plates ?? 1,
+          [name]: true,
+        };
+      } else {
+        info = {
+          ...items?.[day],
+          [name]: value,
+        };
+      }
+      return {
+        ...items,
+        [day]: {
+          ...info,
+        },
+      };
+
+      return {
+        ...items,
+        [day]: {
+          [name]: value == "on" ? true : value,
+        },
+      };
+    });
+  };
+
+  console.log(data);
   return (
     <div className="fixed w-full h-full flex z-[200] items-center justify-center  top-0 left-0 bg-[rgba(0,0,0,0.8)]">
-      <div className="w-[70%] overflow-y-auto bg-white h-[85vh] rounded-md p-10 my-5">
+      <div className="w-[90%] overflow-y-auto bg-white h-[85vh] rounded-md p-10 my-5">
         <div className="justify-end flex">
           <button
             onClick={() => setOpenModal(false)}
@@ -53,7 +101,6 @@ const OrderModal = ({ setOpenModal, scheduleOrder }: any) => {
         <div className="mt-5 border   ">
           <div className="overflow-y-auto max-h-[100%] ">
             <table className="table table-zebra">
-              {/* head */}
               <thead>
                 <tr>
                   <th>
@@ -84,49 +131,54 @@ const OrderModal = ({ setOpenModal, scheduleOrder }: any) => {
                 </tr>
               </thead>
               <tbody className="">
-                {days.map((day, i) => {
-                  const disable = i <= dayOfWeek;
-                  if (disable) return <div key={i}></div>;
+                {daysToMap.map((day, i) => {
                   return (
                     <tr key={i} className="p-1">
                       <td>
-                        <div className="  flex  ">
-                          <p className="mx-auto">{day}</p>
+                        <div className="flex">
+                          <p className="mx-auto">{day.split("-")}</p>
                         </div>
                       </td>
                       <td>
-                        <div className="  flex  ">
+                        <div className="flex">
                           <input
                             type="checkbox"
-                            disabled={disable}
+                            name="mor"
+                            checked={data[day] && data[day].mor == true}
+                            onChange={(e) => handleInput(e, day)}
                             className="checkbox border border-bg-sec mx-auto checkbox-sm"
                           />
                         </div>
                       </td>
                       <td>
-                        <div className="  flex  ">
+                        <div className="flex">
                           <input
                             type="checkbox"
-                            disabled={disable}
+                            name="noon"
+                            checked={data[day] && data[day].noon == true}
+                            onChange={(e) => handleInput(e, day)}
                             className="checkbox border border-bg-sec mx-auto checkbox-sm"
                           />
                         </div>
                       </td>
                       <td>
-                        <div className="  flex  ">
+                        <div className="flex">
                           <input
                             type="checkbox"
-                            disabled={disable}
+                            name="evening"
+                            checked={data[day] && data[day].evening == true}
+                            onChange={(e) => handleInput(e, day)}
                             className="checkbox border border-bg-sec mx-auto checkbox-sm"
                           />
                         </div>
                       </td>
                       <td>
-                        <div className="  flex  ">
+                        <div className="flex">
                           <input
                             type="number"
-                            disabled={disable}
                             defaultValue={1}
+                            name="plates"
+                            onChange={(e) => handleInput(e, day)}
                             className="w-fit p-2 max-w-[50px] border-bg-sec mx-auto border rounded-md"
                           />
                         </div>
@@ -144,22 +196,23 @@ const OrderModal = ({ setOpenModal, scheduleOrder }: any) => {
             onClick={() => {
               setCart((prev: any) => ({
                 ...prev,
+
                 total: prev.total + 1,
                 order:
                   prev.order != undefined
                     ? [
                         ...prev.order,
                         {
-                          name: scheduleOrder.name,
-                          price: scheduleOrder.price,
-                          img: scheduleOrder.img,
+                          ...scheduleOrder,
+                          type: "schedule",
+                          data,
                         },
                       ]
                     : [
                         {
-                          name: scheduleOrder.name,
-                          price: scheduleOrder.price,
-                          img: scheduleOrder.img,
+                          ...scheduleOrder,
+                          type: "schedule",
+                          data,
                         },
                       ],
               }));
