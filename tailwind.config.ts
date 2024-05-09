@@ -17,6 +17,12 @@ const config: Config = {
         "bg-pri": "#063925",
         "text-color": "#E5E5E5",
       },
+      fontFamily: {
+        'Roboto-Bold': ['Roboto-Bold'],
+        'Roboto-Light': ['Roboto-Light'],
+        'Roboto-Regular': ['Roboto-Regular'],
+        'Roboto-Black': ['Roboto-Black'],
+      },
     },
   },
   plugins: [require("daisyui")],

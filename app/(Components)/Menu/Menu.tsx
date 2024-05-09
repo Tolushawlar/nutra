@@ -59,13 +59,13 @@ const Menu = () => {
   };
 
   return (
-    <div id="menu" className="relative p-10">
+    <div id="menu" className="relative p-10 bg-[#F5F4E4">
       {openModal && (
         <OrderModal scheduleOrder={scheduledata} setOpenModal={setOpenModal} />
       )}
       <div className="text-center">
-        <h2 className="h2 font-bold text-2xl text-center">
-          Check Out Our Menu
+        <h2 className="h2 font-bold font-Roboto-Black text-[#211F26] text-[57px] text-center">
+        Everything you need to Stay Healthy
         </h2>
       </div>
       <div className="flex flex-col">
@@ -78,7 +78,7 @@ const Menu = () => {
           <div className="w-fit space-x-4 flex ">
             {categories.map((cat, i) => (
               <p
-                className="bg-bg-sec p-2 text-nowrap rounded-lg text-text-color"
+                className="bg-[#D8E5D6] p-2 text-nowrap rounded-lg px-[32px] py-[12px] border-[1px] border-[#003D28] text-[#003D28]"
                 key={i + "categories_index"}
               >
                 {cat}
