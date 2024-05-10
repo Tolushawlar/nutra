@@ -7,7 +7,6 @@ import Cart from "./Cart";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Services } from "./Services";
-import { FaLocationDot } from "react-icons/fa6";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
 import logo from "../Assets/Home/Horizontals.png";
@@ -22,20 +21,9 @@ const Header = () => {
 
   const [openCart, setOpenCart] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
-  const params = useSearchParams();
-
-  let options = { format: "A4" };
-  // Example of options with args //
-  // let options = { format: 'A4', args: ['--no-sandbox', '--disable-setuid-sandbox'] };
-
-  let file = { content: "<h1>Welcome to html-pdf-node</h1>" };
 
   useEffect(() => {
-    console.log(location.href);
-    // html_to_pdf.generatePdf(file, options).then((pdfBuffer: any) => {
-    //   console.log("PDF Buffer:-", pdfBuffer);
-    // });
-
+    let params = new URLSearchParams(window.location.search);
     if (!params.get("reference")) return;
     axios
       .get("/api/process?reference=" + params.get("reference"))
