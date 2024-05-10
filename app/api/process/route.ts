@@ -1,3 +1,4 @@
+import { InstantOrder } from "@/app/models/instantOrderSchema";
 import { NextRequest, NextResponse } from "next/server";
 
 let myHeaders = new Headers();
@@ -9,13 +10,13 @@ myHeaders.append("Content-Type", "application/json");
 export const POST = async (req: NextRequest) => {
   const data = await req.json();
 
-  // console.log(data);
-  // return NextResponse.json({ d: "newFood" });
+  console.log(data);
+
   const url = "https://api.paystack.co/transaction/initialize";
   const fields = {
-    email: "mark.ajekevwoda@email.com",
+    email: "mark.ajekevwoda@gmail.com",
     amount: data["0"].price,
-    callback_url: "http://localhost:3000/api/process",
+    callback_url: data.url,
     metadata: { cancel_action: "http://localhost:3000/api/process" },
     reference: data["0"]._id,
   };
@@ -28,10 +29,9 @@ export const POST = async (req: NextRequest) => {
   };
 
   const res = await fetch(url, requestOptions);
+  const d = await res.json();
 
-  console.log(await res.json());
-
-  return NextResponse.json({ d: "newFood" });
+  return NextResponse.json(d);
 };
 
 export const GET = async (req: NextRequest) => {
@@ -39,6 +39,7 @@ export const GET = async (req: NextRequest) => {
   const trxref = searchParams.get("trxref");
   const reference = searchParams.get("reference");
 
+  console.log(reference);
   const url = "https://api.paystack.co/transaction/verify/" + reference;
 
   let requestOptions: RequestInit = {
@@ -48,8 +49,19 @@ export const GET = async (req: NextRequest) => {
   };
 
   const res = await fetch(url, requestOptions);
+  const checkRes = await res.json();
 
-  console.log(await res.json());
+  if (
+    checkRes.data.reference == reference &&
+    checkRes.data.status == "success"
+  ) {
+    const d = await InstantOrder.findOneAndUpdate(
+      { _id: reference },
+      { $set: { status: "paid", reference } },
+      { new: true }
+    );
 
-  return NextResponse.json({ d: "newFood" });
+    return NextResponse.json(d);
+  }
+  return NextResponse.error();
 };

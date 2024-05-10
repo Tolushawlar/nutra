@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 
 function OrdersPage() {
   const [orderData, setSrderData] = useState<any[]>([]);
+  const [curData, setCurData] = useState<any[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => setIsOpen(true);
@@ -92,14 +93,17 @@ function OrdersPage() {
                           </td>
 
                           <td>
-                            <div className="badge badge-secondary badge-outline">
+                            <div className="border p-2 rounded-lg border-pink-500">
                               {order.status}
                             </div>
                           </td>
                           <th>
                             <button
                               className=" btn btn-primary btn-xs"
-                              onClick={openModal}
+                              onClick={() => {
+                                setCurData(order);
+                                openModal();
+                              }}
                             >
                               View Details
                             </button>
@@ -114,7 +118,9 @@ function OrdersPage() {
           </div>
         </div>
       </div>
-      {isOpen && <MyModal isOpen={isOpen} closeModal={closeModal} />}
+      {isOpen && (
+        <MyModal isOpen={isOpen} data={curData} closeModal={closeModal} />
+      )}
     </div>
   );
 }

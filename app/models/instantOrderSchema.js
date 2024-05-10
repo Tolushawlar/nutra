@@ -38,6 +38,11 @@ const instantOrderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    reference: {
+      type: String,
+      unique: true,
+      required: true,
+    },
   },
   { timestamps: true }
 );

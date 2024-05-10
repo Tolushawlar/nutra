@@ -5,6 +5,19 @@ import { NextRequest, NextResponse } from "next/server";
 
 connect();
 
+function generateRef(length: number) {
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
+
 export const POST = async (req: NextRequest) => {
   const data = await req.json();
   try {
@@ -24,6 +37,7 @@ export const POST = async (req: NextRequest) => {
           price: d.price,
           plates: d.plates ?? 1,
           status: "pending payment",
+          reference: "null",
         });
         return newOrder;
       })
@@ -50,6 +64,7 @@ export const GET = async (req: NextRequest) => {
   }
   try {
     const getMessage = await InstantOrder.find();
+    console.log(getMessage);
     return NextResponse.json(getMessage);
   } catch (error: any) {
     throw new Error(error.message);

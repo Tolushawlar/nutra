@@ -4,6 +4,7 @@ import "./globals.css";
 import { AppContextProvider } from "./context/AppContext";
 import Header from "./(Components)/Header";
 import { Footer } from "./(Components)/Footer";
+import { useEffect } from "react";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <AppContextProvider>
       <html lang="en">
-        <body >
+        <body>
           <Header />
           <div className="pt-[70px]">{children}</div>
           <Footer />

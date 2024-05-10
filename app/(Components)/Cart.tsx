@@ -4,6 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useAppContext } from "../context/AppContext";
 import axios from "axios";
 import CartItems from "./CartItems";
+import { processPayments } from "../utils/processPayments";
 
 export default function Cart({ setOpenCart, openCart }: any) {
   const { cart, setCart }: any = useAppContext();
@@ -40,6 +41,7 @@ export default function Cart({ setOpenCart, openCart }: any) {
   const processCart = async (e: any) => {
     e.preventDefault();
 
+    console.log("running");
     try {
       const response = await axios.post(
         "/api/instantorder",
@@ -51,22 +53,19 @@ export default function Cart({ setOpenCart, openCart }: any) {
         }
       );
 
+      console.log(await response.data);
       if (response.status === 200) {
-        const response = await axios.post(
-          "/api/process",
-          { ...cart.order },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
+        const res: any = await processPayments(
+          await response.data,
+          location.origin
         );
-
-        if (response.status === 200) {
+        console.log(res);
+        window.open(res.data.authorization_url, "_blank");
+        if (res.status === 200) {
           // setCart({ total: 0 });
           alert("Food data submitted successfully");
         } else {
-          console.error("Failed to submit food data:", response.statusText);
+          console.error("Failed to submit food data:", res.statusText);
         }
         // setCart({ total: 0 });
         // alert("Food data submitted successfully");
@@ -190,7 +189,7 @@ export default function Cart({ setOpenCart, openCart }: any) {
 
                       {cart?.total > 0 && (
                         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                          {/* <div>
+                          <div>
                             <div className="flex mb-4 justify-between text-base text-gray-900">
                               <p>
                                 <input
@@ -221,7 +220,7 @@ export default function Cart({ setOpenCart, openCart }: any) {
                                 />
                               </p>
                             </div>
-                          </div> */}
+                          </div>
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <p>Total Price</p>
                             <p>${prices}</p>
