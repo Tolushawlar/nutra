@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 :root {
-  background: rgb(228, 222, 237);
   font-size: 13px;
+  background: #f5f4e4;
+  overflow-x: hidden !important;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -17,11 +18,31 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgb(228, 222, 237);
+  background: #f5f4e4;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url("./fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Roboto-Black";
+  src: url("./fonts/Roboto-Black.ttf");
+}
+
+@font-face {
+  font-family: "Roboto-Light";
+  src: url("./fonts/Roboto-Light.ttf");
+}
+
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url("./fonts/Roboto-Medium.ttf");
 }

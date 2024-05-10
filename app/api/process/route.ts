@@ -39,7 +39,6 @@ export const GET = async (req: NextRequest) => {
   const trxref = searchParams.get("trxref");
   const reference = searchParams.get("reference");
 
-  console.log(reference);
   const url = "https://api.paystack.co/transaction/verify/" + reference;
 
   let requestOptions: RequestInit = {
@@ -50,6 +49,7 @@ export const GET = async (req: NextRequest) => {
 
   const res = await fetch(url, requestOptions);
   const checkRes = await res.json();
+  console.log(checkRes);
 
   if (
     checkRes.data.reference == reference &&

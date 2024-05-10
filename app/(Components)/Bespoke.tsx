@@ -1,6 +1,9 @@
 "use client";
 import axios from "axios";
 import React, { useState } from "react";
+import card from "../Assets/Home/Card_Icon.svg"
+import Image from "next/image";
+
 
 export const Bespoke = () => {
   const [info, setInfo]: any = useState();
@@ -36,59 +39,88 @@ export const Bespoke = () => {
   };
 
   return (
-    <div id="bespoke" className="">
-      <div className="w-[60%] bg-white shadow-md rounded-md p-10 mx-auto my-5">
+    <div id="bespoke" className="w-screen bg-[#003D28]">
+      <div className="w-[60%] p-10 mx-auto my-5">
         <div className="flex flex-col items-center justify-center">
-          <h2 className="font-bold text-2xl">Bespoke</h2>
-          <p>
+          <h2 className=" text-[50px] text-[#ECF5EA] font-[700] font-Roboto-Black my-10">Want to send us a custom order?</h2>
+          {/* <p>
             Want to send us a custom order? Kindly fill the form below,
             we&lsquo;ll reply in munites!!
-          </p>
+          </p> */}
         </div>
-        <div className="w-[80%] my-5 space-y-3 mx-auto">
-          <label className="input input-bordered flex items-center gap-2">
-            Name
-            <input
-              name="name"
-              onChange={handleInput}
-              type="text"
-              className="grow"
-              placeholder="Daisy"
-            />
-          </label>
-          <label className="input input-bordered flex items-center gap-2">
-            Phone
+        <div className="flex flex-col items-center w-[80%] my-5 space-y-6 mx-auto">
+          <div className="flex flex-row jusitfy-between gap-5">
+            <div className="flex flex-col items-start gap-2">
+              <label className="text-white">
+                First Name
+              </label>
+              <input
+                name="name"
+                onChange={handleInput}
+                type="text"
+                className="bg-white px-5 text-black grow w-[340px] h-[54px] rounded-[14px]"
+                placeholder="Daisy"
+              />
+            </div>
+            <div className="flex flex-col items-start gap-2">
+              <label className="text-white">
+                LastName
+              </label>
+              <input
+                name="name"
+                onChange={handleInput}
+                type="text"
+                className="bg-white px-5 text-black grow w-[340px] h-[54px] rounded-[14px]"
+                placeholder="Daisy"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col items-start gap-2">
+            <label className="text-white">
+              Phone Number
+            </label>
             <input
               name="phone"
               onChange={handleInput}
               type="text"
-              className="grow"
+              className="bg-white px-5 text-black grow w-[700px] h-[54px] rounded-[14px]"
               placeholder="07012345678"
             />
-          </label>
+          </div>
 
-          <label className="input input-bordered flex items-center gap-2">
-            Location
+          <div className="flex flex-col items-start gap-2">
+            <label className="text-white">
+              Location
+            </label>
             <input
               name="location"
               onChange={handleInput}
               type="text"
-              className="grow"
+              className="bg-white px-5 text-black grow w-[700px] h-[54px] rounded-[14px]"
               placeholder="Akure"
             />
-          </label>
-          <textarea
-            name="message"
-            onChange={handleInput}
-            className="textarea textarea-bordered w-full"
-            placeholder="Describe your order"
-          ></textarea>
+          </div>
+
+          <div className="flex flex-col items-start gap-2">
+            <label className="text-white">
+              Describe your Order
+            </label>
+            <textarea
+              name="message"
+              onChange={handleInput}
+              className="bg-white text-black textarea textarea-bordered w-[700px] h-[170px]"
+              placeholder="Describe your order"
+            ></textarea>
+          </div>
+
           <div className="flex justify-end">
             <button
               onClick={handleSubmit}
-              className="   bg-bg-sec text-text-color p-2 px-4 rounded-lg"
+              className="flex flex-row justify-center items-center btn-sm rounded-[16px] w-[325px] h-[64px] bg-[#BCF800] text-[#003D28] text-[14px] "
             >
-              Send Message
+              <Image src={card} alt="logo" className="mr-3" />
+              PLACE ORDER NOW
             </button>
           </div>
         </div>

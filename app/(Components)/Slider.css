@@ -1,0 +1,32 @@
+.wrapper{
+    overflow-x: hidden !important;
+}
+
+.marquee{
+    overflow-x:hidden !important;
+    position: absolute;
+    white-space: nowrap;
+    animation: floatText 10s infinite ease-in-out;
+}
+
+/* @keyframes floatText{
+  from {
+    left: 00%;
+  }w
+  
+
+  to {
+    left: auto;
+    left: 100%;
+  }
+} */
+
+@keyframes floatText {
+  from {
+      transform: translateX(100%);
+  }
+
+  to {
+      transform: translateX(0%);
+  }
+}

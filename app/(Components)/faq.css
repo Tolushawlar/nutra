@@ -1,0 +1,66 @@
+/*none of this is necessary for function*/
+
+
+.content {
+    width: 90%;
+    padding: 0;
+    margin: 0 auto;
+}
+
+summary {
+    font-size: 1.25rem;
+    font-weight: 600;
+    /* background-color: #fff; */
+    padding: 1rem;
+    margin-bottom: 1rem;
+    outline: none;
+    border-radius: 0.25rem;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    border-radius: 25px;
+    font-size: 28px;
+    color: #1d1b20;
+    /* border: 2px black solid; */
+    /* margin-bottom: 40px; */
+}
+
+details[open]>summary::marker {
+    content: url(../Assets/Home/Microinteraction_Dropdown_Arrow_Down.png)
+}
+
+details>summary::marker {
+    content: url(../Assets/Home/Microinteraction_Dropdown_Arrow.png)
+}
+
+/* details>summary::after {
+    position: absolute;
+    content: "+";
+    right: 20px;
+}
+
+details[open]>summary::after {
+    position: absolute;
+    content: "-";
+    right: 20px;
+} */
+
+details>summary::-webkit-details-marker {
+    display: none;
+}
+
+details[open] summary~* {
+    animation: sweep 0.5s ease-in-out;
+}
+
+@keyframes sweep {
+    0% {
+        opacity: 0;
+        margin-top: -10px;
+    }
+
+    100% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}

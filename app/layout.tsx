@@ -4,7 +4,7 @@ import "./globals.css";
 import { AppContextProvider } from "./context/AppContext";
 import Header from "./(Components)/Header";
 import { Footer } from "./(Components)/Footer";
-import { useEffect } from "react";
+// import "tw-elements-react/dist/css/tw-elements-react.min.css";
 
 // const inter = Inter({ subsets: ["latin"] });
 

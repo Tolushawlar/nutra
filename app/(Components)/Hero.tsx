@@ -1,24 +1,33 @@
 import Link from "next/link";
 import React from "react";
+import placeholder from "../Assets/homepage/Brand_Placeholder.png"
+import arrow from "../Assets/homepage/Arrow_Icon.svg"
+import bespoke from "../Assets/homepage/Bespoke.svg"
+import health from "../Assets/homepage/Healthy_Meal.svg"
+import instant from "../Assets/homepage/Instant_order.svg"
+import sub from "../Assets/homepage/Sub_Plan.svg"
+import Image from "next/image";
+import Slider from "./Slider";
 
 export const Hero = () => {
   return (
-    <div className="w-full">
-      <div className=" w-full p-10 bg-bg-pri text-text-color">
-        <div className=" flex justify-betwwen gap-4 md:flex-row">
-          <div className="w-1/2">
-            <h1 className="text-5xl font-bold">Box Office News!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+    <div className="w-full overflow-hidden">
+      <Slider />
+      <div className=" w-full p-10 bg-[#e7ff9d] text-[#003D28]">
+        <div className=" flex justify-between items-center md:flex-row">
+
+          <div className="">
+            <h1 className=" font-Roboto-Bold text-[76px]">You've got enough to worry about.</h1>
+            <p className="py-6 font-Roboto-Light text-[40px] ">
+              What you eat should not be on that list.
             </p>
-            <button className="btn border-none bg-bg-sec text-text-color">
+            <button className="btn border-none  text-[28px] bg-[#BCF800] text-[#003D28] p-5 text-center w-[301px] h-[84px] rounded-[16px]">
               Get Started
             </button>
           </div>
-          <div className="flex md:grid grid-cols-2 text-black gap-2">
-            <div className="card bg-cream shadow-xl">
+
+          <div className="p-10">
+            {/* <div className="card bg-cream shadow-xl">
               <div className="card-body">
                 <h2 className="card-title">Instant/Schedule Order!</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
@@ -69,7 +78,45 @@ export const Hero = () => {
                   </Link>
                 </div>
               </div>
+            </div> */}
+            <Image src={placeholder} alt="logo" className=" w-[713px] h-[581px]" />
+          </div>
+
+        </div>
+      </div>
+      <div className="w-full bg-[#f4f3e7] py-[100px] px-[50px]">
+        <div className="innerDiv shadow-md bg-white px-[20px] py-[70px] flex flex-col items-center rounded-[24px]">
+          <h1 className="font-Roboto-Bold text-black text-[48px]">Why choose us?</h1>
+          <div className="flex flex-row justify-center items-center mt-7">
+            <div className="flex flex-row items-start mr-4 p-1">
+              <Image src={bespoke} alt="logo" className=" " />
+              <div className="flex flex-col items-left justify-center ml-5">
+                <h4 className="font-Roboto-Regular text-black text-[32px]">Bespoke Order</h4>
+                <p className="text-black font-Roboto-Light text-[20px]">Become a franchise and open your own store!</p>
+              </div>
             </div>
+            <div className="flex flex-row items-start mr-4 p-1">
+              <Image src={health} alt="logo" className=" " />
+              <div className="flex flex-col items-left justify-center ml-5">
+                <h4 className="font-Roboto-Regular text-black text-[32px]">Bespoke Order</h4>
+                <p className="text-black font-Roboto-Light text-[20px]">Become a franchise and open your own store!</p>
+              </div>
+            </div>
+            <div className="flex flex-row items-start mr-4 p-1">
+              <Image src={instant} alt="logo" className=" " />
+              <div className="flex flex-col items-left justify-center ml-5">
+                <h4 className="font-Roboto-Regular text-black text-[32px]">Bespoke Order</h4>
+                <p className="text-black font-Roboto-Light text-[20px]">Become a franchise and open your own store!</p>
+              </div>
+            </div>
+            <div className="flex flex-row items-start mr-4 p-1">
+              <Image src={sub} alt="logo" className=" " />
+              <div className="flex flex-col items-left justify-center ml-5">
+                <h4 className="font-Roboto-Regular text-black text-[32px]">Bespoke Order</h4>
+                <p className="text-black font-Roboto-Light text-[20px]">Become a franchise and open your own store!</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
