@@ -13,6 +13,7 @@ const Menu = () => {
 
   const categories = [
     "All",
+    "Instant",
     "Breakfast",
     "Brunch",
     "Launch",
@@ -29,6 +30,7 @@ const Menu = () => {
     "Potato",
     "Noodles/Pasta",
     "Salad",
+    "Others",
   ];
 
   useEffect(() => {
@@ -65,7 +67,7 @@ const Menu = () => {
       )}
       <div className="text-center">
         <h2 className="h2 font-bold font-Roboto-Black text-[#211F26] text-[57px] text-center">
-        Everything you need to Stay Healthy
+          Everything you need to Stay Healthy
         </h2>
       </div>
       <div className="flex flex-col">
@@ -78,6 +80,12 @@ const Menu = () => {
           <div className="w-fit space-x-4 flex ">
             {categories.map((cat, i) => (
               <p
+                style={{
+                  background: `${cat == "All" ? "#82251e" : ""}`,
+                  paddingRight: `${cat == "All" ? "13px" : ""}`,
+                  paddingLeft: `${cat == "All" ? "13px" : ""}`,
+                }}
+                // className="bg-bg-sec p-2 text-nowrap rounded-lg text-text-color"
                 className="bg-[#D8E5D6] p-2 text-nowrap rounded-lg px-[32px] py-[12px] border-[1px] border-[#003D28] text-[#003D28]"
                 key={i + "categories_index"}
               >
@@ -117,7 +125,17 @@ const Menu = () => {
               </div>
 
               <div className="mx-1">
-                <button className="join-item btn btn-sm">...</button>
+                <button
+                  onClick={() =>
+                    setCurPage((prev) => {
+                      let newPrev = prev > 0 ? prev - 1 : prev;
+                      return newPrev;
+                    })
+                  }
+                  className="join-item btn btn-sm"
+                >
+                  {"<<"}
+                </button>
               </div>
             </div>
           )}
@@ -145,7 +163,17 @@ const Menu = () => {
           {curPage + 2 < 15 && (
             <div className="join">
               <div className="mx-1">
-                <button className="join-item btn btn-sm">...</button>
+                <button
+                  onClick={() =>
+                    setCurPage((prev) => {
+                      let newPrev = prev < 15 ? prev + 1 : prev;
+                      return newPrev;
+                    })
+                  }
+                  className="join-item btn btn-sm"
+                >
+                  {">>"}
+                </button>
               </div>
               <div>
                 <button

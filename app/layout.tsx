@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <AppContextProvider>
       <html lang="en">
-        <body >
+        <body>
           <Header />
           <div className="pt-[70px]">{children}</div>
           <Footer />
