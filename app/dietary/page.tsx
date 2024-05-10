@@ -67,7 +67,7 @@ function HealthPage() {
                       <div className="absolute bottom-0 bg-slate-500 w-full p-2 left-0">
                         <p>{cat[0]} Friendly Meals</p>
                         <div className="card-actions justify-end">
-                          <Link href={"/health/" + cat[0]}>
+                          <Link href={"/dietary/" + cat[0]}>
                             <button className="btn btn-sm">Order Now</button>
                           </Link>
                         </div>

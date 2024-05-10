@@ -1,8 +1,8 @@
 import { yam } from "@/app/Assets";
 import { useAppContext } from "@/app/context/AppContext";
 import React from "react";
-import card from "../../Assets/homepage/Card_Icon.svg"
-import calender from "../../Assets/homepage/Vector(3).svg"
+import card from "../../Assets/homepage/Card_Icon.svg";
+import calender from "../../Assets/homepage/Vector(3).svg";
 import Image from "next/image";
 
 const FoodCards = ({
@@ -11,7 +11,7 @@ const FoodCards = ({
   setOpenModal,
   setScheduleOrder,
 }: any) => {
-  const { setCart }: any = useAppContext();
+  const { setCart, cart }: any = useAppContext();
 
   return (
     <div>
@@ -32,8 +32,12 @@ const FoodCards = ({
         <div className="card-body">
           <div className="card-actions flex flex-col justify-center items-start ml-[-20px] gap-8">
             <div className="mt-1">
-              <h3 className="text-[#211F26] font-Roboto-Bold text-[20px]">{data.foodName}</h3>
-              <h3 className="text-[#36343B] text-[18px] font-Roboto-Bold mt-2">N{data.price}.00</h3>
+              <h3 className="text-[#211F26] font-Roboto-Bold text-[20px]">
+                {data.foodName}
+              </h3>
+              <h3 className="text-[#36343B] text-[18px] font-Roboto-Bold mt-2">
+                N{data.price}.00
+              </h3>
             </div>
             <div className="flex flex-row justify-between items-center gap-3">
               {data.isInstant && (
@@ -43,7 +47,9 @@ const FoodCards = ({
                       ...prev,
                       total: prev.total + 1,
                       order:
-                        prev.order != undefined ? [...prev.order, data] : [data],
+                        prev.order != undefined
+                          ? [...prev.order, data]
+                          : [data],
                     }));
                     setAddedToCart(true);
                   }}
@@ -56,12 +62,26 @@ const FoodCards = ({
 
               <button
                 onClick={() => {
-                  setScheduleOrder({
-                    name: data.name,
-                    price: data.price,
-                    img: yam.src,
+                  const found = cart?.order?.filter((order: any) => {
+                    return order._id == data._id;
                   });
-                  setOpenModal(true);
+
+                  if (found?.length > 0) {
+                    alert("already added to cart");
+                    return;
+                  }
+
+                  setCart((prev: any) => {
+                    return {
+                      ...prev,
+                      total: prev.total + 1,
+                      order:
+                        prev.order != undefined
+                          ? [...prev.order, data]
+                          : [data],
+                    };
+                  });
+                  setAddedToCart(true);
                 }}
                 className="flex flex-row justify-center items-center btn-sm  border-[1px] border-[#003D28] rounded-[12px] w-[160px] h-[50px] bg-[#F5F4E4] text-[#006240] text-[14px] "
               >
@@ -69,6 +89,15 @@ const FoodCards = ({
                 SCHEDULE
               </button>
             </div>
+            <button
+              onClick={() => {
+                setScheduleOrder(data);
+                setOpenModal(true);
+              }}
+              className="btn-sm rounded-md bg-bg-sec text-text-color"
+            >
+              Schedule
+            </button>
           </div>
         </div>
       </div>

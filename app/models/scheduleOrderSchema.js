@@ -1,8 +1,16 @@
 import mongoose from "mongoose";
 
-const orderSchema = new mongoose.Schema(
+const scheduleOrderSchema = new mongoose.Schema(
   {
+    foodId: {
+      type: String,
+      required: true,
+    },
     foodName: {
+      type: String,
+      required: true,
+    },
+    name: {
       type: String,
       required: true,
     },
@@ -18,17 +26,22 @@ const orderSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    phone: {
+      type: Number,
+      required: true,
+    },
     plates: {
       type: Number,
       required: true,
     },
     status: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
   { timestamps: true }
 );
 
-export const Order =
-  mongoose.models.Order || mongoose.model("Order", orderSchema);
+export const ScheduleOrder =
+  mongoose.models.ScheduleOrder ||
+  mongoose.model("ScheduleOrder", scheduleOrderSchema);

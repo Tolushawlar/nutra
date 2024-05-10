@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  background: #F5F4E4;
+  font-size: 13px;
+  background: #f5f4e4;
   overflow-x: hidden !important;
 }
 
@@ -17,7 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #F5F4E4;
+  background: #f5f4e4;
 }
 
 @layer utilities {

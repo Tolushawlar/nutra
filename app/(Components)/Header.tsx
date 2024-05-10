@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import Link from "next/link";
 import Cart from "./Cart";
@@ -7,12 +7,13 @@ import Cart from "./Cart";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Services } from "./Services";
-import { FaLocationDot } from "react-icons/fa6";
-import logo from "../Assets/Home/Horizontals.png"
-import cartImg from "../Assets/homepage/Trolley_Icon@3x.png"
-import arrowDown from "../Assets/homepage/Drop_Down_Icon.svg"
-import location from "../Assets/Home/Location.svg"
-import droplet from "../Assets/homepage/Droplet.svg"
+import { useSearchParams } from "next/navigation";
+import axios from "axios";
+import logo from "../Assets/Home/Horizontals.png";
+import cartImg from "../Assets/homepage/Trolley_Icon@3x.png";
+import arrowDown from "../Assets/homepage/Drop_Down_Icon.svg";
+import location from "../Assets/Home/Location.svg";
+import droplet from "../Assets/homepage/Droplet.svg";
 import Image from "next/image";
 
 const Header = () => {
@@ -21,13 +22,29 @@ const Header = () => {
   const [openCart, setOpenCart] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
 
+  useEffect(() => {
+    let params = new URLSearchParams(window.location.search);
+    if (!params.get("reference")) return;
+    axios
+      .get("/api/process?reference=" + params.get("reference"))
+      .then((res) => {
+        if (res.data.status == "paid") alert("Ordered succesfully");
+      });
+  }, []);
+
   return (
     <div>
       <div className="navbar fixed h-[70px] z-[500] p-[50px] bg-white justify-between text-text-color">
         <div className="flex">
           <Link href="/">
             {/* <img src={logo} alt="logo" className="" /> */}
-            <Image src={logo} alt="logo" className="" width={240} height={100} />
+            <Image
+              src={logo}
+              alt="logo"
+              className=""
+              width={240}
+              height={100}
+            />
           </Link>
         </div>
 
@@ -36,7 +53,11 @@ const Header = () => {
             <li>
               <Link href="/" className="">
                 Home
-                <Image alt="arrow" src={droplet} className="relative top-6 right-10 w-[10px] h-[10px]" />
+                <Image
+                  alt="arrow"
+                  src={droplet}
+                  className="relative top-6 right-10 w-[10px] h-[10px]"
+                />
               </Link>
             </li>
             <li className="mt-2">
@@ -52,8 +73,13 @@ const Header = () => {
               <Link href="/">MarketPlace</Link>
             </li> */}
             <li className="flex flex-row justify-center items-center">
-              <Link href="/">Our Offering
-                <Image alt="arrow" src={arrowDown} className="relative right-2 w-[24px] h-[24px]" />
+              <Link href="/">
+                Our Offering
+                <Image
+                  alt="arrow"
+                  src={arrowDown}
+                  className="relative right-2 w-[24px] h-[24px]"
+                />
               </Link>
             </li>
             <li>
@@ -89,7 +115,13 @@ const Header = () => {
                       d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                     />
                   </svg> */}
-                  <Image src={cartImg} alt="cartImage" className="" width={550} height={500} />
+                  <Image
+                    src={cartImg}
+                    alt="cartImage"
+                    className=""
+                    width={550}
+                    height={500}
+                  />
                   <span className="badge badge-md indicator-item">
                     {cart.total}
                   </span>
@@ -125,7 +157,6 @@ const Header = () => {
             <FaLocationDot className="w-10 h-10" color="black" />
             <p className="text-[24px] font-[700] text-[#BCF800] font font-Roboto-Light">Akure</p> */}
           </div>
-
         </div>
         {showMobile && (
           <div className="absolute top-[70px] w-full h-fit items-start text-black bg-cream left-0 flex flex-col">

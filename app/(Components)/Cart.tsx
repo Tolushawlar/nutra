@@ -1,20 +1,34 @@
 "use client";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useAppContext } from "../context/AppContext";
+import axios from "axios";
+import CartItems from "./CartItems";
+import { processPayments } from "../utils/processPayments";
 
 export default function Cart({ setOpenCart, openCart }: any) {
   const { cart, setCart }: any = useAppContext();
+  const [address, setAddress] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [prices, setPrices] = useState(0);
+
+  useEffect(() => {}, []);
 
   const addPrices = (data: any) => {
     let total = 0;
     data.map((d: any) => (total += Number(d.price)));
-    return total;
+    setPrices(total);
   };
 
   const setPlates = (e: any, data: any, i: number) => {
     const plates = e.target.value;
-    data.price = plates > 0 ? data.price * plates : data.price;
+
+    const oldPrice = data.plates ? data.price / data.plates : data.price;
+
+    data.price = plates > 0 ? oldPrice * plates : oldPrice;
+    data.plates = plates;
+    console.log(data.plates);
     const newOrder = cart.order;
     newOrder[i] = data;
 
@@ -24,12 +38,51 @@ export default function Cart({ setOpenCart, openCart }: any) {
     });
   };
 
+  const processCart = async (e: any) => {
+    e.preventDefault();
+
+    console.log("running");
+    try {
+      const response = await axios.post(
+        "/api/instantorder",
+        { ...cart.order, address, name, phone },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log(await response.data);
+      if (response.status === 200) {
+        const res: any = await processPayments(
+          await response.data,
+          location.origin
+        );
+        console.log(res);
+        window.open(res.data.authorization_url, "_blank");
+        if (res.status === 200) {
+          // setCart({ total: 0 });
+          alert("Food data submitted successfully");
+        } else {
+          console.error("Failed to submit food data:", res.statusText);
+        }
+        // setCart({ total: 0 });
+        // alert("Food data submitted successfully");
+      } else {
+        console.error("Failed to submit food data:", response.statusText);
+      }
+    } catch (error: any) {
+      console.error("Error submitting food data:", error.message);
+    }
+  };
+
   console.log(cart);
 
   return (
     <div className="">
       <Transition.Root show={openCart} as={Fragment}>
-        <Dialog as="div" className="relative z-10 " onClose={setOpenCart}>
+        <Dialog as="div" className="relative z-10  " onClose={setOpenCart}>
           <Transition.Child
             as={Fragment}
             enter="ease-in-out duration-500"
@@ -44,7 +97,7 @@ export default function Cart({ setOpenCart, openCart }: any) {
 
           <div className="fixed inset-0 overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
-              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-5">
                 <Transition.Child
                   as={Fragment}
                   enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -54,14 +107,12 @@ export default function Cart({ setOpenCart, openCart }: any) {
                   leaveFrom="translate-x-0"
                   leaveTo="translate-x-full"
                 >
-                  <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
+                  <Dialog.Panel className="pointer-events-auto w-screen max-w-xl">
                     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                       <div className="flex-1 pt-[80px] overflow-y-auto px-4 py-6 sm:px-6">
                         <div className="flex items-start justify-between">
-                          <Dialog.Title className="text-lg font-medium ">
-                            Orders
-                          </Dialog.Title>
-                          <div className="ml-3 flex h-7 items-center">
+                          <div className="flex h-7 justify-between w-full items-center">
+                            <p className="font-bold text-xl "> Orders</p>
                             <button
                               type="button"
                               className="relative -m-2 p-2 text-gray-400 hover:"
@@ -70,7 +121,7 @@ export default function Cart({ setOpenCart, openCart }: any) {
                               <span className="absolute -inset-0.5" />
                               <span className="sr-only">Close panel</span>
 
-                              <button
+                              <span
                                 onClick={() => setOpenCart(false)}
                                 className="  p-1 "
                               >
@@ -88,7 +139,7 @@ export default function Cart({ setOpenCart, openCart }: any) {
                                     d="M6 18L18 6M6 6l12 12"
                                   />
                                 </svg>
-                              </button>
+                              </span>
                             </button>
                           </div>
                         </div>
@@ -105,66 +156,30 @@ export default function Cart({ setOpenCart, openCart }: any) {
                                 </p>
                               ) : (
                                 cart?.order?.map((product: any, i: any) => (
-                                  <li key={i} className="flex py-6">
-                                    <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                      <img
-                                        src={product.image}
-                                        alt={product.image}
-                                        className="h-full w-full object-cover object-center"
-                                      />
-                                    </div>
-
-                                    <div className="ml-4 flex flex-1 flex-col">
+                                  <div key={i}>
+                                    {product?.type != "schedule" ? (
                                       <div>
-                                        <div className="flex justify-between text-base font-medium text-gray-900">
-                                          <h3>{product.foodName}</h3>
-                                          <p className="ml-4">
-                                            {product.price}
-                                          </p>
-                                        </div>
-                                        <p className="mt-1 text-sm "></p>
+                                        <CartItems
+                                          setCart={setCart}
+                                          product={product}
+                                          setPlates={setPlates}
+                                          i={i}
+                                          cart={cart}
+                                        />
                                       </div>
-                                      <div className="flex justify-between text-sm">
-                                        <p className="">
-                                          No of Plates:{" "}
-                                          <span>
-                                            <input
-                                              type="number"
-                                              onChange={(e) =>
-                                                setPlates(e, product, i)
-                                              }
-                                              placeholder="1"
-                                              className="border border-black rounded-lg ml-2 p-2 py-1 w-[55px]"
-                                            />
-                                          </span>
-                                        </p>
-
-                                        <div className="flex">
-                                          <button
-                                            onClick={() => {
-                                              console.log(i);
-                                              const newOrder = cart.order;
-                                              const total = cart.total;
-                                              newOrder.splice(i, 1);
-
-                                              setCart({
-                                                order:
-                                                  newOrder.length > 0
-                                                    ? newOrder
-                                                    : undefined,
-                                                total:
-                                                  total > 0 ? total - 1 : 0,
-                                              });
-                                            }}
-                                            type="button"
-                                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                                          >
-                                            Remove
-                                          </button>
-                                        </div>
+                                    ) : (
+                                      <div>
+                                        <CartItems
+                                          setCart={setCart}
+                                          product={product}
+                                          type={product.type}
+                                          setPlates={setPlates}
+                                          i={i}
+                                          cart={cart}
+                                        />
                                       </div>
-                                    </div>
-                                  </li>
+                                    )}
+                                  </div>
                                 ))
                               )}
                             </ul>
@@ -174,18 +189,50 @@ export default function Cart({ setOpenCart, openCart }: any) {
 
                       {cart?.total > 0 && (
                         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                          <div>
+                            <div className="flex mb-4 justify-between text-base text-gray-900">
+                              <p>
+                                <input
+                                  type="text"
+                                  className="border-bg-sec outline-none px-2 py-1 rounded  border w-full"
+                                  placeholder="Enter Name"
+                                  onChange={(e) => setName(e.target.value)}
+                                />
+                              </p>
+                            </div>
+                            <div className="flex mb-4 justify-between text-base text-gray-900">
+                              <p>
+                                <input
+                                  type="text"
+                                  className="border-bg-sec outline-none px-2 py-1 rounded  border w-full"
+                                  placeholder="Enter Phone Number"
+                                  onChange={(e) => setPhone(e.target.value)}
+                                />
+                              </p>
+                            </div>
+                            <div className="flex mb-4 justify-between text-base text-gray-900">
+                              <p>
+                                <input
+                                  type="text"
+                                  className="border-bg-sec px-2 py-1 rounded outline-none border w-full"
+                                  placeholder="Enter Delivery Address"
+                                  onChange={(e) => setAddress(e.target.value)}
+                                />
+                              </p>
+                            </div>
+                          </div>
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <p>Total Price</p>
-                            <p>${addPrices(cart.order)}</p>
+                            <p>${prices}</p>
                           </div>
 
                           <div className="mt-6">
-                            <a
-                              href="#"
-                              className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                            <button
+                              onClick={processCart}
+                              className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                             >
                               Checkout
-                            </a>
+                            </button>
                           </div>
                         </div>
                       )}

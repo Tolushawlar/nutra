@@ -4,7 +4,7 @@ import Sidebar from "@/app/(Components)/SideBar";
 import axios from "axios";
 import React, { useState } from "react";
 
-function AddFoodPage() {
+function AddSubsPage() {
   const [formData, setFormData] = useState({
     foodName: "",
     image: "",
@@ -48,17 +48,15 @@ function AddFoodPage() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/food", formData, {
+      const response = await axios.post("/api/subscription", formData, {
         headers: {
           "Content-Type": "application/json",
         },
       });
 
       if (response.status === 200) {
-        // Handle successful response
         alert("Food data submitted successfully");
       } else {
-        // Handle error response
         console.error("Failed to submit food data:", response.statusText);
       }
     } catch (error: any) {
@@ -69,9 +67,8 @@ function AddFoodPage() {
   return (
     <>
       <div className="dashboardLayoutContent flex flex-row align-middle h-full w-full">
-        {/* <Sidebar /> */}
         <div className="w-full bg-gray-200 p-10">
-          <div className="text-black text-3xl">Add Food</div>
+          <div className="text-black text-3xl">Add Subscriptions</div>
           <div className="orderContent bg-white flex flex-col my-10">
             <div className="max-w-lg mx-auto p-8">
               <h2 className="text-2xl font-bold mb-4">Add Food</h2>
@@ -185,4 +182,4 @@ function AddFoodPage() {
   );
 }
 
-export default AddFoodPage;
+export default AddSubsPage;

@@ -5,9 +5,8 @@ import Sidebar from "@/app/(Components)/SideBar";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-function OrdersPage() {
+function ScheduleOrdersPage() {
   const [orderData, setSrderData] = useState<any[]>([]);
-  const [curData, setCurData] = useState<any[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => setIsOpen(true);
@@ -34,7 +33,7 @@ function OrdersPage() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("/api/instantorder");
+      const response = await axios.get("/api/scheduleorders");
       console.log(response.data);
       if (response.status === 200) {
         setSrderData(response.data);
@@ -51,7 +50,7 @@ function OrdersPage() {
       <div className="dashboardLayoutContent flex flex-row h-full w-full">
         {/* <Sidebar /> */}
         <div className="w-full bg-gray-200 p-10">
-          <div className="text-black text-3xl">Instant Orders</div>
+          <div className="text-black text-3xl">Schedule Orders</div>
           <div className="orderContent bg-white flex flex-col my-10">
             <div className="overflow-x-auto">
               <table className="table overflow-auto">
@@ -93,17 +92,14 @@ function OrdersPage() {
                           </td>
 
                           <td>
-                            <div className="border p-2 rounded-lg border-pink-500">
+                            <div className="badge badge-secondary badge-outline">
                               {order.status}
                             </div>
                           </td>
                           <th>
                             <button
                               className=" btn btn-primary btn-xs"
-                              onClick={() => {
-                                setCurData(order);
-                                openModal();
-                              }}
+                              onClick={openModal}
                             >
                               View Details
                             </button>
@@ -118,11 +114,9 @@ function OrdersPage() {
           </div>
         </div>
       </div>
-      {isOpen && (
-        <MyModal isOpen={isOpen} data={curData} closeModal={closeModal} />
-      )}
+      {isOpen && <MyModal isOpen={isOpen} closeModal={closeModal} />}
     </div>
   );
 }
 
-export default OrdersPage;
+export default ScheduleOrdersPage;
