@@ -40,7 +40,7 @@ export const Bespoke = () => {
 
   return (
     <div id="bespoke" className="w-screen bg-[#003D28]">
-      <div className="w-[60%] p-10 mx-auto my-5">
+      <div className="w-[60%] p-10 mx-auto">
         <div className="flex flex-col items-center justify-center">
           <h2 className=" text-[50px] text-[#ECF5EA] font-[700] font-Roboto-Black my-10">Want to send us a custom order?</h2>
           {/* <p>
