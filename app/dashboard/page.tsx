@@ -10,7 +10,7 @@ import AllFoodPage from "./food/page";
 import SubOrdersPage from "./subOrders/page";
 import AddSubsPage from "./addSubscriptions/page";
 
-export const pages = {
+const pages = {
   iOrders: <OrdersPage />,
   sOrders: <ScheduleOrdersPage />,
   bMessages: <BespokePage />,

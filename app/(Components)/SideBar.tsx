@@ -11,10 +11,26 @@ import { AiOutlineCustomerService } from "react-icons/ai";
 import { VscOpenPreview } from "react-icons/vsc";
 import { MdOutlineWash } from "react-icons/md";
 import { LuUserCircle } from "react-icons/lu";
-import { NextRouter } from "next/router";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { pages } from "../dashboard/page";
+import ScheduleOrdersPage from "../dashboard/scheduleorders/page";
+import BespokePage from "../dashboard/bespoke/page";
+import ConsultationPage from "../dashboard/consultation/page";
+import AddFoodPage from "../dashboard/addFood/page";
+import AllFoodPage from "../dashboard/food/page";
+import SubOrdersPage from "../dashboard/subOrders/page";
+import AddSubsPage from "../dashboard/addSubscriptions/page";
+import OrdersPage from "../dashboard/orders/page";
+
+const pages = {
+  iOrders: <OrdersPage />,
+  sOrders: <ScheduleOrdersPage />,
+  bMessages: <BespokePage />,
+  cMessages: <ConsultationPage />,
+  addFood: <AddFoodPage />,
+  allFood: <AllFoodPage />,
+  allSubs: <SubOrdersPage />,
+  addSubs: <AddSubsPage />,
+};
 
 const Sidebar = ({ setCurPage, curPage }: any) => {
   const pathname = usePathname();
