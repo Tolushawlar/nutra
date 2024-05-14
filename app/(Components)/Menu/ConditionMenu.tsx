@@ -86,13 +86,13 @@ const ConditionMenu = () => {
             {openModal && (
                 <OrderModal scheduleOrder={scheduledata} setOpenModal={setOpenModal} />
             )}
-            <div className="text-center">
+            {/* <div className="text-center">
                 <h2 className="h2 font-bold text-2xl text-center">
                     Check Out Our Menu
                 </h2>
-            </div>
+            </div> */}
             <div className="flex flex-col">
-                <div
+                {/* <div
                     style={{
                         scrollbarWidth: "none",
                     }}
@@ -108,7 +108,7 @@ const ConditionMenu = () => {
                             </p>
                         ))}
                     </div>
-                </div>
+                </div> */}
 
                 <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-10">
                     {filteredItems &&

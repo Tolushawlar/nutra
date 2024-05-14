@@ -7,7 +7,7 @@ import Cart from "./Cart";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Services } from "./Services";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import axios from "axios";
 import logo from "../Assets/Home/Horizontals.png";
 import cartImg from "../Assets/homepage/Trolley_Icon@3x.png";
@@ -18,6 +18,7 @@ import Image from "next/image";
 
 const Header = () => {
   const { cart }: any = useAppContext();
+  // const [currentPage, setCurrentPage] = useState<string | undefined>(undefined);
 
   const [openCart, setOpenCart] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
@@ -31,6 +32,23 @@ const Header = () => {
         if (res.data.status == "paid") alert("Ordered succesfully");
       });
   }, []);
+
+  // useEffect(() => {
+  //   // Get the current URL
+  //   const currentURL = window.location.href;
+  //   // Decode the URL
+  //   const decodedURL = decodeURIComponent(currentURL);
+  //   // Split the URL by "/"
+  //   const urlParts = decodedURL.split('/');
+  //   // Get the last item from the array
+  //   const lastItem = urlParts[urlParts.length - 1];
+  //   // Set the last item as the condition
+  //   setCurrentPage(lastItem.toLowerCase());
+  // }, []);
+
+  const pathname = usePathname();
+  const parts = pathname.split("/");
+  const lastItem = parts[parts.length - 1];
 
   return (
     <div>
@@ -49,20 +67,22 @@ const Header = () => {
         </div>
 
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal flex flex-row justify-center align-center items-center py-5 px-1 text-[#003D28] text-[16px] font-Roboto-Bold">
+          <ul className="menu menu-horizontal flex flex-row justify-center gap-10 align-center items-center py-5 px-1 text-[#003D28] text-[16px] font-Roboto-Bold">
             <li>
               <Link href="/" className="">
                 Home
-                <Image
-                  alt="arrow"
-                  src={droplet}
-                  className="relative top-6 right-10 w-[10px] h-[10px]"
-                />
+                {lastItem === "" && (
+                  <Image
+                    alt="arrow"
+                    src={droplet}
+                    className="relative top-6 right-10 w-[10px] h-[10px]"
+                  />
+                )}
               </Link>
             </li>
-            <li className="mt-2">
+            <li className="flex flex-row justify-center items-center mt-2">
               {/* <Dropdown /> */}
-              <Services />
+              <Services />              
             </li>
 
             {/* <li>
@@ -72,18 +92,21 @@ const Header = () => {
             {/* <li>
               <Link href="/">MarketPlace</Link>
             </li> */}
-            <li className="flex flex-row justify-center items-center">
+            {/* <li className="flex flex-row justify-center items-center">
               <Link href="/">
                 Our Offering
-                <Image
-                  alt="arrow"
-                  src={arrowDown}
-                  className="relative right-2 w-[24px] h-[24px]"
-                />
               </Link>
-            </li>
+            </li> */}
             <li>
-              <Link href="/">What's New</Link>
+              <Link href="/blog">What's New
+                {lastItem === "blog" && (
+                  <Image
+                    alt="arrow"
+                    src={droplet}
+                    className="relative top-6 right-10 w-[10px] h-[10px]"
+                  />
+                )}
+              </Link>
             </li>
             <li>
               <Link href="/">Contact Us</Link>

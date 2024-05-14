@@ -95,8 +95,8 @@ const OrderModal = ({ setOpenModal, scheduleOrder }: any) => {
             </svg>
           </button>
         </div>
-        <p className="font-bold text-2xl text-center">
-          Kindly Select Day and Time for your order
+        <p className="text-[#211F26] font-[700] text-[36px] text-center">
+        Schedule Plan
         </p>
         <div className="mt-5 border   ">
           <div className="overflow-y-auto max-h-[100%] ">

@@ -81,12 +81,13 @@ const Menu = () => {
             {categories.map((cat, i) => (
               <p
                 style={{
-                  background: `${cat == "All" ? "#82251e" : ""}`,
+                  background: `${cat == "All" ? "#003D28" : ""}`,
                   paddingRight: `${cat == "All" ? "13px" : ""}`,
                   paddingLeft: `${cat == "All" ? "13px" : ""}`,
+                  color: `${cat == "All" ? "#BCF800" : ""}`
                 }}
                 // className="bg-bg-sec p-2 text-nowrap rounded-lg text-text-color"
-                className="bg-[#D8E5D6] p-2 text-nowrap rounded-lg px-[32px] py-[12px] border-[1px] border-[#003D28] text-[#003D28]"
+                className="bg-[#D8E5D6] cursor-pointer p-2 text-nowrap rounded-lg px-[32px] py-[12px] border-[1px] border-[#003D28] text-[#003D28]"
                 key={i + "categories_index"}
               >
                 {cat}

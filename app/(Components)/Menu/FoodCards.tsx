@@ -59,7 +59,7 @@ const FoodCards = ({
                   ORDER NOW
                 </button>
               )}
-
+{/* 
               <button
                 onClick={() => {
                   const found = cart?.order?.filter((order: any) => {
@@ -87,17 +87,19 @@ const FoodCards = ({
               >
                 <Image src={calender} alt="logo" className="mr-3" />
                 SCHEDULE
+              </button> */}
+
+              <button
+                onClick={() => {
+                  setScheduleOrder(data);
+                  setOpenModal(true);
+                }}
+                className="flex flex-row justify-center items-center btn-sm  border-[1px] border-[#003D28] rounded-[12px] w-[160px] h-[50px] bg-[#F5F4E4] text-[#006240] text-[14px] "
+              >
+                <Image src={calender} alt="logo" className="mr-3" />
+                SCHEDULE
               </button>
             </div>
-            <button
-              onClick={() => {
-                setScheduleOrder(data);
-                setOpenModal(true);
-              }}
-              className="btn-sm rounded-md bg-bg-sec text-text-color"
-            >
-              Schedule
-            </button>
           </div>
         </div>
       </div>
