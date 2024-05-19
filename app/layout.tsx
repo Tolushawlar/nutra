@@ -23,7 +23,7 @@ export default function RootLayout({
       <html lang="en">
         <body>
           <Header />
-          <div className="pt-[70px]">{children}</div>
+          <div className="pt-[70px] z-0">{children}</div>
           <Footer />
         </body>
       </html>

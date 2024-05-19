@@ -13,10 +13,10 @@ export const Services = ({ setShowMobile }: any) => {
   return (
     <div
       onClick={() => setShowDetails(!showDetails)}
-      className=" flex flex-col items-start"
+      className=" flex flex-col items-start z-10"
     >
       <div className="flex flex-row justify-center gap-3 items-center">
-        <p className="cursor-pointer">Our Offerings</p>
+        <p className="cursor-pointer font-BwGradual-Bold">Our Offerings</p>
         <Image
           alt="arrow"
           src={arrowDown}
@@ -24,9 +24,9 @@ export const Services = ({ setShowMobile }: any) => {
         />
       </div>
 
-      <div className="flex relative items-center">
+      <div className="flex relative items-center z-10">
         {showDetails && (
-          <div className="lg:absolute static border rounded-[24px] w-[300px]  gap-10 bg-[#FFFFFF] p-[24px] text-[#322F35] text-[20px] top-[10px]  ">
+          <div className="lg:absolute static border rounded-[24px] w-[300px]  gap-10 bg-[#FFFFFF] p-[24px] text-[#322F35] text-[20px] top-[4px]  ">
             <div>
               <div className="px-2 py-4">
                 <div

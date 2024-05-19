@@ -8,112 +8,62 @@ import instant from "../Assets/homepage/Instant_order.svg"
 import sub from "../Assets/homepage/Sub_Plan.svg"
 import Image from "next/image";
 import Slider from "./Slider";
+import SliderCarousel from "./SliderCarousel";
+
 
 export const Hero = () => {
   return (
     <div className="w-full overflow-hidden">
       <Slider />
-      <div className=" w-full p-10 bg-[#e7ff9d] text-[#003D28]">
-        <div className=" flex justify-between items-center md:flex-row">
-
-          <div className="">
-            <h1 className=" font-Roboto-Bold text-[76px]">You've got enough to worry about.</h1>
-            <p className="py-6 font-Roboto-Light text-[40px] ">
-              What you eat should not be on that list.
-            </p>
-            <button className="btn border-none  text-[28px] bg-[#BCF800] text-[#003D28] p-5 text-center w-[301px] h-[84px] rounded-[16px]">
-              Get Started
-            </button>
-          </div>
-
-          <div className="p-10">
-            {/* <div className="card bg-cream shadow-xl">
-              <div className="card-body">
-                <h2 className="card-title">Instant/Schedule Order!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <Link href="#menu">
-                    <button className="btn bg-bg-sec text-text-color">
-                      View
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="card bg-cream shadow-xl">
-              <div className="card-body">
-                <h2 className="card-title">Dietary Meals!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <Link href="dietary">
-                    <button className="btn bg-bg-sec text-text-color">
-                      View
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="card bg-cream shadow-xl">
-              <div className="card-body">
-                <h2 className="card-title">Subscription Plans!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <Link href="subscription">
-                    <button className="btn bg-bg-sec text-text-color">
-                      View
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="card bg-cream shadow-xl">
-              <div className="card-body">
-                <h2 className="card-title">Bespoke!</h2>
-                <p>Want a specific kind of food? Talk to us now.</p>
-                <div className="card-actions justify-end">
-                  <Link href="#bespoke">
-                    <button className="  bg-bg-sec text-text-color p-1 px-4 rounded-lg">
-                      View
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div> */}
-            <Image src={placeholder} alt="logo" className=" w-[713px] h-[581px]" />
-          </div>
-
-        </div>
-      </div>
-      <div className="w-full bg-[#f4f3e7] py-[100px] px-[50px]">
-        <div className="innerDiv shadow-md bg-white px-[20px] py-[70px] flex flex-col items-center rounded-[24px]">
-          <h1 className="font-Roboto-Bold text-black text-[48px]">Why choose us?</h1>
-          <div className="flex flex-row justify-center items-center mt-7">
-            <div className="flex flex-row items-start mr-4 p-1">
+      <SliderCarousel />
+      <div className="w-[100vw] md:w-full bg-[#f4f3e7] py-[20px] md:py-[100px] px-[20px] md:px-[50px]">
+        <div className="innerDiv shadow-md bg-white px-0 md:px-[20px] py-[70px] flex flex-col items-center rounded-[24px]">
+          <h1 className="font-BwGradual-Black text-black text-left md:text-center text-[30px] md:text-[48px]">Our Offerings</h1>
+          <div className="flex flex-col md:flex-row justify-between items-center mt-7 w-[1000px] md:w-auto">
+            <div className="w-1/4 flex flex-col md:flex-row items-center md:items-start mt-5 md:mt-0 mr-4 p-1">
               <Image src={bespoke} alt="logo" className=" " />
-              <div className="flex flex-col items-left justify-center ml-5">
-                <h4 className="font-Roboto-Regular text-black text-[32px]">Bespoke Order</h4>
-                <p className="text-black font-Roboto-Light text-[20px]">Become a franchise and open your own store!</p>
+              <div className="flex flex-col items-center justify-start md:items-start ml-5 gap-3">
+                <h4 className="font-BwGradual-Bold text-black  text-left text-[25px] md:text-[30px] mr-5 md:mr-[50px]">Instant Order</h4>
+                <p className="text-black font-Roboto-Light text-[18px] md:text-[20px] text-justify">Craving a healthy and delicious meal?
+                  Browse our pre-curated menu and select ready-made meals for immediate purchase.</p>
+                <div className="flex flex-row items-center justify-center gap-3">
+                  <div className="text-[#003D28] font-[500] text-left font-Roboto-Light text-[18px] md:text-[20px]">GET STARTED</div>
+                  <Image src={arrow} alt="logo" className=" " />
+                </div>
               </div>
             </div>
-            <div className="flex flex-row items-start mr-4 p-1">
+            <div className="w-1/4 flex flex-col md:flex-row items-center md:items-start mt-5 md:mt-0 mr-4 p-1">
               <Image src={health} alt="logo" className=" " />
-              <div className="flex flex-col items-left justify-center ml-5">
-                <h4 className="font-Roboto-Regular text-black text-[32px]">Bespoke Order</h4>
-                <p className="text-black font-Roboto-Light text-[20px]">Become a franchise and open your own store!</p>
+              <div className="flex flex-col items-center justify-start md:items-start ml-5 gap-3">
+                <h4 className="font-BwGradual-Bold text-black text-left  text-[25px] md:text-[28px] mr-5 md:mr-[50px]">Bespoke Order</h4>
+                <p className="text-black font-Roboto-Light text-[18px] md:text-[20px] text-justify">Have specific dietary needs or preferences? Our Bespoke Order option empowers you to create your own personalized meals.</p>
+                <div className="flex flex-row items-center justify-center gap-3">
+                  <div className="text-[#003D28] font-[500] text-left font-Roboto-Light text-[18px] md:text-[20px]">GET STARTED</div>
+                  <Image src={arrow} alt="logo" className=" " />
+                </div>
               </div>
             </div>
-            <div className="flex flex-row items-start mr-4 p-1">
+            <div className="w-1/4 flex flex-col md:flex-row items-center md:items-start mt-5 md:mt-0 mr-4 p-1">
               <Image src={instant} alt="logo" className=" " />
-              <div className="flex flex-col items-left justify-center ml-5">
-                <h4 className="font-Roboto-Regular text-black text-[32px]">Bespoke Order</h4>
-                <p className="text-black font-Roboto-Light text-[20px]">Become a franchise and open your own store!</p>
+              <div className="flex flex-col items-center justify-start md:items-start ml-5 gap-3">
+                <h4 className="font-BwGradual-Bold text-black text-left  text-[25px] md:text-[28px] mr-5 md:mr-[50px]">Dietary Meals </h4>
+                <p className="text-black font-Roboto-Light text-[18px] md:text-[20px] text-justify">We know everyone has unique dietary needs. Dietary offers curated selection of nutritious options.</p>
+                <div className="flex flex-row items-center justify-center gap-3">
+                  <div className="text-[#003D28] font-[500] text-left font-Roboto-Light text-[18px] md:text-[20px]">GET STARTED</div>
+                  <Image src={arrow} alt="logo" className=" " />
+                </div>
               </div>
             </div>
-            <div className="flex flex-row items-start mr-4 p-1">
+            <div className="w-1/4 flex flex-col md:flex-row items-center md:items-start mt-5 md:mt-0 mr-4 p-1">
               <Image src={sub} alt="logo" className=" " />
-              <div className="flex flex-col items-left justify-center ml-5">
-                <h4 className="font-Roboto-Regular text-black text-[32px]">Bespoke Order</h4>
-                <p className="text-black font-Roboto-Light text-[20px]">Become a franchise and open your own store!</p>
+              <div className="flex flex-col items-center justify-start md:items-start ml-5 gap-3">
+                <h4 className="font-BwGradual-Bold text-black text-center md:text-justify text-[25px] md:text-[28px] mr-5 md:mr-[50px]">Subscription Plan</h4>
+                <p className="text-black font-Roboto-Light text-[18px] md:text-[20px] text-justify">Simplify your life and prioritize your health with our convenient subscription plan.
+                  Choose a plan that fits your needs.</p>
+                <div className="flex flex-row items-center justify-center gap-3">
+                  <div className="text-[#003D28] font-[500] text-left font-Roboto-Light text-[18px] md:text-[20px]">GET STARTED</div>
+                  <Image src={arrow} alt="logo" className=" " />
+                </div>
               </div>
             </div>
 

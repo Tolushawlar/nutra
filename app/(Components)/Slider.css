@@ -1,32 +1,65 @@
-.wrapper{
-    overflow-x: hidden !important;
+/* src/components/Slider.css */
+.wrapper {
+  overflow-x: hidden !important;
 }
 
-.marquee{
-    overflow-x:hidden !important;
-    position: absolute;
-    white-space: nowrap;
-    animation: floatText 10s infinite ease-in-out;
+.marquee {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
 }
 
-/* @keyframes floatText{
-  from {
-    left: 00%;
-  }w
-  
+.marquee-content {
+  display: inline-flex;
+  animation: scroll 50s linear infinite;
+}
 
-  to {
-    left: auto;
-    left: 100%;
-  }
-} */
-
-@keyframes floatText {
-  from {
-      transform: translateX(100%);
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
   }
 
-  to {
-      transform: translateX(0%);
+  100% {
+    transform: translateX(-100%);
   }
+}
+
+
+
+
+
+/* src/components/Slider.css */
+.slick-prev, .slick-next {
+  width: 50px;
+  height: 50px;
+  z-index: 1;
+}
+
+.custom-next-arrow {
+  right: 1000px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.custom-prev-arrow {
+  left: 10px;
+  background-color: green;
+  border-radius: 50%;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: white;
+  font-size: 30px;
+  line-height: 50px;
+}
+
+.slick-prev:before {
+  content: '<';
+}
+
+.slick-next:before {
+  content: '>';
 }
