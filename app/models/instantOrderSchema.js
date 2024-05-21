@@ -12,7 +12,6 @@ const instantOrderSchema = new mongoose.Schema(
     },
     name: {
       type: String,
-      required: true,
     },
     image: {
       type: String,
@@ -20,7 +19,6 @@ const instantOrderSchema = new mongoose.Schema(
     },
     address: {
       type: String,
-      required: true,
     },
     price: {
       type: Number,

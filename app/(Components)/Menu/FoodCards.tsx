@@ -62,26 +62,8 @@ const FoodCards = ({
 
               <button
                 onClick={() => {
-                  const found = cart?.order?.filter((order: any) => {
-                    return order._id == data._id;
-                  });
-
-                  if (found?.length > 0) {
-                    alert("already added to cart");
-                    return;
-                  }
-
-                  setCart((prev: any) => {
-                    return {
-                      ...prev,
-                      total: prev.total + 1,
-                      order:
-                        prev.order != undefined
-                          ? [...prev.order, data]
-                          : [data],
-                    };
-                  });
-                  setAddedToCart(true);
+                  setScheduleOrder(data);
+                  setOpenModal(true);
                 }}
                 className="flex flex-row justify-center items-center btn-sm  border-[1px] border-[#003D28] rounded-[12px] w-[160px] h-[50px] bg-[#F5F4E4] text-[#006240] text-[14px] "
               >
@@ -89,15 +71,6 @@ const FoodCards = ({
                 SCHEDULE
               </button>
             </div>
-            <button
-              onClick={() => {
-                setScheduleOrder(data);
-                setOpenModal(true);
-              }}
-              className="btn-sm rounded-md bg-bg-sec text-text-color"
-            >
-              Schedule
-            </button>
           </div>
         </div>
       </div>

@@ -20,13 +20,13 @@ function generateRef(length: number) {
 
 export const POST = async (req: NextRequest) => {
   const data = await req.json();
+  console.log(data);
   try {
     const newOrders = await Promise.all(
       Object.entries(data).map(async (dd: any) => {
-        if (dd[0] == "address") return;
-        if (dd[0] == "name") return;
-        if (dd[0] == "phone") return;
+        if (dd[0] == "delivery") return;
         let d = dd[1];
+
         const newOrder = await InstantOrder.create({
           foodId: d._id,
           foodName: d.foodName,

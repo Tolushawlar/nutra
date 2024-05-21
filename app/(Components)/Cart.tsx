@@ -5,27 +5,22 @@ import { useAppContext } from "../context/AppContext";
 import axios from "axios";
 import CartItems from "./CartItems";
 import { processPayments } from "../utils/processPayments";
+import ProcessOrderModal from "./ProcessOrderModal";
 
 export default function Cart({ setOpenCart, openCart }: any) {
   const { cart, setCart }: any = useAppContext();
-  const [address, setAddress] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [prices, setPrices] = useState(0);
 
-  useEffect(() => {}, []);
+  const [openProcessModal, setOpenProcessModal] = useState(false);
+  const [isDelivery, setIsDelivery] = useState(false);
 
   const addPrices = (data: any) => {
     let total = 0;
     data.map((d: any) => (total += Number(d.price)));
-    setPrices(total);
+    return total;
   };
 
-  const setPlates = (e: any, data: any, i: number) => {
-    const plates = e.target.value;
-
+  const setPlates = (plates: any, data: any, i: number) => {
     const oldPrice = data.plates ? data.price / data.plates : data.price;
-
     data.price = plates > 0 ? oldPrice * plates : oldPrice;
     data.plates = plates;
     console.log(data.plates);
@@ -38,51 +33,102 @@ export default function Cart({ setOpenCart, openCart }: any) {
     });
   };
 
-  const processCart = async (e: any) => {
-    e.preventDefault();
+  const processCart = async (data: any) => {
+    const schedule = cart.order.filter(
+      (order: any) => order.type == "schedule"
+    );
+    const instant = cart.order.filter((order: any) => order.type != "schedule");
 
-    console.log("running");
-    try {
-      const response = await axios.post(
-        "/api/instantorder",
-        { ...cart.order, address, name, phone },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      console.log(await response.data);
-      if (response.status === 200) {
-        const res: any = await processPayments(
-          await response.data,
-          location.origin
+    if (schedule.length > 0) {
+      console.log(schedule);
+      try {
+        const response = await axios.post(
+          "/api/scheduleorders",
+          { ...schedule, delivery: data },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
-        console.log(res);
-        window.open(res.data.authorization_url, "_blank");
-        if (res.status === 200) {
+
+        console.log(await response.data);
+
+        // console.log(response.data);
+
+        return;
+        if (response.status === 200) {
+          const res: any = await processPayments(
+            await response.data,
+            location.origin
+          );
+          console.log(res);
+          window.open(res.data.authorization_url, "_blank");
+          if (res.status === 200) {
+            // setCart({ total: 0 });
+            alert("Food data submitted successfully");
+          } else {
+            console.error("Failed to submit food data:", res.statusText);
+          }
           // setCart({ total: 0 });
-          alert("Food data submitted successfully");
+          // alert("Food data submitted successfully");
         } else {
-          console.error("Failed to submit food data:", res.statusText);
+          console.error("Failed to submit food data:", response.statusText);
         }
-        // setCart({ total: 0 });
-        // alert("Food data submitted successfully");
-      } else {
-        console.error("Failed to submit food data:", response.statusText);
+      } catch (error: any) {
+        console.error("Error submitting food data:", error.message);
       }
-    } catch (error: any) {
-      console.error("Error submitting food data:", error.message);
     }
+
+    // if (instant.length > 0) {
+    //   try {
+    //     const response = await axios.post(
+    //       "/api/instantorder",
+    //       { ...instant, delivery: data },
+    //       {
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //       }
+    //     );
+
+    //     console.log(await response.data);
+    //     if (response.status === 200) {
+    //       const res: any = await processPayments(
+    //         await response.data,
+    //         location.origin
+    //       );
+    //       console.log(res);
+    //       window.open(res.data.authorization_url, "_blank");
+    //       if (res.status === 200) {
+    //         // setCart({ total: 0 });
+    //         alert("Food data submitted successfully");
+    //       } else {
+    //         console.error("Failed to submit food data:", res.statusText);
+    //       }
+    //       // setCart({ total: 0 });
+    //       // alert("Food data submitted successfully");
+    //     } else {
+    //       console.error("Failed to submit food data:", response.statusText);
+    //     }
+    //   } catch (error: any) {
+    //     console.error("Error submitting food data:", error.message);
+    //   }
+    // }
   };
 
-  console.log(cart);
+  const handleDeliveryMethod = (e: any) => {
+    setIsDelivery(e.target.value == "delivery");
+  };
 
   return (
     <div className="">
       <Transition.Root show={openCart} as={Fragment}>
-        <Dialog as="div" className="relative z-10  " onClose={setOpenCart}>
+        <Dialog
+          as="div"
+          className="relative z-[1000000]  "
+          onClose={setOpenCart}
+        >
           <Transition.Child
             as={Fragment}
             enter="ease-in-out duration-500"
@@ -92,7 +138,7 @@ export default function Cart({ setOpenCart, openCart }: any) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <div className="fixed inset-0 bg-black bg-opacity-75 transition-opacity backdrop-blur " />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-hidden">
@@ -109,10 +155,10 @@ export default function Cart({ setOpenCart, openCart }: any) {
                 >
                   <Dialog.Panel className="pointer-events-auto w-screen max-w-xl">
                     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
-                      <div className="flex-1 pt-[80px] overflow-y-auto px-4 py-6 sm:px-6">
+                      <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                         <div className="flex items-start justify-between">
                           <div className="flex h-7 justify-between w-full items-center">
-                            <p className="font-bold text-xl "> Orders</p>
+                            {/* <p className="font-bold text-xl "> Orders</p> */}
                             <button
                               type="button"
                               className="relative -m-2 p-2 text-gray-400 hover:"
@@ -145,15 +191,17 @@ export default function Cart({ setOpenCart, openCart }: any) {
                         </div>
 
                         <div className="mt-8">
-                          <div className="flow-root">
+                          <div className="flow-root h-full">
                             <ul
                               role="list"
                               className="-my-6 divide-y divide-gray-200"
                             >
                               {cart?.total < 1 ? (
-                                <p className="text-black text-center">
-                                  No Selected Items Added to Cart Yet!
-                                </p>
+                                <div className="h-[100%] justify-center flex items-center">
+                                  <p className="text-black text-center">
+                                    No Selected Items Added to Cart Yet!
+                                  </p>
+                                </div>
                               ) : (
                                 cart?.order?.map((product: any, i: any) => (
                                   <div key={i}>
@@ -189,47 +237,36 @@ export default function Cart({ setOpenCart, openCart }: any) {
 
                       {cart?.total > 0 && (
                         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                          <div>
-                            <div className="flex mb-4 justify-between text-base text-gray-900">
-                              <p>
-                                <input
-                                  type="text"
-                                  className="border-bg-sec outline-none px-2 py-1 rounded  border w-full"
-                                  placeholder="Enter Name"
-                                  onChange={(e) => setName(e.target.value)}
-                                />
-                              </p>
-                            </div>
-                            <div className="flex mb-4 justify-between text-base text-gray-900">
-                              <p>
-                                <input
-                                  type="text"
-                                  className="border-bg-sec outline-none px-2 py-1 rounded  border w-full"
-                                  placeholder="Enter Phone Number"
-                                  onChange={(e) => setPhone(e.target.value)}
-                                />
-                              </p>
-                            </div>
-                            <div className="flex mb-4 justify-between text-base text-gray-900">
-                              <p>
-                                <input
-                                  type="text"
-                                  className="border-bg-sec px-2 py-1 rounded outline-none border w-full"
-                                  placeholder="Enter Delivery Address"
-                                  onChange={(e) => setAddress(e.target.value)}
-                                />
-                              </p>
-                            </div>
-                          </div>
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <p>Total Price</p>
-                            <p>${prices}</p>
+                            <p>₦{addPrices(cart.order)}</p>
                           </div>
-
-                          <div className="mt-6">
+                          {/* <p>
+                            Kindly Note that delivery fee is not included in
+                            total, and will be paid after successful order
+                          </p> */}
+                          <div className="mt-6 space-x-4 items-center flex">
+                            <div className="w-1/2">
+                              <div className="flex space-x-2 items-center">
+                                <select
+                                  onChange={handleDeliveryMethod}
+                                  name="deliveryMethod"
+                                  className="select border-[#A9C1A9]  h-[20px] p-2 py-0 w-full max-w-xs"
+                                >
+                                  <option value="pickup">Pick Up</option>
+                                  <option value="delivery">Delivery</option>
+                                </select>
+                              </div>
+                            </div>
                             <button
-                              onClick={processCart}
-                              className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                              onClick={(e) => {
+                                setOpenProcessModal(false);
+                                // setOpenCart(false);
+                                isDelivery
+                                  ? setOpenProcessModal(true)
+                                  : processCart(null);
+                              }}
+                              className="flex w-1/2 items-center h-fit justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                             >
                               Checkout
                             </button>
@@ -237,6 +274,13 @@ export default function Cart({ setOpenCart, openCart }: any) {
                         </div>
                       )}
                     </div>
+                    {openProcessModal && (
+                      <ProcessOrderModal
+                        setOpenModal={setOpenProcessModal}
+                        data={cart.order}
+                        processCart={processCart}
+                      />
+                    )}
                   </Dialog.Panel>
                 </Transition.Child>
               </div>

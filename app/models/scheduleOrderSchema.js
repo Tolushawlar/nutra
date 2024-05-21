@@ -20,7 +20,6 @@ const scheduleOrderSchema = new mongoose.Schema(
     },
     address: {
       type: String,
-      required: true,
     },
     price: {
       type: Number,
@@ -32,6 +31,10 @@ const scheduleOrderSchema = new mongoose.Schema(
     },
     plates: {
       type: Number,
+      required: true,
+    },
+    dayTime: {
+      type: String,
       required: true,
     },
     status: {

@@ -9,6 +9,7 @@ const Menu = () => {
   const [scheduledata, setScheduleData] = useState();
   const [addedToCart, setAddedToCart] = useState(false);
   const [curPage, setCurPage] = useState(1);
+  const [active, setActive] = useState("All");
   const [foodData, setFoodData] = useState<any[]>([]);
 
   const categories = [
@@ -81,13 +82,15 @@ const Menu = () => {
             {categories.map((cat, i) => (
               <p
                 style={{
-                  background: `${cat == "All" ? "#82251e" : ""}`,
+                  background: `${active == cat ? "#003D28" : ""}`,
+                  color: `${active == cat ? "#BCF800" : ""}`,
                   paddingRight: `${cat == "All" ? "13px" : ""}`,
                   paddingLeft: `${cat == "All" ? "13px" : ""}`,
                 }}
                 // className="bg-bg-sec p-2 text-nowrap rounded-lg text-text-color"
-                className="bg-[#D8E5D6] p-2 text-nowrap rounded-lg px-[32px] py-[12px] border-[1px] border-[#003D28] text-[#003D28]"
+                className="bg-[#D8E5D6] font-[500] p-2 text-nowrap rounded-lg px-[32px] py-[12px] border-[1px] border-[#003D28] text-[#003D28]"
                 key={i + "categories_index"}
+                onClick={() => setActive(cat)}
               >
                 {cat}
               </p>
@@ -109,14 +112,16 @@ const Menu = () => {
             ))}
         </div>
 
-        <div className="join my-6 ml-auto">
+        <div className="join border border-[#003D28] my-6 ml-auto">
           {curPage > 3 && (
             <div className="join">
               <div>
                 <button
                   onClick={() => setCurPage(1)}
                   style={{
-                    background: `${curPage == 1 ? "rgb(21 128 61)" : ""}`,
+                    // background: `${curPage == 1 ? "rgb(21 128 61)" : ""}`,
+                    background: `${curPage == 1 ? "#003D28" : ""}`,
+                    color: `${curPage == 1 ? "#BCF800" : ""}`,
                   }}
                   className="join-item btn btn-sm"
                 >
@@ -150,7 +155,9 @@ const Menu = () => {
                     onClick={() => setCurPage(i + 1)}
                     key={i + "pagination-menu"}
                     style={{
-                      background: `${curPage == 1 + i ? "rgb(21 128 61)" : ""}`,
+                      background: `${curPage == i + 1 ? "#003D28" : ""}`,
+                      color: `${curPage == i + 1 ? "#BCF800" : ""}`,
+                      // background: `${curPage == 1 + i ? "rgb(21 128 61)" : ""}`,
                     }}
                     className="join-item btn btn-sm"
                   >
@@ -179,7 +186,8 @@ const Menu = () => {
                 <button
                   onClick={() => setCurPage(15)}
                   style={{
-                    background: `${curPage == 15 ? "rgb(21 128 61)" : ""}`,
+                    background: `${curPage == 15 ? "#003D28" : ""}`,
+                    color: `${curPage == 15 ? "#BCF800" : ""}`,
                   }}
                   className="join-item btn btn-sm"
                 >

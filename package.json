@@ -16,6 +16,7 @@
     "cloudinary": "^2.1.0",
     "dotenv": "^16.4.5",
     "fs": "^0.0.1-security",
+    "html-to-image": "^1.11.11",
     "mongoose": "^8.2.3",
     "next": "14.1.1",
     "react": "^18",

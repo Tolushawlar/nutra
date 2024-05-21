@@ -3,11 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import Link from "next/link";
 import Cart from "./Cart";
-
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Services } from "./Services";
-import { useSearchParams } from "next/navigation";
 import axios from "axios";
 import logo from "../Assets/Home/Horizontals.png";
 import cartImg from "../Assets/homepage/Trolley_Icon@3x.png";
@@ -92,8 +90,8 @@ const Header = () => {
         </div>
 
         <div>
-          <div className="flex-none">
-            <div className="dropdown dropdown-end">
+          <div className="flex-none p-2 ">
+            <div className="dropdown  dropdown-end">
               <div
                 onClick={() => setOpenCart(true)}
                 tabIndex={0}

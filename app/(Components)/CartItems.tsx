@@ -1,33 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { deleteIcon } from "../Assets";
 
 const CartItems = ({ setCart, product, setPlates, type, i, cart }: any) => {
-  const [showDetails, setShowDetails] = useState(false);
   const [data, setData] = useState(product?.data);
-
-  const handleInput = (e: any, day: string) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setData((items: any) => {
-      let info = {};
-      if (name != "plates") {
-        info = {
-          plates: items?.[day].plates,
-          [name]: true,
-        };
-      } else {
-        info = {
-          ...items?.[day],
-          [name]: value,
-        };
-      }
-      return {
-        ...items,
-        [day]: {
-          ...info,
-        },
-      };
-    });
-  };
+  const [platesCount, setPlatesCount] = useState(1);
 
   const getPrice = (data: any) => {
     let totalPlates = 0;
@@ -39,18 +15,10 @@ const CartItems = ({ setCart, product, setPlates, type, i, cart }: any) => {
     return totalPlates * product?.price;
   };
 
-  // console.log(data);
-
-  const dataToMap =
-    data &&
-    Object.entries(data).filter((data: any, i: any) => {
-      return data[1].mor || data[1].noon || data[1].evening != undefined;
-    });
-
   return (
     <div>
       <li key={i} className="flex py-6">
-        <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+        <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
           <img
             src={product.image}
             alt={product.image}
@@ -60,45 +28,53 @@ const CartItems = ({ setCart, product, setPlates, type, i, cart }: any) => {
 
         <div className="ml-4 flex flex-1 flex-col">
           <div>
-            <span
-              style={{
-                background: `${type == "schedule" ? "#934A5F" : "#063925"}`,
-              }}
-              className="w-fit  p-1 text-sm rounded-sm text-white my-3 mb-0"
-            >
-              {type == "schedule" ? "Schedule" : "Instant"}
-            </span>
-            <div className="flex justify-between text-base font-medium text-gray-900">
-              <h3>{product.foodName}</h3>
-              <p className="ml-4">{product.price}</p>
+            <div className="flex flex-col text-base font-medium text-gray-900">
+              <h3 className="text-[#211F26] font-[700]">{product.foodName}</h3>
+              <p className="font-[500] text-[#36343B] ">₦{product.price}</p>
             </div>
-            <p className="mt-1 text-sm "></p>
-          </div>
-          <div className="flex justify-between text-sm">
-            {type == "schedule" ? (
-              <button
-                onClick={() => setShowDetails(!showDetails)}
-                className="border rounded-sm p-1 bg-gray-300"
-              >
-                View Details
-              </button>
-            ) : (
-              <p className="">
-                No of Plates:
-                <span>
-                  <input
-                    type="number"
-                    defaultValue={1}
-                    onChange={(e) => setPlates(e, product, i)}
-                    placeholder="1"
-                    className="border border-black rounded-lg ml-2 p-2 py-1 w-[55px]"
-                  />
-                </span>
-              </p>
-            )}
+            <div>
+              <div className="flex space-x-2">
+                <div className="p-3">
+                  <p>Enter number of plate</p>
+                  <div className="flex space-x-2 items-center">
+                    <button
+                      onClick={() => {
+                        let count = platesCount > 0 ? platesCount - 1 : 0;
 
-            <div className="flex">
-              <button
+                        setPlates(count, product, i);
+                        setPlatesCount((prev) => (prev > 0 ? prev - 1 : 0));
+                      }}
+                      className="bg-[#003D28] cursor-pointer h-[20px] text-[#D9D9D9] text-[30px] rounded-[5px] flex items-center justify-center pb-[8px] px-2  "
+                    >
+                      -
+                    </button>
+                    <p className="text-[#322F35] text-[23px]">{platesCount}</p>
+                    <button
+                      onClick={() => {
+                        let count = platesCount + 1;
+
+                        setPlates(count, product, i);
+                        setPlatesCount((prev) => prev + 1);
+                      }}
+                      className="bg-[#003D28] cursor-pointer  h-[20px] text-[30px] text-[#D9D9D9] rounded-[5px] flex items-center justify-center pb-[8px] px-1"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <div className="p-3">
+                  <p>Delivery Info</p>
+                  {type == "schedule" && (
+                    <p>
+                      {data.day} {data.time}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div
+                role="button"
                 onClick={() => {
                   const newOrder = cart.order;
                   const total = cart.total;
@@ -109,108 +85,22 @@ const CartItems = ({ setCart, product, setPlates, type, i, cart }: any) => {
                     total: total > 0 ? total - 1 : 0,
                   });
                 }}
-                type="button"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
+                className="bg-[#FFEEE3] cursor-pointer p-3 px-10 w-fit rounded-lg mt-2 flex items-center"
               >
-                Remove
-              </button>
+                <div className="w-[20px] h-[20px]">
+                  <img
+                    src={deleteIcon.src}
+                    alt={"delete icon"}
+                    className="h-full mr-3 w-full object-cover object-center"
+                  />
+                </div>
+
+                <p className="text-[#FF2B37]">REMOVE FROM CART</p>
+              </div>
             </div>
           </div>
         </div>
       </li>
-      {showDetails && (
-        <div className=" overflow-y-auto max-h-[100%] ">
-          <table className="table table-zebra">
-            <thead>
-              <tr>
-                <th>
-                  <div className="  flex  ">
-                    <p className="mx-auto">Day</p>
-                  </div>
-                </th>
-                <th>
-                  <div className="  flex  ">
-                    <p className="mx-auto">Mor (9am-10am)</p>
-                  </div>
-                </th>
-                <th>
-                  <div className="  flex  ">
-                    <p className="mx-auto">Noon (1pm-2pm)</p>
-                  </div>
-                </th>
-                <th>
-                  <div className="  flex  ">
-                    <p className="mx-auto">Evening (6pm-8pm)</p>
-                  </div>
-                </th>
-                <th>
-                  <div className="  flex  ">
-                    <p className="mx-auto">No of Plates</p>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody className="">
-              {dataToMap &&
-                dataToMap.map((data: any, i: any) => {
-                  return (
-                    <tr key={i} className="p-1">
-                      <td>
-                        <div className="flex">
-                          <p className="mx-auto">{data[0].split("-")}</p>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="flex">
-                          <input
-                            type="checkbox"
-                            name="mor"
-                            checked={data[1].mor == true}
-                            onChange={(e) => handleInput(e, data[0])}
-                            className="checkbox border border-bg-sec mx-auto checkbox-sm"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="flex">
-                          <input
-                            type="checkbox"
-                            name="noon"
-                            checked={data[1].noon == true}
-                            onChange={(e) => handleInput(e, data[0])}
-                            className="checkbox border border-bg-sec mx-auto checkbox-sm"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="flex">
-                          <input
-                            type="checkbox"
-                            name="evening"
-                            checked={data[1].evening == true}
-                            onChange={(e) => handleInput(e, data[0])}
-                            className="checkbox border border-bg-sec mx-auto checkbox-sm"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="  flex  ">
-                          <input
-                            type="number"
-                            defaultValue={data[1].plates ?? 1}
-                            name="plates"
-                            onChange={(e) => handleInput(e, data[0])}
-                            className="w-fit p-2 max-w-[50px] border-bg-sec mx-auto border rounded-md"
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
-        </div>
-      )}
     </div>
   );
 };
