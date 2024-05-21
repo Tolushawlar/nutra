@@ -6,9 +6,11 @@ import Cart from "./Cart";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Services } from "./Services";
+import { usePathname, useSearchParams } from "next/navigation";
 import axios from "axios";
 import logo from "../Assets/Home/Horizontals.png";
 import cartImg from "../Assets/homepage/Trolley_Icon@3x.png";
+import search from "../Assets/Home/Search_Icon.svg";
 import arrowDown from "../Assets/homepage/Drop_Down_Icon.svg";
 import location from "../Assets/Home/Location.svg";
 import droplet from "../Assets/homepage/Droplet.svg";
@@ -16,6 +18,7 @@ import Image from "next/image";
 
 const Header = () => {
   const { cart }: any = useAppContext();
+  // const [currentPage, setCurrentPage] = useState<string | undefined>(undefined);
 
   const [openCart, setOpenCart] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
@@ -30,35 +33,52 @@ const Header = () => {
       });
   }, []);
 
+  // useEffect(() => {
+  //   // Get the current URL
+  //   const currentURL = window.location.href;
+  //   // Decode the URL
+  //   const decodedURL = decodeURIComponent(currentURL);
+  //   // Split the URL by "/"
+  //   const urlParts = decodedURL.split('/');
+  //   // Get the last item from the array
+  //   const lastItem = urlParts[urlParts.length - 1];
+  //   // Set the last item as the condition
+  //   setCurrentPage(lastItem.toLowerCase());
+  // }, []);
+
+  const pathname = usePathname();
+  const parts = pathname.split("/");
+  const lastItem = parts[parts.length - 1];
+
   return (
     <div>
-      <div className="navbar fixed h-[70px] z-[500] p-[50px] bg-white justify-between text-text-color">
+      <div className="navbar fixed h-[70px] z-[99999999999999999999999999999] p-[20px] md:p-[50px] bg-white jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color">
         <div className="flex">
           <Link href="/">
             {/* <img src={logo} alt="logo" className="" /> */}
             <Image
               src={logo}
               alt="logo"
-              className=""
-              width={240}
-              height={100}
+              className="w-[110px] md:w-[220px] h-[25px] md:h-[50px]"
             />
           </Link>
         </div>
 
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal flex flex-row justify-center align-center items-center py-5 px-1 text-[#003D28] text-[16px] font-Roboto-Bold">
-            <li>
-              <Link href="/" className="">
+          <ul className="menu menu-horizontal flex flex-row justify-center gap-10 align-center items-center py-5 px-1 text-[#003D28] text-[16px] font-Roboto-Bold">
+            <li className="">
+              <Link href="/" className="font-BwGradual-Bold">
                 Home
-                <Image
-                  alt="arrow"
-                  src={droplet}
-                  className="relative top-6 right-10 w-[10px] h-[10px]"
-                />
+                {lastItem === "" && (
+                  <Image
+                    alt="arrow"
+                    src={droplet}
+                    className="relative top-6 right-10 w-[10px] h-[10px]"
+                  />
+                )}
               </Link>
             </li>
-            <li className="mt-2">
+            <li className="flex flex-row justify-center items-center mt-2">
               {/* <Dropdown /> */}
               <Services />
             </li>
@@ -70,35 +90,41 @@ const Header = () => {
             {/* <li>
               <Link href="/">MarketPlace</Link>
             </li> */}
-            <li className="flex flex-row justify-center items-center">
+            {/* <li className="flex flex-row justify-center items-center">
               <Link href="/">
                 Our Offering
-                <Image
-                  alt="arrow"
-                  src={arrowDown}
-                  className="relative right-2 w-[24px] h-[24px]"
-                />
+              </Link>
+            </li> */}
+            <li>
+              <Link href="/blog" className="font-BwGradual-Bold">
+                What's New
+                {lastItem === "blog" && (
+                  <Image
+                    alt="arrow"
+                    src={droplet}
+                    className="relative top-6 right-10 w-[10px] h-[10px]"
+                  />
+                )}
               </Link>
             </li>
             <li>
-              <Link href="/">What's New</Link>
-            </li>
-            <li>
-              <Link href="/">Contact Us</Link>
+              <Link href="/" className="font-BwGradual-Bold">
+                Contact Us
+              </Link>
             </li>
           </ul>
         </div>
 
         <div>
-          <div className="flex-none p-2 ">
-            <div className="dropdown  dropdown-end">
+          <div className="flex-none">
+            <div className="dropdown dropdown-end">
               <div
                 onClick={() => setOpenCart(true)}
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle mr-[80px]"
+                className="btn btn-ghost btn-circle mr-[10px] md:mr-[100px] "
               >
-                <div className="indicator ">
+                <div className="indicator  ">
                   {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-10 w-10"
@@ -116,9 +142,7 @@ const Header = () => {
                   <Image
                     src={cartImg}
                     alt="cartImage"
-                    className=""
-                    width={550}
-                    height={500}
+                    className="w-[20px] md:w-[28px] h-[20px] md:h-[28px]"
                   />
                   <span className="badge badge-md indicator-item">
                     {cart.total}
@@ -128,6 +152,7 @@ const Header = () => {
             </div>
             {openCart && <Cart openCart={openCart} setOpenCart={setOpenCart} />}
           </div>
+
           <div
             onClick={() => setShowMobile(!showMobile)}
             role="button"
@@ -149,15 +174,16 @@ const Header = () => {
             </svg>
           </div>
 
-          <div className="hidden ml-[140px] md:flex flex-col p-[12px] items-center justify-center fixed right-0 bg-[#003D28]">
-            <Image src={location} alt="logo" className=" " />
+          <div className="hidden ml-[140px] md:flex flex-col p-[12px] h-[100px] w-[100px] items-center justify-center fixed right-0 bg-[#003D28]">
+            <Image src={location} alt="logo" className=" w-16 h-16 " />
             {/*           
             <FaLocationDot className="w-10 h-10" color="black" />
             <p className="text-[24px] font-[700] text-[#BCF800] font font-Roboto-Light">Akure</p> */}
           </div>
         </div>
+
         {showMobile && (
-          <div className="absolute top-[70px] w-full h-fit items-start text-black bg-cream left-0 flex flex-col">
+          <div className="absolute top-[70px] z-[999999999999999999999999999999999] w-full h-fit items-start text-black bg-cream left-0 flex flex-col">
             <ul className="menu menu-vertical px-1">
               <li onClick={() => setShowMobile(!showMobile)}>
                 <Link href="/">Home</Link>
@@ -192,7 +218,7 @@ export default Header;
 
 export function Dropdown() {
   return (
-    <div className="   text-right">
+    <div className="  z-[999999999999999999999] text-right">
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className=" flex w-fit ">
@@ -212,8 +238,8 @@ export function Dropdown() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute px-6 right-0 mt-2 min-w-fit  rounded-md bg-main text-black shadow-lg ring-1 ring-black/5 focus:outline-none">
-            <div className="px-1 py-1 flex items-center flex-col">
+          <Menu.Items className="absolute px-6 right-0 mt-2 min-w-fit z-[99999999999999999999999999999999] rounded-md bg-main text-black shadow-lg ring-1 ring-black/5 focus:outline-none">
+            <div className="px-1 py-1 flex items-center flex-col z-[99999999999999999999999999999999]">
               <Menu.Item>
                 <Link className="text-nowrap  " href="/#menu">
                   <button

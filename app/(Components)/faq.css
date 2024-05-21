@@ -64,3 +64,21 @@ details[open] summary~* {
         margin-top: 0px;
     }
 }
+
+/* Media Query for mobile screens */
+@media (max-width: 768px) {
+    summary {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+
+    details[open]>summary::marker {
+        content: url(../Assets/faq/50.png);
+        /* Use smaller version of the marker */
+    }
+
+    details>summary::marker {
+        content: url(../Assets/faq/50.png);
+        /* Use smaller version of the marker */
+    }
+}

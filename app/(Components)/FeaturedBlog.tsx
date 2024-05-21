@@ -10,8 +10,8 @@ function FeaturedBlog() {
     <div className='w-auto bg-[#f4f3e7]'>
       <div className="my-[100px] bg-[#f4f3e7] flex flex-col items-start justify-center mx-[5vw] w-auto overflow-x-hidden">
         <div className='flex flex-row w-[80vw] justify-between items-center'>
-          <h2 className='font-[700] font-Roboto-Black text-[57px] text-[#211F26]'>Latest from <span className='text-[#17CC29]'>Nutraspices</span></h2>
-          <Image src={more} alt="logo" className="cursor-pointer" />
+          <h2 className='font-[700] text-[35px] md:text-[57px] text-[#211F26] font-BwGradual-Black'>Latest from <span className='text-[#17CC29]'>Nutraspices</span></h2>
+          <Image src={more} alt="logo" className="hidden md:block cursor-pointer" />
         </div>
         <div className='mt-[60px] w-[90vw] flex flex-row flex-wrap gap-5'>
           <BlogCard />
