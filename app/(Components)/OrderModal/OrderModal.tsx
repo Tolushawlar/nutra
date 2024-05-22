@@ -78,7 +78,6 @@ const OrderModal = ({ setOpenModal, scheduleOrder }: any) => {
                 className="select border-[#A9C1A9] text-xl h-[20px] p-2 py-0 w-full "
               >
                 {daysToMap.map((day, i) => {
-                  console.log(day);
                   const nDay = day.includes("-")
                     ? day.split("-")[0] + " (Next Week)"
                     : day;

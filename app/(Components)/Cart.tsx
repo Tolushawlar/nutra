@@ -34,17 +34,18 @@ export default function Cart({ setOpenCart, openCart }: any) {
   };
 
   const processCart = async (data: any) => {
+    let ref = Date.now();
     const schedule = cart.order.filter(
       (order: any) => order.type == "schedule"
     );
     const instant = cart.order.filter((order: any) => order.type != "schedule");
+    const res = [];
 
     if (schedule.length > 0) {
-      console.log(schedule);
       try {
         const response = await axios.post(
           "/api/scheduleorders",
-          { ...schedule, delivery: data },
+          { ...schedule, delivery: data, ref },
           {
             headers: {
               "Content-Type": "application/json",
@@ -52,26 +53,31 @@ export default function Cart({ setOpenCart, openCart }: any) {
           }
         );
 
-        console.log(await response.data);
-
-        // console.log(response.data);
-
-        return;
         if (response.status === 200) {
-          const res: any = await processPayments(
-            await response.data,
-            location.origin
-          );
-          console.log(res);
-          window.open(res.data.authorization_url, "_blank");
-          if (res.status === 200) {
-            // setCart({ total: 0 });
-            alert("Food data submitted successfully");
-          } else {
-            console.error("Failed to submit food data:", res.statusText);
+          res.push(...(await response.data));
+        } else {
+          console.error("Failed to submit food data:", response.statusText);
+        }
+      } catch (error: any) {
+        console.error("Error submitting food data:", error.message);
+      }
+    }
+    console.log(res);
+
+    if (instant.length > 0) {
+      try {
+        const response = await axios.post(
+          "/api/instantorder",
+          { ...instant, delivery: data, ref },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
           }
-          // setCart({ total: 0 });
-          // alert("Food data submitted successfully");
+        );
+
+        if (response.status === 200) {
+          res.push(...(await response.data));
         } else {
           console.error("Failed to submit food data:", response.statusText);
         }
@@ -80,40 +86,24 @@ export default function Cart({ setOpenCart, openCart }: any) {
       }
     }
 
-    // if (instant.length > 0) {
-    //   try {
-    //     const response = await axios.post(
-    //       "/api/instantorder",
-    //       { ...instant, delivery: data },
-    //       {
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //         },
-    //       }
-    //     );
+    if (res.length < 1) {
+      alert("Failed to submit food data");
+      console.error("Failed to submit food data");
+      return;
+    }
+    console.log(res);
 
-    //     console.log(await response.data);
-    //     if (response.status === 200) {
-    //       const res: any = await processPayments(
-    //         await response.data,
-    //         location.origin
-    //       );
-    //       console.log(res);
-    //       window.open(res.data.authorization_url, "_blank");
-    //       if (res.status === 200) {
-    //         // setCart({ total: 0 });
-    //         alert("Food data submitted successfully");
-    //       } else {
-    //         console.error("Failed to submit food data:", res.statusText);
-    //       }
-    //       // setCart({ total: 0 });
-    //       // alert("Food data submitted successfully");
-    //     } else {
-    //       console.error("Failed to submit food data:", response.statusText);
-    //     }
-    //   } catch (error: any) {
-    //     console.error("Error submitting food data:", error.message);
-    //   }
+    const paymentRes: any = await processPayments(
+      res,
+      location.origin,
+      addPrices(cart.order).toString() + "00"
+    );
+    console.log(paymentRes);
+    window.open(paymentRes.data.authorization_url, "_blank");
+    // if (paymentRes.status === 200) {
+    //   alert("Food data submitted successfully");
+    // } else {
+    //   console.error("Failed to submit food data:", paymentRes.statusText);
     // }
   };
 

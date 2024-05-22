@@ -11,8 +11,9 @@ export const POST = async (req: NextRequest) => {
     const newOrders = await Promise.all(
       Object.entries(data).map(async (dd: any) => {
         if (dd[0] == "delivery") return;
+        if (dd[0] == "ref") return;
         let d = dd[1];
-
+        console.log(d);
         const newOrder = await ScheduleOrder.create({
           foodId: d._id,
           foodName: d.foodName,
@@ -24,12 +25,12 @@ export const POST = async (req: NextRequest) => {
           price: d.price,
           plates: d.plates ?? 1,
           status: "pending payment",
-          reference: "null",
+          reference: data.ref,
         });
         return newOrder;
       })
     );
-    return NextResponse.json(newOrders);
+    return NextResponse.json(newOrders.filter((order) => order != null));
   } catch (error: any) {
     throw new Error(error.message);
   }

@@ -70,7 +70,7 @@ const Menu = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get("/api/food");
-      console.log(response.data);
+      // console.log(response.data);
       if (response.status === 200) {
         // If the request is successful, set the foodData state
         setFoodData(response.data);

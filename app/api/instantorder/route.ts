@@ -20,29 +20,30 @@ function generateRef(length: number) {
 
 export const POST = async (req: NextRequest) => {
   const data = await req.json();
-  console.log(data);
+
   try {
     const newOrders = await Promise.all(
       Object.entries(data).map(async (dd: any) => {
         if (dd[0] == "delivery") return;
+        if (dd[0] == "ref") return;
         let d = dd[1];
 
         const newOrder = await InstantOrder.create({
           foodId: d._id,
           foodName: d.foodName,
           image: d.image,
-          name: data.name,
-          phone: data.phone,
-          address: data.address,
+          name: data.delivery.name,
+          phone: data.delivery.phone,
+          address: data.delivery.address,
           price: d.price,
           plates: d.plates ?? 1,
           status: "pending payment",
-          reference: "null",
+          reference: data.ref,
         });
         return newOrder;
       })
     );
-    return NextResponse.json(newOrders);
+    return NextResponse.json(newOrders.filter((order) => order != null));
   } catch (error: any) {
     throw new Error(error.message);
   }

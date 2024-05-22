@@ -15,6 +15,7 @@ import arrowDown from "../Assets/homepage/Drop_Down_Icon.svg";
 import location from "../Assets/Home/Location.svg";
 import droplet from "../Assets/homepage/Droplet.svg";
 import Image from "next/image";
+import OrderReceipt from "./OrderModal/OrderReceipt";
 
 const Header = () => {
   const { cart }: any = useAppContext();
@@ -22,17 +23,26 @@ const Header = () => {
 
   const [openCart, setOpenCart] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
+  const [showReceipt, setShowReceipt] = useState(false);
+  const [receipt, setReceipt]: any = useState();
 
   useEffect(() => {
+    setShowReceipt(false);
     let params = new URLSearchParams(window.location.search);
     if (!params.get("reference")) return;
     axios
       .get("/api/process?reference=" + params.get("reference"))
       .then((res) => {
-        if (res.data.status == "paid") alert("Ordered succesfully");
+        console.log(res.data);
+
+        if (res.data.data.length > 0) {
+          setReceipt({ data: res.data.data, checkRes: res.data.checkRes });
+          setShowReceipt(true);
+        }
       });
   }, []);
 
+  console.log(receipt);
   // useEffect(() => {
   //   // Get the current URL
   //   const currentURL = window.location.href;
@@ -210,6 +220,10 @@ const Header = () => {
           </div>
         )}
       </div>
+
+      {showReceipt && (
+        <OrderReceipt setShowReceipt={setShowReceipt} receipt={receipt} />
+      )}
     </div>
   );
 };

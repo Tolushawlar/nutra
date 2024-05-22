@@ -41,6 +41,10 @@ const scheduleOrderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    reference: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );

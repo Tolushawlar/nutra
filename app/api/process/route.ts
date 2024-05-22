@@ -1,4 +1,5 @@
 import { InstantOrder } from "@/app/models/instantOrderSchema";
+import { ScheduleOrder } from "@/app/models/scheduleOrderSchema";
 import { NextRequest, NextResponse } from "next/server";
 
 let myHeaders = new Headers();
@@ -6,6 +7,19 @@ myHeaders.append("Authorization", `Bearer ${process.env.PAYSTACK_SECRET_KEY}`);
 
 myHeaders.append("Cache-Control", "no-cache");
 myHeaders.append("Content-Type", "application/json");
+
+function generateRef(length: number) {
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
 
 export const POST = async (req: NextRequest) => {
   const data = await req.json();
@@ -15,10 +29,10 @@ export const POST = async (req: NextRequest) => {
   const url = "https://api.paystack.co/transaction/initialize";
   const fields = {
     email: "mark.ajekevwoda@gmail.com",
-    amount: data["0"].price,
+    amount: data.price,
     callback_url: data.url,
     metadata: { cancel_action: "http://localhost:3000/api/process" },
-    reference: data["0"]._id,
+    reference: data[0].reference,
   };
 
   let requestOptions: RequestInit = {
@@ -36,7 +50,6 @@ export const POST = async (req: NextRequest) => {
 
 export const GET = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
-  const trxref = searchParams.get("trxref");
   const reference = searchParams.get("reference");
 
   const url = "https://api.paystack.co/transaction/verify/" + reference;
@@ -49,19 +62,31 @@ export const GET = async (req: NextRequest) => {
 
   const res = await fetch(url, requestOptions);
   const checkRes = await res.json();
-  console.log(checkRes);
 
   if (
     checkRes.data.reference == reference &&
     checkRes.data.status == "success"
   ) {
-    const d = await InstantOrder.findOneAndUpdate(
-      { _id: reference },
+    await InstantOrder.updateMany(
+      { reference: reference },
       { $set: { status: "paid", reference } },
       { new: true }
     );
 
-    return NextResponse.json(d);
+    await ScheduleOrder.updateMany(
+      { reference: reference },
+      { $set: { status: "paid", reference } },
+      { new: true }
+    );
+
+    const instantOrders = await InstantOrder.find({ reference: reference });
+    const scheduleOrders = await ScheduleOrder.find({ reference: reference });
+
+    console.log(instantOrders);
+    return NextResponse.json({
+      data: [...scheduleOrders, ...instantOrders],
+      checkRes,
+    });
   }
   return NextResponse.error();
 };

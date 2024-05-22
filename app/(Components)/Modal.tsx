@@ -6,7 +6,7 @@ const MyModal = ({ closeModal, isOpen, data }: any) => {
   return (
     <>
       {isOpen && (
-        <div className="w-full top-0 left-0 absolute h-full bg-[rgba(0,0,0,0.6)]">
+        <div className="w-full top-0 left-0 absolute h-full   bg-[rgba(0,0,0,0.6)]">
           <dialog id="my_modal_2" className="modal" open>
             <div className="modal-box">
               <h3 className="font-bold text-lg">Customer name: {data.name}</h3>
