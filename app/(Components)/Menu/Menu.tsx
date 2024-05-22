@@ -5,14 +5,14 @@ import OrderModal from "../OrderModal/OrderModal";
 import axios from "axios";
 import SearchForm from "../SearchForm";
 import Image from "next/image";
-import arrow from "../../Assets/homepage/Arrow_Icon.svg"
-
+import arrow from "../../Assets/homepage/Arrow_Icon.svg";
 
 const Menu = () => {
   const [openModal, setOpenModal] = useState(false);
   const [scheduledata, setScheduleData] = useState();
   const [addedToCart, setAddedToCart] = useState(false);
   const [curPage, setCurPage] = useState(1);
+  const [active, setActive] = useState("All");
   const [foodData, setFoodData] = useState<any[]>([]);
 
   const categories = [
@@ -39,17 +39,17 @@ const Menu = () => {
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
-  const scroll = (direction: 'left' | 'right') => {
+  const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      if (direction === 'left') {
+      if (direction === "left") {
         scrollRef.current.scrollBy({
           left: -200,
-          behavior: 'smooth',
+          behavior: "smooth",
         });
       } else {
         scrollRef.current.scrollBy({
           left: 200,
-          behavior: 'smooth',
+          behavior: "smooth",
         });
       }
     }
@@ -70,7 +70,7 @@ const Menu = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get("/api/food");
-      console.log(response.data);
+      // console.log(response.data);
       if (response.status === 200) {
         // If the request is successful, set the foodData state
         setFoodData(response.data);
@@ -89,7 +89,8 @@ const Menu = () => {
       )}
       <div className="text-center flex flex-col items-center justify-center">
         <h2 className="h2 font-bold font-BwGradual-Black text-[#211F26] text-[30px] md:text-[57px] text-left md:text-center">
-          Everything you need to <span className="text-[#17CC29]">Stay Healthy</span>
+          Everything you need to{" "}
+          <span className="text-[#17CC29]">Stay Healthy</span>
         </h2>
         <SearchForm />
       </div>
@@ -113,6 +114,7 @@ const Menu = () => {
                 // className="bg-bg-sec p-2 text-nowrap rounded-lg text-text-color"
                 className="font-BwGradual-Bold font-[500] bg-[##A9C1A9] cursor-pointer p-2 text-nowrap rounded-lg px-[32px] py-[12px] border-[1px] border-[#003D28] text-[#003D28]"
                 key={i + "categories_index"}
+                onClick={() => setActive(cat)}
               >
                 {cat}
               </p>
@@ -162,10 +164,14 @@ const Menu = () => {
         <div className="relative my-6 w-[80vw] md:w-[95vw] flex flex-row items-center justify-center">
           <button
             className="absolute left-[-20px] md:left-0 z-10 rounded-[200px] bg-[#FFFFFF] font-[900] text-[30px] text-center flex flex-row items-center justify-center text-[#A9C1A9] h-[50px] md:h-[60px] w-[50px] md:w-[60px] border-[1px] border-[#A9C1A9] shadow-md "
-            onClick={() => scroll('left')}
+            onClick={() => scroll("left")}
           >
             {/* &lt; */}
-            <Image className='transform rotate-180 flex flex-row justify-center item-center' alt="arrow" src={arrow} />
+            <Image
+              className="transform rotate-180 flex flex-row justify-center item-center"
+              alt="arrow"
+              src={arrow}
+            />
           </button>
           <div
             ref={scrollRef}
@@ -193,13 +199,16 @@ const Menu = () => {
           </div>
           <button
             className="absolute right-[-20px] md:right-0 z-10 rounded-[200px] bg-[#FFFFFF] font-[900] text-[30px] text-center flex flex-row items-center justify-center text-[#A9C1A9] h-[50px] md:h-[60px] w-[50px] md:w-[60px] border-[1px] border-[#A9C1A9] shadow-md "
-            onClick={() => scroll('right')}
+            onClick={() => scroll("right")}
           >
             {/* &gt; */}
-            <Image className='flex flex-row justify-center item-center' alt="arrow" src={arrow} />
+            <Image
+              className="flex flex-row justify-center item-center"
+              alt="arrow"
+              src={arrow}
+            />
           </button>
         </div>
-
 
         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-row gap-5 md:gap-10">
           {foodData &&
@@ -215,14 +224,16 @@ const Menu = () => {
             ))}
         </div>
 
-        <div className="join my-6 ml-auto">
+        <div className="join border border-[#003D28] my-6 ml-auto">
           {curPage > 3 && (
             <div className="join">
               <div>
                 <button
                   onClick={() => setCurPage(1)}
                   style={{
-                    background: `${curPage == 1 ? "rgb(21 128 61)" : ""}`,
+                    // background: `${curPage == 1 ? "rgb(21 128 61)" : ""}`,
+                    background: `${curPage == 1 ? "#003D28" : ""}`,
+                    color: `${curPage == 1 ? "#BCF800" : ""}`,
                   }}
                   className="join-item btn btn-sm"
                 >
@@ -256,7 +267,9 @@ const Menu = () => {
                     onClick={() => setCurPage(i + 1)}
                     key={i + "pagination-menu"}
                     style={{
-                      background: `${curPage == 1 + i ? "rgb(21 128 61)" : ""}`,
+                      background: `${curPage == i + 1 ? "#003D28" : ""}`,
+                      color: `${curPage == i + 1 ? "#BCF800" : ""}`,
+                      // background: `${curPage == 1 + i ? "rgb(21 128 61)" : ""}`,
                     }}
                     className="join-item btn btn-sm"
                   >
@@ -285,7 +298,8 @@ const Menu = () => {
                 <button
                   onClick={() => setCurPage(15)}
                   style={{
-                    background: `${curPage == 15 ? "rgb(21 128 61)" : ""}`,
+                    background: `${curPage == 15 ? "#003D28" : ""}`,
+                    color: `${curPage == 15 ? "#BCF800" : ""}`,
                   }}
                   className="join-item btn btn-sm"
                 >
@@ -295,7 +309,6 @@ const Menu = () => {
             </div>
           )}
         </div>
-
       </div>
       {addedToCart && (
         <div className=" fixed bottom-[50px] z-[99999999999] translate-x-[-50%] left-[50%]">

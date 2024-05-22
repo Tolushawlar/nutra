@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import Link from "next/link";
 import Cart from "./Cart";
-
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Services } from "./Services";
@@ -16,6 +15,7 @@ import arrowDown from "../Assets/homepage/Drop_Down_Icon.svg";
 import location from "../Assets/Home/Location.svg";
 import droplet from "../Assets/homepage/Droplet.svg";
 import Image from "next/image";
+import OrderReceipt from "./OrderModal/OrderReceipt";
 
 const Header = () => {
   const { cart }: any = useAppContext();
@@ -23,14 +23,22 @@ const Header = () => {
 
   const [openCart, setOpenCart] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
+  const [showReceipt, setShowReceipt] = useState(false);
+  const [receipt, setReceipt]: any = useState();
 
   useEffect(() => {
+    setShowReceipt(false);
     let params = new URLSearchParams(window.location.search);
     if (!params.get("reference")) return;
     axios
       .get("/api/process?reference=" + params.get("reference"))
       .then((res) => {
-        if (res.data.status == "paid") alert("Ordered succesfully");
+        console.log(res.data);
+
+        if (res.data.data.length > 0) {
+          setReceipt({ data: res.data.data, checkRes: res.data.checkRes });
+          setShowReceipt(true);
+        }
       });
   }, []);
 
@@ -54,7 +62,6 @@ const Header = () => {
   return (
     <div>
       <div className="navbar fixed h-[70px] z-[99999999999999999999999999999] p-[20px] md:p-[50px] bg-white jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color">
-
         <div className="flex">
           <Link href="/">
             {/* <img src={logo} alt="logo" className="" /> */}
@@ -98,7 +105,8 @@ const Header = () => {
               </Link>
             </li> */}
             <li>
-              <Link href="/blog" className="font-BwGradual-Bold">What's New
+              <Link href="/blog" className="font-BwGradual-Bold">
+                What's New
                 {lastItem === "blog" && (
                   <Image
                     alt="arrow"
@@ -109,32 +117,15 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link href="/" className="font-BwGradual-Bold">Contact Us</Link>
+              <Link href="/" className="font-BwGradual-Bold">
+                Contact Us
+              </Link>
             </li>
           </ul>
         </div>
 
         <div>
-
-          <div className="flex ml-[100px] md:ml-[0px] pl-0 md:pl-10 border-l-2 h-[50px] md:h-[100px] flex-col items-center justify-center">
-            <div className="dropdown dropdown-end">
-              <div
-                role="button"
-                className="btn btn-ghost btn-circle mr-[0px] md:mr-[40px] "
-              >
-                <div className="indicator  ">
-                  <Image
-                    src={search}
-                    alt="cartImage"
-                    className="w-[20px] md:w-[28px] h-[20px] md:h-[28px]"
-                  />
-                </div>
-              </div>
-            </div>
-            {/* {openCart && <Cart openCart={openCart} setOpenCart={setOpenCart} />} */}
-          </div>
-
-          <div className="flex pl-0 md:pl-10 border-l-2 h-[50px] md:h-[100px] flex-col items-center justify-center">
+          <div className="flex-none">
             <div className="dropdown dropdown-end">
               <div
                 onClick={() => setOpenCart(true)}
@@ -198,7 +189,6 @@ const Header = () => {
             <FaLocationDot className="w-10 h-10" color="black" />
             <p className="text-[24px] font-[700] text-[#BCF800] font font-Roboto-Light">Akure</p> */}
           </div>
-
         </div>
 
         {showMobile && (
@@ -228,8 +218,11 @@ const Header = () => {
             </ul>
           </div>
         )}
-
       </div>
+
+      {showReceipt && (
+        <OrderReceipt setShowReceipt={setShowReceipt} receipt={receipt} />
+      )}
     </div>
   );
 };

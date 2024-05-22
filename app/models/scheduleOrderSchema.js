@@ -20,7 +20,6 @@ const scheduleOrderSchema = new mongoose.Schema(
     },
     address: {
       type: String,
-      required: true,
     },
     price: {
       type: Number,
@@ -34,7 +33,15 @@ const scheduleOrderSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    dayTime: {
+      type: String,
+      required: true,
+    },
     status: {
+      type: String,
+      required: true,
+    },
+    reference: {
       type: String,
       required: true,
     },
