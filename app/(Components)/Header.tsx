@@ -42,7 +42,6 @@ const Header = () => {
       });
   }, []);
 
-  console.log(receipt);
   // useEffect(() => {
   //   // Get the current URL
   //   const currentURL = window.location.href;

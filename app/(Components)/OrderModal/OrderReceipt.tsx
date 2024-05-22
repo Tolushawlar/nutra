@@ -7,17 +7,15 @@ const OrderReceipt = ({ setShowReceipt, receipt }: any) => {
   const receptForm: any = useRef();
   const [link, setlink]: any = useState();
 
-  const Download = (e: any) => {
-    console.log(receptForm.current);
-  };
-  toJpeg(receptForm.current).then(function (dataUrl) {
-    setlink(dataUrl);
-  });
+  receptForm &&
+    toJpeg(receptForm.current).then(function (dataUrl) {
+      setlink(dataUrl);
+    });
 
   return (
     <div className="fixed w-full h-full flex z-[9999920000] items-center justify-center  top-0 left-0 bg-[rgba(0,0,0,0.8)]">
       <div className="w-[50%] bg-white flex flex-col max-h-[85vh] rounded-md p-6 my-2">
-        <div className=" items-center w-full mb-4">
+        <div className=" items-center w-full">
           <div className="flex justify-end">
             <button
               onClick={() => setShowReceipt(false)}
@@ -39,17 +37,16 @@ const OrderReceipt = ({ setShowReceipt, receipt }: any) => {
               </svg>
             </button>
           </div>
+        </div>
 
+        <div ref={receptForm} className="bg-white p-4 text-black">
           <p className="font-bold text-center text-xl text-[#17CC29] mt-2 flex-1">
             Payment Succesful
           </p>
           <p className="font-bold text-center text-md mt-2 flex-1">
             Stay calm, your food is on its way
           </p>
-        </div>
-
-        <div ref={receptForm} className="mt-2 ">
-          <div className="p-2 flex flex-col space-y-2 h-[40vh] overflow-auto">
+          <div className="p-2 mt-2 flex flex-col space-y-2 h-[40vh] overflow-auto">
             {receipt.data.map((info: any, i: number) => {
               return (
                 <div key={i} className="p-2 pr-4">
