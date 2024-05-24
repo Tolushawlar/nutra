@@ -192,7 +192,7 @@ const Menu = () => {
                     paddingLeft: `${cat === "All" ? "13px" : ""}`,
                     color: `${cat === "All" ? "#BCF800" : ""}`,
                   }}
-                  className="font-BwGradual-Bold font-[500] bg-[##F1F7F0] cursor-pointer p-2 text-nowrap rounded-lg px-[32px] py-[12px] border-[1px] border-[#003D28] text-[#003D28]"
+                  className="font-BwGradual-Regular font-[700] bg-[#F1F7F0] cursor-pointer p-2 text-nowrap rounded-lg px-[32px] py-[12px] border-[0.8px] border-[#A9C1A9] text-[#003D28]"
                   key={i + "categories_index"}
                 >
                   {cat}

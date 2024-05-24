@@ -46,15 +46,17 @@ export default function Home() {
     <div className="w-full relative overflow-x-hidden">
       <Hero />
 
-      <Element name="foodMenus" className="relative bg-[#F5F4E4">
-        <Menu />
-      </Element>
+      <div className="z-0">
+        <Element name="foodMenus" className="relative bg-[#F5F4E4">
+          <Menu />
+        </Element>
 
-      <Bespoke />
-      <Reviews />
-      {/* <Testimonials /> */}
-      <FeaturedBlog />
-      <Faq faqTopic={topic} faqData={faqInput} />
+        <Bespoke />
+        <Reviews />
+        {/* <Testimonials /> */}
+        <FeaturedBlog />
+        <Faq faqTopic={topic} faqData={faqInput} />
+      </div>
     </div>
   );
 }
