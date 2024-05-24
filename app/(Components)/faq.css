@@ -26,11 +26,15 @@ summary {
 }
 
 details[open]>summary::marker {
-    content: url(../Assets/Home/Microinteraction_Dropdown_Arrow_Down.png)
+    content: url(../Assets/faq/expand.png);
+    width: 10px;
+    height: 10px;
 }
 
 details>summary::marker {
-    content: url(../Assets/Home/Microinteraction_Dropdown_Arrow.png)
+    content: url(../Assets/faq/reduc.png);
+    width: 10px;
+    height: 10px;
 }
 
 /* details>summary::after {

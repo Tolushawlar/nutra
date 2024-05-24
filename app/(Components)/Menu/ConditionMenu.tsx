@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import FoodCards from "./FoodCards";
 import OrderModal from "../OrderModal/OrderModal";
 import axios from "axios";
+import { Element } from "react-scroll";
 
 const ConditionMenu = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -82,7 +83,7 @@ const ConditionMenu = () => {
 
 
     return (
-        <div id="menu" className="relative p-10">
+        <Element name="meals" className="relative p-10">
             {openModal && (
                 <OrderModal scheduleOrder={scheduledata} setOpenModal={setOpenModal} />
             )}
@@ -209,7 +210,7 @@ const ConditionMenu = () => {
                     </div>
                 </div>
             )}
-        </div>
+        </Element>
     );
 };
 

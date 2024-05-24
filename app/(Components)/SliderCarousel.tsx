@@ -7,48 +7,85 @@ import Text1 from '../assets/blog/IMG(2).png';  // Update with actual image path
 import Text2 from '../assets/consultation.jpg';  // Update with actual image paths
 import Text3 from '../assets/jrice w fish.jpg';  // Update with actual image paths
 import Image from 'next/image';
-import arrow from "../Assets/homepage/Arrow_Icon.svg"
+// import arrow from "../Assets/homepage/Arrow_Icon.svg"
+import arrow from "../Assets/smaaAr.svg"
+import { Link } from 'react-scroll';
 
 const SliderCarousel = () => {
     const settings = {
-        dots: true,
+        // dots: true,
+        fade: true,
         infinite: true,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 2,
+        speed: 3000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 5000,
-        // fade: true,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
+        autoplaySpeed: 8000,
+        pauseOnHover: false,
+        pauseOnFocus: false,
+        focusOnSelect: false,
+        arrows: false
+        // // fade: true,
+        // nextArrow: <SampleNextArrow />,
+        // prevArrow: <SamplePrevArrow />,
+    };
+
+    const settings2 = {
+        // dots: true,
+        fade: true,
+        infinite: true,
+        speed: 3000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 8000,
+        pauseOnHover: false,
+        pauseOnFocus: false,
+        focusOnSelect: false,
+        arrows: false
+        // // fade: true,
+        // nextArrow: <SampleNextArrow />,
+        // prevArrow: <SamplePrevArrow />,
     };
 
     return (
-        <div className=" mx-auto mt-[100px]">
-            <Slider{...settings}>
-                <div className="px-10 py-[60px] gap-10 flex flex-col items-center justify-center bg-[#003D28] w-[80vw] h-[800px]">
-                    <h2 className="font-[700] text-[90px] text-white font-BwGradual-Bold">You've got enough to worry about.</h2>
-                    <p className="text-[45px] font-[400] text-white font-BwGradual-Light my-10">What you eat should not be on that list.</p>
-                    <div className="cursor-pointer flex flex-row items-center justify-center gap-3 bg-[#BCF800] rounded-[16px] w-[400px] h-[100px]">
-                        <div className="text-[#003D28] font-[500] text-left font-Roboto-Light text-[18px] md:text-[20px]">GET STARTED</div>
-                        <Image src={arrow} alt="logo" className=" " />
+        <div className=" mx-auto flex flex-row items-center w-[100vw] mt-[80px]">
+
+            <div className='w-[60vw] h-[700px]'>
+                <Slider{...settings2}>
+                    <div className="px-[90px] pt-[160px] gap-10 flex flex-col  bg-[#003D28] w-[80vw] h-[700px]"> 
+                        <h2 className="font-[700] leading-[80px] text-[32px] md:text-[68px] text-white font-BwGradual-Bold">You've got enough to worry about.</h2>
+                        <p className="text-[24px] md:text-[30px] font-[400] text-[#D8E5D6] font-BwGradual-Regular my-10">What you eat should not be on that list.</p>
+                        <Link to="foodMenus" smooth={true} duration={800} className="cursor-pointer flex flex-row items-center justify-center gap-3 bg-[#BCF800] rounded-[16px] w-[350px] h-[90px] mt-[80px]">
+                            <div className="text-[#003D28] font-[800] text-left font-BwGradual-Black text-[14px] md:text-[18px]">GET STARTED</div>
+                            <Image src={arrow} alt="logo" className=" w-[15px] h-[15px]" />
+                        </Link>
                     </div>
-                </div>
-                <div className="w-[40vw] h-[800px]">
-                    <Image src={Text1} alt="logo" className="w-screen h-full " />
-                </div>
-                <div className="px-10 py-[60px] gap-10 flex flex-col items-center justify-center bg-[#003D28] w-[80vw] h-[800px]">
-                    <h2 className="font-[700] text-[90px] text-white font-BwGradual-Bold">We will be live at BCP as the offical food partners.</h2>
-                    {/* <p className="text-[45px] font-[400] text-white font-BwGradual-Light my-10">What you eat should not be on that list.</p> */}
-                    <div className="cursor-pointer flex flex-row items-center justify-center gap-3 my-10 bg-[#BCF800] rounded-[16px] w-[400px] h-[100px]">
-                        <div className="text-[#003D28] font-[500] text-left font-Roboto-Light text-[18px] md:text-[20px]">TELL ME MORE</div>
-                        <Image src={arrow} alt="logo" className=" " />
+
+                    <div className="px-[90px] pt-[160px] gap-10 flex flex-col bg-[#003D28] w-[80vw] h-[700px]">
+                        <h2 className="font-[700] leading-[80px] text-[32px] md:text-[68px] text-white font-BwGradual-Bold">We will be live at BCP as the offical food partners.</h2>
+                        {/* <p className="text-[45px] font-[400] text-white font-BwGradual-Light my-10">What you eat should not be on that list.</p> */}
+                        <div className="cursor-pointer flex flex-row items-center justify-center gap-3 my-10 bg-[#BCF800] rounded-[16px] w-[350px] h-[90px] mt-[80px]">
+                            <div className="text-[#003D28] font-[800] text-left font-BwGradual-Black text-[14px] md:text-[18px]">TELL ME MORE</div>
+                            <Image src={arrow} alt="logo" className=" w-[15px] h-[15px]" />
+                        </div>
                     </div>
-                </div>
-                <div className=" w-[40vw] h-[800px]">
-                    <Image src={Text2} alt="logo" className="w-screen h-full " />
-                </div>
-            </Slider>
+                </Slider>
+            </div>
+
+            <div className="w-[40vw] h-[700px]">
+                <Slider{...settings}>
+
+                    <div className="w-[40vw] h-[700px]">
+                        <Image src={Text1} alt="logo" className="w-screen h-full " />
+                    </div>
+
+                    <div className=" w-[40vw] h-[700px]">
+                        <Image src={Text2} alt="logo" className="w-screen h-full " />
+                    </div>
+                </Slider>
+            </div>
+
         </div>
     );
 };

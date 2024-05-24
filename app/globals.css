@@ -21,6 +21,10 @@ body {
   background: #f5f4e4;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

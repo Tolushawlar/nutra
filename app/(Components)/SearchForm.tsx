@@ -36,7 +36,7 @@ function SearchForm() {
     };
 
     return (
-        <div className='hidden relative my-10 w-[60vw] h-[80px] py-[40px] px-4 bg-white md:flex shadow-md flex-row items-center justify-between rounded-[24px] border-[1px] border-[#a9c1a9]'>
+        <div className='hover:shadow-lg hidden relative my-10 w-[60vw] h-[80px] py-[40px] px-4 bg-white md:flex shadow-md flex-row items-center justify-between rounded-[24px] border-[1px] border-[#a9c1a9]'>
             <div className='flex flex-row justify-center items-center'>
                 <Image
                     src={search}

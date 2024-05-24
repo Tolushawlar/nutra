@@ -7,7 +7,48 @@ import { Zoom } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { Bespoke } from "../(Components)/Bespoke";
 import Faq from "../(Components)/Faq";
-import Image from "next/image";
+import Text1 from '../assets/dietary/deit.png';  // Update with actual image paths
+import Text2 from '../assets/consultation.jpg';  // Update with actual image paths
+import Text3 from '../assets/jrice w fish.jpg';  // Update with actual image paths
+import Image from 'next/image';
+import arrow from "../Assets/dietary/Arrow_Icon.svg"
+import { Element } from "react-scroll";
+
+const topic = "Frequently Asked Questions?"
+const faqInput = [
+  {
+    question: "How do I place an order?",
+    answer: "Simply visit our website, browse the menu, choose your meals, select your delivery date and time, and complete the checkout process."
+  },
+  {
+    question: "What are your delivery areas?",
+    answer: "Currently, we deliver within Akure metropolis. Please check our website for the most up-to-date information."
+  },
+  {
+    question: "What are the delivery fees?",
+    answer: "Delivery fees are based on your location and order total. You will see the exact delivery fee during checkout while placing your order."
+  },
+  {
+    question: "Can I schedule my deliveries?",
+    answer: "Absolutely! We offer flexible delivery scheduling options. Choose the day and time that best suits your needs during checkout."
+  },
+  {
+    question: "What kind of meals do you offer?",
+    answer: "We offer a wide variety of delicious and nutritious meals, featuring global cuisine inspirations. Our menu includes options for vegetarians, vegans, those with gluten-free needs, and more."
+  },
+  {
+    question: "Can I customize my meals?",
+    answer: "Yes! We understand everyone has different dietary preferences. You can customize most meals by selecting from the multiple dietary options we present."
+  },
+  {
+    question: "Do you offer meals for specific dietary needs?",
+    answer: "We offer a variety of meals suitable for vegetarians, vegans, and those with gluten-free needs. We also have options that are low-carb, dairy-free, and nut-free. Please refer to the dietary symbols next to each meal on our menu for details."
+  },
+  {
+    question: "Can I see the nutritional information for your meals?",
+    answer: "Absolutely! The nutritional information for each meal, including calories, macronutrients, and allergens, is clearly displayed on our website menu."
+  }
+]
 
 function HealthPage() {
   const categories: any = [
@@ -16,150 +57,60 @@ function HealthPage() {
     ["Weight Loss", yam],
   ];
   return (
-    <div className="flex flex-col w-full m-0 items-center">
-      <div className="w-screen ">
+    <div>
+      <div className="flex flex-col w-full m-0 items-center overflow-x-hidden">
+        <div className="flex flex-row items-center justify-center  bg-[#003D28] w-[100vw] h-[600px] md:h-[800px]">
+          <div className="px-5 md:px-[90px] py-[60px] gap-10 flex flex-col items-start justify-center ">
+            <h2 className="font-[700] text-[32px] md:text-[68px] text-white font-BwGradual-Regular">Tasty homemade Dietary Meals you can enjoy.</h2>
+            <p className="text-[24px] md:text-[30px] font-[400] text-[#F1F7F0] font-BwGradual-Regular my-10">Access to registered dietitians that will help you achieve sustainable results.</p>
+            {/* <div className="cursor-pointer flex flex-row items-center justify-center gap-3 bg-[#BCF800] rounded-[16px] w-[400px] h-[100px]">
+            <div className="text-[#003D28] font-[500] text-left font-Roboto-Light text-[18px] md:text-[20px]">GET STARTED</div>
+            <Image src={arrow} alt="logo" className=" " />
+          </div> */}
+          </div>
+          <div className="px-[90px]">
+            <Image src={Text1} alt="logo" className="hidden md:block w-[1200px] h-[600px] " />
+          </div>
+        </div>
         <div
-          style={{
-            backgroundImage: `url(${bgImage.src})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          className=" w-full p-7 text-text-color  "
+          className=" flex flex-col justify-center items-center p-10 relative top-[70px]"
+          id="ourCategories"
         >
-          <div className=" flex flex-col justify-center items-center md:items-start md:flex-row w-full  py-[50px]">
-            <div className="w-1/2 flex flex-col justify-center md:items-center items-center z-10 relative">
-              {/* <h1 className="text-2xl font-bold">
-                tasty diabetes-friendly meals you can enjoy.
-              </h1> */}
-              <p className="text-[96px] text-[#003d28] font-Roboto-Regular w-[80vw] md:text-center text-center font-[700] py-6">
-              Tasty homemade Dietary Meals you can enjoy.
-              </p>
-              <p className="text-[45px] font-Roboto-Black text-[#003d28] md:text-center text-center font-[400] py-6">
-              Access to registered dietitians that will help you achieve sustainable results.
-              </p>
+          <p className="text-[28px] md:text-[36px] font-[700] font-BwGradual-Regular text-center text-[#211F26] mb-[60px]">
+            Our <span className="text-[#17CC29]">Dietary Meal</span> Plans
+          </p>
+          <div className="w-full">
+            {categories.map((cat: any, i: number) => {
+              // Determine background color based on index
+              const backgroundColor = i % 2 === 0 ? '#A9C1A9' : '#EFDFC3';
 
-              {/* <Link href="#ourCategories">
-                <button className="btn border-none bg-bg-sec text-text-color">
-                  See our categories
-                </button>
-              </Link> */}
-            </div>
-
-            {/* <div className="w-1/2 flex flex-col items-end">
-              <Zoom
-                arrows={false}
-                onChange={function noRefCheck() { }}
-                onStartChange={function noRefCheck() { }}
-                scale={1.4}
-                duration={4500}
-                pauseOnHover={false}
-                cssClass=" w-[350px] rounded-lg  overflow-hidden"
-              >
-                {categories.map((cat: any, i: number) => {
-                  return (
-                    <div
-                      key={i + "carousel"}
-                      className="carousel-item w-full h-full relative"
-                    >
-                      <img
-                        src={cat[1].src}
-                        className="w-full "
-                        alt="Tailwind CSS Carousel component"
-                      />
-                      <div className="absolute bottom-0 bg-slate-500 w-full p-2 left-0">
-                        <p>{cat[0]} Friendly Meals</p>
-                        <div className="card-actions justify-end">
-                          <Link href={"/dietary/" + cat[0]}>
-                            <button className="btn btn-sm">Order Now</button>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </Zoom>
-              <p className="text-lg text-left my-2 flex">
-                Need a special consulation?
-                <span>
-                  <Link href={"/dietary/consultation"}>
-                    <span className="text-bg-sec ml-2"> Book Now</span>
-                  </Link>
-                </span>
-              </p>
-            </div> */}
+              return (
+                <div key={i + "carousel"} style={{ backgroundColor }}>
+                  <MealPlans
+                    imageSrc={cat[1].src}
+                    mainText={cat[0] + " Friendly Meals"}
+                    subText="SLiving with diabetes requires careful attention to dietary choices to maintain blood sugar levels within a healthy range. A well-balanced diet can contribute significantly to managing diabetes effectively. Here's a simple guide to help individuals make informed food choices."
+                    buttonText="View Meals"
+                    link={"/dietary/" + cat[0]}
+                    index={i}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
-      </div>
 
-      <div className=" bg-[#f4f3e7] py-[100px] px-[50px]">
-        <div className="innerDiv shadow-md bg-white px-[20px] py-[70px] flex flex-col items-center rounded-[24px]">
-          <h1 className="font-Roboto-Bold text-black text-[48px]">How it works</h1>
-          <div className="flex flex-row justify-center items-center mt-7">
-            <div className="flex flex-row items-start mr-4 p-1">
-              {/* <Image src={bespoke} alt="logo" className=" " /> */}
-              <div className="flex flex-col items-left justify-center ml-5">
-                {/* <h4 className="font-Roboto-Regular text-black text-[32px]">Bespoke Order</h4> */}
-                <p className="text-black font-Roboto-Light text-[20px]">Sign up for our diabetes friendly meal plans we offer at subsidized rate.</p>
-              </div>
-            </div>
-            <div className="flex flex-row items-start mr-4 p-1">
-              {/* <Image src={health} alt="logo" className=" " /> */}
-              <div className="flex flex-col items-left justify-center ml-5">
-                {/* <h4 className="font-Roboto-Regular text-black text-[32px]">Bespoke Order</h4> */}
-                <p className="text-black font-Roboto-Light text-[20px]">Consult with our team of registered dietitians to maintain your health</p>
-              </div>
-            </div>
-            <div className="flex flex-row items-start mr-4 p-1">
-              {/* <Image src={instant} alt="logo" className=" " /> */}
-              <div className="flex flex-col items-left justify-center ml-5">
-                {/* <h4 className="font-Roboto-Regular text-black text-[32px]">Bespoke Order</h4> */}
-                <p className="text-black font-Roboto-Light text-[20px]">Receive a meal plan tailored to your diabetes type and health goals.</p>
-              </div>
-            </div>
-            <div className="flex flex-row items-start mr-4 p-1">
-              {/* <Image src={sub} alt="logo" className=" " /> */}
-              <div className="flex flex-col items-left justify-center ml-5">
-                {/* <h4 className="font-Roboto-Regular text-black text-[32px]">Bespoke Order</h4> */}
-                <p className="text-black font-Roboto-Light text-[20px]">Experience better blood sugar control and improved overall health.</p>
-              </div>
-            </div>
-
-          </div>
+        <div className="flex flex-col items-center justify-start bg-[#D8E5D6] h[300px] md:h-[400px] w-screen mt-[80px] md:mt-0 p-[20px] md:p-[80px]">
+          <h2 className="text-[#211F26] font-900 text-[28px] md:text-[36px] font-BwGradual-Black text-center my-10">I need an immediate consultation with our dietitian?</h2>
+          <Link href="dietary/consultation" className="cursor-pointer flex flex-row items-center justify-center gap-7 mt-[30px] md:mt-[30px] bg-[#003D28] rounded-[16px] w-[180px] md:w-[350px] h-[40px] md:h-[70px] hover:translate-x-1  hover:bg-green-950">
+            <div className="text-[#BCF800] font-[500] text-left font-BwGradual-Regular text-[16px] md:text-[18px] ">GET STARTED</div>
+            <Image src={arrow} alt="logo" className=" w-[19px] h-[19px]" />
+          </Link>
         </div>
-      </div>
 
-      <div
-        className=" flex flex-col justify-center items-center p-10 relative top-[70px]"
-        id="ourCategories"
-      >
-        <p className="text-[57px] font-[700] font-Roboto-Black text-center text-[#211F26] mb-[60px]">
-          Our <span className="text-[#17CC29]">Dietary Meal</span> Plans
-        </p>
-        <div className="w-full">
-          {categories.map((cat: any, i: number) => {
-            // Determine background color based on index
-            const backgroundColor = i % 2 === 0 ? '#A9C1A9' : '#EFDFC3';
-
-            return (
-              <div key={i + "carousel"} style={{ backgroundColor }}>
-                <MealPlans
-                  imageSrc={cat[1].src}
-                  mainText={cat[0] + " Friendly Meals"}
-                  subText="SLiving with diabetes requires careful attention to dietary choices to maintain blood sugar levels within a healthy range. A well-balanced diet can contribute significantly to managing diabetes effectively. Here's a simple guide to help individuals make informed food choices."
-                  buttonText="View Meals"
-                  link={"/dietary/" + cat[0]}
-                  index={i}
-                />
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <Bespoke />
-      <Faq />
-      {/* <div>
+        {/* <Bespoke /> */}
+        <Faq faqTopic={topic} faqData={faqInput} />
+        {/* <div>
         <div className="bg-green-800   p-10">
           <div className="flex flex-col w-[60%] space-y-3 items-center mx-auto rounded-lg p-10 bg-white justify-center">
             <h2 className="text-2xl">Consultation</h2>
@@ -173,6 +124,7 @@ function HealthPage() {
           </div>
         </div>
       </div> */}
+      </div>
     </div>
   );
 }
