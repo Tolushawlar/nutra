@@ -6,7 +6,14 @@
   font-size: 13px;
   background: #f5f4e4;
   overflow-x: hidden !important;
+  /* overflow-y:auto !important; */
+
+  
 }
+
+/* .side-scroll-container {
+  overflow: hidden;
+} */
 
 /* @media (prefers-color-scheme: dark) {
   :root {
@@ -19,6 +26,8 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: #f5f4e4;
+  overflow-y:hidden !important;
+
 }
 
 html {
@@ -31,16 +40,13 @@ html {
   }
 }
 
-/* global.css or appropriate CSS file */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
 .scrollbar-hide {
   -ms-overflow-style: none;
-  /* Internet Explorer 10+ */
   scrollbar-width: none;
-  /* Firefox */
 }
 
 @font-face {
