@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import Cart from "./Cart";
-
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Services } from "./Services";
@@ -17,6 +16,7 @@ import droplet from "../Assets/homepage/Droplet.svg";
 import Image from "next/image";
 import Slider from "./Slider";
 import { Link } from "react-scroll";
+import OrderReceipt from "./OrderModal/OrderReceipt";
 
 const Header = () => {
   const { cart }: any = useAppContext();
@@ -24,14 +24,22 @@ const Header = () => {
 
   const [openCart, setOpenCart] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
+  const [showReceipt, setShowReceipt] = useState(false);
+  const [receipt, setReceipt]: any = useState();
 
   useEffect(() => {
+    setShowReceipt(false);
     let params = new URLSearchParams(window.location.search);
     if (!params.get("reference")) return;
     axios
       .get("/api/process?reference=" + params.get("reference"))
       .then((res) => {
-        if (res.data.status == "paid") alert("Ordered succesfully");
+        console.log(res.data);
+
+        if (res.data.data.length > 0) {
+          setReceipt({ data: res.data.data, checkRes: res.data.checkRes });
+          setShowReceipt(true);
+        }
       });
   }, []);
 
@@ -64,9 +72,8 @@ const Header = () => {
 
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="navbar fixed h-[70px] z-[99999999999999999999999999999999999999999999999999999] p-[20px] md:p-[50px] bg-white jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color">
-
+    <div>
+      <div className="navbar fixed h-[70px] z-[99999999999999999999999999999] p-[20px] md:p-[50px] bg-white jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color">
         <div className="flex">
           <a href="/">
             {/* <img src={logo} alt="logo" className="" /> */}
@@ -127,7 +134,6 @@ const Header = () => {
         </div>
 
         <div>
-
           {/* <div className="flex ml-[100px] md:ml-[0px] pl-0 md:pl-10 border-l-2 h-[50px] md:h-[100px] flex-col items-center justify-center">
             <div className="dropdown dropdown-end">
               <div
@@ -147,6 +153,7 @@ const Header = () => {
           </div> */}
 
           <div className="flex pl-0 md:pl-10 border-l-2 h-[50px] md:h-[100px] flex-col items-center justify-center">
+          <div className="flex-none">
             <div className="dropdown dropdown-end">
               <div
                 onClick={() => setOpenCart(true)}
@@ -210,7 +217,6 @@ const Header = () => {
             <FaLocationDot className="w-10 h-10" color="black" />
             <p className="text-[24px] font-[700] text-[#BCF800] font font-Roboto-Light">Akure</p> */}
           </div>
-
         </div>
 
         {showMobile && (
@@ -240,9 +246,11 @@ const Header = () => {
             </ul>
           </div>
         )}
-
       </div>
       <Slider />
+      {showReceipt && (
+        <OrderReceipt setShowReceipt={setShowReceipt} receipt={receipt} />
+      )}
     </div>
   );
 };

@@ -7,12 +7,14 @@ import SearchForm from "../SearchForm";
 import Image from "next/image";
 import arrow from "../../Assets/homepage/Arrow_Icon.svg"
 import { Element } from 'react-scroll';
+import arrow from "../../Assets/homepage/Arrow_Icon.svg";
 
 const Menu = () => {
   const [openModal, setOpenModal] = useState(false);
   const [scheduledata, setScheduleData] = useState();
   const [addedToCart, setAddedToCart] = useState(false);
   const [curPage, setCurPage] = useState(1);
+  const [active, setActive] = useState("All");
   const [foodData, setFoodData] = useState<any[]>([]);
 
   const categories = [
@@ -39,17 +41,17 @@ const Menu = () => {
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
-  const scroll = (direction: 'left' | 'right') => {
+  const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      if (direction === 'left') {
+      if (direction === "left") {
         scrollRef.current.scrollBy({
           left: -200,
-          behavior: 'smooth',
+          behavior: "smooth",
         });
       } else {
         scrollRef.current.scrollBy({
           left: 200,
-          behavior: 'smooth',
+          behavior: "smooth",
         });
       }
     }
@@ -70,7 +72,7 @@ const Menu = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get("/api/food");
-      console.log(response.data);
+      // console.log(response.data);
       if (response.status === 200) {
         // If the request is successful, set the foodData state
         setFoodData(response.data);
@@ -115,6 +117,7 @@ const Menu = () => {
                 // className="bg-bg-sec p-2 text-nowrap rounded-lg text-text-color"
                 className="font-BwGradual-Bold font-[500] bg-[##A9C1A9] cursor-pointer p-2 text-nowrap rounded-lg px-[32px] py-[12px] border-[1px] border-[#003D28] text-[#003D28]"
                 key={i + "categories_index"}
+                onClick={() => setActive(cat)}
               >
                 {cat}
               </p>
@@ -202,7 +205,6 @@ const Menu = () => {
             </button>
           </div>
 
-
           <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-row gap-5 md:gap-10">
             {foodData &&
               foodData.map((data, i) => (
@@ -231,7 +233,6 @@ const Menu = () => {
                     {1}
                   </button>
                 </div>
-
                 <div className="mx-1">
                   <button
                     onClick={() =>
@@ -288,6 +289,7 @@ const Menu = () => {
                     onClick={() => setCurPage(15)}
                     style={{
                       background: `${curPage == 15 ? "rgb(21 128 61)" : ""}`,
+
                     }}
                     className="join-item btn btn-sm"
                   >
@@ -306,7 +308,7 @@ const Menu = () => {
               onClick={() => setAddedToCart(false)}
               role="alert"
               className="alert cursor-pointer w-fit alert-success"
-            >
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="stroke-current shrink-0 h-6 w-6"
