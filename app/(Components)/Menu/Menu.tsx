@@ -7,7 +7,6 @@ import SearchForm from "../SearchForm";
 import Image from "next/image";
 import arrow from "../../Assets/homepage/Arrow_Icon.svg"
 import { Element } from 'react-scroll';
-import arrow from "../../Assets/homepage/Arrow_Icon.svg";
 
 const Menu = () => {
   const [openModal, setOpenModal] = useState(false);

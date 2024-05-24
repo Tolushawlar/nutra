@@ -51,20 +51,18 @@ export default function Home() {
           <Menu />
         </Element>
 
-<<<<<<< HEAD
         <Bespoke />
         <Reviews />
         {/* <Testimonials /> */}
         <FeaturedBlog />
         <Faq faqTopic={topic} faqData={faqInput} />
       </div>
-=======
       <Bespoke />
       <Reviews />
       {/* <Testimonials /> */}
       <FeaturedBlog />
       <Faq faqTopic={topic} faqData={faqInput} />
->>>>>>> e85941ce65f7702edc90ecb9f3d035a323846ca9
+
     </div>
   );
 }

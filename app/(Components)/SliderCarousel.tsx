@@ -53,7 +53,7 @@ const SliderCarousel = () => {
 
             <div className='w-[60vw] h-[700px]'>
                 <Slider{...settings2}>
-                    <div className="px-[90px] pt-[160px] gap-10 flex flex-col  bg-[#003D28] w-[80vw] h-[700px]"> 
+                    <div className="px-[90px] pt-[160px] gap-10 flex flex-col  bg-[#003D28] w-[80vw] h-[700px]">
                         <h2 className="font-[700] leading-[80px] text-[32px] md:text-[68px] text-white font-BwGradual-Bold">You've got enough to worry about.</h2>
                         <p className="text-[24px] md:text-[30px] font-[400] text-[#D8E5D6] font-BwGradual-Regular my-10">What you eat should not be on that list.</p>
                         <Link to="foodMenus" smooth={true} duration={800} className="cursor-pointer flex flex-row items-center justify-center gap-3 bg-[#BCF800] rounded-[16px] w-[350px] h-[90px] mt-[80px]">
@@ -86,8 +86,6 @@ const SliderCarousel = () => {
                 </Slider>
             </div>
 
-        </div>
-    );
         </div>
     );
 };

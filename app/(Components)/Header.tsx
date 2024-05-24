@@ -17,7 +17,6 @@ import Image from "next/image";
 import OrderReceipt from "./OrderModal/OrderReceipt";
 import Slider from "./Slider";
 import { Link } from "react-scroll";
-import OrderReceipt from "./OrderModal/OrderReceipt";
 
 const Header = () => {
   const { cart }: any = useAppContext();
