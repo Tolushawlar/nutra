@@ -3,9 +3,9 @@ import React from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Text1 from '../assets/blog/IMG(2).png';  // Update with actual image paths
-import Text2 from '../assets/consultation.jpg';  // Update with actual image paths
-import Text3 from '../assets/jrice w fish.jpg';  // Update with actual image paths
+import Text1 from '../Assets/blog/IMG(2).png';  // Update with actual image paths
+import Text2 from '../Assets/consultation.jpg';  // Update with actual image paths
+import Text3 from '../Assets/jrice w fish.jpg';  // Update with actual image paths
 import Image from 'next/image';
 // import arrow from "../Assets/homepage/Arrow_Icon.svg"
 import arrow from "../Assets/smaaAr.svg"

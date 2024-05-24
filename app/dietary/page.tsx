@@ -7,9 +7,7 @@ import { Zoom } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { Bespoke } from "../(Components)/Bespoke";
 import Faq from "../(Components)/Faq";
-import Text1 from '../assets/dietary/deit.png';  // Update with actual image paths
-import Text2 from '../assets/consultation.jpg';  // Update with actual image paths
-import Text3 from '../assets/jrice w fish.jpg';  // Update with actual image paths
+import Text1 from '../Assets/dietary/deit.png';  // Update with actual image paths
 import Image from 'next/image';
 import arrow from "../Assets/dietary/Arrow_Icon.svg"
 import { Element } from "react-scroll";
