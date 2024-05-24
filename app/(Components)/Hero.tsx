@@ -1,10 +1,11 @@
 // import Link from "next/link";
 import React from "react";
-import arrow from "../Assets/homepage/Arrow_Icon.svg";
-import bespoke from "../Assets/homepage/Bespoke.svg";
-import health from "../Assets/homepage/Healthy_Meal.svg";
-import instant from "../Assets/homepage/Instant_order.svg";
-import sub from "../Assets/homepage/Sub_Plan.svg";
+import placeholder from "../Assets/homepage/Brand_Placeholder.png"
+import arrow from "../Assets/homepage/Arrow_Icon.svg"
+import bespoke from "../Assets/homepage/Bespoke.svg"
+import health from "../Assets/homepage/Healthy_Meal.svg"
+import instant from "../Assets/homepage/Instant_order.svg"
+import sub from "../Assets/homepage/Sub_Plan.svg"
 import Image from "next/image";
 import Slider from "./Slider";
 import SliderCarousel from "./SliderCarousel";
@@ -67,6 +68,7 @@ export const Hero = () => {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
