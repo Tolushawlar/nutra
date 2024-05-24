@@ -1,13 +1,13 @@
 "use client";
 import Header from "@/app/(Components)/Header";
 import MyModal from "@/app/(Components)/Modal";
-import Sidebar from "@/app/(Components)/SideBar";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 function ScheduleOrdersPage() {
   const [orderData, setSrderData] = useState<any[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedData, setSelectedData] = useState();
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -99,7 +99,10 @@ function ScheduleOrdersPage() {
                           <th>
                             <button
                               className=" btn btn-primary btn-xs"
-                              onClick={openModal}
+                              onClick={() => {
+                                setSelectedData(order);
+                                openModal();
+                              }}
                             >
                               View Details
                             </button>
@@ -114,7 +117,9 @@ function ScheduleOrdersPage() {
           </div>
         </div>
       </div>
-      {isOpen && <MyModal isOpen={isOpen} closeModal={closeModal} />}
+      {isOpen && (
+        <MyModal isOpen={isOpen} closeModal={closeModal} data={selectedData} />
+      )}
     </div>
   );
 }

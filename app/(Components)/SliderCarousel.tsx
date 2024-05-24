@@ -1,6 +1,6 @@
 // src/components/SliderCarousel.tsx
-import React from 'react';
-import Slider from 'react-slick';
+import React from "react";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Text1 from '../Assets/blog/IMG(2).png';  // Update with actual image paths
@@ -91,25 +91,43 @@ const SliderCarousel = () => {
 };
 
 const SampleNextArrow = (props: any) => {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={`${className} bg-blue-500 p-2 rounded-full`}
-            style={{ ...style, display: "block", position: 'absolute', top: '50px', right: '10vw', zIndex: 1, transform: 'scale(3.5)', background: "#BCF800" }}
-            onClick={onClick}
-        />
-    );
-}
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} bg-blue-500 p-2 rounded-full`}
+      style={{
+        ...style,
+        display: "block",
+        position: "absolute",
+        top: "50px",
+        right: "10vw",
+        zIndex: 1,
+        transform: "scale(3.5)",
+        background: "#BCF800",
+      }}
+      onClick={onClick}
+    />
+  );
+};
 
 const SamplePrevArrow = (props: any) => {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={`${className} bg-blue-500 p-2 rounded-full`}
-            style={{ ...style, display: "block", position: 'absolute', top: '50px', left: '80vw', zIndex: 1, transform: 'scale(3.5)', background: "#BCF800" }}
-            onClick={onClick}
-        />
-    );
-}
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} bg-blue-500 p-2 rounded-full`}
+      style={{
+        ...style,
+        display: "block",
+        position: "absolute",
+        top: "50px",
+        left: "80vw",
+        zIndex: 1,
+        transform: "scale(3.5)",
+        background: "#BCF800",
+      }}
+      onClick={onClick}
+    />
+  );
+};
 
 export default SliderCarousel;

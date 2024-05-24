@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import Cart from "./Cart";
-
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Services } from "./Services";
@@ -15,6 +14,7 @@ import arrowDown from "../Assets/homepage/Drop_Down_Icon.svg";
 import location from "../Assets/Home/Location.svg";
 import droplet from "../Assets/homepage/Droplet.svg";
 import Image from "next/image";
+import OrderReceipt from "./OrderModal/OrderReceipt";
 import Slider from "./Slider";
 import { Link } from "react-scroll";
 
@@ -24,14 +24,22 @@ const Header = () => {
 
   const [openCart, setOpenCart] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
+  const [showReceipt, setShowReceipt] = useState(false);
+  const [receipt, setReceipt]: any = useState();
 
   useEffect(() => {
+    setShowReceipt(false);
     let params = new URLSearchParams(window.location.search);
     if (!params.get("reference")) return;
     axios
       .get("/api/process?reference=" + params.get("reference"))
       .then((res) => {
-        if (res.data.status == "paid") alert("Ordered succesfully");
+        console.log(res.data);
+
+        if (res.data.data.length > 0) {
+          setReceipt({ data: res.data.data, checkRes: res.data.checkRes });
+          setShowReceipt(true);
+        }
       });
   }, []);
 
@@ -52,7 +60,7 @@ const Header = () => {
   const parts = pathname.split("/");
   const lastItem = parts[parts.length - 1];
 
-  
+
 
   const scrollToBottom = () => {
     window.scrollTo({
@@ -60,12 +68,12 @@ const Header = () => {
       behavior: "smooth",
     });
   };
-  
+
 
 
   return (
     <div className="flex flex-col items-center z-[999999999999999999999999999999999999999999]">
-      
+
       <div className="navbar fixed h-[70px] z-[99999999999999999999999999999999999999999999999999999999999] p-[20px] md:p-[50px] bg-white jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color">
 
         <div className="flex z-[99999999999999]">
@@ -122,7 +130,7 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <p onClick={scrollToBottom}  className="font-BwGradual-Regular font-[500]">Contact Us</p>
+              <p onClick={scrollToBottom} className="font-BwGradual-Regular font-[500]">Contact Us</p>
             </li>
           </ul>
         </div>
@@ -211,7 +219,6 @@ const Header = () => {
             <FaLocationDot className="w-10 h-10" color="black" />
             <p className="text-[24px] font-[700] text-[#BCF800] font font-Roboto-Light">Akure</p> */}
           </div>
-
         </div>
 
         {showMobile && (
@@ -241,8 +248,11 @@ const Header = () => {
             </ul>
           </div>
         )}
-
       </div>
+
+      {showReceipt && (
+        <OrderReceipt setShowReceipt={setShowReceipt} receipt={receipt} />
+      )}
 
       <Slider />
     </div>
