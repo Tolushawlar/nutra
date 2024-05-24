@@ -9,6 +9,7 @@ import ig from "../Assets/homepage/IG.svg"
 import contact from "../Assets/homepage/Contact_Icon.svg"
 import mail from "../Assets/homepage/Mail_Icon.svg"
 import Image from "next/image";
+import { Link } from "react-scroll";
 
 export const Footer = () => {
 
@@ -33,17 +34,17 @@ export const Footer = () => {
           </aside>
           <nav>
             <p className="mb-5 text-[#FFFFFF] text-[18px] font-BwGradual-Bold font-[700]">COMPANY</p>
-            <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline hover:text-[#bcf800]">Home</a>
+            <a href="/" className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline hover:text-[#bcf800]">Home</a>
             <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">About Us</a>
-            <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">What's New</a>
+            <a href="/blog" className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">What's New</a>
             <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Privacy Policy</a>
             <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Terms of Use</a>
           </nav>
           <nav>
-            <h6 className="mb-5 text-[#FFFFFF] text-[18px] font-BwGradual-Bold font-[700]">OFFERING</h6>
-            <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Bespoke Order</a>
-            <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Healthy Meals</a>
-            <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Instant Order</a>
+            <h6 className="mb-5 text-[#FFFFFF] text-[18px] font-BwGradual-Bold font-[700]">OFFERING</h6>            
+            <Link to="bespoke" smooth={true} duration={800} className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Bespoke Order</Link>
+            <a  href="/dietary" className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Healthy Meals</a>
+            <Link to="foodMenu" smooth={true} duration={800} className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Instant Order</Link>
             <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Subscription Plan</a>
             {/* <a className="link no-underline cursor-pointer mb-5 font-Roboto-Light">Press kit</a> */}
           </nav>

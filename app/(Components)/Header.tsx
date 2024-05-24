@@ -64,7 +64,7 @@ const Header = () => {
 
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center z-[999999999999999999999999999999999999999999]">
       <div className="navbar fixed h-[70px] z-[99999999999999999999999999999999999999999999999999999] p-[20px] md:p-[50px] bg-white jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color">
 
         <div className="flex">
