@@ -19,12 +19,14 @@ import { Services } from "./Services";
 
 const Header2 = () => {
   // const [currentPage, setCurrentPage] = useState<string | undefined>(undefined);
-  const { cart }: any = useAppContext();
+  const { cart, navHeight }: any = useAppContext();
 
   const [openCart, setOpenCart] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [showReceipt, setShowReceipt] = useState(false);
   const [receipt, setReceipt]: any = useState();
+  // const { navHeight } = useAppContext();
+
 
   useEffect(() => {
     setShowReceipt(false);
@@ -56,9 +58,11 @@ const Header2 = () => {
     });
   };
 
+  
+
 
   return (
-    <nav className="z-[9] fixed overflow-y-hidden  jusitfy-center md:justify-between overflow-x-hidden h-[90vh] md:h-[20vh] w-[100vw] md:w-full text-text-color">
+    <nav className="z-[9] fixed overflow-y-hidden  jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color " style={{ height: navHeight }}>
       <div className="  bg-white h-[50px] md:max-h-[400px] ">
         <div className="flex items-center justify-between bg-white">
           <div className="flex items-center">
@@ -87,7 +91,7 @@ const Header2 = () => {
                     )}
                   </a>
                 </div>
-                <Menu as="div" className="relative text-left ">
+                <Menu as="div" className="relative text-left">
                   {/* <Menu.Button className="flex flex-row items-center justify-center text-[#322F35] text-[18px] font-BwGradual-Regular font-[500] px-3 py-2 rounded-md focus:outline-none">
                     <span className="text-[18px]">Our Offering</span>
                     <IoIosArrowDown className="-mr-1 ml-1 h-5 w-5" />
@@ -136,7 +140,7 @@ const Header2 = () => {
                       </Menu.Item>
                     </div>
                   </Menu.Items> */}
-                  <Services />
+                  <Services  />
                   {(secondItem === "dietary" || secondItem === "subscription") && (
                     <Image
                       alt="arrow"

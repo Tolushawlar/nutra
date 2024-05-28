@@ -18,6 +18,10 @@ export interface AppContextType {
   setDisplayResults: React.Dispatch<React.SetStateAction<boolean>>;
   searchTerm: any;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  service: boolean;
+  setService: React.Dispatch<React.SetStateAction<boolean>>;
+  navHeight: string;
+  setNavHeight: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const AppContext = createContext<AppContextType | null>(null);
@@ -29,6 +33,8 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [displayResults, setDisplayResults] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
+  const [service, setService]: any = useState(false);
+  const [navHeight, setNavHeight] = useState(''); // Default height
 
   return (
     <AppContext.Provider
@@ -40,7 +46,11 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
         displayResults,
         setDisplayResults,
         searchTerm,
-        setSearchTerm
+        setSearchTerm,
+        service,
+        setService,
+        navHeight,
+        setNavHeight
       }}
     >
       {children}

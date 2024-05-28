@@ -64,7 +64,7 @@ const Consultation = () => {
       </div> */}
 
       <div className=" p-10 mt-[5vw] flex flex-row items-center  gap-5">
-        <a href="/"><Image src={home} alt="logo" className="z-[99999999999999] cursor-pointer " /></a>
+        <a href="/"><Image src={home} alt="logo" className=" cursor-pointer " /></a>
         <a href="/dietary" className="font-400 font-Roboto-Light font-[28px] text-[#605D64] cursor-pointer hover:no-underline">Dietary Meals Category</a>
         <p className="font-400 font-Roboto-Light font-[28px] text-[#605D64] cursor-pointer">/</p>
         <a href="#consult" className="hover:no-underline text-[#006240] font-500 text-[28px font-Roboto-Black cursor-pointer "> Instant Consultation</a>

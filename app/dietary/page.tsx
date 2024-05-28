@@ -56,7 +56,7 @@ function HealthPage() {
   ];
   return (
     <div>
-      <div className="flex flex-col w-full m-0 items-center overflow-x-hidden z-[9999999999999]">
+      <div className="flex flex-col w-full m-0 items-center overflow-x-hidden">
         <div className="flex flex-row items-center justify-center  bg-[#003D28] w-[100vw] h-[600px] md:h-[800px]">
           <div className="px-5 md:px-[90px] py-[60px] gap-10 flex flex-col items-start justify-center ">
             <h2 className="font-[700] text-[32px] md:text-[68px] text-white font-BwGradual-Regular">Tasty homemade Dietary Meals you can enjoy.</h2>

@@ -9,6 +9,7 @@ import arrow from "../../Assets/homepage/Arrow_Icon.svg"
 import { Element } from 'react-scroll';
 import { useAppContext } from "@/app/context/AppContext";
 import { IoClose } from "react-icons/io5";
+import { usePathname } from "next/navigation";
 
 const SearchMenu = () => {
     const { searchResults, displayResults, setDisplayResults, searchTerm }: any = useAppContext();
@@ -86,6 +87,12 @@ const SearchMenu = () => {
         }
     };
 
+    const pathname = usePathname();
+    const parts = pathname.split("/");
+    const lastItem = parts[parts.length - 1];
+    console.log(parts[1])
+    const secondItem = parts[1]
+
     return (
         <Element name="foodMenu">
 
@@ -93,13 +100,17 @@ const SearchMenu = () => {
                 {openModal && (
                     <OrderModal scheduleOrder={scheduledata} setOpenModal={setOpenModal} />
                 )}
-                <div className="text-center flex flex-col items-center justify-center">
-                    <h2 className="h2 font-BwGradual-Regular font-[700] text-[#211F26] text-[28px] md:text-[36px] text-left md:text-center">
-                        Everything you need to{" "}
-                        <span className="text-[#17CC29]">Stay Healthy</span>
-                    </h2>
-                    <SearchForm />
-                </div>
+
+                {(secondItem === "dietary" || secondItem === "subscription") ? null : (
+                    <div className="text-center flex flex-col items-center justify-center">
+                        <h2 className="h2 font-BwGradual-Regular font-[700] text-[#211F26] text-[28px] md:text-[36px] text-left md:text-center">
+                            Everything you need to{" "}
+                            <span className="text-[#17CC29]">Stay Healthy</span>
+                        </h2>
+                        <SearchForm />
+                    </div>
+                )}
+
 
                 <div className="flex flex-col">
 

@@ -10,7 +10,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['res.cloudinary.com', "images.unsplash.com"],
+    domains: ['res.cloudinary.com', "images.unsplash.com", "firebasestorage.googleapis.com"],
   },
 };
 

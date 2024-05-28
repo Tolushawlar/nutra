@@ -9,30 +9,33 @@ import arrow from "../../Assets/dietary/Arrow_Icon.svg"
 import Image from "next/image";
 import SearchForm from "@/app/(Components)/SearchForm";
 import { Link } from "react-scroll";
+import { useAppContext } from "@/app/context/AppContext";
+import SearchMenu from "@/app/(Components)/Menu/SearchMenu";
 
 const topic = "Frequently Asked Questions?"
 const faqInput = [
   {
     question: "What kind of meals do you offer?",
     answer: "We offer a wide variety of delicious and nutritious meals, featuring global cuisine inspirations. Our menu includes options for vegetarians, vegans, those with gluten-free needs, and more."
-},
-{
+  },
+  {
     question: "Can I customize my meals?",
     answer: "Yes! We understand everyone has different dietary preferences. You can customize most meals by selecting from the multiple dietary options we present."
-},
-{
+  },
+  {
     question: "Do you offer meals for specific dietary needs?",
     answer: "We offer a variety of meals suitable for vegetarians, vegans, and those with gluten-free needs. We also have options that are low-carb, dairy-free, and nut-free. Please refer to the dietary symbols next to each meal on our menu for details."
-},
-{
+  },
+  {
     question: "Can I see the nutritional information for your meals?",
     answer: "Absolutely! The nutritional information for each meal, including calories, macronutrients, and allergens, is clearly displayed on our website menu."
-}
+  }
 ]
 
 function HealthCondition() {
   const [condition, setCondition] = useState<string | undefined>(undefined);
   const [selectedButton, setSelectedButton] = useState<string>('DIABETIC'); // State to track the selected button, defaulting to 'DIABETIC'
+  const { searchResults, displayResults }: any = useAppContext();
 
   const handleButtonClick = (buttonName: string) => {
     setSelectedButton(buttonName); // Set the selected button
@@ -52,10 +55,10 @@ function HealthCondition() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center overflow-x-hidden">
       {/* <Hero /> */}
       <div className="flex flex-row items-center justify-start relative right-[0px] md:right-[45rem] top-[4rem] md:top-[6rem] my-[3rem] gap-5">
-        <a href="/"><Image src={home} alt="logo" className="z-[99999999999999] cursor-pointer " /></a>
+        <a href="/"><Image src={home} alt="logo" className="cursor-pointer " /></a>
         <a href="/dietary" className="font-400 font-Roboto-Light font-[28px] text-[#605D64] cursor-pointer hover:no-underline">Dietary Meals Category</a>
         <p className="font-400 font-Roboto-Light font-[28px] text-[#605D64] cursor-pointer">/</p>
         <Link to="meals" smooth="true" duration={800} className="text-[#006240] font-500 text-[28px font-Roboto-Black cursor-pointer hover:no-underline">Our {condition} Menu</Link>
@@ -95,7 +98,8 @@ function HealthCondition() {
       </div>
 
 
-      <ConditionMenu />
+      {displayResults ? <SearchMenu /> : <ConditionMenu />
+      }
 
       <div className="flex flex-col items-center justify-start bg-[#D8E5D6] h[300px] md:h-[400px] w-screen mt-[80px] md:mt-0 p-[20px] md:p-[80px]">
         <h2 className="text-[#211F26] font-900 text-[28px] md:text-[36px] font-BwGradual-Black text-center my-10">I need an immediate consultation with our dietitian?</h2>
