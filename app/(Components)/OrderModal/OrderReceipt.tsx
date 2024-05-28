@@ -8,7 +8,7 @@ const OrderReceipt = ({ setShowReceipt, receipt }: any) => {
   const [link, setlink]: any = useState();
 
   receptForm &&
-    toJpeg(receptForm.current).then(function (dataUrl) {
+    toJpeg(receptForm.current, { quality: 0.95 }).then(function (dataUrl) {
       setlink(dataUrl);
     });
 

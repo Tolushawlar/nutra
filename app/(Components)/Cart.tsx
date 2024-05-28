@@ -112,7 +112,7 @@ export default function Cart({ setOpenCart, openCart }: any) {
   };
 
   return (
-    <div className="">
+    <div className="z-[9999999999999999999999999]">
       <Transition.Root show={openCart} as={Fragment}>
         <Dialog
           as="div"

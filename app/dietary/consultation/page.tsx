@@ -48,7 +48,7 @@ const faqInput = [
 
 const Consultation = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden ">
 
       {/* <div className="flex flex-row items-center justify-start relative ml-5 mt-[80px] right-[0px] md:right-[45rem] top-[3rem] md:top-[25rem] my-[6rem] gap-5 z-[9999999]">
         <Link href="/"><Image src={home} alt="logo" className="cursor-pointer " /></Link>
@@ -64,7 +64,7 @@ const Consultation = () => {
       </div> */}
 
       <div className=" p-10 mt-[5vw] flex flex-row items-center  gap-5">
-        <a href="/"><Image src={home} alt="logo" className="cursor-pointer " /></a>
+        <a href="/"><Image src={home} alt="logo" className="z-[99999999999999] cursor-pointer " /></a>
         <a href="/dietary" className="font-400 font-Roboto-Light font-[28px] text-[#605D64] cursor-pointer hover:no-underline">Dietary Meals Category</a>
         <p className="font-400 font-Roboto-Light font-[28px] text-[#605D64] cursor-pointer">/</p>
         <a href="#consult" className="hover:no-underline text-[#006240] font-500 text-[28px font-Roboto-Black cursor-pointer "> Instant Consultation</a>

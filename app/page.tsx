@@ -8,6 +8,8 @@ import FeaturedBlog from "./(Components)/FeaturedBlog";
 import Testimonials from "./(Components)/Testimonial";
 import Reviews from "./(Components)/Reviews";
 import { Element } from 'react-scroll';
+import { useAppContext } from "./context/AppContext";
+import SearchMenu from "./(Components)/Menu/SearchMenu";
 
 const topic = "Frequently Asked Questions?"
 const faqInput = [
@@ -42,27 +44,28 @@ const faqInput = [
 ]
 
 export default function Home() {
+
+  const { searchResults, displayResults }: any = useAppContext(); 
+  console.log(searchResults)
+
   return (
     <div className="w-full relative overflow-x-hidden">
       <Hero />
 
-      <div className="z-0">
-        <Element name="foodMenus" className="relative bg-[#F5F4E4">
-          <Menu />
-        </Element>
+      <div className="">
+        <div className="">
+          <Element name="foodMenus" className="relative bg-[#F5F4E4">
+            {displayResults ? <SearchMenu /> : <Menu />}
+          </Element>
 
-        <Bespoke />
-        <Reviews />
-        {/* <Testimonials /> */}
-        <FeaturedBlog />
-        <Faq faqTopic={topic} faqData={faqInput} />
+          <Bespoke />
+          <Reviews />
+          {/* <Testimonials /> */}
+          <FeaturedBlog />
+          <Faq faqTopic={topic} faqData={faqInput} />
+        </div>
+
       </div>
-      <Bespoke />
-      <Reviews />
-      {/* <Testimonials /> */}
-      <FeaturedBlog />
-      <Faq faqTopic={topic} faqData={faqInput} />
-
     </div>
   );
 }

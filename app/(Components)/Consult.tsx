@@ -62,7 +62,7 @@ export const Consult = () => {
                   name="name"
                   onChange={handleInput}
                   type="text"
-                  className="bg-[#ECF5EA] border-[0.8px] border-[#A9C1A9] focus:outline-none px-5 text-black grow w-[340px] h-[54px] rounded-[14px]"
+                  className="z-[9999999999] bg-[#ECF5EA] border-[0.8px] border-[#A9C1A9] focus:outline-none px-5 text-black grow w-[340px] h-[54px] rounded-[14px]"
                   placeholder="Daisy"
                 />
               </div>
@@ -86,7 +86,7 @@ export const Consult = () => {
                   name="phone"
                   onChange={handleInput}
                   type="text"
-                  className="bg-[#ECF5EA] border-[0.8px] border-[#A9C1A9] focus:outline-none px-5 text-black grow w-[340px] h-[54px] rounded-[14px]"
+                  className="z-[9999999999] bg-[#ECF5EA] border-[0.8px] border-[#A9C1A9] focus:outline-none px-5 text-black grow w-[340px] h-[54px] rounded-[14px]"
                   placeholder="07012345678"
                 />
               </div>

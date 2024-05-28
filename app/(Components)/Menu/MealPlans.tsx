@@ -23,7 +23,7 @@ const MealPlans: React.FC<MealPlansProps> = ({
   index,
 }) => {
   return (
-    <div className={`flex  items-center w-screen h-auto py-[40px] md:py-[100px] px-[20px] md:px-[100px] overflow-hidden ${index % 2 === 0 ? 'flex-col md:flex-row-reverse ' : 'flex-col md:flex-row gap-0 md:gap-[200px]'}`}>
+    <div className={`z-[99999999999999] flex  items-center w-screen h-auto py-[40px] md:py-[100px] px-[20px] md:px-[100px] overflow-hidden ${index % 2 === 0 ? 'flex-col md:flex-row-reverse ' : 'flex-col md:flex-row gap-0 md:gap-[200px] z-[99999999999999]'}`}>
       <div className="w-[50vw]">
         <img
           className="hidden md:block object-cover w-[500px] h-[500px] "

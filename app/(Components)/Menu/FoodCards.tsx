@@ -15,27 +15,27 @@ const FoodCards = ({
 
   return (
     <div>
-      <div className="card  card-compact h-fit md:h-[800px] mt-10 mr-[0px] md:mr-0">
+      <div className="flex flex-col items-start  justify-start md:h-[700px] mt-10 mr-[0px] md:mr-0">
         <figure className=" ">
           {
             // eslint-disable-next-line @next/next/no-img-element
             <img
               style={{
-                objectFit: "contain",
+                // objectFit: "contain",
               }}
               src={data.image}
               alt="  border object-center object-fill"
-              className="rounded-[24px] object-fit"
+              className="rounded-[12px] h-[300px] w-[400px] "
             />
           }
         </figure>
         <div className="card-body">
-          <div className="card-actions flex flex-col justify-center items-center md:items-start mt-[20px] ml-[-50px] md:ml-[-20px] gap-10">
+          <div className="card-actions flex flex-col justify-center items-center md:items-start  ml-[-50px] md:ml-[-20px] gap-10">
             <div className="mt-1 ml-[50px] md:ml-0">
               <h3 className="text-[#211F26] font-BwGradual-Regular font-[600] text-[24px] md:text-[30px] leading-[32px] md:leading-[38px]">
                 {data.foodName}
               </h3>
-              <p className="font-BwGradual-Regular font-[200] text-[#322F35]] text-[18px] md:text-[20px] my-[20px] leading-[28px] md:leading-[32px]">This is a Nigerian red stew recipe features my favorite Nigerian tomato stew using farm raised ram meat which adds a distinct, delicious gamey flavor!</p>
+              <p className="font-BwGradual-Regular font-[200] text-[#322F35]] text-[18px] md:text-[20px] my-[20px] leading-[28px] md:leading-[32px]">This is a Nigerian red stew recipe features my favorite Nigerian tomato stew!</p>
               <h3 className="text-[#36343B] text-[24px] md:text-[30px] font-[700] font-BwGradual-Regular mt-2">
                 N{data.price}.00
               </h3>

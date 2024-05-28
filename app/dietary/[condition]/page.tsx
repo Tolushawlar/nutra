@@ -55,7 +55,7 @@ function HealthCondition() {
     <div className="flex flex-col items-center justify-center">
       {/* <Hero /> */}
       <div className="flex flex-row items-center justify-start relative right-[0px] md:right-[45rem] top-[4rem] md:top-[6rem] my-[3rem] gap-5">
-        <a href="/"><Image src={home} alt="logo" className="cursor-pointer " /></a>
+        <a href="/"><Image src={home} alt="logo" className="z-[99999999999999] cursor-pointer " /></a>
         <a href="/dietary" className="font-400 font-Roboto-Light font-[28px] text-[#605D64] cursor-pointer hover:no-underline">Dietary Meals Category</a>
         <p className="font-400 font-Roboto-Light font-[28px] text-[#605D64] cursor-pointer">/</p>
         <Link to="meals" smooth="true" duration={800} className="text-[#006240] font-500 text-[28px font-Roboto-Black cursor-pointer hover:no-underline">Our {condition} Menu</Link>

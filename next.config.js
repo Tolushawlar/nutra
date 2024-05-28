@@ -7,8 +7,10 @@ const nextConfig = {
       emitter: false,
       tls: false,
     };
-
     return config;
+  },
+  images: {
+    domains: ['res.cloudinary.com', "images.unsplash.com"],
   },
 };
 

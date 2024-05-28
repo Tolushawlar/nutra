@@ -13,18 +13,18 @@ export const Services = ({ setShowMobile }: any) => {
   return (
     <div
       onClick={() => setShowDetails(!showDetails)}
-      className=" flex flex-col items-start z-10"
+      className=" flex flex-col items-start mr-10 z-10"
     >
       <div className="flex flex-row justify-center gap-3 items-center">
-        <p className="cursor-pointer font-BwGradual-Regular font-[500]">Our Offerings</p>
+        <p className="cursor-pointer text-[#322F35] text-[18px] font-BwGradual-Regular font-[500] ">Our Offerings</p>
         <Image
           alt="arrow"
           src={arrowDown}
-          className="relative right-2 w-[24px] h-[24px]"
+          className=" cursor-pointer relative right-2 w-[24px] h-[24px]"
         />
       </div>
 
-      <div className="flex relative items-center z-[999999999999999999999999999999999999999999999] ">
+      <div className="flex relative items-center ">
         {showDetails && (
           <div className="lg:absolute static border rounded-[24px] w-[300px]  gap-10 bg-[#FFFFFF] p-[24px] font-BwGradual-Regular font-[500] text-[20px] top-[4px]  ">
             <div>
@@ -36,7 +36,7 @@ export const Services = ({ setShowMobile }: any) => {
                   }}
                   className=""
                 >
-                  <Link href={"/#OurMenu"} className="flex flex-row justify-start items-start gap-5">
+                  <Link href={"/#OurMenu"} className="text-[#322F35] flex flex-row justify-start items-start gap-5">
                     <Image src={bespoke} alt="logo" className=" w-[24px] h-[24px]" />
                     Bespoke Order</Link>
                 </div>
@@ -57,7 +57,7 @@ export const Services = ({ setShowMobile }: any) => {
                   }}
                   className=""
                 >
-                  <Link href={"/dietary"} className="flex flex-row justify-start items-start gap-5">
+                  <Link href={"/dietary"} className="text-[#322F35] flex flex-row justify-start items-start gap-5">
                     <Image src={health} alt="logo" className=" w-[24px] h-[24px]" />
                     Dietary Meals</Link>
                 </div>
@@ -79,7 +79,7 @@ export const Services = ({ setShowMobile }: any) => {
                   }}
                   className=""
                 >
-                  <Link href={"/#Bespoke"} className="flex flex-row justify-start items-start gap-5">
+                  <Link href={"/#Bespoke"} className="text-[#322F35] flex flex-row justify-start items-start gap-5">
                     <Image src={instant} alt="logo" className=" w-[24px] h-[24px]" />
                     Instant Order</Link>
                 </div>
@@ -100,7 +100,7 @@ export const Services = ({ setShowMobile }: any) => {
                   }}
                   className=" "
                 >
-                  <Link href={"/subscription"} className="flex flex-row justify-start items-start gap-5">
+                  <Link href={"/subscription"} className="text-[#322F35] flex flex-row justify-start items-start gap-5">
                     <Image src={sub} alt="logo" className=" w-[24px] h-[24px]" />
                     Subscription Plan</Link>
                 </div>
