@@ -63,7 +63,7 @@ const Header2 = () => {
 
   return (
     <nav className="z-[9] fixed overflow-y-hidden  jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color " style={{ height: navHeight }}>
-      <div className=" pb-[60px] md:pb-0 pt-3 md:pt-0 bg-white h-[30px] md:max-h-[400px] ">
+      <div className=" pb-[60px] md:pb-0 pt-3 md:pt-0 bg-white h-[20px] md:max-h-[400px] ">
         <div className="flex items-center justify-between bg-white">
           <div className="flex items-center">
             <div className="flex-shrink-0">

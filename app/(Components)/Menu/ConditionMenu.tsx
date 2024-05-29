@@ -111,7 +111,7 @@ const ConditionMenu = () => {
                     </div>
                 </div> */}
 
-                <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-10">
+                <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols gap-10">
                     {filteredItems &&
                         filteredItems.map((data, i) => (
                             <div key={"foods-index" + i}>
