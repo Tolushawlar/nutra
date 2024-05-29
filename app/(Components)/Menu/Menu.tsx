@@ -203,7 +203,7 @@ const Menu = () => {
             >
               {/* &lt; */}
               <Image
-                className="transform rotate-180 flex flex-row justify-center item-center w-[20px] md:w-full h-[20px] md:h-full"
+                className="transform rotate-180 flex flex-row justify-center item-center w-[20px] md:w-[30px] h-[20px] md:h-[30px]"
                 alt="arrow"
                 src={arrow}
               />
@@ -242,7 +242,7 @@ const Menu = () => {
             >
               {/* &gt; */}
               <Image
-                className="flex flex-row justify-center item-center w-[20px] md:w-full h-[20px] md:h-full"
+                className="flex flex-row justify-center item-center w-[20px] md:w-[30px] h-[20px] md:h-[30px]"
                 alt="arrow"
                 src={arrow}
               />
