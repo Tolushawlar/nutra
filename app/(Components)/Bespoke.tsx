@@ -43,7 +43,7 @@ export const Bespoke = () => {
       <div id="bespoke" className="py-10 w-screen bg-[#003D28]">
         <div className="w-[100vw] md:w-[60%] p-10 mx-auto">
           <div className="flex flex-col items-center justify-center">
-            <h2 className=" text-left md:text-center text-[28px] md:text-[36px] text-[#ECF5EA]  font-BwGradual-Regualr font-[700] my-10">Want to send us a custom order?</h2>
+            <h2 className=" text-center text-[28px] md:text-[36px] text-[#ECF5EA]  font-BwGradual-Regular font-[700] my-10">Want to send us a custom order?</h2>
             {/* <p>
             Want to send us a custom order? Kindly fill the form below,
             we&lsquo;ll reply in munites!!

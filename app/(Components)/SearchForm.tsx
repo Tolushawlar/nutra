@@ -100,8 +100,8 @@ function SearchForm() {
   };
 
   return (
-    <div className='hover:shadow-lg hidden relative my-10 w-[60vw] h-[80px] py-[40px] px-4 bg-white md:flex shadow-md flex-row items-center justify-between rounded-[24px] border-[1px] border-[#a9c1a9]'>
-      <div className='flex flex-row justify-center items-center'>
+    <div className='hover:shadow-lg  relative my-10  w-[85vw] md:w-[60vw] h-[30px] md:h-[80px] py-[40px] px-4  bg-white md:flex shadow-md flex-row items-center justify-between  rounded-[16px] md:rounded-[24px] border-[1px] border-[#a9c1a9]'>
+      <div className='relative bottom-[2vh] flex flex-row justify-center items-center'>
         <Image
           src={search}
           alt="cartImage"
@@ -117,7 +117,7 @@ function SearchForm() {
         // disabled={isDisabled}
         />
       </div>
-      <div className='bg-[#F1F7F0] w-[500px] h-[60px] flex flex-row justify-center items-center rounded-[16px] shadow-sm'>
+      <div className='hidden bg-[#F1F7F0] w-[500px] h-[60px] md:flex flex-row justify-center items-center rounded-[16px] shadow-sm'>
         <button
           className={`text-Roboto-Light p-5 w-[150px] h-[40px] font-[600] text-[#003D28] shadow-md flex justify-center items-center rounded-[8px] ${searchMode === 'FOOD' ? 'bg-white ' : ''}`}
           onClick={() => handleButtonClick('FOOD', 'Enter food name to search for.')}
@@ -154,7 +154,7 @@ function SearchForm() {
                   <div key={index} className='flex items-center p-4 border-b border-gray-200'>
                     <Image width={200} height={200} src={item.image} alt={item.foodName} className='w-[50px] h-[50px] object-cover rounded-full mr-4' />
                     <div className='flex flex-col items-start'>
-                      <span className='font-semibold text-lg'>{item.foodName}</span>
+                      <span className='font-semibold text-lg text-left'>{item.foodName}</span>
                       <span className='text-gray-500'>{item.price}</span>
                     </div>
                   </div>

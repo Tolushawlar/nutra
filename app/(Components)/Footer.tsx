@@ -16,7 +16,7 @@ export const Footer = () => {
 
   return (
     <div>
-      <footer className=" flex flex-col p-[30px] bg-[#003D28] text-white">
+      <footer className=" flex flex-col p-[10px] md:p-[30px] bg-[#003D28] text-white">
         <div className="footer p-10">
           <aside>
             {/* <svg
