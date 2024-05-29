@@ -72,7 +72,7 @@ const Header2 = () => {
                 <Image
                   src={logo}
                   alt="logo"
-                  className="w-[200px] md:w-[220px] ml-10 h-[40px] md:h-[50px]"
+                  className="w-[200px] md:w-[220px] ml-10 h-[60px] md:h-[50px]"
                 />
               </a>
             </div>

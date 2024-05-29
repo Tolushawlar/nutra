@@ -24,7 +24,7 @@ function SimpleSlider() {
         arrows: false
     };
     return (
-        <div className="flex flex-col items-center justify-center p-[50px[ md:p-[60px] bg-[#D8E5D6]">
+        <div className="flex flex-col items-center justify-center p-[50px] md:p-[60px] bg-[#D8E5D6]">
             <h1 className="text-[#211F26] font-[700] text-[28px] md:text-[36px] font-BwGradual-Regular text-center md:text-left" >What people say about us</h1>
             <div className="flex flex-row items-center justify-center">
                 <div className="w-[15vw]"></div>
@@ -185,7 +185,7 @@ function SimpleSlider() {
                         <div className="">
                             <div
                                 className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[350px] bg-[#A9C1A9] p-6 rounded-[24px]"
-                                style={{ minWidth: '320px' }}
+                                style={{ minWidth: '340px' }}
                             >
                                 <div className="flex flex-col md:flex-row items-center w-[280px]">
                                     <div className="md:w-[300px] mb-4 md:mb-0">
@@ -209,7 +209,7 @@ function SimpleSlider() {
                         <div className="">
                             <div
                                 className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-6 rounded-[24px]"
-                                style={{ minWidth: '320px' }}
+                                style={{ minWidth: '340px' }}
                             >
                                 <div className="flex flex-col md:flex-row items-center w-[280px]">
                                     <div className="md:w-[300px] mb-4 md:mb-0">
@@ -233,7 +233,7 @@ function SimpleSlider() {
                         <div className="">
                             <div
                                 className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-6 rounded-[24px]"
-                                style={{ minWidth: '320px' }}
+                                style={{ minWidth: '340px' }}
                             >
                                 <div className="flex flex-col md:flex-row items-center w-[280px]">
                                     <div className="md:w-[300px] mb-4 md:mb-0">
