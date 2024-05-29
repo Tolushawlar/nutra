@@ -45,7 +45,7 @@ const faqInput = [
 
 export default function Home() {
 
-  const { searchResults, displayResults }: any = useAppContext(); 
+  const { searchResults, displayResults }: any = useAppContext();
   console.log(searchResults)
 
   return (
@@ -62,7 +62,10 @@ export default function Home() {
           <Reviews />
           {/* <Testimonials /> */}
           <FeaturedBlog />
-          <Faq faqTopic={topic} faqData={faqInput} />
+          
+          <div className="ml-1 md:ml-0">
+            <Faq faqTopic={topic} faqData={faqInput} />
+          </div>
         </div>
 
       </div>

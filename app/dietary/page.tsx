@@ -57,7 +57,7 @@ function HealthPage() {
   return (
     <div>
       <div className="flex flex-col w-full m-0 items-center overflow-x-hidden">
-        <div className="flex flex-col md:flex-row items-center justify-center  bg-[#003D28] w-[100vw] h-[900px] md:h-[800px]">
+        <div className="flex flex-col md:flex-row items-center justify-center  bg-[#003D28] w-[100vw] h-[1000px] md:h-[800px]">
           <div className="px-5 md:px-[90px] py-[60px] gap-10 flex flex-col items-center md:items-start justify-center ">
             <h2 className="font-[700] text-[32px] md:text-[68px] text-white font-BwGradual-Regular text-center md:text-leftr">Tasty homemade Dietary Meals you can enjoy.</h2>
             <p className="text-[24px] md:text-[30px] font-[400] text-[#F1F7F0] font-BwGradual-Regular my-5 md:my-10 text-center md:text-left">Access to registered dietitians that will help you achieve sustainable results.</p>
@@ -67,7 +67,7 @@ function HealthPage() {
           </div> */}
           </div>
           <div className="px-[20px] md:px-[90px]">
-            <Image src={Text1} alt="logo" className=" w-[500px] md:w-[1200px] h-[380px] md:h-[600px] " />
+            <Image src={Text1} alt="logo" className=" w-[500px] md:w-[1200px] h-[480px] md:h-[600px] " />
           </div>
         </div>
         <div
@@ -107,7 +107,9 @@ function HealthPage() {
         </div>
 
         {/* <Bespoke /> */}
-        <Faq faqTopic={topic} faqData={faqInput} />
+        <div className="mr-1 md:mr-0">
+          <Faq faqTopic={topic} faqData={faqInput} />
+        </div>
         {/* <div>
         <div className="bg-green-800   p-10">
           <div className="flex flex-col w-[60%] space-y-3 items-center mx-auto rounded-lg p-10 bg-white justify-center">
