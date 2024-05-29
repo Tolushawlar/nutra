@@ -30,7 +30,7 @@ const FoodCards = ({
           }
         </figure>
         <div className="card-body">
-          <div className="card-actions flex flex-col justify-center items-center md:items-start  ml-[-50px] md:ml-[-20px] gap-10">
+          <div className="card-actions flex flex-col justify-center items-start md:items-start  ml-[-50px] md:ml-[-20px] gap-10">
             <div className="mt-1 ml-[30px] md:ml-0">
               <h3 className="text-[#211F26] font-BwGradual-Regular font-[600] text-[24px] md:text-[30px] leading-[32px] md:leading-[38px]">
                 {data.foodName}
@@ -40,7 +40,7 @@ const FoodCards = ({
                 N{data.price}.00
               </h3>
             </div>
-            <div className="flex flex-row justify-start md:justify-between items-start md:items-center gap-5 md:gap-3 ml-[20px] md:ml-0 relative right-45 md:left-0">
+            <div className="flex flex-row justify-start md:justify-between items-start md:items-center gap-5 md:gap-3 ml-[20px] md:ml-0 relative right-5 md:left-0">
               {data.isInstant && (
                 <button
                   onClick={() => {

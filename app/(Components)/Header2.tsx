@@ -165,7 +165,7 @@ const Header2 = () => {
             </div>
           </div>
 
-          <div className="flex flex-row items-center mr-8 md:mr-0 gap-4 md:gap-0">
+          <div className="flex flex-row items-center mr-6 md:mr-0 gap-4 md:gap-0">
             <div className="">
               <div className="ml-4 flex items-center md:ml-6">
                 <div className="flex pl-0 md:pl-10 md:border-l-2 h-[50px] md:h-[100px] flex-col items-center justify-center">
