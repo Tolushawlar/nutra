@@ -50,8 +50,6 @@ function SearchForm() {
     }
   };
 
-  console.log(input);
-
   useEffect(() => {
     if (input == "") return;
     handleSearch();

@@ -10,8 +10,7 @@ myHeaders.append("Content-Type", "application/json");
 
 function generateRef(length: number) {
   let result = "";
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   const charactersLength = characters.length;
   let counter = 0;
   while (counter < length) {
@@ -51,6 +50,10 @@ export const POST = async (req: NextRequest) => {
 export const GET = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
   const reference = searchParams.get("reference");
+
+  // return NextResponse.json(
+  //   Array.from({ length: 1000 }).map((_) => "NSP-" + generateRef(6))
+  // );
 
   const url = "https://api.paystack.co/transaction/verify/" + reference;
 

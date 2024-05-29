@@ -65,11 +65,13 @@ function OrdersPage() {
                 </thead>
 
                 {orderData.length < 1 ? (
-                  <tr>
-                    <td colSpan={3} className="">
-                      <p className="text-center">No Order Items Yet!</p>
-                    </td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <td colSpan={3} className="">
+                        <p className="text-center">No Order Items Yet!</p>
+                      </td>
+                    </tr>
+                  </tbody>
                 ) : (
                   orderData.map((order) => {
                     return (
