@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import { Menu } from "@headlessui/react";
-import { HiMenuAlt3, HiOutlineLocationMarker, HiOutlineShoppingCart } from "react-icons/hi";
+import { HiMenu, HiMenuAlt3, HiOutlineLocationMarker, HiOutlineShoppingCart } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 import logo from "../Assets/Home/Horizontals.png";
 import Image from "next/image";
@@ -72,7 +72,7 @@ const Header2 = () => {
                 <Image
                   src={logo}
                   alt="logo"
-                  className="w-[150px] md:w-[220px] ml-10 h-[35px] md:h-[50px]"
+                  className="w-[200px] md:w-[220px] ml-10 h-[40px] md:h-[50px]"
                 />
               </a>
             </div>
@@ -165,7 +165,7 @@ const Header2 = () => {
             </div>
           </div>
 
-          <div className="flex flex-row items-center mr-10 md:mr-0 gap-4 md:gap-0">
+          <div className="flex flex-row items-center mr-8 md:mr-0 gap-4 md:gap-0">
             <div className="">
               <div className="ml-4 flex items-center md:ml-6">
                 <div className="flex pl-0 md:pl-10 md:border-l-2 h-[50px] md:h-[100px] flex-col items-center justify-center">
@@ -194,7 +194,7 @@ const Header2 = () => {
                         <Image
                           src={cartImg}
                           alt="cartImage"
-                          className="w-[20px] md:w-[28px] h-[20px] md:h-[28px]"
+                          className="w-[28px] md:w-[28px] h-[28px] md:h-[28px]"
                         />
                         <span className="badge badge-md indicator-item">
                           {cart.total}
@@ -213,10 +213,10 @@ const Header2 = () => {
               </div>
             </div>
 
-            <div className="-mr-2 flex md:hidden">
+            <div className=" flex md:hidden">
               <button onClick={() => setIsOpen(!isOpen)} className="hover:text-white inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
                 <span className="sr-only">Open main menu</span>
-                <HiMenuAlt3 className="h-6 w-6" color="black" />
+                <HiMenu size={24} className="h-10 w-10" color="black" />
               </button>
             </div>
 

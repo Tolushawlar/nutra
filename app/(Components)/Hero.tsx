@@ -21,7 +21,7 @@ export const Hero = () => {
         <div className="innerDiv md:shadow-md bg-transparent md:bg-white px-0 md:px-[20px] py-[70px] flex flex-col items-center rounded-[24px]">
           <h1 className="hidden md:block font-BwGradual-Regular text-[#211F26] text-left md:text-center text-[28px] md:text-[36px] font-[700]">Our Offerings</h1>
           <div className="flex flex-row justify-center md:justify-between items-center mt-7 w-[2000px] md:w-auto gap-4 md:gap-8  ml-[60vw] md:ml-0 px-[70px] md:px-0">
-            <div className=" ml-[680px]  md:ml-0 bg-white md:bg-transparent shadow-md md:shadow-none rounded-[16px] text-left md:text-center md:rounded-0 w-[525px] md:w-1/4 flex flex-row items-start md:items-start mt-5 md:mt-0 mr-2 p-5">
+            <div className=" ml-[600px]  md:ml-0 bg-white md:bg-transparent shadow-md md:shadow-none rounded-[16px] text-left md:text-center md:rounded-0 w-[650px] h-[200px] md:h-fit md:w-1/4 flex flex-row items-start md:items-start mt-5 md:mt-0 mr-2 p-8">
               <Image src={instant} alt="logo" className=" w-[25px] md:w-[50px] h-[25px] md:h-[50px]" />
               <div className="flex flex-col justify-start md:items-start ml-5 gap-3">
                 <h4 className="font-BwGradual-Regular font-[700] text-[#211F26]  text-left text-[20px] md:text-[24px] mr-5 md:mr-[50px]">Instant Order</h4>
@@ -34,7 +34,7 @@ export const Hero = () => {
                 </Link>
               </div>
             </div>
-            <div className=" bg-white md:bg-transparent shadow-md md:shadow-none rounded-[16px] text-left md:text-center md:rounded-0 w-[525px] md:w-1/4 flex flex-row items-start md:items-start mt-5 md:mt-0 mr-2 p-5">
+            <div className=" bg-white md:bg-transparent shadow-md md:shadow-none rounded-[16px] text-left md:text-center md:rounded-0 w-[650px] h-[200px] md:h-fit md:w-1/4 flex flex-row items-start md:items-start mt-5 md:mt-0 mr-2 p-8">
               <Image src={bespoke} alt="logo" className=" w-[25px] md:w-[50px] h-[25px] md:h-[50px]" />
               <div className="flex flex-col justify-start md:items-start ml-3 gap-3">
                 <h4 className="font-BwGradual-Regular font-[700] text-[#211F26] text-left  text-[20px] md:text-[24px] mr-5 md:mr-[10px]">Bespoke Order</h4>
@@ -47,7 +47,7 @@ export const Hero = () => {
                 </Link>
               </div>
             </div>
-            <div className="bg-white md:bg-transparent shadow-md md:shadow-none rounded-[16px] text-left md:text-center md:rounded-0 w-[525px] md:w-1/4 flex flex-row items-start md:items-start mt-5 md:mt-0 mr-2 p-5">
+            <div className="bg-white md:bg-transparent shadow-md md:shadow-none rounded-[16px] text-left md:text-center md:rounded-0 w-[650px] h-[200px] md:h-fit md:w-1/4 flex flex-row items-start md:items-start mt-5 md:mt-0 mr-2 p-8">
               <Image src={health} alt="logo" className=" w-[25px] md:w-[50px] h-[25px] md:h-[50px]" />
               <div className="flex flex-col justify-start md:items-start ml-3 gap-3">
                 <h4 className="font-BwGradual-Regular font-[700] text-[#211F26] text-left  text-[20px] md:text-[24px] mr-5 md:mr-[10px]">Dietary Meals </h4>
@@ -58,7 +58,7 @@ export const Hero = () => {
                 </a>
               </div>
             </div>
-            <div className="bg-white md:bg-transparent shadow-md md:shadow-none rounded-[16px] text-left md:text-center md:rounded-0 w-[525px] md:w-1/4 flex flex-row items-start md:items-start mt-5 md:mt-0 mr-2 p-5">
+            <div className="bg-white md:bg-transparent shadow-md md:shadow-none rounded-[16px] text-left md:text-center md:rounded-0 w-[650px] h-[200px] md:h-fit md:w-1/4 flex flex-row items-start md:items-start mt-5 md:mt-0 mr-2 p-8">
               <Image src={sub} alt="logo" className=" w-[25px] md:w-[50px] h-[25px] md:h-[50px]" />
               <div className="flex flex-col justify-start md:items-start ml-3 gap-3">
                 <h4 className="font-BwGradual-Regular font-[700] text-[#211F26] text-left md: text-[20px] md:text-[24px] mr-5 md:mr-[0px]">Subscription Plan</h4>

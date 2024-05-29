@@ -40,7 +40,7 @@ const FoodCards = ({
                 N{data.price}.00
               </h3>
             </div>
-            <div className="flex flex-row justify-start md:justify-between items-start md:items-center gap-5 md:gap-3 ml-[20px] md:ml-0">
+            <div className="flex flex-row justify-start md:justify-between items-start md:items-center gap-5 md:gap-3 ml-[20px] md:ml-0 relative right-4 md:left-0">
               {data.isInstant && (
                 <button
                   onClick={() => {

@@ -105,7 +105,7 @@ function SearchForm() {
         <Image
           src={search}
           alt="cartImage"
-          className="w-[15px] md:w-[20px] h-[15px] md:h-[20px] mr-4"
+          className="w-[20px] md:w-[20px] h-[20px] md:h-[20px] mr-4"
         />
         <input
           className='font-BwGradual-Light bg-transparent w-[450px] h-[30px] outline-0'

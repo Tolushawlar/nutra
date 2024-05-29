@@ -24,7 +24,7 @@ function SimpleSlider() {
         arrows: false
     };
     return (
-        <div className="flex flex-col items-center justify-center p-[60px] bg-[#D8E5D6]">
+        <div className="flex flex-col items-center justify-center p-[50px[ md:p-[60px] bg-[#D8E5D6]">
             <h1 className="text-[#211F26] font-[700] text-[28px] md:text-[36px] font-BwGradual-Regular text-center md:text-left" >What people say about us</h1>
             <div className="flex flex-row items-center justify-center">
                 <div className="w-[15vw]"></div>
@@ -185,15 +185,15 @@ function SimpleSlider() {
                         <div className="">
                             <div
                                 className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[350px] bg-[#A9C1A9] p-6 rounded-[24px]"
-                                style={{ minWidth: '300px' }}
+                                style={{ minWidth: '320px' }}
                             >
-                                <div className="flex flex-col md:flex-row items-center w-[250px]">
+                                <div className="flex flex-col md:flex-row items-center w-[280px]">
                                     <div className="md:w-[300px] mb-4 md:mb-0">
                                         <div className="flex flex-row items-center justify-between">
                                             <FaUserCircle color="green" className="w-[40px] h-[40px]" />
                                             <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">David Kayode, fitness enthusiast</p>
                                         </div>
-                                        <p className="text-[12px] md:text-[14px] font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4">Finally, healthy food that tastes amazing! NutraSpices has helped me reach my fitness goals without sacrificing flavor. Their meals are delicious and keep me feeling energized throughout the day.</p>
+                                        <p className="text-[12px] md:text-[14px] font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify ">Finally, healthy food that tastes amazing! NutraSpices has helped me reach my fitness goals without sacrificing flavor. Their meals are delicious and keep me feeling energized throughout the day.</p>
                                     </div>
                                     {/* <div className="">
                                         <Image
@@ -209,15 +209,15 @@ function SimpleSlider() {
                         <div className="">
                             <div
                                 className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-6 rounded-[24px]"
-                                style={{ minWidth: '300px' }}
+                                style={{ minWidth: '320px' }}
                             >
-                                <div className="flex flex-col md:flex-row items-center w-[250px]">
+                                <div className="flex flex-col md:flex-row items-center w-[280px]">
                                     <div className="md:w-[300px] mb-4 md:mb-0">
                                         <div className="flex flex-row items-center justify-between">
                                             <FaUserCircle color="green" className="w-[40px] h-[40px]" />
                                             <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Esther Olagunju, working mom</p>
                                         </div>
-                                        <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4">No more meal prep stress! NutraSpices is a lifesaver for our family. Love the variety of options and the fact that there's something for everyone, even my picky eaters. Dinner Time has become much easier and enjoyable.</p>
+                                        <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify ">No more meal prep stress! NutraSpices is a lifesaver for our family. Love the variety of options and the fact that there's something for everyone, even my picky eaters. Dinner Time has become much easier and enjoyable.</p>
                                     </div>
                                     {/* <div className="">
                                         <Image
@@ -233,15 +233,15 @@ function SimpleSlider() {
                         <div className="">
                             <div
                                 className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-6 rounded-[24px]"
-                                style={{ minWidth: '300px' }}
+                                style={{ minWidth: '320px' }}
                             >
-                                <div className="flex flex-col md:flex-row items-center w-[250px]">
+                                <div className="flex flex-col md:flex-row items-center w-[280px]">
                                     <div className="md:w-[300px] mb-4 md:mb-0">
                                         <div className="flex flex-row items-center justify-between">
                                             <FaUserCircle color="green" className="w-[40px] h-[40px]" />
                                             <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Lisa S., Tech sis / entrepreneur</p>
                                         </div>
-                                        <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4">The best part? The time I save! NutraSpices has freed up so much time in my week. No more grocery shopping or spending hours in the kitchen. Now I can focus on what truly matters and also have meals that matter.</p>
+                                        <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify ">The best part? The time I save! NutraSpices has freed up so much time in my week. No more grocery shopping or spending hours in the kitchen. Now I can focus on what truly matters and also have meals that matter.</p>
                                     </div>
                                     {/* <div className="">
                                         <Image
