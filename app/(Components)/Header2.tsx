@@ -1,7 +1,12 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import { Menu } from "@headlessui/react";
-import { HiMenu, HiMenuAlt3, HiOutlineLocationMarker, HiOutlineShoppingCart } from "react-icons/hi";
+import {
+  HiMenu,
+  HiMenuAlt3,
+  HiOutlineLocationMarker,
+  HiOutlineShoppingCart,
+} from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 import logo from "../Assets/Home/Horizontals.png";
 import Image from "next/image";
@@ -15,12 +20,11 @@ import cartImg from "../Assets/homepage/Trolley_Icon@3x.png";
 import Cart from "./Cart";
 import location from "../Assets/Home/Location.svg";
 import { Services } from "./Services";
-import bespoke from "../Assets/homepage/Bespoke.svg"
-import health from "../Assets/homepage/Healthy_Meal.svg"
-import instant from "../Assets/homepage/Instant_order.svg"
-import sub from "../Assets/homepage/Sub_Plan.svg"
+import bespoke from "../Assets/homepage/Bespoke.svg";
+import health from "../Assets/homepage/Healthy_Meal.svg";
+import instant from "../Assets/homepage/Instant_order.svg";
+import sub from "../Assets/homepage/Sub_Plan.svg";
 import arrowDown from "../Assets/homepage/Drop_Down_Icon.svg";
-
 
 const Header2 = () => {
   // const [currentPage, setCurrentPage] = useState<string | undefined>(undefined);
@@ -32,6 +36,11 @@ const Header2 = () => {
   const [receipt, setReceipt]: any = useState();
   // const { navHeight } = useAppContext();
 
+  useEffect(() => {
+    setShowReceipt(false);
+    if (location?.href?.includes("process")) {
+    }
+  }, []);
 
   useEffect(() => {
     setShowReceipt(false);
@@ -49,12 +58,11 @@ const Header2 = () => {
       });
   }, []);
 
-
   const pathname = usePathname();
   const parts = pathname.split("/");
   const lastItem = parts[parts.length - 1];
-  console.log(parts[1])
-  const secondItem = parts[1]
+  console.log(parts[1]);
+  const secondItem = parts[1];
 
   const scrollToBottom = () => {
     window.scrollTo({
@@ -69,10 +77,11 @@ const Header2 = () => {
     setShowOffering(!showOffering);
   };
 
-
-
   return (
-    <nav className="z-[9] fixed overflow-y-hidden  jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color " style={{ height: navHeight }}>
+    <nav
+      className="z-[9] fixed overflow-y-hidden  jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color "
+      style={{ height: navHeight }}
+    >
       <div className=" pb-[60px] md:pb-0 pt-3 md:pt-0 bg-white h-[30px] md:max-h-[400px] ">
         <div className="flex items-center justify-between bg-white">
           <div className="flex items-center">
@@ -90,7 +99,10 @@ const Header2 = () => {
             <div className="hidden md:ml-[300px] gap-10 md:flex flex-row">
               <div className=" ml-10 flex items-baseline space-x-4">
                 <div className="mr-10">
-                  <a href="/" className=" text-[#322F35] text-[18px] font-BwGradual-Regular font-[500]">
+                  <a
+                    href="/"
+                    className=" text-[#322F35] text-[18px] font-BwGradual-Regular font-[500]"
+                  >
                     Home
                     {lastItem === "" && (
                       <Image
@@ -151,7 +163,8 @@ const Header2 = () => {
                     </div>
                   </Menu.Items> */}
                   <Services />
-                  {(secondItem === "dietary" || secondItem === "subscription") && (
+                  {(secondItem === "dietary" ||
+                    secondItem === "subscription") && (
                     <Image
                       alt="arrow"
                       src={droplet}
@@ -160,7 +173,11 @@ const Header2 = () => {
                   )}
                 </Menu>
                 <div className="mr-10">
-                  <a href="/blog" className="  text-[#322F35] text-[18px] font-BwGradual-Regular font-[500]">What's New
+                  <a
+                    href="/blog"
+                    className="  text-[#322F35] text-[18px] font-BwGradual-Regular font-[500]"
+                  >
+                    What's New
                     {lastItem === "blog" && (
                       <Image
                         alt="arrow"
@@ -170,7 +187,12 @@ const Header2 = () => {
                     )}
                   </a>
                 </div>
-                <p onClick={scrollToBottom} className=" ml-[60px] relative left-10 cursor-pointer text-[#322F35] text-[18px] font-BwGradual-Regular font-[500]">Contact Us</p>
+                <p
+                  onClick={scrollToBottom}
+                  className=" ml-[60px] relative left-10 cursor-pointer text-[#322F35] text-[18px] font-BwGradual-Regular font-[500]"
+                >
+                  Contact Us
+                </p>
               </div>
             </div>
           </div>
@@ -212,7 +234,9 @@ const Header2 = () => {
                       </div>
                     </div>
                   </div>
-                  {openCart && <Cart openCart={openCart} setOpenCart={setOpenCart} />}
+                  {openCart && (
+                    <Cart openCart={openCart} setOpenCart={setOpenCart} />
+                  )}
                 </div>
                 <div className="hidden md:flex flex-col ml-10 h-[100px]  w-[100px] items-center justify-center bg-[#003D28]">
                   <Image src={location} alt="logo" className=" w-16 h-16 " />
@@ -224,12 +248,14 @@ const Header2 = () => {
             </div>
 
             <div className=" flex md:hidden">
-              <button onClick={() => setIsOpen(!isOpen)} className="hover:text-white inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="hover:text-white inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
+              >
                 <span className="sr-only">Open main menu</span>
                 <HiMenu size={24} className="h-10 w-10" color="black" />
               </button>
             </div>
-
           </div>
         </div>
       </div>
@@ -252,53 +278,99 @@ const Header2 = () => {
         // </div>
         <div className="md:hidden bg-white h-[100vh]">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="/" className="block px-3 py-2 rounded-md text-[20px] font-BwGradual-Regular text-[#322F35]">Home</a>
+            <a
+              href="/"
+              className="block px-3 py-2 rounded-md text-[20px] font-BwGradual-Regular text-[#322F35]"
+            >
+              Home
+            </a>
             <div className="relative">
-              <a href="#" className="block px-3 py-2 rounded-md font-BwGradual-Regular text-[20px] text-[#322F35]" onClick={toggleOffering}>
+              <a
+                href="#"
+                className="block px-3 py-2 rounded-md font-BwGradual-Regular text-[20px] text-[#322F35]"
+                onClick={toggleOffering}
+              >
                 Our Offering
-                <span className="ml-2 fixed right-2"><Image
-                  alt="arrow"
-                  src={arrowDown}
-                  className=" cursor-pointer relative right-2 w-[24px] h-[24px]"
-                /></span> {/* Down arrow */}
+                <span className="ml-2 fixed right-2">
+                  <Image
+                    alt="arrow"
+                    src={arrowDown}
+                    className=" cursor-pointer relative right-2 w-[24px] h-[24px]"
+                  />
+                </span>{" "}
+                {/* Down arrow */}
               </a>
               {showOffering && (
                 <div className=" absolute left-0 mt-2  bg-white rounded-md z-1 w-[100vw]">
-                 <a href={"/#OurMenu"} className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
-                    <Image src={instant} alt="logo" className=" w-[24px] h-[24px]" />
+                  <a
+                    href={"/#OurMenu"}
+                    className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]"
+                  >
+                    <Image
+                      src={instant}
+                      alt="logo"
+                      className=" w-[24px] h-[24px]"
+                    />
                     Instant Order
                   </a>
-                  <a href={"/#Bespoke"} className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
-                    <Image src={bespoke} alt="logo" className=" w-[24px] h-[24px]" />
+                  <a
+                    href={"/#Bespoke"}
+                    className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]"
+                  >
+                    <Image
+                      src={bespoke}
+                      alt="logo"
+                      className=" w-[24px] h-[24px]"
+                    />
                     Bespoke
-                  </a>                  
-                  <a href={"/dietary"} className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
-                    <Image src={health} alt="logo" className=" w-[24px] h-[24px]" />
+                  </a>
+                  <a
+                    href={"/dietary"}
+                    className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]"
+                  >
+                    <Image
+                      src={health}
+                      alt="logo"
+                      className=" w-[24px] h-[24px]"
+                    />
                     Dietary Meal
                   </a>
-                  <a href={"/subscription"} className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
-                    <Image src={sub} alt="logo" className=" w-[24px] h-[24px]" />
+                  <a
+                    href={"/subscription"}
+                    className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]"
+                  >
+                    <Image
+                      src={sub}
+                      alt="logo"
+                      className=" w-[24px] h-[24px]"
+                    />
                     Subscription
                   </a>
                 </div>
               )}
             </div>
-            <a href="/blog" className="font-BwGradual-Regular text-[20px] text-[#322F35] block px-3 py-2 rounded-md ">What's New</a>
-            <p onClick={scrollToBottom} className="font-BwGradual-Regular text-[20px] text-[#322F35] block px-3 py-2 rounded-md ">Contact Us</p>
+            <a
+              href="/blog"
+              className="font-BwGradual-Regular text-[20px] text-[#322F35] block px-3 py-2 rounded-md "
+            >
+              What's New
+            </a>
+            <p
+              onClick={scrollToBottom}
+              className="font-BwGradual-Regular text-[20px] text-[#322F35] block px-3 py-2 rounded-md "
+            >
+              Contact Us
+            </p>
           </div>
         </div>
-      )
-      }
+      )}
 
       <Slider />
 
-      {
-        showReceipt && (
-          <OrderReceipt setShowReceipt={setShowReceipt} receipt={receipt} />
-        )
-      }
-
-    </nav >
+      {showReceipt && (
+        <OrderReceipt setShowReceipt={setShowReceipt} receipt={receipt} />
+      )}
+    </nav>
   );
 };
 

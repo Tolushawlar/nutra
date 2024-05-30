@@ -54,17 +54,14 @@ function SearchForm() {
     if (searchMode === "FOOD") {
       url = `/api/search?filter=foodname&query=${input}&filter=${searchMode}`;
     } else if (searchMode === "PRICE") {
-      // const [range1, range2] = input.split('-').map(r => r.trim());
-      // url = `/api/search?filter=price&range1=${range1}&range2=${range2}&foodname=${input}`;
-      // url = `/api/search?filter=price&query=${range1},${range2}`
       const [range1, range2] = input.split("-");
       setSearchTerm(`Foods within Price Range ${input}`);
       console.log(range1);
       url = `/api/search?filter=price&query=${range1},${range2}`;
       console.log(url);
     } else if (searchMode === "BOTH") {
-      // const [range1, range2] = input.split('-').map(r => r.trim());
-      // url = `/api/search?filter=both&range1=${range1}&range2=${range2}&foodname=${input}`;
+      const [range1, range2] = input.split("-");
+      url = `/api/search?filter=both&query=${range1},${range2},${input}`;
     }
 
     const res = await axios.get(url);
