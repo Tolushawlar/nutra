@@ -43,10 +43,10 @@ export const Consult = () => {
 
   return (
     <Element name="consult">
-      <div className="py-[120px] w-screen ">
+      <div className="py-[120px]  md:w-screen  overflow-x-hidden">
         <div className="w-[100vw] md:w-[60%] p-10 mx-auto bg-[#FFFFFF] border-[0.8px] border-[#A9C1A9] rounded-[24px]">
           <div className="flex flex-col items-center justify-center">
-            <h2 className=" text-left md:text-center text-[28px] md:text-[36px] text-[#003D28]  font-BwGradual-Regualr font-[700] my-10">Book consultation</h2>
+            <h2 className=" text-left md:text-center text-[28px] md:text-[36px] text-[#003D28]  font-BwGradual-Regular font-[700] my-10">Book consultation</h2>
             {/* <p>
             Want to send us a custom order? Kindly fill the form below,
             we&lsquo;ll reply in munites!!
@@ -122,7 +122,7 @@ export const Consult = () => {
             <div className="flex justify-end">
               <button
                 onClick={handleSubmit}
-                className="flex flex-row justify-center items-center gap-8 btn-sm font-Roboto-Regualar font-[500] text-[16px] md:text-[18px] my-10 rounded-[16px] w-[250px] md:w-[350px] h-[64px] text-[#BCF800] bg-[#003D28] hover:bg-green-950"
+                className="flex flex-row justify-center items-center gap-8 btn-sm font-Roboto-Regualar font-[500] text-[16px] md:text-[18px] my-10 rounded-[16px] w-[300px] md:w-[350px] h-[64px] text-[#BCF800] bg-[#003D28] hover:bg-green-950"
               >
                 BOOK A CONSULTATION
                 <Image src={arrow} alt="logo" className="mr-3  w-[19px] h-[19px" />

@@ -119,14 +119,13 @@ function SearchForm() {
           value={input}
           onChange={(e) => handleChange(e.target.value)}
           onBlur={() => setDropdownVisible(false)}
-          // disabled={isDisabled}
+        // disabled={isDisabled}
         />
       </div>
       <div className="hidden bg-[#F1F7F0] w-[500px] h-[60px] md:flex flex-row justify-center items-center rounded-[16px] shadow-sm">
         <button
-          className={`text-Roboto-Light p-5 w-[150px] h-[40px] font-[600] text-[#003D28] shadow-md flex justify-center items-center rounded-[8px] ${
-            searchMode === "FOOD" ? "bg-white " : ""
-          }`}
+          className={`text-Roboto-Light p-5 w-[150px] h-[40px] font-[600] text-[#003D28] shadow-md flex justify-center items-center rounded-[8px] ${searchMode === "FOOD" ? "bg-white " : ""
+            }`}
           onClick={() =>
             handleButtonClick("FOOD", "Enter food name to search for.")
           }
@@ -135,13 +134,12 @@ function SearchForm() {
           SEARCH BY FOOD
         </button>
         <button
-          className={`text-Roboto-Light p-5 w-[150px] h-[40px] font-[600] text-[#003D28] shadow-md flex justify-center items-center rounded-[8px] ${
-            searchMode === "PRICE" ? "bg-white" : ""
-          }`}
+          className={`text-Roboto-Light p-5 w-[150px] h-[40px] font-[600] text-[#003D28] shadow-md flex justify-center items-center rounded-[8px] ${searchMode === "PRICE" ? "bg-white" : ""
+            }`}
           onClick={() =>
             handleButtonClick("PRICE", "Click the price range to search ")
           }
-          // onBlur={() => setDropdownVisible(false)}
+        // onBlur={() => setDropdownVisible(false)}
         >
           SEARCH BY PRICE
         </button>
@@ -155,6 +153,7 @@ function SearchForm() {
           SEARCH FOR BOTH
         </button>
       </div>
+
       {dropdownVisible && (
         <div className="z-[99999999999999] absolute top-[100px] left-0 w-[100%] bg-white shadow-lg rounded-[16px] max-h-[300px] overflow-auto">
           {searchMode === "FOOD" &&
@@ -197,11 +196,10 @@ function SearchForm() {
                       key={index}
                       onClick={() => handlePriceRangeSelection(range.value)}
                       onBlur={() => setDropdownVisible(true)}
-                      className={`cursor-pointer font-semibold text-lg p-3 rounded-[8px] ${
-                        selectedPriceRange === range.value
+                      className={`cursor-pointer font-semibold text-lg p-3 rounded-[8px] ${selectedPriceRange === range.value
                           ? "bg-[#BCF800] text-[#003d28]"
                           : "bg-[#003d28] text-[#BCF800]"
-                      }`}
+                        }`}
                     >
                       {range.range}
                     </button>
