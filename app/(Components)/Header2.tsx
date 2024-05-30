@@ -252,7 +252,7 @@ const Header2 = () => {
         // </div>
         <div className="md:hidden bg-white h-[100vh]">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="#" className="block px-3 py-2 rounded-md text-[20px] font-BwGradual-Regular text-[#322F35]">Home</a>
+            <a href="/" className="block px-3 py-2 rounded-md text-[20px] font-BwGradual-Regular text-[#322F35]">Home</a>
             <div className="relative">
               <a href="#" className="block px-3 py-2 rounded-md font-BwGradual-Regular text-[20px] text-[#322F35]" onClick={toggleOffering}>
                 Our Offering
@@ -264,23 +264,27 @@ const Header2 = () => {
               </a>
               {showOffering && (
                 <div className=" absolute left-0 mt-2  bg-white rounded-md z-1 w-[100vw]">
-                  <a href="#" className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
-                    <Image src={bespoke} alt="logo" className=" w-[24px] h-[24px]" />
-                    Bespoke</a>
-                  <a href="#" className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
+                 <a href={"/#OurMenu"} className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
                     <Image src={instant} alt="logo" className=" w-[24px] h-[24px]" />
-                    Instant Order</a>
-                  <a href="#" className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
+                    Instant Order
+                  </a>
+                  <a href={"/#Bespoke"} className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
+                    <Image src={bespoke} alt="logo" className=" w-[24px] h-[24px]" />
+                    Bespoke
+                  </a>                  
+                  <a href={"/dietary"} className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
                     <Image src={health} alt="logo" className=" w-[24px] h-[24px]" />
-                    Dietary Meal</a>
-                  <a href="#" className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
+                    Dietary Meal
+                  </a>
+                  <a href={"/subscription"} className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
                     <Image src={sub} alt="logo" className=" w-[24px] h-[24px]" />
-                    Subscription</a>
+                    Subscription
+                  </a>
                 </div>
               )}
             </div>
-            <a href="#" className="font-BwGradual-Regular text-[20px] text-[#322F35] block px-3 py-2 rounded-md ">What's New</a>
-            <a href="#" className="font-BwGradual-Regular text-[20px] text-[#322F35] block px-3 py-2 rounded-md ">Contact Us</a>
+            <a href="/blog" className="font-BwGradual-Regular text-[20px] text-[#322F35] block px-3 py-2 rounded-md ">What's New</a>
+            <p onClick={scrollToBottom} className="font-BwGradual-Regular text-[20px] text-[#322F35] block px-3 py-2 rounded-md ">Contact Us</p>
           </div>
         </div>
       )

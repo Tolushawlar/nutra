@@ -107,7 +107,7 @@ function HealthPage() {
         </div>
 
         {/* <Bespoke /> */}
-        <div className="mr-1 md:mr-0">
+        <div className="mr-2 md:mr-0">
           <Faq faqTopic={topic} faqData={faqInput} />
         </div>
         {/* <div>
