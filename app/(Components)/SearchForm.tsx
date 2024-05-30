@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import search from "../Assets/Home/Search_Icon.svg";
 import Image from "next/image";
 import bespoke from "../Assets/homepage/Bespoke.svg";
@@ -105,12 +105,12 @@ function SearchForm() {
   };
 
   return (
-    <div className="hover:shadow-lg hidden relative my-10 w-[60vw] h-[80px] py-[40px] px-4 bg-white md:flex shadow-md flex-row items-center justify-between rounded-[24px] border-[1px] border-[#a9c1a9]">
-      <div className="flex flex-row justify-center items-center">
+    <div className="hover:shadow-lg  relative my-10  w-[85vw] md:w-[60vw] h-[30px] md:h-[80px] py-[40px] px-4  bg-white md:flex shadow-md flex-row items-center justify-between  rounded-[16px] md:rounded-[24px] border-[1px] border-[#a9c1a9]">
+      <div className="relative bottom-[1.5vh] md:bottom-0 flex flex-row justify-center items-center">
         <Image
           src={search}
           alt="cartImage"
-          className="w-[15px] md:w-[20px] h-[15px] md:h-[20px] mr-4"
+          className="w-[20px] md:w-[20px] h-[20px] md:h-[20px] mr-4"
         />
         <input
           className="font-BwGradual-Light bg-transparent w-[450px] h-[30px] outline-0"
@@ -122,7 +122,7 @@ function SearchForm() {
           // disabled={isDisabled}
         />
       </div>
-      <div className="bg-[#F1F7F0] w-[500px] h-[60px] flex flex-row justify-center items-center rounded-[16px] shadow-sm">
+      <div className="hidden bg-[#F1F7F0] w-[500px] h-[60px] md:flex flex-row justify-center items-center rounded-[16px] shadow-sm">
         <button
           className={`text-Roboto-Light p-5 w-[150px] h-[40px] font-[600] text-[#003D28] shadow-md flex justify-center items-center rounded-[8px] ${
             searchMode === "FOOD" ? "bg-white " : ""
@@ -229,11 +229,11 @@ function SearchForm() {
                       width={200}
                       height={200}
                       src={item.image}
-                      alt="image"
+                      alt={item.foodName}
                       className="w-[50px] h-[50px] object-cover rounded-full mr-4"
                     />
                     <div className="flex flex-col items-start">
-                      <span className="font-semibold text-lg">
+                      <span className="font-semibold text-lg text-left">
                         {item.foodName}
                       </span>
                       <span className="text-gray-500">{item.price}</span>

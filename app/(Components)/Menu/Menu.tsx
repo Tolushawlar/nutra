@@ -123,7 +123,7 @@ const Menu = () => {
           <OrderModal scheduleOrder={scheduledata} setOpenModal={setOpenModal} />
         )}
         <div className="text-center flex flex-col items-center justify-center">
-          <h2 className="h2 font-BwGradual-Regular font-[700] text-[#211F26] text-[28px] md:text-[36px] text-left md:text-center">
+          <h2 className="h2 font-BwGradual-Regular font-[700] text-[#211F26] text-[28px] md:text-[36px] text-center">
             Everything you need to{" "}
             <span className="text-[#17CC29]">Stay Healthy</span>
           </h2>
@@ -198,12 +198,12 @@ const Menu = () => {
 
           <div className="relative my-6 w-[80vw] md:w-[95vw] flex flex-row items-center justify-center">
             <button
-              className="absolute left-[-20px] md:left-0  rounded-[200px] bg-[#FFFFFF] font-[900] text-[30px] text-center flex flex-row items-center justify-center text-[#A9C1A9] h-[50px] md:h-[60px] w-[50px] md:w-[60px] border-[1px] border-[#A9C1A9] shadow-md "
+              className="absolute left-[-20px] md:left-0  rounded-[200px] bg-[#FFFFFF] font-[900] text-[30px] text-center flex flex-row items-center justify-center text-[#A9C1A9] h-[40px] md:h-[60px] w-[40px] md:w-[60px] border-[1px] border-[#A9C1A9] shadow-md "
               onClick={() => scroll("left")}
             >
               {/* &lt; */}
               <Image
-                className="transform rotate-180 flex flex-row justify-center item-center"
+                className="transform rotate-180 flex flex-row justify-center item-center w-[20px] md:w-[30px] h-[20px] md:h-[30px]"
                 alt="arrow"
                 src={arrow}
               />
@@ -237,12 +237,12 @@ const Menu = () => {
               </div>
             </div>
             <button
-              className="absolute right-[-20px] md:right-0 rounded-[200px] bg-[#FFFFFF] font-[900] text-[30px] text-center flex flex-row items-center justify-center text-[#A9C1A9] h-[50px] md:h-[60px] w-[50px] md:w-[60px] border-[1px] border-[#A9C1A9] shadow-md "
+              className="absolute right-[-20px] md:right-0 rounded-[200px] bg-[#FFFFFF] font-[900] text-[30px] text-center flex flex-row items-center justify-center text-[#A9C1A9] h-[40px] md:h-[60px] w-[40px] md:w-[60px] border-[1px] border-[#A9C1A9] shadow-md "
               onClick={() => scroll("right")}
             >
               {/* &gt; */}
               <Image
-                className="flex flex-row justify-center item-center"
+                className="flex flex-row justify-center item-center w-[20px] md:w-[30px] h-[20px] md:h-[30px]"
                 alt="arrow"
                 src={arrow}
               />

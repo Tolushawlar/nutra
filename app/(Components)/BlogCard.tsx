@@ -9,7 +9,7 @@ interface BlogCardProps {
 }
 const BlogCard: React.FC<BlogCardProps> = ({ blogImg }) => {
     return (
-        <div className='bg-[#EFDFC3]  py-3 flex flex-col  justify-start w[400px] md:w-[420px] h-[400px] md:h-[560px] rounded-[24px] cursor-pointer'>
+        <div className='bg-[#EFDFC3]  py-3 flex flex-col  justify-start w[400px] md:w-[420px] h-[480px] md:h-[560px] rounded-[24px] cursor-pointer'>
             <Image src={blogImg} alt="logo" className="" />
             <div className='flex flex-row items-start gap-10 px-5'>
                 <span className='flex flex-row items-center gap-2 '>

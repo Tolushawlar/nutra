@@ -70,7 +70,10 @@ export default function Home() {
           {/* <Testimonials /> */}
           <BCPForm />
           <FeaturedBlog />
-          <Faq faqTopic={topic} faqData={faqInput} />
+
+          <div className="ml-1 md:ml-0">
+            <Faq faqTopic={topic} faqData={faqInput} />
+          </div>
         </div>
       </div>
     </div>

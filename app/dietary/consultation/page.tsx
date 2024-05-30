@@ -21,7 +21,7 @@ const faqInput = [
     answer: "No, you don't need a referral to consult with a NutraSpices dietitian. Our services are open to anyone seeking personalized guidance on healthy eating and achieving their nutrition goals."
   },
   {
-    question: "How can I schedule a consultation with a NutraSpices dietitian?",
+    question: "How can I schedule consultation with a NutraSpices dietitian?",
     answer: "Scheduling is easy! You can contact us through our website by filling out the appointment form, or by calling us at [Phone number]. Our friendly team will be happy to assist you in booking a consultation that fits your schedule."
   },
   {

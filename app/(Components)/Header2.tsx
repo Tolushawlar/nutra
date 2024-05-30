@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import { Menu } from "@headlessui/react";
-import { HiMenuAlt3, HiOutlineLocationMarker, HiOutlineShoppingCart } from "react-icons/hi";
+import { HiMenu, HiMenuAlt3, HiOutlineLocationMarker, HiOutlineShoppingCart } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 import logo from "../Assets/Home/Horizontals.png";
 import Image from "next/image";
@@ -15,6 +15,11 @@ import cartImg from "../Assets/homepage/Trolley_Icon@3x.png";
 import Cart from "./Cart";
 import location from "../Assets/Home/Location.svg";
 import { Services } from "./Services";
+import bespoke from "../Assets/homepage/Bespoke.svg"
+import health from "../Assets/homepage/Healthy_Meal.svg"
+import instant from "../Assets/homepage/Instant_order.svg"
+import sub from "../Assets/homepage/Sub_Plan.svg"
+import arrowDown from "../Assets/homepage/Drop_Down_Icon.svg";
 
 
 const Header2 = () => {
@@ -58,12 +63,17 @@ const Header2 = () => {
     });
   };
 
-  
+  const [showOffering, setShowOffering] = useState(false);
+
+  const toggleOffering = () => {
+    setShowOffering(!showOffering);
+  };
+
 
 
   return (
     <nav className="z-[9] fixed overflow-y-hidden  jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color " style={{ height: navHeight }}>
-      <div className="  bg-white h-[50px] md:max-h-[400px] ">
+      <div className=" pb-[60px] md:pb-0 pt-3 md:pt-0 bg-white h-[30px] md:max-h-[400px] ">
         <div className="flex items-center justify-between bg-white">
           <div className="flex items-center">
             <div className="flex-shrink-0">
@@ -72,7 +82,7 @@ const Header2 = () => {
                 <Image
                   src={logo}
                   alt="logo"
-                  className="w-[110px] md:w-[220px] ml-10 h-[25px] md:h-[50px]"
+                  className="w-[200px] md:w-[220px] ml-10 h-[40px] md:h-[50px]"
                 />
               </a>
             </div>
@@ -140,7 +150,7 @@ const Header2 = () => {
                       </Menu.Item>
                     </div>
                   </Menu.Items> */}
-                  <Services  />
+                  <Services />
                   {(secondItem === "dietary" || secondItem === "subscription") && (
                     <Image
                       alt="arrow"
@@ -165,10 +175,10 @@ const Header2 = () => {
             </div>
           </div>
 
-          <div className="flex flex-row items-center">
-            <div className="hidden md:block">
+          <div className="flex flex-row items-center mr-6 md:mr-0 gap-4 md:gap-0">
+            <div className="">
               <div className="ml-4 flex items-center md:ml-6">
-                <div className="flex pl-0 md:pl-10 border-l-2 h-[50px] md:h-[100px] flex-col items-center justify-center">
+                <div className="flex pl-0 md:pl-10 md:border-l-2 h-[50px] md:h-[100px] flex-col items-center justify-center">
                   <div className="dropdown dropdown-end">
                     <div
                       onClick={() => setOpenCart(true)}
@@ -194,7 +204,7 @@ const Header2 = () => {
                         <Image
                           src={cartImg}
                           alt="cartImage"
-                          className="w-[20px] md:w-[28px] h-[20px] md:h-[28px]"
+                          className="w-[28px] md:w-[28px] h-[28px] md:h-[28px]"
                         />
                         <span className="badge badge-md indicator-item">
                           {cart.total}
@@ -213,10 +223,10 @@ const Header2 = () => {
               </div>
             </div>
 
-            <div className="-mr-2 flex md:hidden">
-              <button onClick={() => setIsOpen(!isOpen)} className="text-gray-300 hover:text-white inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
+            <div className=" flex md:hidden">
+              <button onClick={() => setIsOpen(!isOpen)} className="hover:text-white inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
                 <span className="sr-only">Open main menu</span>
-                <HiMenuAlt3 className="h-6 w-6" />
+                <HiMenu size={24} className="h-10 w-10" color="black" />
               </button>
             </div>
 
@@ -224,31 +234,71 @@ const Header2 = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden">
+        // <div className="md:hidden bg-white">
+        //   <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        //     <a href="#" className=" block px-3 py-2 rounded-md font-BwGradual-Regular text-[#322F35]">Home</a>
+        //     <a href="#" className="  block px-3 py-2 rounded-md font-BwGradual-Regular text-[#322F35]">Our Offering</a>
+        //     <div className="ml-4">
+        //       <div className="mt-2 space-y-1">
+        //         <a href="#" className="block px-3 py-2 rounded-md text-sm font-BwGradual-Regular text-[20px] text-[#322F35]">Bespoke</a>
+        //         <a href="#" className="block px-3 py-2 rounded-md text-sm font-BwGradual-Regular text-[20px] text-[#322F35]">Instant Order</a>
+        //         <a href="#" className="block px-3 py-2 rounded-md text-sm font-BwGradual-Regular text-[20px] text-[#322F35]">Dietary Meal</a>
+        //         <a href="#" className="block px-3 py-2 rounded-md text-sm font-BwGradual-Regular text-[20px] text-[#322F35]">Subscription</a>
+        //       </div>
+        //     </div>
+        //     <a href="#" className="font-BwGradual-Regular text-[#322F35] block px-3 py-2 rounded-md ">What's New</a>
+        //     <a href="#" className="font-BwGradual-Regular text-[#322F35] block px-3 py-2 rounded-md ">Contact Us</a>
+        //   </div>
+        // </div>
+        <div className="md:hidden bg-white h-[100vh]">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
-            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Our Offering</a>
-            <div className="ml-4">
-              <div className="mt-2 space-y-1">
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-sm font-medium">Bespoke</a>
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-sm font-medium">Instant Order</a>
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-sm font-medium">Dietary Meal</a>
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-sm font-medium">Subscription</a>
-              </div>
+            <a href="/" className="block px-3 py-2 rounded-md text-[20px] font-BwGradual-Regular text-[#322F35]">Home</a>
+            <div className="relative">
+              <a href="#" className="block px-3 py-2 rounded-md font-BwGradual-Regular text-[20px] text-[#322F35]" onClick={toggleOffering}>
+                Our Offering
+                <span className="ml-2 fixed right-2"><Image
+                  alt="arrow"
+                  src={arrowDown}
+                  className=" cursor-pointer relative right-2 w-[24px] h-[24px]"
+                /></span> {/* Down arrow */}
+              </a>
+              {showOffering && (
+                <div className=" absolute left-0 mt-2  bg-white rounded-md z-1 w-[100vw]">
+                 <a href={"/#OurMenu"} className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
+                    <Image src={instant} alt="logo" className=" w-[24px] h-[24px]" />
+                    Instant Order
+                  </a>
+                  <a href={"/#Bespoke"} className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
+                    <Image src={bespoke} alt="logo" className=" w-[24px] h-[24px]" />
+                    Bespoke
+                  </a>                  
+                  <a href={"/dietary"} className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
+                    <Image src={health} alt="logo" className=" w-[24px] h-[24px]" />
+                    Dietary Meal
+                  </a>
+                  <a href={"/subscription"} className="flex flex-row items-center justify-start  gap-5  px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">
+                    <Image src={sub} alt="logo" className=" w-[24px] h-[24px]" />
+                    Subscription
+                  </a>
+                </div>
+              )}
             </div>
-            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">What's New</a>
-            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact Us</a>
+            <a href="/blog" className="font-BwGradual-Regular text-[20px] text-[#322F35] block px-3 py-2 rounded-md ">What's New</a>
+            <p onClick={scrollToBottom} className="font-BwGradual-Regular text-[20px] text-[#322F35] block px-3 py-2 rounded-md ">Contact Us</p>
           </div>
         </div>
-      )}
+      )
+      }
 
       <Slider />
 
-      {showReceipt && (
-        <OrderReceipt setShowReceipt={setShowReceipt} receipt={receipt} />
-      )}
+      {
+        showReceipt && (
+          <OrderReceipt setShowReceipt={setShowReceipt} receipt={receipt} />
+        )
+      }
 
-    </nav>
+    </nav >
   );
 };
 

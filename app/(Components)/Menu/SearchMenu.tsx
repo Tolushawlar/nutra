@@ -103,7 +103,7 @@ const SearchMenu = () => {
 
                 {(secondItem === "dietary" || secondItem === "subscription") ? null : (
                     <div className="text-center flex flex-col items-center justify-center">
-                        <h2 className="h2 font-BwGradual-Regular font-[700] text-[#211F26] text-[28px] md:text-[36px] text-left md:text-center">
+                        <h2 className="h2 font-BwGradual-Regular font-[700] text-[#211F26] text-[28px] md:text-[36px] text-center">
                             Everything you need to{" "}
                             <span className="text-[#17CC29]">Stay Healthy</span>
                         </h2>
@@ -161,7 +161,7 @@ const SearchMenu = () => {
           </button>
         </div> */}
                     <div className="flex flex-row items-center justify-between w-[60vw]">
-                        <p className="font-800 font-Roboto-Regular text-[14px] md:text-[20px] text-[#211F26]">You Searched For <span className="text-[#17CC29]">{searchTerm}</span></p>
+                        <p className="font-800 font-Roboto-Regular text-[18px] md:text-[24px] text-[#211F26]">You Searched For <span className="text-[#17CC29]">{searchTerm}</span></p>
                         <IoClose onClick={() => setDisplayResults(false)} color="bg-green-950" className="cursor-pointer w-[30px] h-[30px]" />
                     </div>
 

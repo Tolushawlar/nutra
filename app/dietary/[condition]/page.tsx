@@ -11,6 +11,7 @@ import SearchForm from "@/app/(Components)/SearchForm";
 import { Link } from "react-scroll";
 import { useAppContext } from "@/app/context/AppContext";
 import SearchMenu from "@/app/(Components)/Menu/SearchMenu";
+// import Link from "next/link";
 
 const topic = "Frequently Asked Questions?"
 const faqInput = [
@@ -71,12 +72,12 @@ function HealthCondition() {
         <p className="hover:no-underline text-[#006240] font-500 text-[28px font-Roboto-Black cursor-pointer "> Instant Consultation</p>
       </div>
        */}
-      <p className="text-[28px] md:text-[36px] font-[700] mt-[10px] md:mt-[60px] font-BwGradual-Regular text-center text-[#211F26]">
+      <p className="text-[28px] md:text-[36px] font-[700] mt-[30px] md:mt-[60px] font-BwGradual-Regular text-center text-[#211F26]">
         Our <span className=" text-[#17CC29]">{condition}</span> Menu
       </p>
       <SearchForm />
 
-      <div className="flex flex-row items-center align-middle justify-center gap-1 m-10 w-[760px] bg-white rounded-[16px]">
+      <div className="hidden md:flex flex-row items-center align-middle justify-center gap-1 m-10 w-[760px] bg-white rounded-[16px]">
         <p
           className={`font-900 font-BwGradual-Regular text-[14px] md:text-[18px] text-center md:w-[250px] px-2 py-4 mx-2 my-2 ${selectedButton === 'DIABETIC' ? 'bg-[#003D28] text-[#BCF800]' : 'bg-white text-[#003D28]'} rounded-[8px] cursor-pointer `}
           onClick={() => handleButtonClick('DIABETIC')}
@@ -96,24 +97,39 @@ function HealthCondition() {
           WEIGHT LOSS FRIENDLY
         </p>
       </div>
+      <div className="md:hidden mt-4 bg-[#F1F7F0]">
+        <select
+          value={selectedButton}
+          onChange={(e) => handleButtonClick(e.target.value)}
+          className="block p-2 bg-[#F1F7F0] text-[#003D28] text-[20px] font-BwGradual-Regular border border-gray-300 rounded-[12px] w-[282px] h-[72px] outline-none"
+        >
+          <option value="">Select your search filter</option>
+          <option value="DIABETIC" className="bg-[#F1F7F0] text-[#003D28] text-[20px] font-BwGradual-Regular px-[10px] py-[20px]">DIABETIC FRIENDLY</option>
+          <option value="WEIGHT_GAIN" className="bg-[#F1F7F0] text-[#003D28] text-[20px] font-BwGradual-Regular px-[10px] py-[20px]">WEIGHT GAIN FRIENDLY</option>
+          <option value="WEIGHT_LOSS" className="bg-[#F1F7F0] text-[#003D28] text-[20px] font-BwGradual-Regular px-[10px] py-[20px]" >WEIGHT LOSS FRIENDLY</option>
+        </select>
+      </div>
 
 
       {displayResults ? <SearchMenu /> : <ConditionMenu />
       }
 
-      <div className="flex flex-col items-center justify-start bg-[#D8E5D6] h[300px] md:h-[400px] w-screen mt-[80px] md:mt-0 p-[20px] md:p-[80px]">
+      <div className="flex flex-col items-center justify-start bg-[#D8E5D6] h[300px] md:h-[400px] w-screen mt-[80px] md:mt-0 p-[30px] md:p-[80px] ">
         <h2 className="text-[#211F26] font-900 text-[28px] md:text-[36px] font-BwGradual-Black text-center my-10">I need an immediate consultation with our dietitian?</h2>
-        <a href="/dietary/consultation" className="cursor-pointer flex flex-row items-center justify-center gap-7 mt-[30px] md:mt-[30px] bg-[#003D28] rounded-[16px] w-[180px] md:w-[350px] h-[40px] md:h-[70px] hover:translate-x-1  hover:bg-green-950">
-          <div className="text-[#BCF800] font-[500] text-left font-BwGradual-Regular text-[16px] md:text-[18px] ">GET STARTED</div>
-          <Image src={arrow} alt="logo" className="w-[19px] h-[19px] " />
+        <a href="consultation" className="cursor-pointer flex flex-row items-center justify-center gap-7 mt-[30px] md:mt-[30px] bg-[#003D28] rounded-[8px] md:rounded-[16px] w-[317px] md:w-[400px] h-[64px] md:h-[70px] hover:translate-x-1  hover:bg-green-950">
+          <div className="text-[#BCF800] font-[500] text-left font-BwGradual-Regular text-[16px] md:text-[18px] ">GET ME STARTED</div>
+          <Image src={arrow} alt="logo" className=" w-[19px] h-[19px]" />
         </a>
       </div>
 
 
 
+
       {/* <Bespoke /> */}
 
-      <Faq faqTopic={topic} faqData={faqInput} />
+      <div className="mr-1 md:mr-0">  
+        <Faq faqTopic={topic} faqData={faqInput} />
+      </div>
 
     </div>
   );

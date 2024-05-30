@@ -30,8 +30,8 @@ const FoodCards = ({
           }
         </figure>
         <div className="card-body">
-          <div className="card-actions flex flex-col justify-center items-center md:items-start  ml-[-50px] md:ml-[-20px] gap-10">
-            <div className="mt-1 ml-[50px] md:ml-0">
+          <div className="card-actions flex flex-col justify-center items-start md:items-start  ml-[-50px] md:ml-[-20px] gap-10">
+            <div className="mt-1 ml-[30px] md:ml-0">
               <h3 className="text-[#211F26] font-BwGradual-Regular font-[600] text-[24px] md:text-[30px] leading-[32px] md:leading-[38px]">
                 {data.foodName}
               </h3>
@@ -40,7 +40,7 @@ const FoodCards = ({
                 N{data.price}.00
               </h3>
             </div>
-            <div className="flex flex-row justify-start md:justify-between items-start md:items-center gap-3 ml-[-40px] md:ml-0">
+            <div className="flex flex-row justify-start md:justify-between items-start md:items-center gap-5 md:gap-3 ml-[20px] md:ml-0 relative left-1 md:left-0">
               {data.isInstant && (
                 <button
                   onClick={() => {
@@ -54,9 +54,9 @@ const FoodCards = ({
                     }));
                     setAddedToCart(true);
                   }}
-                  className="font-BwGradual-Regualr font-[500] flex flex-row justify-center items-center btn-sm rounded-[12px] w-[106px] md:w-[168px] h-[50px] bg-[#003D28] text-[#BCF800] text-[14px] md:text-[16px] p-3 md:p-auto"
+                  className="font-BwGradual-Regualr font-[500] flex flex-row justify-center items-center btn-sm rounded-[12px] w-[135px] md:w-[168px] h-[50px] bg-[#003D28] text-[#BCF800] text-[14px] md:text-[16px] p-3 md:p-auto"
                 >
-                  <Image src={card} alt="logo" className="hidden md:block mr-3 w-[26px] h-[26px]" />
+                  <Image src={card} alt="logo" className=" mr-1 md:mr-3 w-[26px] h-[26px]" />
                   ORDER NOW
                 </button>
               )}
@@ -77,9 +77,9 @@ const FoodCards = ({
                   setScheduleOrder(data);
                   setOpenModal(true);
                 }}
-                className="font-BwGradual-Regular font-[900] flex flex-row justify-center items-center btn-sm  border-[0px] border-[#003D28] rounded-[12px] w-[100px] md:w-[163px] h-[50px] bg-[#EFDFC3] text-[#003D28] text-[14px] md:text-[16px] p-3 md:p-auto "
+                className="font-BwGradual-Regular font-[900] flex flex-row justify-center items-center btn-sm  border-[0px] border-[#003D28] rounded-[12px] w-[135px] md:w-[163px] h-[50px] bg-[#EFDFC3] text-[#003D28] text-[14px] md:text-[16px] p-3 md:p-auto "
               >
-                <Image src={calender} alt="logo" className="hidden md:block mr-3 w-[24px] h-[24px]" />
+                <Image src={calender} alt="logo" className="mr-1 md:mr-3 w[20px] md:w-[24px] h-[20px] md:h-[24px]" />
                 SCHEDULE
               </button>
             </div>
