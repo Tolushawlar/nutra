@@ -1,16 +1,23 @@
 import React from 'react';
 import "./faq.css";
+import { usePathname } from 'next/navigation';
 
 
 interface FaqCardProps {
     faqTopic: string;
     faqData: any;
 }
-const Faq: React.FC<FaqCardProps> = ({faqTopic, faqData }) => {
+const Faq: React.FC<FaqCardProps> = ({ faqTopic, faqData }) => {
+
+    const pathname = usePathname();
+    const parts = pathname.split("/");
+    const lastItem = parts[parts.length - 1];
+    const secondItem = parts[1]
+
     return (
         <div className="box w-[90vw] my-[100px] flex flex-col items-center overflow-x-hidden">
             <h2 className='my-[70px] text-[#211F26] text-[28px] md:text-[36px] font-[700] font-BwGradual-Regular text-center md:text-center'>{faqTopic}</h2>
-            <div className="content">
+            <div className={`content ${lastItem === "dietary" ? "mr-6" : ""}`}>
                 {faqData.map((item: any, index: any) => (
                     <details className="mt-[-30px] md:mt-[-60px]" key={index}>
                         <summary className=" ">
