@@ -1,15 +1,12 @@
 "use client";
-import Header from "@/app/(Components)/Header";
-import Sidebar from "@/app/(Components)/SideBar";
 import axios from "axios";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { RiDeleteBin5Line } from "react-icons/ri";
 
-function AllFoodPage() {
-  const [foodData, setFoodData] = useState<any[]>([]);
+function AllSubscriptionPage() {
+  const [data, setData] = useState<any[]>([]);
 
   useEffect(() => {
-    // Fetch data from the API when the component mounts
     fetchData();
   }, []);
 
@@ -30,11 +27,11 @@ function AllFoodPage() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("/api/food");
+      const response = await axios.get("/api/subscription");
       console.log(response.data);
       if (response.status === 200) {
-        // If the request is successful, set the foodData state
-        setFoodData(response.data);
+        // If the request is successful, set the data state
+        setData(response.data);
       } else {
         console.error("Failed to fetch food data:", response.statusText);
       }
@@ -46,106 +43,99 @@ function AllFoodPage() {
   return (
     <>
       <div className=" flex flex-row align-middle h-full w-[100%]">
-        {/* <Sidebar /> */}
         <div className="w-full bg-gray-200 p-10">
-          <div className="text-black text-3xl">All Food</div>
+          <div className="text-black text-3xl">All Subscriptions</div>
           <div className="  overflow-x-auto bg-white flex flex-col my-10">
-            <div className=" border">
-              <table className="table overflow">
-                {/* head */}
-                <thead>
-                  <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>IsInstant</th>
-                    <th>Categories</th>
-                    <th>Created at</th>
-                    <th>IsAvaiable</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {foodData.length < 1 ? (
-                    <tr>
-                      <td colSpan={8} className="">
-                        <p className="text-center">No Food Items Yet!</p>
-                      </td>
-                    </tr>
-                  ) : (
-                    foodData.map((food) => (
-                      <tr key={food._id}>
-                        <td>
-                          <div className="avatar">
-                            <div className="  w-12 h-12 rounded-lg bg-red-400">
-                              <img
-                                src={food.image}
-                                className="w-full h-full"
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div className="flex items-center gap-3">
-                            <div>
-                              <div className="font-bold">{food.foodName}</div>
-                            </div>
-                          </div>
-                        </td>
-                        <td>#{food.price}</td>
-                        <td>
-                          <div
-                            style={{
-                              border: `1.8px solid ${
-                                food.isInstant ? "green" : "red"
-                              }`,
-                              color: ` ${food.isAvailable ? "green" : "red"}`,
-                            }}
-                            className=" rounded-md text-center"
-                          >
-                            {food.isInstant.toString()}
-                          </div>
-                        </td>
-                        <td>
-                          {food.categories.map((category: any) => (
-                            <span key={category} className="">
-                              {category}
-                            </span>
-                          ))}
-                        </td>
-                        <td>{new Date(food.createdAt).toLocaleDateString()}</td>
-                        <th>
-                          <div
-                            style={{
-                              border: `1.8px solid ${
-                                food.isAvailable ? "green" : "red"
-                              }`,
-                              color: ` ${food.isAvailable ? "green" : "red"}`,
-                            }}
-                            className=" rounded-md text-center "
-                          >
-                            {food.isAvailable.toString()}
-                          </div>
-                        </th>
-                        <th>
-                          <div
-                            onClick={() => {
-                              const res = confirm(
-                                "Are You Sure You want to delete this food item?"
-                              );
-                              if (res) deleteData(food._id);
-                            }}
-                            className="cursor-pointer border p-2 border-red-600 rounded-lg"
-                          >
-                            <RiDeleteBin5Line className="text-red-600 text-[18px]" />
-                          </div>
-                        </th>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
+            <div className="p-6 border">
+              {data.length > 0 &&
+                data.map((monthly, i) => {
+                  return Object.entries(monthly).map((weekly: any, i) => {
+                    if (!weekly[0].includes("Week"))
+                      return <div key={i + weekly[0]}></div>;
+                    if (weekly[1].length < 1)
+                      return <div key={i + weekly[0]}></div>;
+
+                    console.log(weekly[1]);
+
+                    if (weekly == "option") return <div key={i}></div>;
+
+                    return (
+                      <table key={i + "monthly plans"} className="w-full">
+                        <thead>
+                          <tr>
+                            <td className="w-[17%]">
+                              <div className=" font-Roboto-Bold ">
+                                Week Days
+                              </div>
+                            </td>
+                            <td>
+                              <div className="w-[100%]   flex  justify-around p-3 items-center py-4 rounded-t-xl text-lime-400 bg-teal-950">
+                                {/* {subInfo.time.split(" ").length > 1 && (
+                                  <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
+                                    {subInfo.time.split(" ")[0]}
+                                  </p>
+                                )} */}
+
+                                <p className="text-center">{weekly[0]}</p>
+                                {/* {subInfo.time.split(" ").length > 1 && (
+                                  <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
+                                    {subInfo.time.split(" ")[2]}
+                                  </p>
+                                )} */}
+                              </div>
+                            </td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {weekly[1].map((data: any, i: any) => {
+                            return (
+                              <tr key={i + weekly[0]}>
+                                <td>{data.day}</td>
+                                <td>
+                                  {data.meals.length > 1 ? (
+                                    <div className=" mt-[-2px] gap-[2px] flex">
+                                      <div className=" p-3 px-5 w-1/2 bg-white  ">
+                                        <p className=" ">{data.meals[0]}</p>
+                                      </div>
+
+                                      <div className="w-1/2 p-3 px-5   bg-white ">
+                                        <p className=" ">{data.meals[1]}</p>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <div className=" mt-[-2px] gap-[2px] flex">
+                                      <div className=" p-3 px-5 w-full   bg-white  ">
+                                        <p className=" ">{data.meals}</p>
+                                      </div>
+                                    </div>
+                                  )}
+                                </td>
+                              </tr>
+                            );
+                          })}
+
+                          {i == Object.entries(monthly).length - 1 && (
+                            <>
+                              <tr>
+                                <td> </td>
+                                <td>
+                                  <div className="w-[100%] p-3 bg-white flex items-center justify-center">
+                                    <p className="ml-2 font-BwGradual-Regular font-[900]">
+                                      N10, 000k
+                                    </p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td> </td>
+                              </tr>
+                            </>
+                          )}
+                        </tbody>
+                      </table>
+                    );
+                  });
+                })}
             </div>
           </div>
         </div>
@@ -154,4 +144,4 @@ function AllFoodPage() {
   );
 }
 
-export default AllFoodPage;
+export default AllSubscriptionPage;

@@ -10,8 +10,20 @@ const subscriptionOrderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    name: {
+      type: String,
+      required: true,
+    },
+    reference: {
+      type: String,
+      required: true,
+    },
     price: {
       type: Number,
+      required: true,
+    },
+    status: {
+      type: String,
       required: true,
     },
     phone: {
@@ -24,4 +36,6 @@ const subscriptionOrderSchema = new mongoose.Schema(
 
 export const SubscriptionOrder =
   mongoose.models.SubscriptionOrder ||
-  mongoose.model("subscriptionOrder", subscriptionOrderSchema);
+  mongoose.model("SubscriptionOrder", subscriptionOrderSchema);
+
+// module.export={ SubscriptionOrder}
