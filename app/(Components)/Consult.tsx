@@ -43,7 +43,7 @@ export const Consult = () => {
 
   return (
     <Element name="consult">
-      <div className="py-[120px] w-[80vw] md:w-screen ">
+      <div className="py-[120px] w-[80vw] md:w-screen  overflow-x-hidden">
         <div className="w-[100vw] md:w-[60%] p-10 mx-auto bg-[#FFFFFF] border-[0.8px] border-[#A9C1A9] rounded-[24px]">
           <div className="flex flex-col items-center justify-center">
             <h2 className=" text-left md:text-center text-[28px] md:text-[36px] text-[#003D28]  font-BwGradual-Regular font-[700] my-10">Book consultation</h2>

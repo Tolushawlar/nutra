@@ -72,16 +72,16 @@ const Consultation = () => {
       </div>
 
       <div className="flex flex-col md:flex-row items-center justify-center  bg-[#A9C1A9] w-[100vw] h-[900px] md:h-[800px]">
-        <div className="px-5 md:px-[90px] py-[60px] gap-10 flex flex-col items-center md:items-start justify-center ">
-          <h2 className="font-[700] text-[32px] md:text-[68px] text-[#211F26] font-BwGradual-Bold">Healthy tastes, healthy living.</h2>
-          <p className="text-[24px] md:text-[30px] font-[400] text-[#1D1B20] font-BwGradual-Regular my-10">Book for a consultation with our certified Dietician.</p>
+        <div className="px-5 md:px-[90px] py-[20px] gap-10 flex flex-col items-center md:items-start justify-center ">
+          <h2 className="font-[700] text-[32px] md:text-[68px] text-[#211F26] font-BwGradual-Bold text-center md:text-left">Healthy tastes, healthy living.</h2>
+          <p className="text-[24px] md:text-[30px] font-[400] text-[#1D1B20] font-BwGradual-Regular my-10 text-center md:text-left">Book for a consultation with our certified Dietician.</p>
           {/* <div className="cursor-pointer flex flex-row items-center justify-center gap-3 bg-[#BCF800] rounded-[16px] w-[400px] h-[100px]">
             <div className="text-[#003D28] font-[500] text-left font-Roboto-Light text-[18px] md:text-[20px]">GET STARTED</div>
             <Image src={arrow} alt="logo" className=" " />
           </div> */}
         </div>
         <div className="px-[90px]">
-          <Image src={Text1} alt="logo" className="w-[500px] md:w-[1000px] h-[380px] md:h-[600px] " />
+          <Image src={Text1} alt="logo" className="w-[700px] md:w-[1000px] h-[380px] md:h-[600px] " />
         </div>
       </div>
 
@@ -131,28 +131,28 @@ const Consultation = () => {
           
           <div className="flex flex-row items-center justify-between gap-[5px] md:gap-[60px]">
             <Image src={num1} alt="logo" className=" ml-5 md:ml-0 w-[60px] md:w-[100px] h-[60px] md:h-[100px] " />
-            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[300px] md:w-[650px] text-[20px] md:text-[24px]">Sign up for our diabetes-friendly meal plans we offer at a subsidized rate.</p>
+            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[320px] md:w-[650px] text-[20px] md:text-[24px]">Sign up for our diabetes-friendly meal plans we offer at a subsidized rate.</p>
           </div>
 
           <p className="border-b-[1px] border-[#A9C1A9] ml-[200px] w-[350px] md:w-[600px] my-[20px] md:my-[40px]"></p>
 
           <div className="flex flex-row items-center justify-between gap-[5px] md:gap-[60px]">
             <Image src={num4} alt="logo" className=" ml-5 md:ml-0 w-[60px] md:w-[100px] h-[60px] md:h-[100px] " />
-            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[300px] md:w-[650px] text-[20px] md:text-[24px]">Consult with our team of registered dietitians to maintain your health</p>
+            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[320px] md:w-[650px] text-[20px] md:text-[24px]">Consult with our team of registered dietitians to maintain your health</p>
           </div>
 
           <p className="border-b-[1px] border-[#A9C1A9] ml-[200px] w-[350px] md:w-[600px] my-[20px] md:my-[40px]"></p>
 
           <div className="flex flex-row items-center justify-between gap-[5px] md:gap-[60px]">
             <Image src={num2} alt="logo" className=" ml-5 md:ml-0 w-[60px] md:w-[100px] h-[60px] md:h-[100px] " />
-            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[300px] md:w-[650px] text-[20px] md:text-[24px]">Receive a meal plan tailored to your diabetes type and health goals.</p>
+            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[320px] md:w-[650px] text-[20px] md:text-[24px]">Receive a meal plan tailored to your diabetes type and health goals.</p>
           </div>
 
           <p className="border-b-[1px] border-[#A9C1A9] ml-[200px] w-[350px] md:w-[600px] my-[20px] md:my-[40px]"></p>
 
           <div className="flex flex-row items-center justify-between gap-[5px] md:gap-[60px]">
             <Image src={num3} alt="logo" className=" ml-5 md:ml-0 w-[60px] md:w-[100px] h-[60px] md:h-[100px] " />
-            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[300px] md:w-[650px] text-[20px] md:text-[24px]">Experience better blood sugar control and improved overall health.</p>
+            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[320px] md:w-[650px] text-[20px] md:text-[24px]">Experience better blood sugar control and improved overall health.</p>
           </div>
 
 
@@ -202,7 +202,7 @@ const Consultation = () => {
         </div>
       </div> */}
 
-      <div id="consult">
+      <div id="consult" className="mb-[-80px] md:mb-0">
         <Consult />
       </div>
       <Faq faqTopic={topic} faqData={faqInput} />
