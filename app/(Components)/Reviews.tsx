@@ -185,7 +185,7 @@ function SimpleSlider() {
                     <div className=" md:hidden flex flex-col items-start">
                         <div className="">
                             <div
-                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[350px] bg-[#A9C1A9] p-3 rounded-[24px]"
+                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[350px] bg-[#A9C1A9] p-3 rounded-[16px]"
                                 style={{ minWidth: '350px' }}
                             >
                                 <div className="flex flex-col md:flex-row items-center w-[320px]">
@@ -209,7 +209,7 @@ function SimpleSlider() {
                         </div>
                         <div className="">
                             <div
-                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-3 rounded-[24px]"
+                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-3 rounded-[16px]"
                                 style={{ minWidth: '350px' }}
                             >
                                 <div className="flex flex-col md:flex-row items-center w-[320px]">
@@ -233,7 +233,7 @@ function SimpleSlider() {
                         </div>
                         <div className="">
                             <div
-                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-3 rounded-[24px]"
+                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-3 rounded-[16px]"
                                 style={{ minWidth: '350px' }}
                             >
                                 <div className="flex flex-col md:flex-row items-center w-[320px]">

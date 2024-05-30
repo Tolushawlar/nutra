@@ -14,7 +14,7 @@ function FeaturedBlog() {
     <div className='w-auto bg-[#f4f3e7]'>
       <div className="my-[100px] bg-[#f4f3e7] flex flex-col items-start justify-center mx-[5vw] w-auto overflow-x-hidden">
         <div className='flex flex-row w-[86vw] justify-between items-center'>
-          <h2 className='font-[700] text-[28px] md:text-[36px] text-[#211F26] font-BwGradual-Regular'>Latest from <span className='text-[#17CC29]'>Nutraspices</span></h2>
+          <h2 className='font-[700] text-[28px] md:text-[36px] text-[#211F26] font-BwGradual-Regular text-center md:text-left'>Latest from <span className='text-[#17CC29]'>Nutraspices</span></h2>
           <Link href="/blog">
             <Image src={more} alt="logo" className="left-[40px] relative w-[150px] h-[80px] hidden md:block cursor-pointer" />
           </Link>
