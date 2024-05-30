@@ -17,7 +17,7 @@ const Faq: React.FC<FaqCardProps> = ({ faqTopic, faqData }) => {
     return (
         <div className="box w-[90vw] my-[100px] flex flex-col items-center overflow-x-hidden">
             <h2 className='my-[70px] text-[#211F26] text-[28px] md:text-[36px] font-[700] font-BwGradual-Regular text-center md:text-center'>{faqTopic}</h2>
-            <div className={`content ${lastItem === "dietary" ? "mr-6" : ""}`}>
+            <div className={`content ${lastItem === "dietary" ? "mr-9" : ""}`}>
                 {faqData.map((item: any, index: any) => (
                     <details className="mt-[-30px] md:mt-[-60px]" key={index}>
                         <summary className=" ">
