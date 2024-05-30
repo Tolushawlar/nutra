@@ -63,7 +63,7 @@ const Consultation = () => {
         <p className="hover:no-underline text-[#006240] font-500 text-[28px font-Roboto-Black cursor-pointer "> Instant Consultation</p>
       </div> */}
 
-      <div className=" p-10 mt-[5vw] flex flex-row items-center  gap-5">
+      <div className=" p-10 mt-[40px] md:mt-[60px] flex flex-row items-center gap-5">
         <a href="/"><Image src={home} alt="logo" className=" cursor-pointer " /></a>
         <a href="/dietary" className="font-400 font-Roboto-Light font-[28px] text-[#605D64] cursor-pointer hover:no-underline">Dietary Meals Category</a>
         <p className="font-400 font-Roboto-Light font-[28px] text-[#605D64] cursor-pointer">/</p>
@@ -71,8 +71,8 @@ const Consultation = () => {
         {/* <Link to="consult" smooth={true} duration={800}  className="hover:no-underline text-[#006240] font-500 text-[28px font-Roboto-Black cursor-pointer "> Instant Consultation</Link> */}
       </div>
 
-      <div className="flex flex-row items-center justify-center  bg-[#A9C1A9] w-[100vw] h-[600px] md:h-[800px]">
-        <div className="px-5 md:px-[90px] py-[60px] gap-10 flex flex-col items-start justify-center ">
+      <div className="flex flex-col md:flex-row items-center justify-center  bg-[#A9C1A9] w-[100vw] h-[900px] md:h-[800px]">
+        <div className="px-5 md:px-[90px] py-[60px] gap-10 flex flex-col items-center md:items-start justify-center ">
           <h2 className="font-[700] text-[32px] md:text-[68px] text-[#211F26] font-BwGradual-Bold">Healthy tastes, healthy living.</h2>
           <p className="text-[24px] md:text-[30px] font-[400] text-[#1D1B20] font-BwGradual-Regular my-10">Book for a consultation with our certified Dietician.</p>
           {/* <div className="cursor-pointer flex flex-row items-center justify-center gap-3 bg-[#BCF800] rounded-[16px] w-[400px] h-[100px]">
@@ -81,7 +81,7 @@ const Consultation = () => {
           </div> */}
         </div>
         <div className="px-[90px]">
-          <Image src={Text1} alt="logo" className="hidden md:block w-[1000px] h-[600px] " />
+          <Image src={Text1} alt="logo" className="w-[500px] md:w-[1000px] h-[380px] md:h-[600px] " />
         </div>
       </div>
 
@@ -126,32 +126,33 @@ const Consultation = () => {
       </div> */}
 
       <div className="bg-[#003D28] p-10 flex flex-col items-center justify-center pb-10">
-        <h1 className="text-[26px] md:text-[36px] text-[#ECF5EA] font-BwGradual-Regular font-700 my-10">How it Works</h1>
+        <h1 className="text-[32px] md:text-[36px] text-[#ECF5EA] font-BwGradual-Regular font-700 my-10">How it Works</h1>
         <div className="flex flex-col items-center justify-center pb-[60px]">
-          <div className="flex flex-row items-center justify-between gap-[60px]">
-            <Image src={num1} alt="logo" className=" w-[100px] h-[100px] " />
-            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-auto md:w-[650px] text-[20px] md:text-[24px]">Sign up for our diabetes-friendly meal plans we offer at a subsidized rate.</p>
+          
+          <div className="flex flex-row items-center justify-between gap-[5px] md:gap-[60px]">
+            <Image src={num1} alt="logo" className=" ml-5 md:ml-0 w-[60px] md:w-[100px] h-[60px] md:h-[100px] " />
+            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[300px] md:w-[650px] text-[20px] md:text-[24px]">Sign up for our diabetes-friendly meal plans we offer at a subsidized rate.</p>
           </div>
 
-          <p className="border-b-[1px] border-[#A9C1A9] ml-[200px] w-[600px] my-[40px]"></p>
+          <p className="border-b-[1px] border-[#A9C1A9] ml-[200px] w-[350px] md:w-[600px] my-[20px] md:my-[40px]"></p>
 
-          <div className="flex flex-row items-center justify-between gap-[60px]">
-            <Image src={num4} alt="logo" className=" w-[100px] h-[100px] " />
-            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-auto md:w-[650px] text-[20px] md:text-[24px]">Consult with our team of registered dietitians to maintain your health</p>
+          <div className="flex flex-row items-center justify-between gap-[5px] md:gap-[60px]">
+            <Image src={num4} alt="logo" className=" ml-5 md:ml-0 w-[60px] md:w-[100px] h-[60px] md:h-[100px] " />
+            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[300px] md:w-[650px] text-[20px] md:text-[24px]">Consult with our team of registered dietitians to maintain your health</p>
           </div>
 
-          <p className="border-b-[1px] border-[#A9C1A9] ml-[200px] w-[600px] my-[40px]"></p>
+          <p className="border-b-[1px] border-[#A9C1A9] ml-[200px] w-[350px] md:w-[600px] my-[20px] md:my-[40px]"></p>
 
-          <div className="flex flex-row items-center justify-between gap-[60px]">
-            <Image src={num2} alt="logo" className=" w-[100px] h-[100px] " />
-            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-auto md:w-[650px] text-[20px] md:text-[24px]">Receive a meal plan tailored to your diabetes type and health goals.</p>
+          <div className="flex flex-row items-center justify-between gap-[5px] md:gap-[60px]">
+            <Image src={num2} alt="logo" className=" ml-5 md:ml-0 w-[60px] md:w-[100px] h-[60px] md:h-[100px] " />
+            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[300px] md:w-[650px] text-[20px] md:text-[24px]">Receive a meal plan tailored to your diabetes type and health goals.</p>
           </div>
 
-          <p className="border-b-[1px] border-[#A9C1A9] ml-[200px] w-[600px] my-[40px]"></p>
+          <p className="border-b-[1px] border-[#A9C1A9] ml-[200px] w-[350px] md:w-[600px] my-[20px] md:my-[40px]"></p>
 
-          <div className="flex flex-row items-center justify-between gap-[60px]">
-            <Image src={num3} alt="logo" className=" w-[100px] h-[100px] " />
-            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-auto md:w-[650px] text-[20px] md:text-[24px]">Experience better blood sugar control and improved overall health.</p>
+          <div className="flex flex-row items-center justify-between gap-[5px] md:gap-[60px]">
+            <Image src={num3} alt="logo" className=" ml-5 md:ml-0 w-[60px] md:w-[100px] h-[60px] md:h-[100px] " />
+            <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[300px] md:w-[650px] text-[20px] md:text-[24px]">Experience better blood sugar control and improved overall health.</p>
           </div>
 
 

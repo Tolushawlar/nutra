@@ -58,7 +58,7 @@ function HealthPage() {
     <div>
       <div className="flex flex-col w-full m-0 items-center overflow-x-hidden">
         <div className="flex flex-col md:flex-row items-center justify-center  bg-[#003D28] w-[100vw] h-[1000px] md:h-[800px]">
-          <div className="px-5 md:px-[90px] py-[60px] gap-10 flex flex-col items-center md:items-start justify-center ">
+          <div className="px-5 md:px-[90px] py-[60px] gap-5 md:gap-10 flex flex-col items-center md:items-start justify-center ">
             <h2 className="font-[700] text-[32px] md:text-[68px] text-white font-BwGradual-Regular text-center md:text-leftr">Tasty homemade Dietary Meals you can enjoy.</h2>
             <p className="text-[24px] md:text-[30px] font-[400] text-[#F1F7F0] font-BwGradual-Regular my-5 md:my-10 text-center md:text-left">Access to registered dietitians that will help you achieve sustainable results.</p>
             {/* <div className="cursor-pointer flex flex-row items-center justify-center gap-3 bg-[#BCF800] rounded-[16px] w-[400px] h-[100px]">
@@ -67,14 +67,14 @@ function HealthPage() {
           </div> */}
           </div>
           <div className="px-[20px] md:px-[90px]">
-            <Image src={Text1} alt="logo" className=" w-[500px] md:w-[1200px] h-[480px] md:h-[600px] " />
+            <Image src={Text1} alt="logo" className=" w-[400px] md:w-[1200px] h-[380px] md:h-[600px] " />
           </div>
         </div>
         <div
           className=" flex flex-col justify-center items-center p-10 relative top-[70px]"
           id="ourCategories"
         >
-          <p className="text-[28px] md:text-[36px] font-[700] font-BwGradual-Regular text-center text-[#211F26] mb-[40px] md:mb-[60px]">
+          <p className="text-[28px] md:text-[36px] font-[700] font-BwGradual-Regular text-center md:text-left text-[#211F26] mb-[40px] md:mb-[60px]">
             Our <span className="text-[#17CC29]">Dietary Meal</span> Plans
           </p>
           <div className="w-full">
@@ -98,7 +98,7 @@ function HealthPage() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-start bg-[#D8E5D6] h[300px] md:h-[400px] w-screen mt-[80px] md:mt-0 p-[30px] md:p-[80px] ">
+        <div className="flex flex-col items-center justify-start bg-[#D8E5D6] h[300px] md:h-[400px] w-screen mt-[30px] md:mt-0 p-[30px] md:p-[80px] ">
           <h2 className="text-[#211F26] font-900 text-[28px] md:text-[36px] font-BwGradual-Black text-center my-10">I need an immediate consultation with our dietitian?</h2>
           <Link href="dietary/consultation" className="cursor-pointer flex flex-row items-center justify-center gap-7 mt-[30px] md:mt-[30px] bg-[#003D28] rounded-[8px] md:rounded-[16px] w-[317px] md:w-[400px] h-[64px] md:h-[70px] hover:translate-x-1  hover:bg-green-950">
             <div className="text-[#BCF800] font-[500] text-left font-BwGradual-Regular text-[16px] md:text-[18px] ">GET ME STARTED</div>

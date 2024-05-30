@@ -4,7 +4,9 @@ import Logo from "../Assets/homepage/Rectangle 29.svg"
 import Image from "next/image";
 import { FaUser } from "react-icons/fa6";
 import { FaUserCircle } from "react-icons/fa";
-
+import sola from "../Assets/reviews/sss.jpg"
+import fun from "../Assets/reviews/fff.jpg"
+import ay from "../Assets/reviews/ay.jpg"
 
 function SimpleSlider() {
     const settings = {
@@ -40,10 +42,11 @@ function SimpleSlider() {
                                     <div className="flex flex-col md:flex-row items-center w-[350px]">
                                         <div className="md:w-[300px] mb-4 md:mb-0">
                                             <div className="flex flex-row items-center justify-between">
-                                                <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" />
+                                                {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
+                                                <Image src={sola} alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
                                                 <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">David Kayode, fitness enthusiast</p>
                                             </div>
-                                            <p className="text-[12px] md:text-[14px] font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4">Finally, healthy food that tastes amazing! NutraSpices has helped me reach my fitness goals without sacrificing flavor. Their meals are delicious and keep me feeling energized throughout the day.</p>
+                                            <p className="text-[12px] md:text-[14px] font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4 mt-3">Finally, healthy food that tastes amazing! NutraSpices has helped me reach my fitness goals.</p>
                                         </div>
                                         {/* <div className="">
                                         <Image
@@ -64,10 +67,10 @@ function SimpleSlider() {
                                     <div className="flex flex-col md:flex-row items-center w-[350px]">
                                         <div className="md:w-[300px] mb-4 md:mb-0">
                                             <div className="flex flex-row items-center justify-between">
-                                                <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" />
-                                                <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Esther Olagunju, working mom</p>
+                                                <FaUserCircle color="#003D28" className="w-[60px] h-[60px] rounded-[200px]" />
+                                                <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Monday Effiong, Grandpa</p>
                                             </div>
-                                            <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4">No more meal prep stress! NutraSpices is a lifesaver for our family. Love the variety of options and the fact that there's something for everyone, even my picky eaters. Dinner Time has become much easier and enjoyable.</p>
+                                            <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 mt-3">No more meal prep stress! NutraSpices is a lifesaver for our family. Love the variety of options.</p>
                                         </div>
                                         {/* <div className="">
                                         <Image
@@ -88,10 +91,11 @@ function SimpleSlider() {
                                     <div className="flex flex-col md:flex-row items-center w-[300px]">
                                         <div className="md:w-[300px] mb-4 md:mb-0">
                                             <div className="flex flex-row items-center justify-between">
-                                                <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" />
-                                                <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Monday Effiong, Grandpa</p>
+                                                {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
+                                                <Image src={fun} alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
+                                                <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Esther Olagunju, working mom</p>
                                             </div>
-                                            <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4">A perfect solution for my dietary needs! NutraSpices offers a fantastic selection of gluten-free meals that are actually delicious. I can finally enjoy healthy and convenient food without worrying about getting sick.</p>
+                                            <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 mt-3">A perfect solution for my dietary needs! NutraSpices offers a fantastic selection of gluten-free meals.</p>
                                         </div>
                                         {/* <div className="">
                                         <Image
@@ -114,10 +118,11 @@ function SimpleSlider() {
                                     <div className="flex flex-col md:flex-row items-center w-[350px]">
                                         <div className="md:w-[300px] mb-4 md:mb-0">
                                             <div className="flex flex-row items-center justify-between">
-                                                <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" />
+                                                {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
+                                                <Image src={ay} alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
                                                 <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Lisa S., Tech sis / entrepreneur</p>
                                             </div>
-                                            <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4">The best part? The time I save! NutraSpices has freed up so much time in my week. No more grocery shopping or spending hours in the kitchen. Now I can focus on what truly matters and also have meals that matter.</p>
+                                            <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 mt-3">The best part? The time I save! NutraSpices has freed up so much time in my week, no more grocery shopping or spending hours in the kitchen.</p>
                                         </div>
                                         {/* <div className="">
                                         <Image
@@ -141,7 +146,7 @@ function SimpleSlider() {
                                                 <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" />
                                                 <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Taiye Abiola, satisfied customer</p>
                                             </div>
-                                            <p className="text-[12px] md:text-[14px]  font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4">Delicious food delivered with a smile! The NutraSpices team is fantastic! The food is always fresh and flavorful, and their customer service is top-notch. I highly recommend them!</p>
+                                            <p className="text-[12px] md:text-[14px]  font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4 mt-3">Delicious food delivered with a smile! The NutraSpices team is fantastic! The food is always fresh and flavorful.</p>
                                         </div>
                                         {/* <div className="">
                                         <Image
@@ -163,9 +168,9 @@ function SimpleSlider() {
                                         <div className="md:w-[300px] mb-4 md:mb-0">
                                             <div className="flex flex-row items-center justify-between">
                                                 <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" />
-                                                <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Temitope Olagoke, health-conscious banker</p>
+                                                <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-4 mt-5">Temitope Olagoke, health-conscious banker</p>
                                             </div>
-                                            <p className="text-[12px] md:text-[14px] font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4">A healthy lifestyle made easy! Since subscribing to NutraSpices, I've noticed a positive change in my energy levels and overall health. It's been a great way to kickstart healthy habits.</p>
+                                            <p className="text-[12px] md:text-[14px] font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4 mt-3">A healthy lifestyle made easy! Since subscribing to NutraSpices, I've noticed a positive change in my energy levels.</p>
                                         </div>
                                         {/* <div className="">
                                         <Image
@@ -191,10 +196,11 @@ function SimpleSlider() {
                                 <div className="flex flex-col md:flex-row items-center w-[320px]">
                                     <div className="md:w-[320px] ml-[20px] md:ml-0 mb-4 md:mb-0">
                                         <div className="flex flex-row items-center justify-between">
-                                            <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" />
+                                            {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
+                                            <Image src={sola} alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
                                             <p className="mb-5 text-[14px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">David Kayode, fitness enthusiast</p>
                                         </div>
-                                        <p className="text-[14px] md:text-[14px] font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify ">Finally, healthy food that tastes amazing! NutraSpices has helped me reach my fitness goals without sacrificing flavor. Their meals are delicious and keep me feeling energized throughout the day.</p>
+                                        <p className="text-[14px] md:text-[14px] font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify mt-3 ">Finally, healthy food that tastes amazing! NutraSpices has helped me reach my fitness goals.</p>
                                     </div>
                                     {/* <div className="">
                                         <Image
@@ -215,10 +221,11 @@ function SimpleSlider() {
                                 <div className="flex flex-col md:flex-row items-center w-[320px]">
                                     <div className="md:w-[320px] ml-[20px] md:ml-0 mb-4 md:mb-0">
                                         <div className="flex flex-row items-center justify-between">
-                                            <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" />
+                                            {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
+                                            <Image src={fun} alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
                                             <p className="mb-5 text-[14px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Esther Olagunju, working mom</p>
                                         </div>
-                                        <p className="text-[14px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify ">No more meal prep stress! NutraSpices is a lifesaver for our family. Love the variety of options and the fact that there's something for everyone, even my picky eaters. Dinner Time has become much easier and enjoyable.</p>
+                                        <p className="text-[14px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify mt-3 ">A perfect solution for my dietary needs! NutraSpices offers a fantastic selection of gluten-free meals.</p>
                                     </div>
                                     {/* <div className="">
                                         <Image
@@ -239,10 +246,11 @@ function SimpleSlider() {
                                 <div className="flex flex-col md:flex-row items-center w-[320px]">
                                     <div className="md:w-[320px] ml-[20px] md:ml-0 mb-4 md:mb-0">
                                         <div className="flex flex-row items-center justify-between">
-                                            <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" />
+                                            {/* <FaUserCircle color="#003D28" className="w-[60px] h-[60px] rounded-[200px]" /> */}
+                                            <Image src={ay} alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
                                             <p className="mb-5 text-[14px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Lisa S., Tech sis / entrepreneur</p>
                                         </div>
-                                        <p className="text-[14px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify ">The best part? The time I save! NutraSpices has freed up so much time in my week. No more grocery shopping or spending hours in the kitchen. Now I can focus on what truly matters and also have meals that matter.</p>
+                                        <p className="text-[14px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify mt-3 ">The best part? The time I save! NutraSpices has freed up so much time in my week, no more grocery shopping or spending hours in the kitchen.</p>
                                     </div>
                                     {/* <div className="">
                                         <Image
