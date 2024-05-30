@@ -43,7 +43,7 @@ const faqInput = [
     answer: "We offer a variety of meals suitable for vegetarians, vegans, and those with gluten-free needs. We also have options that are low-carb, dairy-free, and nut-free. Please refer to the dietary symbols next to each meal on our menu for details."
   },
   {
-    question: "Can I see the nutritional information for your meals?",
+    question: "Can I see the nutritional details for your meals?",
     answer: "Absolutely! The nutritional information for each meal, including calories, macronutrients, and allergens, is clearly displayed on our website menu."
   }
 ]

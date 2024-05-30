@@ -58,6 +58,11 @@ const Header2 = () => {
     });
   };
 
+  const [showOffering, setShowOffering] = useState(false);
+
+  const toggleOffering = () => {
+    setShowOffering(!showOffering);
+  };
 
 
 
@@ -224,20 +229,41 @@ const Header2 = () => {
         </div>
       </div>
       {isOpen && (
+        // <div className="md:hidden bg-white">
+        //   <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        //     <a href="#" className=" block px-3 py-2 rounded-md font-BwGradual-Regular text-[#322F35]">Home</a>
+        //     <a href="#" className="  block px-3 py-2 rounded-md font-BwGradual-Regular text-[#322F35]">Our Offering</a>
+        //     <div className="ml-4">
+        //       <div className="mt-2 space-y-1">
+        //         <a href="#" className="block px-3 py-2 rounded-md text-sm font-BwGradual-Regular text-[20px] text-[#322F35]">Bespoke</a>
+        //         <a href="#" className="block px-3 py-2 rounded-md text-sm font-BwGradual-Regular text-[20px] text-[#322F35]">Instant Order</a>
+        //         <a href="#" className="block px-3 py-2 rounded-md text-sm font-BwGradual-Regular text-[20px] text-[#322F35]">Dietary Meal</a>
+        //         <a href="#" className="block px-3 py-2 rounded-md text-sm font-BwGradual-Regular text-[20px] text-[#322F35]">Subscription</a>
+        //       </div>
+        //     </div>
+        //     <a href="#" className="font-BwGradual-Regular text-[#322F35] block px-3 py-2 rounded-md ">What's New</a>
+        //     <a href="#" className="font-BwGradual-Regular text-[#322F35] block px-3 py-2 rounded-md ">Contact Us</a>
+        //   </div>
+        // </div>
         <div className="md:hidden bg-white">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="#" className=" block px-3 py-2 rounded-md text-base font-medium font-BwGradual-Regular text-[#322F35]">Home</a>
-            <a href="#" className="  block px-3 py-2 rounded-md text-base font-medium font-BwGradual-Regular text-[#322F35]">Our Offering</a>
-            <div className="ml-4">
-              <div className="mt-2 space-y-1">
-                <a href="#" className="block px-3 py-2 rounded-md text-sm font-medium font-BwGradual-Regular text-[#322F35]">Bespoke</a>
-                <a href="#" className="block px-3 py-2 rounded-md text-sm font-medium font-BwGradual-Regular text-[#322F35]">Instant Order</a>
-                <a href="#" className="block px-3 py-2 rounded-md text-sm font-medium font-BwGradual-Regular text-[#322F35]">Dietary Meal</a>
-                <a href="#" className="block px-3 py-2 rounded-md text-sm font-medium font-BwGradual-Regular text-[#322F35]">Subscription</a>
-              </div>
+            <a href="#" className="block px-3 py-2 rounded-md text font-BwGradual-Regular text-[#322F35]">Home</a>
+            <div className="relative">
+              <a href="#" className="block px-3 py-2 rounded-md font-BwGradual-Regular -[20px]text text-[#322F35]" onClick={toggleOffering}>
+                Our Offering
+                <span className="ml-2">&#9662;</span> {/* Down arrow */}
+              </a>
+              {showOffering && (
+                <div className="ml-4 absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                  <a href="#" className="block px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">Bespoke</a>
+                  <a href="#" className="block px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">Instant Order</a>
+                  <a href="#" className="block px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">Dietary Meal</a>
+                  <a href="#" className="block px-3 py-2 rounded-md  font-BwGradual-Regular text-[20px] text-[#322F35]">Subscription</a>
+                </div>
+              )}
             </div>
-            <a href="#" className="font-BwGradual-Regular text-[#322F35] block px-3 py-2 rounded-md text-base font-medium">What's New</a>
-            <a href="#" className="font-BwGradual-Regular text-[#322F35] block px-3 py-2 rounded-md text-base font-medium">Contact Us</a>
+            <a href="#" className="font-BwGradual-Regular text text-[#322F35] block px-3 py-2 rounded-md ">What's New</a>
+            <a href="#" className="font-BwGradual-Regular text text-[#322F35] block px-3 py-2 rounded-md ">Contact Us</a>
           </div>
         </div>
       )}

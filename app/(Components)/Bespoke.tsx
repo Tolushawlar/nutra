@@ -49,7 +49,7 @@ export const Bespoke = () => {
             we&lsquo;ll reply in munites!!
           </p> */}
           </div>
-          <div className="flex flex-col items-center w-[80%] my-5 space-y-6 mx-auto">
+          <div className="flex flex-col items-center w-[90%] md:w-[80%] my-5 space-y-6 mx-auto">
             <div className="flex flex-col md:flex-row jusitfy-between gap-5">
               <div className="flex flex-col items-start gap-2">
                 <label className="text-white font-BwGradual-Light font-[400] text-[14px] md:text-[16px]">
