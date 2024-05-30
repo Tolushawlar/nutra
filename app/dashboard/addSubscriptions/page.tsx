@@ -135,17 +135,7 @@ function AddSubsPage() {
       const updatedFormData = { ...formData };
       updatedFormData[`${weekIndex}`] = value;
       setFormData(updatedFormData);
-      if (weekIndex == "option") {
-        if (isAnyFieldEmpty(formData)) {
-          alert("Kindly enter all field before adding new options");
-          return;
-        }
 
-        const updatedFormData = data;
-        updatedFormData.push(formData);
-
-        setData(updatedFormData);
-      }
       return;
     }
     const updatedFormData = { ...formData };
