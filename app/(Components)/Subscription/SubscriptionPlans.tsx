@@ -247,122 +247,219 @@ const SubscrptionPlans = () => {
 
       <div className="max-w-[1200px]">
         {subInfo.mealplan == "weekly" && (
-          <table className="w-full">
-            <thead>
-              <tr>
-                <td className=" hidden md:inline-block ">
-                  <div className=" font-Roboto-Bold w-[100%]">Week Days</div>
-                </td>
-                <td colSpan={2}>
-                  <div className="w-[100%]   flex  justify-around p-3 items-center py-4 rounded-t-xl text-lime-400 bg-teal-950">
-                    {subInfo.time.split(" ").length > 1 && (
-                      <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
-                        {subInfo.time.split(" ")[0]}
-                      </p>
-                    )}
-
-                    <p className="text-center">{optionAorB}</p>
-                    {subInfo.time.split(" ").length > 1 && (
-                      <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
-                        {subInfo.time.split(" ")[2]}
-                      </p>
-                    )}
-                  </div>
-                </td>
-              </tr>
-            </thead>
-
-            {weeklyData.length > 0 &&
-              weeklyData[optionIndex]["Week 1"].map((data: any, i: any) => {
-                return (
-                  <tbody>
-                    <tr key={i + "weekly meals"}>
-                      <td className="w-[17%] bg-white md:bg-transparent font-[700] md:hidden p-3 md:p-0">
-                        {data.day.substring(0, 2)}
-                      </td>
-                      <td className="w-[14%] bg-white md:bg-transparent  md:flex hidden p-3 md:p-0">
-                        {data.day}
-                      </td>
-                      <td>
-                        {subInfo.time.split(" ").length > 1 ? (
-                          <div className=" mt-[-2px] gap-[2px] flex">
-                            <div className=" p-3 px-5 w-1/2 bg-white  ">
-                              <p className=" ">{data.meals[0]}</p>
-                            </div>
-
-                            <div className="w-1/2 p-3 px-5   bg-white ">
-                              <p className=" ">{data.meals[1]}</p>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className=" mt-[-2px] gap-[2px] flex">
-                            <div className=" p-3 px-5 w-full   bg-white  ">
-                              <p className=" ">{data.meals}</p>
-                            </div>
-                          </div>
-                        )}
-                      </td>
-                    </tr>
-
-                    {weeklyData[optionIndex]["Week 1"].length - 1 == i && (
-                      <>
-                        <tr>
-                          <td className="hidden md:flex"> </td>
-                          <td colSpan={2}>
-                            <div className="w-[100%] p-3 bg-white flex items-center justify-center">
-                              <p className="ml-2 font-BwGradual-Regular font-[900]">
-                                {weeklyData[optionIndex].price}
-                              </p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="hidden md:flex"> </td>
-                          <td colSpan={2}>
-                            <div className="w-[100%] flex-col p-3 rounded-b-xl bg-white flex items-center justify-center">
-                              <button
-                                onClick={() => {
-                                  setSelected(weeklyData[optionIndex]);
-                                  setOpenProcessModal(true);
-                                }}
-                                className=" w-[50%] flex items-center justify-center p-2 rounded-lg text-lime-400 uppercase bg-teal-950"
-                              >
-                                <Image
-                                  src={scheduleIcon}
-                                  width={2}
-                                  height={2}
-                                  className="w-5 h-5"
-                                  alt="schedule icon"
-                                />
-                                <p className="ml-2">Subscribe</p>
-                              </button>
-                              <p className="p-2 mt-4 text-xl">
-                                Not what you want? Check other options{" "}
-                                <span>here</span>{" "}
-                              </p>
-                            </div>
-                          </td>
-                        </tr>
-                      </>
-                    )}
-                  </tbody>
-                );
-              })}
-          </table>
-        )}
-
-        {subInfo.mealplan == "monthly" &&
-          Object.entries(monthlyData[optionIndex]).map((weekly: any, i) => {
-            if (!weekly[0].includes("Week"))
-              return <div key={i + weekly[0]}></div>;
-            return (
-              <table key={i + "monthly plans"} className="w-full">
+          <>
+            <div className="md:hidden">
+              <table className="w-full">
                 <thead>
                   <tr>
-                    <td className="w-[17%]">
-                      <div className=" font-Roboto-Bold ">Week Days</div>
+                    <td className=" hidden md:inline-block ">
+                      <div className=" font-Roboto-Bold w-[100%]">
+                        Week Days
+                      </div>
                     </td>
-                    <td>
+                    <td colSpan={2}>
+                      <div className="w-[100%]   flex  justify-between p-3 items-center py-4 rounded-t-xl text-lime-400 bg-teal-950">
+                        <p className="md:text-center  ">{optionAorB}</p>
+
+                        {subInfo.time.split(" ").length > 1 && (
+                          <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
+                            {subInfo.time.split(" ")[0]}
+                          </p>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                </thead>
+
+                {weeklyData.length > 0 &&
+                  weeklyData[optionIndex]["Week 1"].map((data: any, i: any) => {
+                    return (
+                      <tbody key={i + "weekly meals"}>
+                        <tr>
+                          <td className="w-[17%] bg-white md:bg-transparent font-[700] md:hidden p-3 md:p-0">
+                            {data.day.substring(0, 2)}
+                          </td>
+                          <td className="w-[14%] bg-white md:bg-transparent  md:flex hidden p-3 md:p-0">
+                            {data.day}
+                          </td>
+                          <td>
+                            {subInfo.time.split(" ").length > 1 ? (
+                              <div className=" mt-[-2px] gap-[2px] flex">
+                                <div className=" p-3 px-5 w-full bg-white  ">
+                                  <p className=" ">{data.meals[0]}</p>
+                                </div>
+
+                                {/* <div className="w-1/2 p-3 px-5   bg-white ">
+                                  <p className=" ">{data.meals[1]}</p>
+                                </div> */}
+                              </div>
+                            ) : (
+                              <div className=" mt-[-2px] gap-[2px] flex">
+                                <div className=" p-3 px-5 w-full   bg-white  ">
+                                  <p className=" ">{data.meals}</p>
+                                </div>
+                              </div>
+                            )}
+                          </td>
+                        </tr>
+
+                        {weeklyData[optionIndex]["Week 1"].length - 1 == i &&
+                          subInfo.time.split(" ").length < 2 && (
+                            <>
+                              <tr>
+                                <td className="hidden md:flex"> </td>
+                                <td colSpan={2}>
+                                  <div className="w-[100%] p-3 bg-white flex items-center justify-center">
+                                    <p className="ml-2 font-BwGradual-Regular font-[900]">
+                                      {weeklyData[optionIndex].price}
+                                    </p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="hidden md:flex"> </td>
+                                <td colSpan={2}>
+                                  <div className="w-[100%] flex-col p-3 rounded-b-xl bg-white flex items-center justify-center">
+                                    <button
+                                      onClick={() => {
+                                        setSelected(weeklyData[optionIndex]);
+                                        setOpenProcessModal(true);
+                                      }}
+                                      className=" w-[50%] flex items-center justify-center p-2 rounded-lg text-lime-400 uppercase bg-teal-950"
+                                    >
+                                      <Image
+                                        src={scheduleIcon}
+                                        width={2}
+                                        height={2}
+                                        className="w-5 h-5"
+                                        alt="schedule icon"
+                                      />
+                                      <p className="ml-2">Subscribe</p>
+                                    </button>
+                                    <p className="p-2 mt-4 text-xl">
+                                      Not what you want? Check other options{" "}
+                                      <span>here</span>{" "}
+                                    </p>
+                                  </div>
+                                </td>
+                              </tr>
+                            </>
+                          )}
+                      </tbody>
+                    );
+                  })}
+              </table>
+
+              {subInfo.time.split(" ").length > 1 && (
+                <table className="w-full">
+                  <thead>
+                    <tr>
+                      <td className=" hidden md:inline-block ">
+                        <div className=" font-Roboto-Bold w-[100%]">
+                          Week Days
+                        </div>
+                      </td>
+                      <td colSpan={2}>
+                        <div className="w-[100%]   flex  justify-end p-3 items-center py-4   text-lime-400 bg-teal-950">
+                          {subInfo.time.split(" ").length > 1 && (
+                            <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
+                              {subInfo.time.split(" ")[2]}
+                            </p>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  </thead>
+
+                  {weeklyData.length > 0 &&
+                    weeklyData[optionIndex]["Week 1"].map(
+                      (data: any, i: any) => {
+                        return (
+                          <tbody key={i + "weekly meals"}>
+                            <tr>
+                              <td className="w-[17%] bg-white md:bg-transparent font-[700] md:hidden p-3 md:p-0">
+                                {data.day.substring(0, 2)}
+                              </td>
+                              <td className="w-[14%] bg-white md:bg-transparent  md:flex hidden p-3 md:p-0">
+                                {data.day}
+                              </td>
+                              <td>
+                                {subInfo.time.split(" ").length > 1 ? (
+                                  <div className=" mt-[-2px] gap-[2px] flex">
+                                    <div className="w-full p-3 px-5   bg-white ">
+                                      <p className=" ">{data.meals[1]}</p>
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <div className=" mt-[-2px] gap-[2px] flex">
+                                    <div className=" p-3 px-5 w-full   bg-white  ">
+                                      <p className=" ">{data.meals}</p>
+                                    </div>
+                                  </div>
+                                )}
+                              </td>
+                            </tr>
+
+                            {weeklyData[optionIndex]["Week 1"].length - 1 ==
+                              i && (
+                              <>
+                                <tr>
+                                  <td className="hidden md:flex"> </td>
+                                  <td colSpan={2}>
+                                    <div className="w-[100%] p-3 bg-white flex items-center justify-center">
+                                      <p className="ml-2 font-BwGradual-Regular font-[900]">
+                                        {weeklyData[optionIndex].price}
+                                      </p>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td className="hidden md:flex"> </td>
+                                  <td colSpan={2}>
+                                    <div className="w-[100%] flex-col p-3 rounded-b-xl bg-white flex items-center justify-center">
+                                      <button
+                                        onClick={() => {
+                                          setSelected(weeklyData[optionIndex]);
+                                          setOpenProcessModal(true);
+                                        }}
+                                        className=" w-[50%] flex items-center justify-center p-2 rounded-lg text-lime-400 uppercase bg-teal-950"
+                                      >
+                                        <Image
+                                          src={scheduleIcon}
+                                          width={2}
+                                          height={2}
+                                          className="w-5 h-5"
+                                          alt="schedule icon"
+                                        />
+                                        <p className="ml-2">Subscribe</p>
+                                      </button>
+                                      <p className="p-2 mt-4 text-xl">
+                                        Not what you want? Check other options{" "}
+                                        <span>here</span>{" "}
+                                      </p>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </>
+                            )}
+                          </tbody>
+                        );
+                      }
+                    )}
+                </table>
+              )}
+            </div>
+
+            <div className="hidden md:flex">
+              <table className="w-full">
+                <thead>
+                  <tr>
+                    <td className=" hidden md:inline-block ">
+                      <div className=" font-Roboto-Bold w-[100%]">
+                        Week Days
+                      </div>
+                    </td>
+                    <td colSpan={2}>
                       <div className="w-[100%]   flex  justify-around p-3 items-center py-4 rounded-t-xl text-lime-400 bg-teal-950">
                         {subInfo.time.split(" ").length > 1 && (
                           <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
@@ -370,9 +467,7 @@ const SubscrptionPlans = () => {
                           </p>
                         )}
 
-                        <p className="text-center">
-                          {optionAorB}: {weekly[0]}
-                        </p>
+                        <p className="text-center">{optionAorB}</p>
                         {subInfo.time.split(" ").length > 1 && (
                           <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
                             {subInfo.time.split(" ")[2]}
@@ -382,76 +477,323 @@ const SubscrptionPlans = () => {
                     </td>
                   </tr>
                 </thead>
-                <tbody>
-                  {weekly[1].map((data: any, i: any) => {
-                    return (
-                      <tr key={i + weekly[0]}>
-                        <td>{data.day}</td>
-                        <td>
-                          {subInfo.time.split("and").length > 1 ? (
-                            <div className=" mt-[-2px] gap-[2px] flex">
-                              <div className=" p-3 px-5 w-1/2 bg-white  ">
-                                <p className=" ">{data.meals[0]}</p>
-                              </div>
 
-                              <div className="w-1/2 p-3 px-5   bg-white ">
-                                <p className=" ">{data.meals[1]}</p>
+                {weeklyData.length > 0 &&
+                  weeklyData[optionIndex]["Week 1"].map((data: any, i: any) => {
+                    return (
+                      <tbody>
+                        <tr key={i + "weekly meals"}>
+                          <td className="w-[17%] bg-white md:bg-transparent font-[700] md:hidden p-3 md:p-0">
+                            {data.day.substring(0, 2)}
+                          </td>
+                          <td className="w-[14%] bg-white md:bg-transparent  md:flex hidden p-3 md:p-0">
+                            {data.day}
+                          </td>
+                          <td>
+                            {subInfo.time.split(" ").length > 1 ? (
+                              <div className=" mt-[-2px] gap-[2px] flex">
+                                <div className=" p-3 px-5 w-1/2 bg-white  ">
+                                  <p className=" ">{data.meals[0]}</p>
+                                </div>
+
+                                <div className="w-1/2 p-3 px-5   bg-white ">
+                                  <p className=" ">{data.meals[1]}</p>
+                                </div>
                               </div>
-                            </div>
-                          ) : (
-                            <div className=" mt-[-2px] gap-[2px] flex">
-                              <div className=" p-3 px-5 w-full   bg-white  ">
-                                <p className=" ">{data.meals}</p>
+                            ) : (
+                              <div className=" mt-[-2px] gap-[2px] flex">
+                                <div className=" p-3 px-5 w-full   bg-white  ">
+                                  <p className=" ">{data.meals}</p>
+                                </div>
                               </div>
-                            </div>
-                          )}
-                        </td>
-                      </tr>
+                            )}
+                          </td>
+                        </tr>
+
+                        {weeklyData[optionIndex]["Week 1"].length - 1 == i && (
+                          <>
+                            <tr>
+                              <td className="hidden md:flex"> </td>
+                              <td colSpan={2}>
+                                <div className="w-[100%] p-3 bg-white flex items-center justify-center">
+                                  <p className="ml-2 font-BwGradual-Regular font-[900]">
+                                    {weeklyData[optionIndex].price}
+                                  </p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="hidden md:flex"> </td>
+                              <td colSpan={2}>
+                                <div className="w-[100%] flex-col p-3 rounded-b-xl bg-white flex items-center justify-center">
+                                  <button
+                                    onClick={() => {
+                                      setSelected(weeklyData[optionIndex]);
+                                      setOpenProcessModal(true);
+                                    }}
+                                    className=" w-[50%] flex items-center justify-center p-2 rounded-lg text-lime-400 uppercase bg-teal-950"
+                                  >
+                                    <Image
+                                      src={scheduleIcon}
+                                      width={2}
+                                      height={2}
+                                      className="w-5 h-5"
+                                      alt="schedule icon"
+                                    />
+                                    <p className="ml-2">Subscribe</p>
+                                  </button>
+                                  <p className="p-2 mt-4 text-xl">
+                                    Not what you want? Check other options{" "}
+                                    <span>here</span>{" "}
+                                  </p>
+                                </div>
+                              </td>
+                            </tr>
+                          </>
+                        )}
+                      </tbody>
                     );
                   })}
-
-                  {4 == i && (
-                    <>
-                      <tr>
-                        <td> </td>
-                        <td>
-                          <div className="w-[100%] p-3 bg-white flex items-center justify-center">
-                            <p className="ml-2 font-BwGradual-Regular font-[900]">
-                              N {monthlyData[optionIndex].price}
-                            </p>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td> </td>
-                        <td>
-                          <div className="w-[100%] p-3 rounded-b-xl bg-white flex items-center justify-center">
-                            <button
-                              onClick={() =>
-                                processOrder(monthlyData[optionIndex])
-                              }
-                              className=" w-[50%] flex items-center justify-center p-2 rounded-lg text-lime-400 uppercase bg-teal-950"
-                            >
-                              <Image
-                                src={scheduleIcon}
-                                width={2}
-                                height={2}
-                                className="w-5 h-5"
-                                alt="schedule icon"
-                              ></Image>
-                              <p className="ml-2">Subscribe</p>
-                            </button>
-                            <p>
-                              Not what you want? Check other options{" "}
-                              <span>here</span>{" "}
-                            </p>
-                          </div>
-                        </td>
-                      </tr>
-                    </>
-                  )}
-                </tbody>
               </table>
+            </div>
+          </>
+        )}
+
+        {subInfo.mealplan == "monthly" &&
+          Object.entries(monthlyData[optionIndex]).map((weekly: any, i) => {
+            if (!weekly[0].includes("Week"))
+              return <div key={i + weekly[0]}></div>;
+            return (
+              <>
+                <div className="md:hidden">
+                  <table key={i + "monthly plans"} className="w-full">
+                    <thead>
+                      <tr className=" ">
+                        <td colSpan={2}>
+                          <div className="w-[100%] flex justify-between p-3 items-center py-4 rounded-t-xl text-lime-400 bg-teal-950">
+                            <p className="text-center">
+                              {optionAorB}: {weekly[0]}
+                            </p>
+                            {subInfo.time.split(" ").length > 1 && (
+                              <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
+                                {subInfo.time.split(" ")[0]}
+                              </p>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {weekly[1].map((data: any, i: any) => {
+                        return (
+                          <tr key={i + weekly[0]}>
+                            <td className="w-[17%] px-3 bg-white">
+                              {data.day.substring(0, 2)}
+                            </td>
+                            <td>
+                              {subInfo.time.split("and").length > 1 ? (
+                                <div className=" mt-[-2px] gap-[2px] flex">
+                                  <div className=" p-3 px-5 w-full bg-white  ">
+                                    <p className=" ">{data.meals[0]}</p>
+                                  </div>
+                                </div>
+                              ) : (
+                                <div className=" mt-[-2px] gap-[2px] flex">
+                                  <div className=" p-3 px-5 w-full   bg-white  ">
+                                    <p className=" ">{data.meals}</p>
+                                  </div>
+                                </div>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
+
+                      {subInfo.time.split("and").length > 1 && (
+                        <>
+                          <tr className=" ">
+                            <td colSpan={2}>
+                              <div className="w-[100%] flex justify-between p-3 items-center py-4 rounded-t-xl text-lime-400 bg-teal-950">
+                                <p className="text-center">
+                                  {optionAorB}: {weekly[0]}
+                                </p>
+
+                                {subInfo.time.split(" ").length > 1 && (
+                                  <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
+                                    {subInfo.time.split(" ")[2]}
+                                  </p>
+                                )}
+                              </div>
+                            </td>
+                          </tr>
+                          {weekly[1].map((data: any, i: any) => {
+                            return (
+                              <tr key={i + weekly[0]}>
+                                <td className="w-[17%] px-3 bg-white">
+                                  {data.day.substring(0, 2)}
+                                </td>
+                                <td>
+                                  {subInfo.time.split("and").length > 1 ? (
+                                    <div className=" mt-[-2px] gap-[2px] flex">
+                                      <div className="w-full p-3 px-5   bg-white ">
+                                        <p className=" ">{data.meals[1]}</p>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <div className=" mt-[-2px] gap-[2px] flex">
+                                      <div className=" p-3 px-5 w-full   bg-white  ">
+                                        <p className=" ">{data.meals}</p>
+                                      </div>
+                                    </div>
+                                  )}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </>
+                      )}
+
+                      {4 == i && (
+                        <>
+                          <tr>
+                            <td colSpan={2}>
+                              <div className="w-[100%] p-3 bg-white flex items-center justify-center">
+                                <p className="ml-2 font-BwGradual-Regular font-[900]">
+                                  N {monthlyData[optionIndex].price}
+                                </p>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colSpan={2}>
+                              <div className="w-[100%] p-3 rounded-b-xl bg-white flex flex-col items-center justify-center">
+                                <button
+                                  onClick={() =>
+                                    processOrder(monthlyData[optionIndex])
+                                  }
+                                  className=" w-[50%] flex items-center justify-center p-2 rounded-lg text-lime-400 uppercase bg-teal-950"
+                                >
+                                  <Image
+                                    src={scheduleIcon}
+                                    width={2}
+                                    height={2}
+                                    className="w-5 h-5"
+                                    alt="schedule icon"
+                                  ></Image>
+                                  <p className="ml-2">Subscribe</p>
+                                </button>
+                                <p>
+                                  Not what you want? Check other options{" "}
+                                  <span>here</span>{" "}
+                                </p>
+                              </div>
+                            </td>
+                          </tr>
+                        </>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="hidden md:flex">
+                  <table key={i + "monthly plans"} className="w-full">
+                    <thead>
+                      <tr>
+                        <td className="w-[17%]">
+                          <div className=" font-Roboto-Bold ">Week Days</div>
+                        </td>
+                        <td>
+                          <div className="w-[100%]   flex  justify-around p-3 items-center py-4 rounded-t-xl text-lime-400 bg-teal-950">
+                            {subInfo.time.split(" ").length > 1 && (
+                              <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
+                                {subInfo.time.split(" ")[0]}
+                              </p>
+                            )}
+
+                            <p className="text-center">
+                              {optionAorB}: {weekly[0]}
+                            </p>
+                            {subInfo.time.split(" ").length > 1 && (
+                              <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
+                                {subInfo.time.split(" ")[2]}
+                              </p>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {weekly[1].map((data: any, i: any) => {
+                        return (
+                          <tr key={i + weekly[0]}>
+                            <td>{data.day}</td>
+                            <td>
+                              {subInfo.time.split("and").length > 1 ? (
+                                <div className=" mt-[-2px] gap-[2px] flex">
+                                  <div className=" p-3 px-5 w-1/2 bg-white  ">
+                                    <p className=" ">{data.meals[0]}</p>
+                                  </div>
+
+                                  <div className="w-1/2 p-3 px-5   bg-white ">
+                                    <p className=" ">{data.meals[1]}</p>
+                                  </div>
+                                </div>
+                              ) : (
+                                <div className=" mt-[-2px] gap-[2px] flex">
+                                  <div className=" p-3 px-5 w-full   bg-white  ">
+                                    <p className=" ">{data.meals}</p>
+                                  </div>
+                                </div>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
+
+                      {4 == i && (
+                        <>
+                          <tr>
+                            <td> </td>
+                            <td>
+                              <div className="w-[100%] p-3 bg-white flex items-center justify-center">
+                                <p className="ml-2 font-BwGradual-Regular font-[900]">
+                                  N {monthlyData[optionIndex].price}
+                                </p>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td> </td>
+                            <td>
+                              <div className="w-[100%] flex-col p-3 rounded-b-xl bg-white flex items-center justify-center">
+                                <button
+                                  onClick={() =>
+                                    processOrder(monthlyData[optionIndex])
+                                  }
+                                  className=" w-[50%] flex  items-center justify-center p-2 rounded-lg text-lime-400 uppercase bg-teal-950"
+                                >
+                                  <Image
+                                    src={scheduleIcon}
+                                    width={2}
+                                    height={2}
+                                    className="w-5 h-5"
+                                    alt="schedule icon"
+                                  ></Image>
+                                  <p className="ml-2">Subscribe</p>
+                                </button>
+                                <p>
+                                  Not what you want? Check other options{" "}
+                                  <span>here</span>{" "}
+                                </p>
+                              </div>
+                            </td>
+                          </tr>
+                        </>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </>
             );
           })}
       </div>
