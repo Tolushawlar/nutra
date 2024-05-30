@@ -128,7 +128,7 @@ const Consultation = () => {
       <div className="bg-[#003D28] p-10 flex flex-col items-center justify-center pb-10">
         <h1 className="text-[32px] md:text-[36px] text-[#ECF5EA] font-BwGradual-Regular font-700 my-10">How it Works</h1>
         <div className="flex flex-col items-center justify-center pb-[60px]">
-          
+
           <div className="flex flex-row items-center justify-between gap-[5px] md:gap-[60px]">
             <Image src={num1} alt="logo" className=" ml-5 md:ml-0 w-[60px] md:w-[100px] h-[60px] md:h-[100px] " />
             <p className="text-[#ECF5EA] font-400 font-BwGradual-Regular px-[40px] w-[320px] md:w-[650px] text-[20px] md:text-[24px]">Sign up for our diabetes-friendly meal plans we offer at a subsidized rate.</p>
@@ -202,10 +202,12 @@ const Consultation = () => {
         </div>
       </div> */}
 
-      <div id="consult" className="mb-[-80px] md:mb-0">
+      <div id="consult" className="mb-[-100px] md:mb-0">
         <Consult />
       </div>
-      <Faq faqTopic={topic} faqData={faqInput} />
+      <div className="mr-4">
+        <Faq faqTopic={topic} faqData={faqInput} />
+      </div>
 
 
       {/* <div className=" w-full p-10 bg-cream text-text-color">
