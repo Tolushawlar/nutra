@@ -1,13 +1,38 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import SubscriptionCards from "./SubscriptionCards";
 import SubscriptionModal from "../OrderModal/SubscriptionModal";
 import Image from "next/image";
 import scheduleIcon from "../../Assets/scheduleIcon.svg";
 import axios from "axios";
+import {
+  processPayments,
+  processSubPayments,
+} from "@/app/utils/processPayments";
+import ProcessOrderModal from "../ProcessOrderModal";
 
 const SubscrptionPlans = () => {
+  const mealTimeArray: any = {
+    twoperday: [
+      "Morning and Afternoon",
+      "Morning and Evening",
+      "Afternoon and Evening",
+    ],
+    oneperday: ["Morning", "Afternoon", "Evening"],
+  };
+
   const [data, setData] = useState<any[]>([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [scheduledata, setScheduleData] = useState();
+  const [optionAorB, setOptionAorB] = useState("Option A");
+  const [optionIndex, setOptionIndex] = useState(0);
+  const [mealTime, setMealTime] = useState(mealTimeArray.oneperday);
+  const [subInfo, setSubInfo] = useState({
+    mealplan: "weekly",
+    time: mealTime[0],
+  });
+
+  const [openProcessModal, setOpenProcessModal] = useState(false);
+  const [selected, setSelected] = useState();
 
   useEffect(() => {
     fetchData();
@@ -16,7 +41,6 @@ const SubscrptionPlans = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get("/api/subscription");
-      console.log(response.data);
       if (response.status === 200) {
         // If the request is successful, set the data state
         setData(response.data);
@@ -27,25 +51,6 @@ const SubscrptionPlans = () => {
       console.error("Error fetching food data:", error.message);
     }
   };
-
-  const mealTimeArray: any = {
-    twoperday: [
-      "Morning and Afternoon",
-      "Morning and Evening",
-      "Afternoon and Evening",
-    ],
-    oneperday: ["Morning", "Afternoon", "Evening"],
-  };
-
-  const [openModal, setOpenModal] = useState(false);
-  const [scheduledata, setScheduleData] = useState();
-  const [optionAorB, setOptionAorB] = useState("Option A");
-  const [optionIndex, setOptionIndex] = useState(0);
-  const [mealTime, setMealTime] = useState(mealTimeArray.oneperday);
-  const [subInfo, setSubInfo] = useState({
-    mealplan: "weekly",
-    time: mealTime[0],
-  });
 
   const handleSubInfoChange = (e: any) => {
     if (e.target.name == "mealtype") {
@@ -92,9 +97,6 @@ const SubscrptionPlans = () => {
       return d["Week 4"].length > 1 && d["Week 4"][0].meals.length > 1;
     });
 
-  console.log(monthlyOneMeal);
-  console.log(monthlyTwoMeal);
-
   const monthlyData =
     subInfo.time.split("and").length > 1 ? monthlyTwoMeal : monthlyOneMeal;
   const weeklyData =
@@ -104,6 +106,36 @@ const SubscrptionPlans = () => {
     optionAorB == "Option A" ? setOptionIndex(0) : setOptionIndex(1);
   }, [optionAorB]);
 
+  const processOrder = async (data: any) => {
+    let ref = Date.now();
+
+    try {
+      const response = await axios.post(
+        "/api/subscriptionorder",
+        { data, ref },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        const paymentRes: any = await processSubPayments(
+          [response.data],
+          location.origin,
+          data.price + "00"
+        );
+        // console.log(paymentRes);
+        window.open(paymentRes.data.authorization_url, "_blank");
+      } else {
+        console.error("Failed to submit food data:", response.statusText);
+      }
+    } catch (error: any) {
+      console.error("Error submitting food data:", error.message);
+    }
+  };
+
   return (
     <div id="menu" className=" p-10">
       {openModal && (
@@ -112,13 +144,19 @@ const SubscrptionPlans = () => {
           setOpenModal={setOpenModal}
         />
       )}
-
+      {openProcessModal && (
+        <ProcessOrderModal
+          setOpenModal={setOpenProcessModal}
+          data={selected}
+          processCart={processOrder}
+        />
+      )}
       <div className="flex  flex-col mt-5">
         <p className="text-[#211F26] font-Roboto-Bold my-5 text-xl font-[600]">
           You can only subscribe for one meal plan option.
         </p>
 
-        <div className="flex w-[70%] mx-auto space-x-5 justify-between">
+        <div className="flex md:w-[70%] w-full flex-col md:flex-row mx-auto md:space-x-5 justify-between">
           <div className="flex flex-col w-full ">
             <p className="my-2"> Select meal plan</p>
             <select
@@ -160,7 +198,7 @@ const SubscrptionPlans = () => {
         </div>
 
         <div className=" h-[20px] my-8 w-full">
-          <div className="p-1 bg-white  mx-auto rounded-lg w-[50%] border border-neutral-400 justify-center flex items-center ">
+          <div className="p-1 bg-white  mx-auto rounded-lg md:w-[50%] border border-neutral-400 justify-center flex items-center ">
             <div
               style={{
                 color:
@@ -207,15 +245,15 @@ const SubscrptionPlans = () => {
         </div>
       </div>
 
-      <div>
+      <div className="max-w-[1200px]">
         {subInfo.mealplan == "weekly" && (
           <table className="w-full">
             <thead>
               <tr>
-                <td className="w-[17%]">
-                  <div className=" font-Roboto-Bold ">Week Days</div>
+                <td className=" hidden md:inline-block ">
+                  <div className=" font-Roboto-Bold w-[100%]">Week Days</div>
                 </td>
-                <td>
+                <td colSpan={2}>
                   <div className="w-[100%]   flex  justify-around p-3 items-center py-4 rounded-t-xl text-lime-400 bg-teal-950">
                     {subInfo.time.split(" ").length > 1 && (
                       <p className="text-center text-[#003D28] rounded-md px-2 py-1 bg-[#F1F7F0]">
@@ -239,7 +277,12 @@ const SubscrptionPlans = () => {
                 return (
                   <tbody>
                     <tr key={i + "weekly meals"}>
-                      <td>{data.day}</td>
+                      <td className="w-[17%] bg-white md:bg-transparent font-[700] md:hidden p-3 md:p-0">
+                        {data.day.substring(0, 2)}
+                      </td>
+                      <td className="w-[14%] bg-white md:bg-transparent  md:flex hidden p-3 md:p-0">
+                        {data.day}
+                      </td>
                       <td>
                         {subInfo.time.split(" ").length > 1 ? (
                           <div className=" mt-[-2px] gap-[2px] flex">
@@ -264,8 +307,8 @@ const SubscrptionPlans = () => {
                     {weeklyData[optionIndex]["Week 1"].length - 1 == i && (
                       <>
                         <tr>
-                          <td> </td>
-                          <td>
+                          <td className="hidden md:flex"> </td>
+                          <td colSpan={2}>
                             <div className="w-[100%] p-3 bg-white flex items-center justify-center">
                               <p className="ml-2 font-BwGradual-Regular font-[900]">
                                 {weeklyData[optionIndex].price}
@@ -274,19 +317,29 @@ const SubscrptionPlans = () => {
                           </td>
                         </tr>
                         <tr>
-                          <td> </td>
-                          <td>
-                            <div className="w-[100%] p-3 rounded-b-xl bg-white flex items-center justify-center">
-                              <button className=" w-[50%] flex items-center justify-center p-2 rounded-lg text-lime-400 uppercase bg-teal-950">
+                          <td className="hidden md:flex"> </td>
+                          <td colSpan={2}>
+                            <div className="w-[100%] flex-col p-3 rounded-b-xl bg-white flex items-center justify-center">
+                              <button
+                                onClick={() => {
+                                  setSelected(weeklyData[optionIndex]);
+                                  setOpenProcessModal(true);
+                                }}
+                                className=" w-[50%] flex items-center justify-center p-2 rounded-lg text-lime-400 uppercase bg-teal-950"
+                              >
                                 <Image
                                   src={scheduleIcon}
                                   width={2}
                                   height={2}
                                   className="w-5 h-5"
                                   alt="schedule icon"
-                                ></Image>
+                                />
                                 <p className="ml-2">Subscribe</p>
                               </button>
+                              <p className="p-2 mt-4 text-xl">
+                                Not what you want? Check other options{" "}
+                                <span>here</span>{" "}
+                              </p>
                             </div>
                           </td>
                         </tr>
@@ -357,14 +410,14 @@ const SubscrptionPlans = () => {
                     );
                   })}
 
-                  {i == Object.entries(monthlyData[optionIndex]).length - 1 && (
+                  {4 == i && (
                     <>
                       <tr>
                         <td> </td>
                         <td>
                           <div className="w-[100%] p-3 bg-white flex items-center justify-center">
                             <p className="ml-2 font-BwGradual-Regular font-[900]">
-                              N10, 000k
+                              N {monthlyData[optionIndex].price}
                             </p>
                           </div>
                         </td>
@@ -373,7 +426,12 @@ const SubscrptionPlans = () => {
                         <td> </td>
                         <td>
                           <div className="w-[100%] p-3 rounded-b-xl bg-white flex items-center justify-center">
-                            <button className=" w-[50%] flex items-center justify-center p-2 rounded-lg text-lime-400 uppercase bg-teal-950">
+                            <button
+                              onClick={() =>
+                                processOrder(monthlyData[optionIndex])
+                              }
+                              className=" w-[50%] flex items-center justify-center p-2 rounded-lg text-lime-400 uppercase bg-teal-950"
+                            >
                               <Image
                                 src={scheduleIcon}
                                 width={2}
@@ -383,6 +441,10 @@ const SubscrptionPlans = () => {
                               ></Image>
                               <p className="ml-2">Subscribe</p>
                             </button>
+                            <p>
+                              Not what you want? Check other options{" "}
+                              <span>here</span>{" "}
+                            </p>
                           </div>
                         </td>
                       </tr>

@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useRef } from "react";
 import { FaPhoneSquareAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
@@ -8,8 +9,11 @@ import ig from "../Assets/homepage/IG.svg"
 import contact from "../Assets/homepage/Contact_Icon.svg"
 import mail from "../Assets/homepage/Mail_Icon.svg"
 import Image from "next/image";
+import { Link } from "react-scroll";
 
 export const Footer = () => {
+
+
   return (
     <div>
       <footer className=" flex flex-col p-[30px] bg-[#003D28] text-white">
@@ -29,23 +33,23 @@ export const Footer = () => {
             <Image src={logo} alt="logo" className="mr-3" />
           </aside>
           <nav>
-            <h6 className="footer-title text-white text-[18px] font-BwGradual-Bold">COMPANY</h6>
-            <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline hover:text-[#bcf800]">Home</a>
+            <p className="mb-5 text-[#FFFFFF] text-[18px] font-BwGradual-Bold font-[700]">COMPANY</p>
+            <a href="/" className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline hover:text-[#bcf800]">Home</a>
             <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">About Us</a>
-            <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">What's New</a>
+            <a href="/blog" className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">What's New</a>
             <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Privacy Policy</a>
             <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Terms of Use</a>
           </nav>
           <nav>
-            <h6 className="footer-title text-white text-[18px] font-BwGradual-Bold">OFFERING</h6>
-            <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Bespoke Order</a>
-            <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Healthy Meals</a>
-            <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Instant Order</a>
+            <h6 className="mb-5 text-[#FFFFFF] text-[18px] font-BwGradual-Bold font-[700]">OFFERING</h6>            
+            <Link to="bespoke" smooth={true} duration={800} className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Bespoke Order</Link>
+            <a  href="/dietary" className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Healthy Meals</a>
+            <Link to="foodMenu" smooth={true} duration={800} className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Instant Order</Link>
             <a className="link no-underline cursor-pointer mb-5 font-BwGradual-Light font-[400] text-[15px] hover:no-underline  hover:text-[#bcf800]">Subscription Plan</a>
             {/* <a className="link no-underline cursor-pointer mb-5 font-Roboto-Light">Press kit</a> */}
           </nav>
           <nav>
-            <h6 className="footer-title  text-white text-[18px] font-BwGradual-Bold">CONTACT</h6>
+            <h6 className="mb-5  text-[#FFFFFF] text-[18px] font-BwGradual-Bold font-[700]">CONTACTS</h6>
             <div className="flex items-center">
               {/* <FaPhoneSquareAlt className="text-[20px]" /> */}
               <Image src={contact} alt="logo" width={35} height={35} className="" />

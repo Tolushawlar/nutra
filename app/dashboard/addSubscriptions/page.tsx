@@ -242,9 +242,6 @@ function AddSubsPage() {
     }
   }, [subInfo]);
 
-  console.log(formData);
-  console.log(subInfo);
-
   return (
     <>
       <div className="flex flex-row  h-full w-full">

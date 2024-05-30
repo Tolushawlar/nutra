@@ -4,6 +4,8 @@ import "./globals.css";
 import { AppContextProvider } from "./context/AppContext";
 import Header from "./(Components)/Header";
 import { Footer } from "./(Components)/Footer";
+import Slider from "./(Components)/Slider";
+import Header2 from "./(Components)/Header2";
 // import "tw-elements-react/dist/css/tw-elements-react.min.css";
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -22,8 +24,10 @@ export default function RootLayout({
     <AppContextProvider>
       <html lang="en">
         <body>
-          <Header />
-          <div className="pt-[70px] z-0">{children}</div>
+          {/* <Header /> */}
+          <Header2/>
+          
+          <div className="pt-[70px] ">{children}</div>
           <Footer />
         </body>
       </html>

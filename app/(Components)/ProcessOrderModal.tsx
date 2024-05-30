@@ -1,9 +1,7 @@
 "use client";
+import { useState } from "react";
 
-import { useAppContext } from "@/app/context/AppContext";
-import { useEffect, useState } from "react";
-
-const ProcessOrderModal = ({ setOpenModal, processCart }: any) => {
+const ProcessOrderModal = ({ setOpenModal, processCart, data }: any) => {
   const [address, setAddress] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -78,7 +76,13 @@ const ProcessOrderModal = ({ setOpenModal, processCart }: any) => {
         <div className=" flex mt-5 w-full">
           <button
             onClick={() => {
-              processCart({ name, address, phone });
+              processCart({
+                name,
+                address,
+                phone,
+                subscriptionId: data._id,
+                price: data.price,
+              });
               setOpenModal(false);
             }}
             className="btn bg-[#003D28] w-full text-text-color hover:bg-[#003D28]"

@@ -6,32 +6,20 @@ import { NextRequest, NextResponse } from "next/server";
 connect();
 
 export const POST = async (req: NextRequest) => {
-  const { subscriptionId, price, address, phone, type, name, image } =
-    await req.json();
+  const data = await req.json();
+  console.log(data);
 
-  if (type == "addSubOrder") {
-    try {
-      const newSub = await SubscriptionOrder.create({
-        subscriptionId,
-        address,
-        price,
-        phone,
-      });
-      return NextResponse.json(newSub);
-    } catch (error: any) {
-      throw new Error(error.message);
-    }
-  }
   try {
-    const newFood = await Subscription.create({
-      subscriptionId,
-      address,
-      price,
-      phone,
-      name,
-      image,
+    const newSub = await SubscriptionOrder.create({
+      subscriptionId: data.data.subscriptionId,
+      address: data.data.address,
+      price: data.data.price,
+      phone: data.data.phone,
+      name: data.data.name,
+      reference: data.ref,
+      status: "pending payment",
     });
-    return NextResponse.json(newFood);
+    return NextResponse.json(newSub);
   } catch (error: any) {
     throw new Error(error.message);
   }
