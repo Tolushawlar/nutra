@@ -101,7 +101,7 @@ function SearchForm() {
 
   return (
     <div className='hover:shadow-lg  relative my-10  w-[85vw] md:w-[60vw] h-[30px] md:h-[80px] py-[40px] px-4  bg-white md:flex shadow-md flex-row items-center justify-between  rounded-[16px] md:rounded-[24px] border-[1px] border-[#a9c1a9]'>
-      <div className='relative bottom-[1vh] md:bottom-0 flex flex-row justify-center items-center'>
+      <div className='relative bottom-[1.5vh] md:bottom-0 flex flex-row justify-center items-center'>
         <Image
           src={search}
           alt="cartImage"
