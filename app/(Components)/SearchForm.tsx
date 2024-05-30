@@ -144,6 +144,9 @@ function SearchForm() {
       {
         dropdownVisible && (
           <div className='z-[99999999999999] absolute top-[100px] left-0 w-[100%] bg-white shadow-lg rounded-[16px] max-h-[300px] overflow-auto'>
+            <p className='bg-[#003d28] text-[#BCF800] w-[10vw] my-4 mx-4 p-2 rounded-[8px] cursor-pointer'
+              onClick={() => setDropdownVisible(false)}
+            >View Results</p>
             {searchMode === 'FOOD' && (
               searchResults.length === 0 ? (
                 <div className='flex items-center p-4 border-b border-gray-200'>

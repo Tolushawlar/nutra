@@ -263,20 +263,7 @@ const Menu = () => {
               ))}
           </div>
 
-          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-row gap-5 md:gap-10">
-            {foodData &&
-              foodData.map((data, i) => (
-                <div key={"foods-index" + i}>
-                  <FoodCards
-                    data={data}
-                    setAddedToCart={setAddedToCart}
-                    setScheduleOrder={setScheduleData}
-                    setOpenModal={setOpenModal}
-                  />
-                </div>
-              ))}
-          </div>
-
+         
 
           <div className="join border border-[#003D28] my-6 ml-auto">
             {curPage > 3 && (
