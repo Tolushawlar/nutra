@@ -20,6 +20,7 @@ import AllFoodPage from "../dashboard/food/page";
 import SubOrdersPage from "../dashboard/subOrders/page";
 import AddSubsPage from "../dashboard/addSubscriptions/page";
 import OrdersPage from "../dashboard/orders/page";
+import AllSubscriptionPage from "../dashboard/subscriptions/page";
 
 const pages = {
   iOrders: <OrdersPage />,
@@ -28,7 +29,8 @@ const pages = {
   cMessages: <ConsultationPage />,
   addFood: <AddFoodPage />,
   allFood: <AllFoodPage />,
-  allSubs: <SubOrdersPage />,
+  allSubs: <AllSubscriptionPage />,
+  allSubOrders: <SubOrdersPage />,
   addSubs: <AddSubsPage />,
 };
 
@@ -114,7 +116,7 @@ const Sidebar = ({ setCurPage, curPage }: any) => {
           <div
             onClick={() => setCurPage(pages.addFood)}
             className={`flex align-middle items-center cursor-pointer  ${
-              lastItem === "addFood" ? "bg-red-300 rounded-[8px]" : ""  
+              lastItem === "addFood" ? "bg-red-300 rounded-[8px]" : ""
             }`}
           >
             <MdAddTask size={"1.5rem"} className="mx-2 my-2" />

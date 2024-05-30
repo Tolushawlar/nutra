@@ -9,6 +9,7 @@ import AddFoodPage from "./addFood/page";
 import AllFoodPage from "./food/page";
 import SubOrdersPage from "./subOrders/page";
 import AddSubsPage from "./addSubscriptions/page";
+import AllSubscriptionPage from "./subscriptions/page";
 
 const pages = {
   iOrders: <OrdersPage />,
@@ -17,12 +18,13 @@ const pages = {
   cMessages: <ConsultationPage />,
   addFood: <AddFoodPage />,
   allFood: <AllFoodPage />,
-  allSubs: <SubOrdersPage />,
+  allSubs: <AllSubscriptionPage />,
+  allSubOrders: <SubOrdersPage />,
   addSubs: <AddSubsPage />,
 };
 
 function DashboardLayout() {
-  const [curPage, setCurPage]: any = useState(pages.iOrders);
+  const [curPage, setCurPage]: any = useState(pages.addSubs);
 
   return (
     <div className="">

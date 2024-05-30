@@ -1,35 +1,35 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
+// Define the schema
+const mealSchema = new mongoose.Schema({
+  day: String,
+  meals: [String],
+});
+
+// Define the model
+const Meal = mongoose.models.Meal || mongoose.model("Meal", mealSchema);
+
+// Define the schema for the monthlyTwoMeal data
 const subscriptionSchema = new mongoose.Schema(
-  {
-    subscriptionId: {
-      type: String,
-      required: true,
+  [
+    {
+      "Week 1": [{ type: { day: String, meals: [String] } }],
+      "Week 2": [{ type: { day: String, meals: [String] } }],
+      "Week 3": [{ type: { day: String, meals: [String] } }],
+      "Week 4": [{ type: { day: String, meals: [String] } }],
+      price: String,
+      options: String,
+      mealplan: String,
     },
-    address: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    phone: {
-      type: Number,
-      required: true,
-    },
-  },
+  ],
   { timestamps: true }
 );
 
-export const Subscription =
+const Subscription =
   mongoose.models.Subscription ||
-  mongoose.model("subscription", subscriptionSchema);
+  mongoose.model("Subscription", subscriptionSchema);
+
+module.exports = {
+  Subscription,
+  Meal,
+};

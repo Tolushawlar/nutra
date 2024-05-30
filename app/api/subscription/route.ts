@@ -1,37 +1,30 @@
+import { Subscription } from "@/app/models/subscriptionSchema";
 import { connect } from "../../connect/connect";
-import { Subscription } from "../../models/subscriptionSchema";
-import { SubscriptionOrder } from "../../models/subscriptionOrderSchema";
+import { Food } from "../../models/foodSchema";
 import { NextRequest, NextResponse } from "next/server";
 
 connect();
 
 export const POST = async (req: NextRequest) => {
-  const { subscriptionId, price, address, phone, type, name, image } =
-    await req.json();
+  const body = await req.json();
 
-  if (type == "addSubOrder") {
-    try {
-      const newSub = await SubscriptionOrder.create({
-        subscriptionId,
-        address,
-        price,
-        phone,
-      });
-      return NextResponse.json(newSub);
-    } catch (error: any) {
-      throw new Error(error.message);
-    }
-  }
+  console.log(body);
+  // return NextResponse.json("newSub");
   try {
-    const newFood = await Subscription.create({
-      subscriptionId,
-      address,
-      price,
-      phone,
-      name,
-      image,
-    });
-    return NextResponse.json(newFood);
+    const newSub = await Subscription.create(
+      body.map((body: any, i: number) => {
+        return {
+          "Week 1": body["Week 1"],
+          "Week 2": body["Week 2"],
+          "Week 3": body["Week 3"],
+          "Week 4": body["Week 4"],
+          options: body.option,
+          price: body.price,
+        };
+      })
+    );
+    console.log(newSub);
+    return NextResponse.json(newSub);
   } catch (error: any) {
     throw new Error(error.message);
   }
@@ -44,20 +37,14 @@ export const GET = async (req: NextRequest) => {
 
   if (type == "delete") {
     try {
-      const d = await SubscriptionOrder.deleteOne({});
+      const d = await Food.deleteOne({});
+      console.log(d);
       return NextResponse.json(d);
     } catch (error: any) {
       throw new Error(error.message);
     }
   }
-  if (type == "getSubOrder") {
-    try {
-      const d = await SubscriptionOrder.find({});
-      return NextResponse.json(d);
-    } catch (error: any) {
-      throw new Error(error.message);
-    }
-  }
+
   try {
     const getFood = await Subscription.find();
     return NextResponse.json(getFood);

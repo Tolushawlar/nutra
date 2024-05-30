@@ -1,7 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useAppContext } from "../context/AppContext";
-import Link from "next/link";
 import Cart from "./Cart";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
@@ -16,6 +15,8 @@ import location from "../Assets/Home/Location.svg";
 import droplet from "../Assets/homepage/Droplet.svg";
 import Image from "next/image";
 import OrderReceipt from "./OrderModal/OrderReceipt";
+import Slider from "./Slider";
+import { Link } from "react-scroll";
 
 const Header = () => {
   const { cart }: any = useAppContext();
@@ -59,24 +60,37 @@ const Header = () => {
   const parts = pathname.split("/");
   const lastItem = parts[parts.length - 1];
 
+
+
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
+  };
+
+
+
   return (
-    <div>
-      <div className="navbar fixed h-[70px] z-[99999999999999999999999999999] p-[20px] md:p-[50px] bg-white jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color">
-        <div className="flex">
-          <Link href="/">
+    <div className="flex flex-col items-center z-[999999999999999999999999999999999999999999]">
+
+      <div className="navbar fixed h-[70px] z-[99999999999999999999999999999999999999999999999999999999999] p-[20px] md:p-[50px] bg-white jusitfy-center md:justify-between overflow-x-hidden w-[100vw] md:w-full text-text-color">
+
+        <div className="flex z-[99999999999999]">
+          <a href="/">
             {/* <img src={logo} alt="logo" className="" /> */}
             <Image
               src={logo}
               alt="logo"
               className="w-[110px] md:w-[220px] h-[25px] md:h-[50px]"
             />
-          </Link>
+          </a>
         </div>
 
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal flex flex-row justify-center gap-10 align-center items-center py-5 px-1 text-[#003D28] text-[16px] font-Roboto-Bold">
+          <ul className="menu menu-horizontal flex flex-row justify-center gap-10 align-center items-center py-5 px-1 text-[#322F35] text-[16px] font-Roboto-Bold">
             <li className="">
-              <Link href="/" className="font-BwGradual-Bold">
+              <a href="/" className="font-BwGradual-Regular font-[500]">
                 Home
                 {lastItem === "" && (
                   <Image
@@ -85,10 +99,9 @@ const Header = () => {
                     className="relative top-6 right-10 w-[10px] h-[10px]"
                   />
                 )}
-              </Link>
+              </a>
             </li>
             <li className="flex flex-row justify-center items-center mt-2">
-              {/* <Dropdown /> */}
               <Services />
             </li>
 
@@ -105,8 +118,7 @@ const Header = () => {
               </Link>
             </li> */}
             <li>
-              <Link href="/blog" className="font-BwGradual-Bold">
-                What's New
+              <a href="/blog" className="font-BwGradual-Regular font-[500]">What's New
                 {lastItem === "blog" && (
                   <Image
                     alt="arrow"
@@ -114,24 +126,41 @@ const Header = () => {
                     className="relative top-6 right-10 w-[10px] h-[10px]"
                   />
                 )}
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href="/" className="font-BwGradual-Bold">
-                Contact Us
-              </Link>
+              <p onClick={scrollToBottom} className="font-BwGradual-Regular font-[500]">Contact Us</p>
             </li>
           </ul>
         </div>
 
         <div>
-          <div className="flex-none">
+
+          {/* <div className="flex ml-[100px] md:ml-[0px] pl-0 md:pl-10 border-l-2 h-[50px] md:h-[100px] flex-col items-center justify-center">
+            <div className="dropdown dropdown-end">
+              <div
+                role="button"
+                className="btn btn-ghost btn-circle mr-[0px] md:mr-[40px] "
+              >
+                <div className="indicator  ">
+                  <Image
+                    src={search}
+                    alt="cartImage"
+                    className="w-[20px] md:w-[28px] h-[20px] md:h-[28px]"
+                  />
+                </div>
+              </div>
+            </div>
+             {openCart && <Cart openCart={openCart} setOpenCart={setOpenCart} />} 
+          </div> */}
+
+          <div className="flex pl-0 md:pl-10 border-l-2 h-[50px] md:h-[100px] flex-col items-center justify-center">
             <div className="dropdown dropdown-end">
               <div
                 onClick={() => setOpenCart(true)}
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle mr-[10px] md:mr-[100px] "
+                className="btn btn-ghost btn-circle mr-[10px] md:mr-[80px] "
               >
                 <div className="indicator  ">
                   {/* <svg
@@ -192,10 +221,10 @@ const Header = () => {
         </div>
 
         {showMobile && (
-          <div className="absolute top-[70px] z-[999999999999999999999999999999999] w-full h-fit items-start text-black bg-cream left-0 flex flex-col">
+          <div className="absolute top-[70px] z-[9999999999999999999999999999999999999999999999] w-full h-fit items-start text-black bg-cream left-0 flex flex-col">
             <ul className="menu menu-vertical px-1">
               <li onClick={() => setShowMobile(!showMobile)}>
-                <Link href="/">Home</Link>
+                <a href="/">Home</a>
               </li>
               <li className="">
                 {/* <Dropdown /> */}
@@ -207,22 +236,25 @@ const Header = () => {
             </li> */}
 
               <li onClick={() => setShowMobile(!showMobile)}>
-                <Link href="/">About</Link>
+                <a href="/">About</a>
               </li>
               <li onClick={() => setShowMobile(!showMobile)}>
-                <Link href="/">Contact Us</Link>
+                <a href="/">Contact Us</a>
               </li>
               <li onClick={() => setShowMobile(!showMobile)}>
-                <Link href="/">Blog</Link>
+                <a href="/">Blog</a>
               </li>
             </ul>
           </div>
         )}
       </div>
+      <Slider />
 
       {showReceipt && (
         <OrderReceipt setShowReceipt={setShowReceipt} receipt={receipt} />
       )}
+
+      <Slider />
     </div>
   );
 };
@@ -231,7 +263,7 @@ export default Header;
 
 export function Dropdown() {
   return (
-    <div className="  z-[999999999999999999999] text-right">
+    <div className="  z-[9999999999999999999999999999999999999999999999999999999999999999] text-right">
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className=" flex w-fit ">
@@ -254,41 +286,41 @@ export function Dropdown() {
           <Menu.Items className="absolute px-6 right-0 mt-2 min-w-fit z-[99999999999999999999999999999999] rounded-md bg-main text-black shadow-lg ring-1 ring-black/5 focus:outline-none">
             <div className="px-1 py-1 flex items-center flex-col z-[99999999999999999999999999999999]">
               <Menu.Item>
-                <Link className="text-nowrap  " href="/#menu">
+                <a className="text-nowrap  " href="/#menu">
                   <button
                     className={` group text-nowrap hover:bg-bg-sec m-2 items-center rounded-md px-2 py-2 text-sm`}
                   >
                     Instant Order
                   </button>
-                </Link>
+                </a>
               </Menu.Item>
               <Menu.Item>
-                <Link href="/">
+                <a href="/">
                   <button
                     className={`  group flex w-full hover:bg-bg-sec m-2 items-center rounded-md px-2 py-2 text-sm`}
                   >
                     Schedule
                   </button>
-                </Link>
+                </a>
               </Menu.Item>
               <Menu.Item>
-                <Link href="/health">
+                <a href="/health">
                   <button
                     className={` group flex w-full hover:bg-bg-sec m-2 items-center rounded-md px-2 py-2 text-sm`}
                   >
                     Healthy Meals
                   </button>
-                </Link>
+                </a>
               </Menu.Item>
 
               <Menu.Item>
-                <Link href="/#bespoke">
+                <a href="/#bespoke">
                   <button
                     className={`  group flex w-full hover:bg-bg-sec m-2 items-center rounded-md px-2 py-2 text-sm`}
                   >
                     Bespoke
                   </button>
-                </Link>
+                </a>
               </Menu.Item>
             </div>
           </Menu.Items>
