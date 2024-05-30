@@ -185,11 +185,11 @@ function SimpleSlider() {
                     <div className=" md:hidden flex flex-col items-start">
                         <div className="">
                             <div
-                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[350px] bg-[#A9C1A9] p-5 rounded-[24px]"
+                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[350px] bg-[#A9C1A9] p-3 rounded-[24px]"
                                 style={{ minWidth: '350px' }}
                             >
-                                <div className="flex flex-col md:flex-row items-center w-[280px]">
-                                    <div className="md:w-[300px] ml-[20px] md:ml-0 mb-4 md:mb-0">
+                                <div className="flex flex-col md:flex-row items-center w-[320px]">
+                                    <div className="md:w-[320px] ml-[20px] md:ml-0 mb-4 md:mb-0">
                                         <div className="flex flex-row items-center justify-between">
                                             <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" />
                                             <p className="mb-5 text-[14px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">David Kayode, fitness enthusiast</p>
@@ -209,11 +209,11 @@ function SimpleSlider() {
                         </div>
                         <div className="">
                             <div
-                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-5 rounded-[24px]"
+                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-3 rounded-[24px]"
                                 style={{ minWidth: '350px' }}
                             >
-                                <div className="flex flex-col md:flex-row items-center w-[280px]">
-                                    <div className="md:w-[300px] ml-[20px] md:ml-0 mb-4 md:mb-0">
+                                <div className="flex flex-col md:flex-row items-center w-[320px]">
+                                    <div className="md:w-[320px] ml-[20px] md:ml-0 mb-4 md:mb-0">
                                         <div className="flex flex-row items-center justify-between">
                                             <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" />
                                             <p className="mb-5 text-[14px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Esther Olagunju, working mom</p>
@@ -233,11 +233,11 @@ function SimpleSlider() {
                         </div>
                         <div className="">
                             <div
-                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-5 rounded-[24px]"
+                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-3 rounded-[24px]"
                                 style={{ minWidth: '350px' }}
                             >
-                                <div className="flex flex-col md:flex-row items-center w-[280px]">
-                                    <div className="md:w-[300px] ml-[20px] md:ml-0 mb-4 md:mb-0">
+                                <div className="flex flex-col md:flex-row items-center w-[320px]">
+                                    <div className="md:w-[320px] ml-[20px] md:ml-0 mb-4 md:mb-0">
                                         <div className="flex flex-row items-center justify-between">
                                             <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" />
                                             <p className="mb-5 text-[14px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Lisa S., Tech sis / entrepreneur</p>
