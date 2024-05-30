@@ -71,7 +71,7 @@ const Consultation = () => {
         {/* <Link to="consult" smooth={true} duration={800}  className="hover:no-underline text-[#006240] font-500 text-[28px font-Roboto-Black cursor-pointer "> Instant Consultation</Link> */}
       </div>
 
-      <div className="flex flex-col md:flex-row items-center justify-center  bg-[#A9C1A9] w-[100vw] h-[900px] md:h-[800px]">
+      <div className="flex flex-col md:flex-row items-center justify-center  bg-[#A9C1A9] w-[100vw] h-[900px] md:h-[800px] mb-[-50px] md:mb-0">
         <div className="px-5 md:px-[90px] py-[20px] gap-10 flex flex-col items-center md:items-start justify-center ">
           <h2 className="font-[700] text-[32px] md:text-[68px] text-[#211F26] font-BwGradual-Bold text-center md:text-left">Healthy tastes, healthy living.</h2>
           <p className="text-[24px] md:text-[30px] font-[400] text-[#1D1B20] font-BwGradual-Regular my-10 text-center md:text-left">Book for a consultation with our certified Dietician.</p>
@@ -80,7 +80,7 @@ const Consultation = () => {
             <Image src={arrow} alt="logo" className=" " />
           </div> */}
         </div>
-        <div className="px-[90px]">
+        <div className="px-[20px] md:px-[90px]">
           <Image src={Text1} alt="logo" className="w-[700px] md:w-[1000px] h-[380px] md:h-[600px] " />
         </div>
       </div>
