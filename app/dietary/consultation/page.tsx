@@ -74,13 +74,13 @@ const Consultation = () => {
       <div className="flex flex-col md:flex-row items-center justify-center  bg-[#A9C1A9] w-[100vw] h-[900px] md:h-[800px] mb-[-60px] md:mb-0 ">
         <div className="px-5 md:px-[90px] gap-4 flex flex-col items-center md:items-start justify-center mt-[-30px] md:mt-0 ">
           <h2 className="font-[700] text-[32px] md:text-[68px] text-[#211F26] font-BwGradual-Bold text-center md:text-left">Book for a consultation with our certified Dietician.</h2>
-          <p className="text-[24px] md:text-[30px] font-[400] text-[#1D1B20] font-BwGradual-Regular my-10 text-center md:text-left">Book for a consultation with our certified Dietician.</p>
+          {/* <p className="text-[24px] md:text-[30px] font-[400] text-[#1D1B20] font-BwGradual-Regular my-10 text-center md:text-left">Book for a consultation with our certified Dietician.</p> */}
           {/* <div className="cursor-pointer flex flex-row items-center justify-center gap-3 bg-[#BCF800] rounded-[16px] w-[400px] h-[100px]">
             <div className="text-[#003D28] font-[500] text-left font-Roboto-Light text-[18px] md:text-[20px]">GET STARTED</div>
             <Image src={arrow} alt="logo" className=" " />
           </div> */}
         </div>
-        <div className="px-[20px] md:px-[90px]">
+        <div className="px-[20px] md:px-[90px] mt-[60px] md:mt-0">
           <Image src="https://res.cloudinary.com/doaay7ete/image/upload/v1717126251/Rectangle_29_1_bkxuz2.png" width={100} height={100} unoptimized  alt="logo" className="w-[700px] md:w-[1200px] h-[380px] md:h-[600px] " />
         </div>
       </div>

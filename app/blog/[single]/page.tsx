@@ -1,9 +1,32 @@
+"use client"
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import Home from "../../Assets/blog/Home_Icon.svg"
 import HeroHead from "../../Assets/blog/heroHead.png"
 
 function singleBlog() {
+
+  const [blogData, setBlogData] = useState<any[]>([]);
+
+  const fetchBlog = async () => {
+    try {
+      let params = new URLSearchParams(window.location.search);
+      console.log(params)
+      return
+      // if (!params.get("id")) ;
+      const response = await fetch(`/api/blog/id?=` + params.get("id"));
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const blog = await response.json();
+      setBlogData(blog)
+      console.log(blogData);
+    } catch (error) {
+      console.error('Failed to fetch the blog:', error);
+    }
+  };
+
+  fetchBlog()
   return (
     <div className='w-full h-screen flex flex-col items-start'>
       <div className='flex flex-row items-start gap-10 '>

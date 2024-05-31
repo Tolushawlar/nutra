@@ -4,6 +4,21 @@ import { NextRequest, NextResponse } from "next/server";
 
 connect();
 
+
+export const POST = async (req: NextRequest) => {
+  const { title, content, image, mastImage, featured, readTime } =
+    await req.json();
+
+  try {
+    const newBlog = await Blog.create({
+      title, content, image, mastImage, featured, readTime
+    });
+    return NextResponse.json(newBlog);
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
 export const GET = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
   const type = searchParams.get("type");

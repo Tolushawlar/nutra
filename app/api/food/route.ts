@@ -27,6 +27,7 @@ export const GET = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
   const type = searchParams.get("type");
   const id = searchParams.get("id");
+  console.log(req.url)
 
   if (type == "delete") {
     try {
@@ -39,7 +40,7 @@ export const GET = async (req: NextRequest) => {
   }
 
   try {
-    const getFood = await Food.find();
+    const getFood = await Food.findById(id);
     return NextResponse.json(getFood);
   } catch (error: any) {
     throw new Error(error.message);

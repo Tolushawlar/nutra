@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import sub from "../Assets/homepage/Sub_Plan.svg"
 import BlogCard from '../(Components)/BlogCard'
 import Faq from '../(Components)/Faq'
@@ -7,6 +8,9 @@ import b2 from "../Assets/lastest/Image (4).png"
 import b3 from "../Assets/lastest/Image (5).png"
 
 function Blog() {
+
+  const [blogData, setBlogData] = useState<any[]>([]);
+
   const blogs = [
     {
       blogImg: "https://res.cloudinary.com/doaay7ete/image/upload/v1717132944/Image_7_jv4daw.png",
@@ -34,20 +38,38 @@ function Blog() {
     },
   ];
 
+  const fetchBlog = async () => {
+    try {
+      const response = await fetch(`/api/blog`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const blog = await response.json();
+      setBlogData(blog)
+      console.log(blogData);
+    } catch (error) {
+      console.error('Failed to fetch the blog:', error);
+    }
+  };
+
+  fetchBlog()
+
   return (
     <div className='w-auto bg-[#f4f3e7]'>
       <div className="my-[100px] bg-[#f4f3e7] flex flex-col items-center justify-center w-auto overflow-x-hidden">
         {/* <h2 className='font-[700] font-BwGradual-Regular text-[28px] md:text-[36px] text-[#211F26]'>Welcome to our pressroom</h2> */}
         <h2 className='font-[700] text-[28px] md:text-[36px] text-[#211F26] font-BwGradual-Regular'>Latest from <span className='text-[#17CC29]'>Nutraspices</span></h2>
         <div className='mt-[60px] w-[90vw] flex flex-row flex-wrap gap-10 md:gap-[60px]'>
-          {blogs.map((blog, index) => (
+          {blogs.map((blog:any, index:any) => (
             <BlogCard
               key={index}
+              // id={blog._id}
               blogImg={blog.blogImg}
               blogReadTime={blog.blogReadTime}
               blogDate={blog.blogDate}
               blogTopic={blog.blogTopic}
               blogImageHeight={blog.blogImageHeight}
+              // link={"blog/?id=" + blog._id}
               blogImageWidth={blog.blogImageWidth}
             />
           ))}
