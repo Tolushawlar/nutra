@@ -22,7 +22,7 @@ export const POST = async (req: NextRequest) => {
     throw new Error(error.message);
   }
 };
-
+ 
 export const GET = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
   const type = searchParams.get("type");

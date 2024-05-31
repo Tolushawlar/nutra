@@ -13,13 +13,13 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    mastImage: {
+        type: String,
+        required: true
+    },
     featured: {
         type: Boolean,
         required: true 
-    },
-    categories: {
-        type: [String],
-        required: true
     },
     readTime: {
         type: Number,
