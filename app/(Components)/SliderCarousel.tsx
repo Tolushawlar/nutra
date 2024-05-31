@@ -80,10 +80,12 @@ const SliderCarousel = () => {
                     <div className="px-[20px] md:px-[50px] pt-[100px] md:pt-[100px] text-center md:text-left gap-5 md:gap-10 flex flex-col items-center justify-center md:justify-start  bg-[#003D28] w-[100vw] md:w-[80vw] h-[550px] md:h-[700px]">
                         <h2 className="leading-[45px] md:leading-[80px] text-[40px] md:text-[90px] text-white font-BwGradual-Bold text-center md:text-left">Give your tastebud some<span className='text-[#BCF800]'> Heathly Tastes.</span></h2>
                         {/* <p className="text-[24px] md:text-[30px] font-[400] text-[#D8E5D6] font-BwGradual-Regular my-6 text-center md:text-left">The way your doctor recommends.</p> */}
-                        <Link to="foodMenus" smooth={true} duration={800} className="relative left-[20px] md:right-0 md:ml-0 cursor-pointer flex flex-row items-center justify-center gap-3  bg-[#BCF800] rounded-[8px] md:rounded-[16px] w-[300px] md:w-[350px] h-[64px] md:h-[90px] mt-[40px] md:mt-[80px]">
-                            <div className="text-[#003D28] font-[500] text-center md:text-left font-BwGradual-Regular text-[14px] md:text-[18px] ">ORDER NOW</div>
-                            <Image src={arrow} alt="logo" className=" w-[15px] h-[15px]" />
-                        </Link>
+                        <div className='flex flex-row items-center justify-center md:justify-start'>
+                            <Link to="foodMenus" smooth={true} duration={800} className="md:right-0 md:ml-0 cursor-pointer flex flex-row items-center justify-center gap-3  bg-[#BCF800] rounded-[8px] md:rounded-[16px] w-[300px] md:w-[350px] h-[64px] md:h-[90px] mt-[40px] md:mt-[80px]">
+                                <div className="text-[#003D28] font-[500] text-center md:text-left font-BwGradual-Regular text-[14px] md:text-[18px] ">ORDER NOW</div>
+                                <Image src={arrow} alt="logo" className=" w-[15px] h-[15px]" />
+                            </Link>
+                        </div>
                     </div>
 
                     <div className="px-[20px] md:px-[70px] pt-[100px] md:pt-[100px] gap-5 md:gap-10 flex flex-col items-center justify-center md:justify-start bg-[#003D28] w-[100vw] md:w-[80vw] h-[500px] md:h-[700px]">
@@ -111,7 +113,7 @@ const SliderCarousel = () => {
                 </Slider>
             </div>
 
-            <div className="block md:hidden w-[100vw] md:w-[40vw] h-[420px] md:h-[700px]">
+            <div className="block md:hidden w-[100vw] md:w-[40vw] h-[420px] md:h-[700px] mt-[-30px] md:mt-0">
                 <Slider{...settings3}>
 
 

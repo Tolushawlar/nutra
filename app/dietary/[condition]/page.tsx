@@ -115,7 +115,7 @@ function HealthCondition() {
       }
 
       <div className="flex flex-col items-center justify-start bg-[#D8E5D6] h[300px] md:h-[400px] w-screen mt-[80px] md:mt-0 p-[30px] md:p-[80px] ">
-        <h2 className="text-[#211F26] font-900 text-[28px] md:text-[36px] font-BwGradual-Black text-center my-10">I need an immediate consultation with our dietitian?</h2>
+        <h2 className="text-[#211F26] font-900 text-[28px] md:text-[36px] font-BwGradual-Black text-center my-10">Need an immediate consultation with our dietitian?</h2>
         <a href="consultation" className="cursor-pointer flex flex-row items-center justify-center gap-7 mt-[30px] md:mt-[30px] bg-[#003D28] rounded-[8px] md:rounded-[16px] w-[317px] md:w-[400px] h-[64px] md:h-[70px] hover:translate-x-1  hover:bg-green-950">
           <div className="text-[#BCF800] font-[500] text-left font-BwGradual-Regular text-[16px] md:text-[18px] ">GET ME STARTED</div>
           <Image src={arrow} alt="logo" className=" w-[19px] h-[19px]" />
@@ -127,7 +127,7 @@ function HealthCondition() {
 
       {/* <Bespoke /> */}
 
-      <div className="mr-1 md:mr-0">  
+      <div className="mr-6 md:mr-0">  
         <Faq faqTopic={topic} faqData={faqInput} />
       </div>
 
