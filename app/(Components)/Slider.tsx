@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 function Slider() {
     return (
-        <div className="relative bottom-[5px] md:bottom-[-20px] z-[-9999] h-[60px] md:h-[100px] bg-[#d8e5d6] mt-0 md:mt-[20px] w-[100vw] p-5 md:p-0 overflow-hidden flex items-center">
+        <div className="relative bottom-[3px] md:bottom-[-22px] z-[-9999] h-[60px] md:h-[75px] bg-[#d8e5d6] mt-0 md:mt-[45px] pb-0 md:pb-10 w-[100vw] p-2 md:p-0 overflow-hidden flex items-center">
             <div className="marquee text-[#003D28] text-[20px] md:text-[24px] font-[400] flex items-center">
                 <div className="marquee-content flex items-center font-BwGradual-Light">
                     <Image src={seperator} alt="separator" className="mr-5" />

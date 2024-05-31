@@ -7,6 +7,7 @@ import { FaUserCircle } from "react-icons/fa";
 import sola from "../Assets/reviews/sss.jpg"
 import fun from "../Assets/reviews/fff.jpg"
 import ay from "../Assets/reviews/ay.jpg"
+import me from "../Assets/reviews/coach.jpg"
 
 function SimpleSlider() {
     const settings = {
@@ -26,7 +27,7 @@ function SimpleSlider() {
         arrows: false
     };
     return (
-        <div className="flex flex-col items-center justify-center p-[50px] md:p-[60px] bg-[#D8E5D6]">
+        <div className="flex flex-col items-center justify-center pt-10 px-[50px] md:p-[60px] bg-[#D8E5D6]">
             <h1 className="text-[#211F26] font-[700] text-[28px] md:text-[36px] font-BwGradual-Regular text-center md:text-left" >What people say about us</h1>
             <div className="flex flex-row items-center justify-center">
                 <div className="w-[15vw]"></div>
@@ -43,7 +44,7 @@ function SimpleSlider() {
                                         <div className="md:w-[300px] mb-4 md:mb-0">
                                             <div className="flex flex-row items-center justify-between">
                                                 {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
-                                                <Image src={sola} alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
+                                                <Image src="https://res.cloudinary.com/doaay7ete/image/upload/v1717123144/fit_fwyxs9.jpg" width={100} height={100} unoptimized alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
                                                 <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">David Kayode, fitness enthusiast</p>
                                             </div>
                                             <p className="text-[12px] md:text-[14px] font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4 mt-3">Finally, healthy food that tastes amazing! NutraSpices has helped me reach my fitness goals.</p>
@@ -59,6 +60,7 @@ function SimpleSlider() {
                                 </div>
 
                             </div>
+
                             <div className="">
                                 <div
                                     className="flex-shrink-0 w-[200px] md:w-[350px] lg:w-[350px] bg-[#A9C1A9] p-6 rounded-[24px]"
@@ -67,10 +69,11 @@ function SimpleSlider() {
                                     <div className="flex flex-col md:flex-row items-center w-[350px]">
                                         <div className="md:w-[300px] mb-4 md:mb-0">
                                             <div className="flex flex-row items-center justify-between">
-                                                <FaUserCircle color="#003D28" className="w-[60px] h-[60px] rounded-[200px]" />
-                                                <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Monday Effiong, Grandpa</p>
+                                                {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
+                                                <Image src="https://res.cloudinary.com/doaay7ete/image/upload/v1717123158/ay_rz9kl0.jpg" width={100} height={100} unoptimized alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
+                                                <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Lisa S., Tech sis / entrepreneur</p>
                                             </div>
-                                            <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 mt-3">No more meal prep stress! NutraSpices is a lifesaver for our family. Love the variety of options.</p>
+                                            <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 mt-3">The best part? The time I save! NutraSpices has freed up so much time, no more grocery shopping or spending hours in the kitchen.</p>
                                         </div>
                                         {/* <div className="">
                                         <Image
@@ -92,7 +95,7 @@ function SimpleSlider() {
                                         <div className="md:w-[300px] mb-4 md:mb-0">
                                             <div className="flex flex-row items-center justify-between">
                                                 {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
-                                                <Image src={fun} alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
+                                                <Image src="https://res.cloudinary.com/doaay7ete/image/upload/v1717123152/funm_teepqr.jpg" width={100} height={100} unoptimized alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
                                                 <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Esther Olagunju, working mom</p>
                                             </div>
                                             <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 mt-3">A perfect solution for my dietary needs! NutraSpices offers a fantastic selection of gluten-free meals.</p>
@@ -118,11 +121,10 @@ function SimpleSlider() {
                                     <div className="flex flex-col md:flex-row items-center w-[350px]">
                                         <div className="md:w-[300px] mb-4 md:mb-0">
                                             <div className="flex flex-row items-center justify-between">
-                                                {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
-                                                <Image src={ay} alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
-                                                <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Lisa S., Tech sis / entrepreneur</p>
+                                                <FaUserCircle color="#003D28" className="w-[60px] h-[60px] rounded-[200px]" />
+                                                <p className="mb-5 text-[12px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Monday Effiong, Grandpa</p>
                                             </div>
-                                            <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 mt-3">The best part? The time I save! NutraSpices has freed up so much time in my week, no more grocery shopping or spending hours in the kitchen.</p>
+                                            <p className="text-[12px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 mt-3">No more meal prep stress! NutraSpices is a lifesaver for our family. Love the variety of options.</p>
                                         </div>
                                         {/* <div className="">
                                         <Image
@@ -135,6 +137,7 @@ function SimpleSlider() {
                                 </div>
 
                             </div>
+
                             <div className="">
                                 <div
                                     className="flex-shrink-0 w-[200px] md:w-[350px] lg:w-[350px] bg-[#A9C1A9] p-6 rounded-[24px]"
@@ -187,85 +190,86 @@ function SimpleSlider() {
                         </Slider>
                     </div>
 
-                    <div className=" md:hidden flex flex-col items-start">
-                        <div className="">
-                            <div
-                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[350px] bg-[#A9C1A9] p-3 rounded-[16px]"
-                                style={{ minWidth: '350px' }}
-                            >
-                                <div className="flex flex-col md:flex-row items-center w-[320px]">
-                                    <div className="md:w-[320px] ml-[20px] md:ml-0 mb-4 md:mb-0">
-                                        <div className="flex flex-row items-center justify-between">
-                                            {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
-                                            <Image src={sola} alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
-                                            <p className="mb-5 text-[14px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">David Kayode, fitness enthusiast</p>
-                                        </div>
-                                        <p className="text-[14px] md:text-[14px] font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify mt-3 ">Finally, healthy food that tastes amazing! NutraSpices has helped me reach my fitness goals.</p>
-                                    </div>
-                                    {/* <div className="">
-                                        <Image
-                                            src={Logo}
-                                            alt="name"
-                                            className="w-24 h-24 object-cover rounded-full shadow-lg"
-                                        />
-                                    </div> */}
-                                </div>
-                            </div>
 
-                        </div>
-                        <div className="">
-                            <div
-                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-3 rounded-[16px]"
-                                style={{ minWidth: '350px' }}
-                            >
-                                <div className="flex flex-col md:flex-row items-center w-[320px]">
-                                    <div className="md:w-[320px] ml-[20px] md:ml-0 mb-4 md:mb-0">
-                                        <div className="flex flex-row items-center justify-between">
-                                            {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
-                                            <Image src={fun} alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
-                                            <p className="mb-5 text-[14px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Esther Olagunju, working mom</p>
-                                        </div>
-                                        <p className="text-[14px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify mt-3 ">A perfect solution for my dietary needs! NutraSpices offers a fantastic selection of gluten-free meals.</p>
-                                    </div>
-                                    {/* <div className="">
-                                        <Image
-                                            src={Logo}
-                                            alt="name"
-                                            className="w-24 h-24 object-cover rounded-full shadow-lg"
-                                        />
-                                    </div> */}
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="">
-                            <div
-                                className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-3 rounded-[16px]"
-                                style={{ minWidth: '350px' }}
-                            >
-                                <div className="flex flex-col md:flex-row items-center w-[320px]">
-                                    <div className="md:w-[320px] ml-[20px] md:ml-0 mb-4 md:mb-0">
-                                        <div className="flex flex-row items-center justify-between">
-                                            {/* <FaUserCircle color="#003D28" className="w-[60px] h-[60px] rounded-[200px]" /> */}
-                                            <Image src={ay} alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
-                                            <p className="mb-5 text-[14px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Lisa S., Tech sis / entrepreneur</p>
-                                        </div>
-                                        <p className="text-[14px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify mt-3 ">The best part? The time I save! NutraSpices has freed up so much time in my week, no more grocery shopping or spending hours in the kitchen.</p>
-                                    </div>
-                                    {/* <div className="">
-                                        <Image
-                                            src={Logo}
-                                            alt="name"
-                                            className="w-24 h-24 object-cover rounded-full shadow-lg"
-                                        />
-                                    </div> */}
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
                 <div className="w-[15vw]"></div>
+            </div>
+            <div className=" md:hidden flex flex-col items-start ml-5 mt-[-80px] mb-[60px]">
+                <div className="">
+                    <div
+                        className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[350px] bg-[#A9C1A9] p-3 rounded-[16px]"
+                        style={{ minWidth: '350px' }}
+                    >
+                        <div className="flex flex-col md:flex-row items-center w-[320px]">
+                            <div className="md:w-[320px] ml-[20px] md:ml-0 mb-4 md:mb-0">
+                                <div className="flex flex-row items-center justify-between">
+                                    {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
+                                    <Image src="https://res.cloudinary.com/doaay7ete/image/upload/v1717123144/fit_fwyxs9.jpg" width={100} height={100} unoptimized alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
+                                    <p className="mb-5 text-[14px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">David Kayode, fitness enthusiast</p>
+                                </div>
+                                <p className="text-[14px] md:text-[14px] font-[400] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify mt-3 ">Finally, healthy food that tastes amazing! NutraSpices has helped me reach my fitness goals.</p>
+                            </div>
+                            {/* <div className="">
+                                        <Image
+                                            src={Logo}
+                                            alt="name"
+                                            className="w-24 h-24 object-cover rounded-full shadow-lg"
+                                        />
+                                    </div> */}
+                        </div>
+                    </div>
+
+                </div>
+                <div className="">
+                    <div
+                        className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-3 rounded-[16px]"
+                        style={{ minWidth: '350px' }}
+                    >
+                        <div className="flex flex-col md:flex-row items-center w-[320px]">
+                            <div className="md:w-[320px] ml-[20px] md:ml-0 mb-4 md:mb-0">
+                                <div className="flex flex-row items-center justify-between">
+                                    {/* <FaUserCircle color="#003D28" className="w-[40px] h-[40px]" /> */}
+                                    <Image src="https://res.cloudinary.com/doaay7ete/image/upload/v1717123152/funm_teepqr.jpg" width={100} height={100} unoptimized alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
+                                    <p className="mb-5 text-[14px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Esther Olagunju, working mom</p>
+                                </div>
+                                <p className="text-[14px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify mt-3 ">A perfect solution for my dietary needs! NutraSpices offers a fantastic selection of gluten-free meals.</p>
+                            </div>
+                            {/* <div className="">
+                                        <Image
+                                            src={Logo}
+                                            alt="name"
+                                            className="w-24 h-24 object-cover rounded-full shadow-lg"
+                                        />
+                                    </div> */}
+                        </div>
+                    </div>
+
+                </div>
+                <div className="">
+                    <div
+                        className="flex-shrink-0 ml-[-20px] mb-5 w-[280px] md:w-[350px] lg:w-[200px] bg-[#A9C1A9] p-3 rounded-[16px]"
+                        style={{ minWidth: '350px' }}
+                    >
+                        <div className="flex flex-col md:flex-row items-center w-[320px]">
+                            <div className="md:w-[320px] ml-[20px] md:ml-0 mb-4 md:mb-0">
+                                <div className="flex flex-row items-center justify-between">
+                                    {/* <FaUserCircle color="#003D28" className="w-[60px] h-[60px] rounded-[200px]" /> */}
+                                    <Image src="https://res.cloudinary.com/doaay7ete/image/upload/v1717123158/ay_rz9kl0.jpg" width={100} height={100} unoptimized alt="name" className="w-[60px] h-[60px] rounded-[200px]" />
+                                    <p className="mb-5 text-[14px] md:text-[14px] font-[700] font-BwGradual-Regular text-[#141218] mr-5 mt-5">Lisa S., Tech sis / entrepreneur</p>
+                                </div>
+                                <p className="text-[14px] md:text-[14px] font-BwGradual-Regular text-[#1D1B20] mb-4 text-justify mt-3 ">The best part? The time I save! NutraSpices has freed up so much time, no more grocery shopping or spending hours in the kitchen.</p>
+                            </div>
+                            {/* <div className="">
+                                        <Image
+                                            src={Logo}
+                                            alt="name"
+                                            className="w-24 h-24 object-cover rounded-full shadow-lg"
+                                        />
+                                    </div> */}
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     );

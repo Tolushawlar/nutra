@@ -11,6 +11,7 @@ import Text1 from '../Assets/dietary/deit.png';  // Update with actual image pat
 import Image from 'next/image';
 import arrow from "../Assets/dietary/Arrow_Icon.svg"
 import { Element } from "react-scroll";
+import broThomas from "../Assets/nutra/broThomasHe.jpg"
 
 const topic = "Frequently Asked Questions?"
 const faqInput = [
@@ -67,7 +68,7 @@ function HealthPage() {
           </div> */}
           </div>
           <div className="px-[20px] md:px-[90px]">
-            <Image src={Text1} alt="logo" className=" w-[400px] md:w-[1200px] h-[380px] md:h-[600px] " />
+            <Image src={broThomas} alt="logo" className=" rounded-[300px] w-[400px] md:w-auto h-[380px] md:h-[600px] " />
           </div>
         </div>
         <div

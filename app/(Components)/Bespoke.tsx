@@ -41,7 +41,7 @@ export const Bespoke = () => {
   return (
     <Element name="bespoke">
       <div id="bespoke" className="py-8 md:py-10 w-screen bg-[#003D28]">
-        <div className="w-[100vw] md:w-[60%] p-10 mx-auto">
+        <div className=" md:w-[60%] p-10 mx-auto">
           <div className="flex flex-col items-center justify-center">
             <h2 className=" text-center text-[28px] md:text-[36px] text-[#ECF5EA]  font-BwGradual-Regular font-[700] my-10">Want to send us a custom order?</h2>
             {/* <p>
@@ -49,7 +49,7 @@ export const Bespoke = () => {
             we&lsquo;ll reply in munites!!
           </p> */}
           </div>
-          <div className="flex flex-col items-center w-[100%] md:w-[80%] my-5 space-y-6 p-2 mx-auto">
+          <div className="flex flex-col items-center w-[90%] md:w-[80%] my-5 space-y-6 p-2 mx-auto">
             <div className="flex flex-col md:flex-row jusitfy-between gap-5">
               <div className="flex flex-col items-start gap-2">
                 <label className="text-white font-BwGradual-Light font-[400] text-[14px] md:text-[16px]">
@@ -59,7 +59,7 @@ export const Bespoke = () => {
                   name="name"
                   onChange={handleInput}
                   type="text"
-                  className="bg-white  focus:outline-none px-5 text-black grow w-[380px] md:w-[340px] h-[54px] rounded-[14px]"
+                  className="bg-white  focus:outline-none px-5 text-black grow w-[340px] md:w-[340px] h-[54px] rounded-[14px]"
                   placeholder="Daisy"
                 />
               </div>
@@ -83,7 +83,7 @@ export const Bespoke = () => {
                   name="phone"
                   onChange={handleInput}
                   type="text"
-                  className="bg-white focus:outline-none px-5 text-black grow w-[380px] md:w-[340px] h-[54px] rounded-[14px]"
+                  className="bg-white focus:outline-none px-5 text-black grow w-[340px] md:w-[340px] h-[54px] rounded-[14px]"
                   placeholder="07012345678"
                 />
               </div>
@@ -99,7 +99,7 @@ export const Bespoke = () => {
                 name="location"
                 onChange={handleInput}
                 type="text"
-                className="bg-white focus:outline-none px-5 text-black grow w-[380px] md:w-[700px] h-[54px] rounded-[14px]"
+                className="bg-white focus:outline-none px-5 text-black grow w-[340px] md:w-[700px] h-[54px] rounded-[14px]"
                 placeholder="Akure"
               />
             </div>
@@ -111,7 +111,7 @@ export const Bespoke = () => {
               <textarea
                 name="message"
                 onChange={handleInput}
-                className="bg-white focus:outline-none text-black textarea textarea-bordered w-[380px] md:w-[700px] h-[170px]"
+                className="bg-white focus:outline-none text-black textarea textarea-bordered w-[340px] md:w-[700px] h-[170px]"
                 placeholder="Describe your order"
               ></textarea>
             </div>

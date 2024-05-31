@@ -220,8 +220,8 @@ const Menu = () => {
                   <p
                     style={{
                       background: `${active === cat ? "#003D28" : ""}`,
-                      paddingRight: `${active === cat ? "13px" : ""}`,
-                      paddingLeft: `${active === cat ? "13px" : ""}`,
+                      // paddingRight: `${active === cat ? "13px" : ""}`,
+                      // paddingLeft: `${active === cat ? "13px" : ""}`,
                       color: `${active === cat ? "#BCF800" : "#003D28"}`,
                     }}
                     className="font-BwGradual-Regular font-[700] cursor-pointer p-2 text-nowrap rounded-lg px-[32px] py-[12px] border-[0.8px] border-[#A9C1A9] text-[#003D28]"

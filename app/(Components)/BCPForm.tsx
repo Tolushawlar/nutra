@@ -1,6 +1,7 @@
 import axios from "axios";
 import Image from "next/image";
 import React, { useState } from "react";
+import { Element } from "react-scroll";
 
 const BCPForm = () => {
   const [info, setInfo]: any = useState();
@@ -65,9 +66,9 @@ const BCPForm = () => {
   };
 
   return (
-    <div>
+    <Element name="bcp">
       {" "}
-      <div id="bespoke" className="py-10 w-screen bg-[#003D28]">
+      <div id="bcp" className="py-10 w-screen bg-[#003D28]">
         <div className="w-[100vw] md:w-[60%] p-10 mx-auto">
           <div className="flex text-[#ECF5EA] flex-col my-10 items-center text-center justify-center">
             <h2 className="  md:text-center text-[28px] md:text-[36px] text-[#ECF5EA] font-BwGradual-Regualr font-[700] ">
@@ -203,7 +204,7 @@ const BCPForm = () => {
           )}
         </div>
       </div>
-    </div>
+    </Element>
   );
 };
 
