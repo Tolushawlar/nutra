@@ -91,10 +91,12 @@ const SliderCarousel = () => {
                     <div className="px-[20px] md:px-[70px] pt-[100px] md:pt-[100px] gap-5 md:gap-10 flex flex-col items-center justify-center md:justify-start bg-[#003D28] w-[100vw] md:w-[80vw] h-[500px] md:h-[700px]">
                         <h2 className=" leading-[45px] md:leading-[80px] text-[40px] md:text-[90px] text-white font-BwGradual-Bold text-center md:text-left">We will be live at <span className="text-[#BCF800]">BCP</span> as the official food partner.</h2>
                         {/* <p className="text-[45px] font-[400] text-white font-BwGradual-Light my-10">What you eat should not be on that list.</p> */}
-                        <Link to="bcp" smooth={true} duration={800} className="relative left-[20px] md:right-0 md:ml-0 cursor-pointer flex flex-row items-center justify-center gap-3 my-10  bg-[#BCF800] rounded-[8px] md:rounded-[16px] w-[300px] md:w-[350px] h-[64px] md:h-[90px] mt-[50px] md:mt-[80px]">
-                            <div className="text-[#003D28] font-[500] text-center md:text-left font-BwGradual-Regular text-[14px] md:text-[18px] ">TELL ME MORE</div>
-                            <Image src={arrow} alt="logo" className=" w-[15px] h-[15px]" />
-                        </Link>
+                        <div className='flex flex-row items-center justify-center md:justify start'>
+                            <Link to="bcp" smooth={true} duration={800} className="relative left-[20px] md:right-0 md:ml-0 cursor-pointer flex flex-row items-center justify-center gap-3 my-10  bg-[#BCF800] rounded-[8px] md:rounded-[16px] w-[300px] md:w-[350px] h-[64px] md:h-[90px] mt-[50px] md:mt-[80px]">
+                                <div className="text-[#003D28] font-[500] text-center md:text-left font-BwGradual-Regular text-[14px] md:text-[18px] ">TELL ME MORE</div>
+                                <Image src={arrow} alt="logo" className=" w-[15px] h-[15px]" />
+                            </Link>
+                        </div>
                     </div>
                 </Slider>
             </div>
